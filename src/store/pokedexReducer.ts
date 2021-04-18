@@ -1,23 +1,23 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-
-type LoadingStatus = "idle" | "loading"
+import { getPokedexList } from '../api'
+import Pokedex from '../api/pokedex'
 
 interface PokedexState {
-  all: Array<any>,
-  loadingStatus: LoadingStatus
+  all: Array<Pokedex.Pokedex>,
+  loading: boolean
+}
+
+const initialState: PokedexState = {
+  all: [],
+  loading: false
 }
 
 const fetchPokedexList = createAsyncThunk(
   'pokedex/fetch',
-  async (thunkAPI) => {
-
+  async () => {
+    return await getPokedexList()
   }
 )
-
-const initialState: PokedexState = {
-  all: [],
-  loadingStatus: "idle"
-}
 
 const pokedexSlice = createSlice({
   name: 'pokedex',
@@ -28,14 +28,15 @@ const pokedexSlice = createSlice({
     builder.addCase(
       fetchPokedexList.pending,
       (state) => {
-        state.loadingStatus = "loading"
+        state.loading = true
       }
     )
 
     builder.addCase(
       fetchPokedexList.fulfilled,
       (state, data) => {
-        state.loadingStatus = "idle"
+        state.loading = false
+        state.all = data.payload
       }
     )
   }
