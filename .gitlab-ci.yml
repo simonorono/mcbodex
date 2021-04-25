@@ -1,0 +1,19 @@
+image: node
+
+before_script:
+  - npm install
+
+cache:
+  paths:
+    - node_modules/
+
+pages:
+  script:
+  - npm run build
+  - mkdir public
+  - mv dist/* public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
