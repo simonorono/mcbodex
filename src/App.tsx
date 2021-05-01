@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import {
   HashRouter as Router,
-  Link,
   Route,
   Switch
 } from 'react-router-dom'
+import Index from './components/Index'
+import NotFound from './components/NotFound'
 import RDex from './RDex'
 import { fetchPokedexList } from './store/pokedexReducer'
 
@@ -18,8 +19,11 @@ function App() {
     <Router>
       <RDex>
         <Switch>
-          <Route path="/">
-            Index
+          <Route exact path="/">
+            <Index />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </RDex>
