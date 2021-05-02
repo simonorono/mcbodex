@@ -4,12 +4,13 @@ import Pokedex from '../api/pokedex'
 
 interface PokedexState {
   all: Array<Pokedex.Pokedex>,
-  loading: boolean
+  loading: boolean,
+  current?: Pokedex.Pokedex,
 }
 
 const initialState: PokedexState = {
   all: [],
-  loading: false
+  loading: false,
 }
 
 const fetchPokedexList = createAsyncThunk(
@@ -37,6 +38,7 @@ const pokedexSlice = createSlice({
       (state, data) => {
         state.loading = false
         state.all = data.payload
+        state.current = data.payload[0]
       }
     )
   }
