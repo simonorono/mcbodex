@@ -1,6 +1,6 @@
 import React from 'react'
 
-import rDexLogo from '../../media/RDex.png'
+import rDexLogo from '/media/RDex.png'
 
 export default function Navbar() {
   return (
