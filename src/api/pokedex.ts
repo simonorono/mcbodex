@@ -1,7 +1,7 @@
 import cache from './cache'
 import { execQuery } from './graphql'
 
-namespace Pokedex {
+namespace PokedexApi {
   const CACHE_KEY = 'pokedex_list'
 
   const getPokedexQuery =`
@@ -17,11 +17,6 @@ namespace Pokedex {
       }
     }
   `
-
-  export interface Pokedex {
-    code: string,
-    name: string
-  }
 
   function transform(response: any): Array<Pokedex> {
     return response.data.data.pokedex.map((obj: any): Pokedex => {
@@ -47,4 +42,4 @@ namespace Pokedex {
   }
 }
 
-export default Pokedex
+export default PokedexApi

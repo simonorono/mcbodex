@@ -1,3 +1,3 @@
-import pokedex from './pokedex'
+import pokedexApi from './pokedex'
 
-export const { getPokedexList } = pokedex
+export const { getPokedexList } = pokedexApi

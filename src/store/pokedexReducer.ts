@@ -1,11 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getPokedexList } from '../api'
-import Pokedex from '../api/pokedex'
 
 interface PokedexState {
-  all: Array<Pokedex.Pokedex>,
+  all: Array<Pokedex>,
   loaded: boolean,
-  current?: Pokedex.Pokedex,
+  current?: Pokedex,
 }
 
 const initialState: PokedexState = {
@@ -24,14 +23,14 @@ const pokedexSlice = createSlice({
   name: 'pokedex',
   initialState,
   reducers: {
-    setCurrentPokedex: (state, action: PayloadAction<Pokedex.Pokedex>) => {
+    setCurrentPokedex: (state, action: PayloadAction<Pokedex>) => {
       state.current = action.payload
     }
   },
   extraReducers: (builder) => {
     builder.addCase(
       fetchPokedexList.fulfilled,
-      (state, action: PayloadAction<Array<Pokedex.Pokedex>>) => {
+      (state, action: PayloadAction<Array<Pokedex>>) => {
         state.all = action.payload
         state.current = action.payload[0]
         state.loaded = true
