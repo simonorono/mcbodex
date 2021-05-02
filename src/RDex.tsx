@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from './components/Navbar'
 
-export default function RDex(props: any) {
+export default function RDex(props: { [key: string]: any }) {
   const { children } = props
 
   return (
