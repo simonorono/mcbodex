@@ -24,7 +24,7 @@ const pokedexSlice = createSlice({
   name: 'pokedex',
   initialState,
   reducers: {
-    setCurrent: (state, action: PayloadAction<Pokedex.Pokedex>) => {
+    setCurrentPokedex: (state, action: PayloadAction<Pokedex.Pokedex>) => {
       state.current = action.payload
     }
   },
@@ -44,6 +44,6 @@ export { fetchPokedexList }
 
 const { actions, reducer } = pokedexSlice
 
-export const { setCurrent } = actions
+export const { setCurrentPokedex } = actions
 
 export default reducer

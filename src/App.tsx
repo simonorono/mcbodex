@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import {
   HashRouter as Router,
   Route,
@@ -8,10 +7,11 @@ import {
 import Index from './components/Index'
 import NotFound from './components/NotFound'
 import RDex from './RDex'
-import { fetchPokedexList } from './store/pokedexReducer'
+import { fetchPokedexList } from './store'
+import { useAppDispatch } from './store/hooks'
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   useEffect(() => { dispatch(fetchPokedexList()) }, [])
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Listbox } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { setCurrent } from '../store/pokedexReducer'
+import { setCurrentPokedex } from '../store'
 import Pokedex from '../api/pokedex'
 
 function classNames(...classes: Array<String>) {
@@ -15,7 +15,7 @@ export default function PokedexSelect() {
 
   const dispatch = useAppDispatch()
 
-  const onSelected = (pokedex: Pokedex.Pokedex) => dispatch(setCurrent(pokedex))
+  const onSelected = (pokedex: Pokedex.Pokedex) => dispatch(setCurrentPokedex(pokedex))
 
   return (
     <Listbox value={currentPokedex} onChange={onSelected}>
