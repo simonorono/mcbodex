@@ -12,10 +12,21 @@ const initialState: PokedexState = {
   loaded: false,
 }
 
-const fetchPokedexList = createAsyncThunk(
-  'pokedex/fetch',
-  async () => {
-    return await getPokedexList()
+const performInitialLoad = createAsyncThunk(
+  'pokedex/perform-initial-load',
+  async (_, { dispatch }) => {
+    const pokedexList = await getPokedexList()
+
+    dispatch(setCurrentPokedex(pokedexList[0]))
+
+    return pokedexList
+  }
+)
+
+const setCurrentPokedex = createAsyncThunk(
+  'pokedex/set-current-pokedex',
+  async (pokedex: Pokedex, { dispatch }) => {
+    dispatch(actions.setCurrent(pokedex))
   }
 )
 
@@ -23,26 +34,23 @@ const pokedexSlice = createSlice({
   name: 'pokedex',
   initialState,
   reducers: {
-    setCurrentPokedex: (state, action: PayloadAction<Pokedex>) => {
+    setCurrent: (state, action: PayloadAction<Pokedex>) => {
       state.current = action.payload
     }
   },
   extraReducers: (builder) => {
     builder.addCase(
-      fetchPokedexList.fulfilled,
+      performInitialLoad.fulfilled,
       (state, action: PayloadAction<Array<Pokedex>>) => {
         state.all = action.payload
-        state.current = action.payload[0]
         state.loaded = true
       }
     )
   }
 })
 
-export { fetchPokedexList }
-
 const { actions, reducer } = pokedexSlice
 
-export const { setCurrentPokedex } = actions
+export { performInitialLoad, setCurrentPokedex }
 
 export default reducer

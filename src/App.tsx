@@ -7,13 +7,13 @@ import {
 import Index from './components/Index'
 import NotFound from './components/NotFound'
 import RDex from './RDex'
-import { fetchPokedexList } from './store'
+import { performInitialLoad } from './store'
 import { useAppDispatch } from './store/hooks'
 
 function App() {
   const dispatch = useAppDispatch()
 
-  useEffect(() => { dispatch(fetchPokedexList()) }, [])
+  useEffect(() => { dispatch(performInitialLoad()) }, [])
 
   return (
     <Router>

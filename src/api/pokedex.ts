@@ -28,7 +28,8 @@ namespace PokedexApi {
   }
 
   export async function getPokedexList() {
-    let pokedexList = cache.get(CACHE_KEY)
+    let pokedexList = await cache.get(CACHE_KEY)
+    console.log('cached?', pokedexList)
 
     if (pokedexList) {
       return pokedexList
@@ -36,7 +37,7 @@ namespace PokedexApi {
 
     const data = transform(await execQuery(getPokedexQuery))
 
-    cache.set(CACHE_KEY, data)
+    await cache.set(CACHE_KEY, data)
 
     return data
   }

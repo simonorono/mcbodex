@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import pokedexReducer, { setCurrentPokedex, fetchPokedexList } from './pokedexReducer'
+import pokedexReducer, { setCurrentPokedex, performInitialLoad } from './pokedexReducer'
 
 const store = configureStore({
   reducer: {
@@ -10,6 +10,6 @@ const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
-export { setCurrentPokedex, fetchPokedexList };
+export { setCurrentPokedex, performInitialLoad };
 
 export default store
