@@ -1,3 +1,10 @@
+import localforage from 'localforage'
+import { name, version } from '../../package.json'
+
+localforage.config({
+  name: `${name}@${version}`
+})
+
 /**
  * Implementation of a cache to avoid hitting the PokeAPI server too much.
  */
@@ -27,10 +34,8 @@ namespace cache {
     return ellapsedSeconds > SECONDS_IN_DAY
   }
 
-  export function get(key: string): any {
-    let cachedValue = JSON.parse(
-      localStorage.getItem(key) || 'null'
-    ) as CachedValue
+  export async function get(key: string): Promise<any> {
+    let cachedValue = await localforage.getItem(key) as CachedValue
 
     if (!cachedValue) {
       return null
@@ -45,15 +50,13 @@ namespace cache {
     return cachedValue.value
   }
 
-  export function set(key: string, value: any) {
-    localStorage.setItem(
+  export async function set(key: string, value: any) {
+    await localforage.setItem(
       key,
-      JSON.stringify(
-        {
-          value,
-          created: new Date().getTime()
-        }
-      )
+      {
+        value,
+        created: new Date().getTime()
+      }
     )
   }
 }
