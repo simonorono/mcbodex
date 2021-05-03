@@ -7,13 +7,6 @@ import store from './store'
 
 import './index.css'
 
-declare global {
-  interface Pokedex {
-    code: string,
-    name: string,
-  }
-}
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
