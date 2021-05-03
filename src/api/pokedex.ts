@@ -29,7 +29,6 @@ namespace PokedexApi {
 
   export async function getPokedexList() {
     let pokedexList = await cache.get(CACHE_KEY)
-    console.log('cached?', pokedexList)
 
     if (pokedexList) {
       return pokedexList
