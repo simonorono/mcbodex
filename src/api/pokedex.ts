@@ -1,28 +1,21 @@
 import cache from './cache'
-import { execQuery } from './graphql'
+import pokedexUrl from '../../data/pokedex.json?url'
 
 namespace PokedexApi {
   const CACHE_KEY = 'pokedex_list'
 
-  const getPokedexQuery =`
-    query allMainPokedex {
-      pokedex: pokemon_v2_pokedex(where: {is_main_series: {_eq: true}}) {
-        name
-        names: pokemon_v2_pokedexnames(where: {pokemon_v2_language: {name: {_eq: "en"}}}) {
-          name
-          lang: pokemon_v2_language {
-            name
-          }
-        }
-      }
-    }
-  `
-
   function transform(response: any): Array<Pokedex> {
-    return response.data.data.pokedex.map((obj: any): Pokedex => {
+    return response.data.pokedex.map((obj: any): Pokedex => {
       return {
         code: obj.name,
-        name: obj.names[0].name
+        name: obj.names[0].name,
+
+        pokemonEntries: obj.pokemon.map((entryObj: any) => {
+          return {
+            pokedexNumber: entryObj.pokedex_number,
+            pokemonSpeciesId: entryObj.pokemon_species_id
+          }
+        })
       }
     })
   }
@@ -34,7 +27,9 @@ namespace PokedexApi {
       return pokedexList
     }
 
-    const data = transform(await execQuery(getPokedexQuery))
+    const response = await fetch(pokedexUrl)
+
+    const data = transform(await response.json())
 
     await cache.set(CACHE_KEY, data)
 
