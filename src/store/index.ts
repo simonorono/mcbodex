@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import pokedexReducer, { setCurrentPokedex, performInitialLoad } from './pokedexReducer'
+import pokemonReducer from './pokemonReducer'
 
 const store = configureStore({
   reducer: {
-    pokedex: pokedexReducer
+    pokedex: pokedexReducer,
+    pokemon: pokemonReducer
   }
 })
 
