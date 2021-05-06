@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { loadPokemonList } from './pokemonReducer'
 import { getPokedexList } from '../api'
 
 interface PokedexState {
@@ -17,7 +18,9 @@ const performInitialLoad = createAsyncThunk(
   async (_, { dispatch }) => {
     const pokedexList = await getPokedexList()
 
-    dispatch(setCurrentPokedex(pokedexList[0]))
+    await dispatch(loadPokemonList())
+
+    await dispatch(setCurrentPokedex(pokedexList[0]))
 
     return pokedexList
   }
