@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom'
@@ -20,15 +20,9 @@ function App() {
     <Router>
       <RDex>
         <Switch>
-          <Route exact path="/">
-            <Index />
-          </Route>
-          <Route path="/pokemon/:id">
-            <Pokemon />
-          </Route>
-          <Route path="*">
-            <NotFound />
-          </Route>
+          <Route exact path="/" component={Index} />
+          <Route path="/pokemon/:id" component={Pokemon} />
+          <Route path="*" component={NotFound} />
         </Switch>
       </RDex>
     </Router>
