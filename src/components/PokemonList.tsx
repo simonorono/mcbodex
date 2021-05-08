@@ -11,7 +11,7 @@ export default function PokemonList(props: Props) {
       {props.pokemonList.map((pokemon: PokemonSpecies, index) => (
         <li
           key={pokemon.id}
-          className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200"
+          className="col-span-1 bg-white"
         >
           <PokemonCard
             number={index + 1}
