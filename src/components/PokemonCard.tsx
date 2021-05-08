@@ -11,7 +11,7 @@ export default function PokemonCard(props: Props) {
   const pokemon = props.pokemon
 
   return (
-    <Link to="/">
+    <Link to={`/pokemon/${pokemon.id}`}>
       <div className="w-full flex items-center justify-between p-2 space-x-6">
         <img
           className="w-20 h-20 bg-gray-300 rounded-full flex-shrink-0"

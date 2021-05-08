@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import Index from './components/Index'
 import NotFound from './components/NotFound'
+import Pokemon from './components/Pokemon'
 import RDex from './RDex'
 import { performInitialLoad } from './store'
 import { useAppDispatch } from './store/hooks'
@@ -21,6 +22,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Index />
+          </Route>
+          <Route path="/pokemon/:id">
+            <Pokemon />
           </Route>
           <Route path="*">
             <NotFound />
