@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PokedexSelect from './PokedexSelect'
 
 import rDexLogo from '/media/RDex.png'
@@ -9,16 +10,18 @@ export default function Navbar() {
       <div className="flex justify-between h-16">
         <div className="flex">
           <div className="flex-shrink-0 flex items-center">
-            <img
-              className="block lg:hidden h-10 w-auto"
-              src={rDexLogo}
-              alt="RDex logo"
-            />
-            <img
-              className="hidden lg:block h-10 w-auto"
-              src={rDexLogo}
-              alt="RDex logo"
-            />
+            <Link to="/" title="Pokémon List">
+              <img
+                className="block lg:hidden h-10 w-auto"
+                src={rDexLogo}
+                alt="RDex logo"
+              />
+              <img
+                className="hidden lg:block h-10 w-auto"
+                src={rDexLogo}
+                alt="RDex logo"
+              />
+            </Link>
           </div>
         </div>
 
