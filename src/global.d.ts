@@ -18,5 +18,5 @@ declare interface PokemonSpecies {
   id: number,
   code: string,
   name: string,
-  pokemon: Array<any>,
+  pokemon: Array<Pokemon>,
 }

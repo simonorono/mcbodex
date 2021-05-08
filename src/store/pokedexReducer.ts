@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { loadPokemonList } from './pokemonReducer'
+import { loadPokemonList, setPokemonShownByPokedex } from './pokemonReducer'
 import { getPokedexList } from '../api'
 
 interface PokedexState {
@@ -30,6 +30,8 @@ const setCurrentPokedex = createAsyncThunk(
   'pokedex/set-current-pokedex',
   async (pokedex: Pokedex, { dispatch }) => {
     dispatch(actions.setCurrent(pokedex))
+
+    await dispatch(setPokemonShownByPokedex(pokedex))
   }
 )
 

@@ -6,7 +6,7 @@ namespace PokedexApi {
 
   function transform(response: any): Array<Pokedex> {
     return response.data.pokedex.map((obj: any): Pokedex => {
-      return {
+      const pokedex: Pokedex = {
         code: obj.name,
         name: obj.names[0].name,
 
@@ -17,6 +17,10 @@ namespace PokedexApi {
           }
         })
       }
+
+      pokedex.pokemonEntries.sort((pe1, pe2) => pe1.pokedexNumber - pe2.pokedexNumber)
+
+      return pokedex
     })
   }
 
