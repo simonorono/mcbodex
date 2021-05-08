@@ -7,6 +7,10 @@ import store from './store'
 
 import './index.css'
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js', { scope: './' }).catch(console.log)
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
