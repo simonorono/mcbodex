@@ -2,7 +2,8 @@ import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import PokedexSelect from './PokedexSelect'
 
-import rDexLogo from '/media/RDex.png'
+import desktopLogo from '/media/RDex.png'
+import mobileLogo from '/media/RD.png'
 
 export default function Navbar() {
   const location = useLocation()
@@ -17,12 +18,12 @@ export default function Navbar() {
             <Link to="/" title="Pokémon List">
               <img
                 className="block lg:hidden h-10 w-auto"
-                src={rDexLogo}
+                src={mobileLogo}
                 alt="RDex logo"
               />
               <img
                 className="hidden lg:block h-10 w-auto"
-                src={rDexLogo}
+                src={desktopLogo}
                 alt="RDex logo"
               />
             </Link>
