@@ -7,7 +7,6 @@ import {
 import About from './components/About'
 import Index from './components/Index'
 import NotFound from './components/NotFound'
-import Pokemon from './components/Pokemon'
 import RDex from './RDex'
 import { performInitialLoad } from './store'
 import { useAppDispatch } from './store/hooks'
@@ -22,7 +21,6 @@ function App() {
       <RDex>
         <Switch>
           <Route exact path="/" component={Index} />
-          <Route path="/pokemon/:id" component={Pokemon} />
           <Route path="/about" component={About} />
           <Route path="*" component={NotFound} />
         </Switch>
