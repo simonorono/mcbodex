@@ -4,6 +4,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
+import About from './components/About'
 import Index from './components/Index'
 import NotFound from './components/NotFound'
 import Pokemon from './components/Pokemon'
@@ -22,6 +23,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Index} />
           <Route path="/pokemon/:id" component={Pokemon} />
+          <Route path="/about" component={About} />
           <Route path="*" component={NotFound} />
         </Switch>
       </RDex>
