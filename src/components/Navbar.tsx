@@ -1,10 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import PokedexSelect from './PokedexSelect'
 
 import rDexLogo from '/media/RDex.png'
 
 export default function Navbar() {
+  const location = useLocation()
+
+  const isIndex = location.pathname === "/"
+
   return (
     <div className="mx-auto px-2 sm:px-6 lg:px-8 border-b mb-5 bg-gray-700">
       <div className="flex justify-between h-16">
@@ -26,7 +30,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center">
-          <PokedexSelect></PokedexSelect>
+          {isIndex && <PokedexSelect />}
         </div>
       </div>
     </div>
