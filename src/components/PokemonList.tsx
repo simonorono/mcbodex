@@ -23,7 +23,8 @@ export default function PokemonList(props: Props) {
   useEffect(() => {
     const options = {
       root: null,
-      threshold: 0.01
+      rootMargin: '300px',
+      threshold: 0.01,
     }
 
     const observer = new IntersectionObserver(onLoadMoreRequested, options)
