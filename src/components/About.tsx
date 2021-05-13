@@ -42,11 +42,11 @@ export default function About() {
 
       <Subtitle>How was it built?</Subtitle>
 
-      <P>
-        <>
+      <p>
           RDex is a SPA built thanks to:
+      </p>
 
-          <ul className="list-disc ml-6 mt-2">
+      <ul className="list-disc ml-6 mt-2 mb-10">
             <li><A href="https://pokeapi.co/">PokeAPI</A></li>
             <li><A href="https://vitejs.dev/">Vite</A></li>
             <li><A href="https://reactjs.org/">React</A></li>
@@ -55,9 +55,7 @@ export default function About() {
             <li><A href="https://www.tailwindcss.com/">TailwindCSS</A></li>
             <li><A href="https://tailwindui.com/">TailwindUI</A></li>
             <li><A href="https://localforage.github.io/localForage/">localForage</A></li>
-          </ul>
-        </>
-      </P>
+        </ul>
 
       <Subtitle>Legal information</Subtitle>
 
