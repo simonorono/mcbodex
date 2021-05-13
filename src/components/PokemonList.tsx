@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { scrollToTop } from '../utils';
 import PokemonCard from './PokemonCard'
 
 interface Props {
@@ -10,7 +11,11 @@ const PER_PAGE = 30;
 export default function PokemonList(props: Props) {
   const [page, setPage] = useState(1)
 
-  useEffect(() => setPage(1), [props.pokemonList])
+  // If the pokemon list changes, reset pagination and scroll to top.
+  useEffect(() => {
+    scrollToTop()
+    setPage(1)
+  }, [props.pokemonList])
 
   const loader = useRef(null)
 
