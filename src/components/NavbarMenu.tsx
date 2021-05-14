@@ -3,7 +3,7 @@ import { Menu, Transition } from '@headlessui/react'
 import { DotsVerticalIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
 
-export default function Example() {
+export default function NavbarMenu() {
   return (
     <Menu as="div" className="relative inline-block text-left h-full">
       {({ open }) => (
