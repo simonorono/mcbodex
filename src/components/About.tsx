@@ -27,7 +27,7 @@ export default function About() {
 
   return (
     <>
-      <h1 className="text-5xl font-bold mb-10">RDex <span className="text-sm">({version})</span></h1>
+      <h1 className="text-5xl font-bold mb-10">RDex <span className="text-sm font-normal">({version})</span></h1>
 
       <Subtitle>What is this?</Subtitle>
 
