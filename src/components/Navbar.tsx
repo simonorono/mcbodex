@@ -18,11 +18,13 @@ export default function Navbar() {
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" title="Pokémon List">
               <img
+                width={72} height={40}
                 className="hidden mobile:block h-10 w-auto"
                 src={mobileLogo}
                 alt="RDex logo"
               />
               <img
+                width={128} height={40}
                 className="block mobile:hidden h-10 w-auto"
                 src={desktopLogo}
                 alt="RDex logo"

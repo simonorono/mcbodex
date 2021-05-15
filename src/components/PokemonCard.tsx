@@ -13,6 +13,7 @@ export default function PokemonCard(props: Props) {
   return (
     <div className="w-full flex items-center justify-between p-2 space-x-6 border border-gray-300 rounded-xl">
       <img
+        width={80} height={80}
         className="w-20 h-20 bg-gray-300 rounded-full flex-shrink-0"
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
         alt={`front sprite for ${pokemon.name}`}

@@ -47,7 +47,7 @@ export default function PokemonList(props: Props) {
         {props.pokemonList.slice(0, page * PER_PAGE).map((pokemon: PokemonSpecies, index) => (
           <li
             key={pokemon.id}
-            className="col-span-1 bg-white"
+            className="col-span-1"
           >
             <PokemonCard
               number={index + 1}
