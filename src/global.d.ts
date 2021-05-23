@@ -1,3 +1,5 @@
+declare module 'pokedex-promise-v2'
+
 declare interface PokedexEntry {
   pokedexNumber: number,
   pokemonSpeciesId: number,
@@ -19,4 +21,21 @@ declare interface PokemonSpecies {
   code: string,
   name: string,
   pokemon: Array<Pokemon>,
+}
+
+declare interface Name {
+  name: string,
+  lang: string
+}
+
+declare interface Type {
+  id: number,
+  code: string,
+  names: Array<Name>,
+  damageRelationships?: Array<DamageRelationShip>
+}
+
+declare interface DamageRelationShip {
+  factor: number,
+  type: Type
 }

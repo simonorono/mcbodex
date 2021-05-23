@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import pokedexReducer, { setCurrentPokedex, performInitialLoad } from './pokedexReducer'
 import pokemonReducer, { loadPokemonList } from './pokemonReducer'
+import typeReducer from './typeReducer'
 
 const store = configureStore({
   reducer: {
     pokedex: pokedexReducer,
-    pokemon: pokemonReducer
+    pokemon: pokemonReducer,
+    types: typeReducer
   }
 })
 
