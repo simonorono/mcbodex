@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { ImageURL } from '../utils'
 
 interface Props {
   pokemon: PokemonSpecies,
@@ -15,7 +15,7 @@ export default function PokemonCard(props: Props) {
       <img
         width={80} height={80}
         className="w-20 h-20 bg-gray-300 rounded-full flex-shrink-0"
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
+        src={ImageURL.frontSpriteForPokemonId(pokemon.id)}
         alt={`front sprite for ${pokemon.name}`}
       />
       <div className="flex-1 truncate">
