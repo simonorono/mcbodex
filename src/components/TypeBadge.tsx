@@ -1,7 +1,8 @@
 import React from 'react'
 
 interface Props {
-  type: Type
+  type: Type,
+  className?: string,
 }
 
 interface TypeClasses {
@@ -125,15 +126,17 @@ const typeClasses: TypeClassesMap = {
 }
 
 export default function TypeBadge(props: Props) {
-  const { type } = props
+  const { type, className } = props
 
   const classes = typeClasses[type.code]
 
   return (
-    <span className={[
-      'py-0.5 rounded-full text-sm font-medium border w-[70px] text-center',
-      classes?.border, classes?.background, classes?.color
-    ].filter(Boolean).join(' ')}>
+    <span
+      className={[
+        'py-0.5 rounded-full border text-center',
+        classes.border, classes.background, classes.color, className
+      ].join(' ')}
+    >
       {type.names.find(name => name.lang == 'en')?.name}
     </span>
   )

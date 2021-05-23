@@ -33,6 +33,7 @@ export default function PokemonCard(props: Props) {
             <TypeBadge
               key={typeId}
               type={typesById[typeId]}
+              className='text-sm font-medium w-[70px]'
             />
           ))}
         </div>
