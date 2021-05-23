@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '.'
-import PokemonAPI from '../api/pokemon'
+import { getAllPokemon } from '../api'
 
 interface PokemonState {
   all: Array<PokemonSpecies>,
@@ -17,7 +17,7 @@ const initialState: PokemonState = {
 const loadPokemonList = createAsyncThunk(
   'pokemon/load-pokemon-list',
   async () => {
-    const pokemonList = await PokemonAPI.getAllPokemon()
+    const pokemonList = await getAllPokemon()
 
     return pokemonList
   }
