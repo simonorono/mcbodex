@@ -7,12 +7,14 @@ type MappedTypes = {
 
 interface TypeState {
   all: MappedTypes,
-  ids: Array<number>
+  ids: Array<number>,
+  loaded: boolean,
 }
 
 const initialState: TypeState = {
   all: {},
-  ids: []
+  ids: [],
+  loaded: false,
 }
 
 const loadTypeList = createAsyncThunk(
@@ -38,6 +40,7 @@ const typeSlice = createSlice({
 
         state.all = byId
         state.ids = action.payload.map(type => type.id)
+        state.loaded = true
       }
     )
   }
