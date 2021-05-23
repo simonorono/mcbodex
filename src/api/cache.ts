@@ -35,6 +35,10 @@ namespace cache {
   }
 
   export async function get(key: string): Promise<any> {
+    if (import.meta.env.DEV) {
+      return null
+    }
+
     let cachedValue = await localforage.getItem(key) as CachedValue
 
     if (!cachedValue) {
@@ -51,6 +55,10 @@ namespace cache {
   }
 
   export async function set(key: string, value: any) {
+    if (import.meta.env.DEV) {
+      return
+    }
+
     await localforage.setItem(
       key,
       {
