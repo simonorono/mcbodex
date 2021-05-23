@@ -5,11 +5,16 @@ namespace PokemonAPI {
   const POKEMON_LIST_CACHE_KEY = 'pokemon_list'
 
   function transform(response: any): Array<PokemonSpecies> {
-    const species = response.data.species.map((specy: any) => {
+    const species = response.data.species.map((specy: any): PokemonSpecies => {
       return {
         id: specy.id,
         code: specy.name,
         name: specy.species_name[0].name,
+        pokemon: specy.pokemons.map((pkmObj: any): Pokemon => ({
+          id: pkmObj.id,
+          code: pkmObj.name,
+          typeIds: pkmObj.types.map((typeObj: any) => typeObj.type.id)
+        }))
       }
     });
 

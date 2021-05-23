@@ -13,7 +13,9 @@ declare interface Pokedex {
 }
 
 declare interface Pokemon {
-
+  id: number,
+  code: string,
+  typeIds: Array<number>
 }
 
 declare interface PokemonSpecies {
