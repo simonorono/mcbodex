@@ -28,7 +28,7 @@ export default function PokemonCard(props: Props) {
           <h3 className="text-gray-900 text-sm font-medium truncate">{pokedexNo}. {pokemon.name}</h3>
         </div>
 
-        <div className="flex">
+        <div className="flex space-x-1">
           {pokemon.pokemon[0].typeIds.map(typeId => (
             <TypeBadge
               key={typeId}

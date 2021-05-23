@@ -131,8 +131,7 @@ export default function TypeBadge(props: Props) {
 
   return (
     <span className={[
-      'py-0.5 rounded-full text-sm font-medium border first:mr-1',
-      'w-[70px] text-center',
+      'py-0.5 rounded-full text-sm font-medium border w-[70px] text-center',
       classes?.border, classes?.background, classes?.color
     ].filter(Boolean).join(' ')}>
       {type.names.find(name => name.lang == 'en')?.name}
