@@ -8,6 +8,7 @@ import About from './components/About'
 import BackToTopButton from './components/BackToTopButton'
 import Index from './components/Index'
 import NotFound from './components/NotFound'
+import TypePage from './components/TypePage'
 import RDex from './RDex'
 import { performInitialLoad } from './store'
 import { useAppDispatch } from './store/hooks'
@@ -24,6 +25,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Index} />
             <Route path="/about" component={About} />
+            <Route path="/type/:id" component={TypePage} />
             <Route path="*" component={NotFound} />
           </Switch>
         </RDex>

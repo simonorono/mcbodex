@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import { ImageURL } from '../utils'
 import TypeBadge from './TypeBadge'
@@ -30,11 +31,15 @@ export default function PokemonCard(props: Props) {
 
         <div className="flex space-x-1">
           {pokemon.pokemon[0].typeIds.map(typeId => (
-            <TypeBadge
-              key={typeId}
-              type={typesById[typeId]}
-              className='text-sm font-medium w-[70px]'
-            />
+            <Link to={`/type/${typeId}`} key={typeId}>
+              <TypeBadge
+                type={typesById[typeId]}
+                className={[
+                  'inline-block text-sm font-medium w-[70px]',
+                  'hover:underline',
+                ].join(' ')}
+              />
+            </Link>
           ))}
         </div>
       </div>
