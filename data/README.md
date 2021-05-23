@@ -45,3 +45,26 @@ query allPokemon {
   }
 }
 ```
+
+To generate the `types.json` file:
+
+```graphql
+query allTypes {
+  types: pokemon_v2_type {
+    id
+    name
+    damage: pokemon_v2_typeefficacies {
+      factor: damage_factor
+      target: pokemonV2TypeByTargetTypeId {
+        id
+      }
+    }
+    names: pokemon_v2_typenames {
+      language:pokemon_v2_language {
+        name
+      }
+      name
+    }
+  }
+}
+```
