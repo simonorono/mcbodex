@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import { ImageURL } from '../utils'
+import LazyImage from './LazyImage'
 import TypeBadge from './TypeBadge'
 
 interface Props {
@@ -18,7 +19,7 @@ export default function PokemonCard(props: Props) {
 
   return (
     <div className="w-full flex items-center justify-between p-2 space-x-6 border border-gray-300 rounded-xl">
-      <img
+      <LazyImage
         width={80} height={80}
         className="w-20 h-20 bg-gray-300 rounded-full flex-shrink-0"
         src={ImageURL.frontSpriteForPokemonId(pokemon.id)}
