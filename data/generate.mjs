@@ -87,6 +87,10 @@ async function loadPokedex() {
     }))
   }))
 
+  pokedex.forEach(pokedex => {
+    pokedex.pokemonEntries.sort((pe1, pe2) => pe1.pokedexNumber - pe2.pokedexNumber)
+  })
+
   fs.writeFileSync('./data/raw/pokedex.json', JSON.stringify(pokedex), { flag: 'w+' })
 }
 
