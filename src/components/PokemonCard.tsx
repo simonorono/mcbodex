@@ -6,18 +6,15 @@ import LazyImage from './LazyImage'
 import TypeBadge from './TypeBadge'
 
 interface Props {
-  pokemon: PokemonSpecies,
+  species: PokemonSpecies,
+  pokemon: Pokemon,
   number: number
 }
 
-export default function PokemonCard(props: Props) {
-  const pokedexNo = props.number
-
+export default function PokemonCard({ pokemon, number, species }: Props) {
   const typesById = useAppSelector(state => state.types.byId)
 
-  const pokemonById = useAppSelector(state => state.pokemon.pokemonById)
-
-  const pokemon = pokemonById[props.pokemon.pokemonIds[0]]
+  const pokemonSpeciesById = useAppSelector(state => state.pokemon.speciesById)
 
   return (
     <div className="w-full flex items-center justify-between p-2 space-x-6 border border-gray-300 rounded-xl">
@@ -29,7 +26,7 @@ export default function PokemonCard(props: Props) {
       />
       <div className="flex-1 truncate">
         <div className="flex items-center space-x-3 mb-2">
-          <h3 className="text-gray-900 text-sm font-medium truncate">{pokedexNo}. {props.pokemon.name}</h3>
+          <h3 className="text-gray-900 text-sm font-medium truncate">{number}. {species.name}</h3>
         </div>
 
         <div className="flex space-x-1">
