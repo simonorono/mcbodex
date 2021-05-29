@@ -5,6 +5,7 @@
     "types": [
       "vite/client",
     ],
+    "noImplicitAny": true,
     "allowJs": false,
     "skipLibCheck": false,
     "esModuleInterop": false,
