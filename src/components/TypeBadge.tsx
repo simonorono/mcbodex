@@ -137,7 +137,7 @@ export default function TypeBadge(props: Props) {
         classes.border, classes.background, classes.color, className
       ].join(' ')}
     >
-      {type.names.find(name => name.lang == 'en')?.name}
+      {type.name}
     </span>
   )
 }

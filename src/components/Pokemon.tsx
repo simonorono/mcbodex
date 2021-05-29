@@ -7,7 +7,7 @@ export default function Pokemon() {
 
   const id = parseInt(params.id)
 
-  const pokemon = useAppSelector(state => state.pokemon.all.find(spcy => spcy.id === id))
+  const pokemon = useAppSelector(state => state.pokemon.speciesById[id])
 
   return (
     <>

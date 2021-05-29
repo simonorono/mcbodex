@@ -13,9 +13,11 @@ interface Props {
 export default function PokemonCard(props: Props) {
   const pokedexNo = props.number
 
-  const pokemon = props.pokemon
+  const typesById = useAppSelector(state => state.types.byId)
 
-  const typesById = useAppSelector(state => state.types.all)
+  const pokemonById = useAppSelector(state => state.pokemon.pokemonById)
+
+  const pokemon = pokemonById[props.pokemon.pokemonIds[0]]
 
   return (
     <div className="w-full flex items-center justify-between p-2 space-x-6 border border-gray-300 rounded-xl">
@@ -27,11 +29,11 @@ export default function PokemonCard(props: Props) {
       />
       <div className="flex-1 truncate">
         <div className="flex items-center space-x-3 mb-2">
-          <h3 className="text-gray-900 text-sm font-medium truncate">{pokedexNo}. {pokemon.name}</h3>
+          <h3 className="text-gray-900 text-sm font-medium truncate">{pokedexNo}. {props.pokemon.name}</h3>
         </div>
 
         <div className="flex space-x-1">
-          {pokemon.pokemon[0].typeIds.map(typeId => (
+          {pokemon.typeIds.map(typeId => (
             <Link to={`/type/${typeId}`} key={typeId}>
               <TypeBadge
                 type={typesById[typeId]}

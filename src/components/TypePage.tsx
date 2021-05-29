@@ -11,14 +11,14 @@ export default function TypePage() {
 
   const typesLoaded = useAppSelector(state => state.types.loaded)
 
-  const type = useAppSelector(state => state.types.all[id])
+  const type = useAppSelector(state => state.types.byId[id])
+
+  const speciesById = useAppSelector(state => state.pokemon.speciesById)
 
   const pokemon = useAppSelector(
-    state => state.pokemon.all.filter(
-      spcy => spcy.pokemon
-        .flatMap(pkm => pkm.typeIds)
-        .includes(type.id)
-    )
+    state => state.pokemon.allPokemon.filter(
+      pkm => pkm.typeIds.includes(type.id)
+    ).map(_ => speciesById[_.speciesId])
   )
 
   return (
