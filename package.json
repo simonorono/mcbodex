@@ -1,6 +1,6 @@
 {
   "name": "rdex",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
