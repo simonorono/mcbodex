@@ -1,7 +1,7 @@
 import cache from './cache'
 
 namespace cachedApi {
-  export async function get(cacheKey: string, url: string): any {
+  export async function get(cacheKey: string, url: string): Promise<any> {
     const cachedData = await cache.get(cacheKey)
 
     if (cachedData) {
