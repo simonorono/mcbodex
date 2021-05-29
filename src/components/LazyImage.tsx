@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react'
 import LazyLoad from 'vanilla-lazyload'
-import loader from '../../media/loader.svg?raw'
 
 if (!document.lazyLoadInstance) {
   document.lazyLoadInstance = new LazyLoad({
+    callback_loaded: el => el.classList.remove('opacity-0'),
     elements_selector: '[data-src]',
     unobserve_completed: true,
+    use_native: true,
     threshold: 100,
   })
 }
-
-const LOADER_SVG_BASE_64 = btoa(loader)
 
 interface Props {
   alt: string,
@@ -31,10 +30,9 @@ export default function LazyImage(props: Props) {
     <img
       width={width}
       height={height}
-      src={`data:image/svg+xml;base64,${LOADER_SVG_BASE_64}`}
       data-src={src}
       alt={alt}
-      className={className}
+      className={`opacity-0 transition-opacity ${className}`}
     />
   )
 }
