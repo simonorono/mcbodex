@@ -8,6 +8,11 @@ module.exports = {
   purge: ['./index.html', './src/**/*.tsx', './src/**/*.ts'],
   theme: {
     colors,
+    extend: {
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+      }
+    },
     screens: {
       'mobile': { 'max': '640px' },
       ...defaultTheme.screens
