@@ -16,6 +16,9 @@ const pokedexQuery = `
         pokedex_number
         pokemon_species_id
       }
+      region: pokemon_v2_region {
+        name
+      }
     }
   }
 `
@@ -84,7 +87,8 @@ async function loadPokedex() {
     pokemonEntries: pkdx.pokemon.map(entry => ({
       pokedexNumber: entry.pokedex_number,
       pokemonSpeciesId: entry.pokemon_species_id,
-    }))
+    })),
+    region: pkdx.region?.name,
   }))
 
   pokedex.forEach(pokedex => {

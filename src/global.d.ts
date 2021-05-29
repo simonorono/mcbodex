@@ -12,6 +12,7 @@ declare interface PokedexEntry {
 declare interface Pokedex {
   code: string,
   name: string,
+  region: string,
 
   pokemonEntries: PokedexEntry[],
 }
