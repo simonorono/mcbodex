@@ -1,19 +1,15 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getAllTypes } from '../api'
 
-type MappedTypes = {
-  [id: number]: Type
-}
-
 interface TypeState {
-  all: MappedTypes,
-  ids: Array<number>,
+  all: Type[],
+  byId: { [id: number]: Type },
   loaded: boolean,
 }
 
 const initialState: TypeState = {
-  all: {},
-  ids: [],
+  all: [],
+  byId: {},
   loaded: false,
 }
 
@@ -29,17 +25,17 @@ const typeSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(
       loadTypeList.fulfilled,
-      (state, action: PayloadAction<Array<Type>>) => {
+      (state, action: PayloadAction<Type[]>) => {
         const byId = action.payload.reduce(
-          (byId: MappedTypes, type: Type) => {
+          (byId, type) => {
             byId[type.id] = type
             return byId
           },
-          {} as MappedTypes
+          {} as { [id: number]: Type }
         )
 
-        state.all = byId
-        state.ids = action.payload.map(type => type.id)
+        state.all = action.payload
+        state.byId = byId
         state.loaded = true
       }
     )

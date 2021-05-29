@@ -1,55 +1,75 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '.'
-import { getAllPokemon } from '../api'
+import { getAllSpecies, getAllPokemon } from '../api'
 
 interface PokemonState {
-  all: Array<PokemonSpecies>,
+  allSpecies: PokemonSpecies[],
+  allPokemon: Pokemon[],
+  speciesById: { [id: number]: PokemonSpecies },
+  pokemonById: { [id: number]: Pokemon }
+  shown: PokemonSpecies[]
   loaded: boolean,
-  shown: Array<PokemonSpecies>
 }
 
 const initialState: PokemonState = {
-  all: [],
+  allSpecies: [],
+  allPokemon: [],
+  speciesById: {},
+  pokemonById: {},
+  shown: [],
   loaded: false,
-  shown: []
 }
 
-const loadPokemonList = createAsyncThunk(
+const loadAllPokemon = createAsyncThunk(
   'pokemon/load-pokemon-list',
-  async () => {
-    const pokemonList = await getAllPokemon()
-
-    return pokemonList
-  }
+  async () => [
+    await getAllSpecies(),
+    await getAllPokemon(),
+  ] as [PokemonSpecies[], Pokemon[]]
 )
 
-const setPokemonShownByPokedex = createAsyncThunk(
+const setPokemonSpeciesShownByPokedex = createAsyncThunk(
   'pokemon/set-shown',
-  async (pokedex: Pokedex, { getState }): Promise<Array<PokemonSpecies>> => {
+  async (pokedex: Pokedex, { getState }): Promise<PokemonSpecies[]> => {
     const { pokemon } = getState() as RootState
 
-    return pokedex.pokemonEntries.map(entry => {
-      return pokemon.all.find(spcy => spcy.id === entry.pokemonSpeciesId)!
-    })
+    return pokedex.pokemonEntries.map(entry => pokemon.speciesById[entry.pokemonSpeciesId])
   }
 )
 
 const pokemonSlice = createSlice({
   name: 'pokemon',
   initialState,
-  reducers: {
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(
-      loadPokemonList.fulfilled,
-      (state, action: PayloadAction<Array<PokemonSpecies>>) => {
-        state.all = action.payload
+      loadAllPokemon.fulfilled,
+      (state, action: PayloadAction<[PokemonSpecies[], Pokemon[]]>) => {
+        state.allSpecies = action.payload[0]
+        state.allPokemon = action.payload[1]
+
+        state.speciesById = state.allSpecies.reduce(
+          (byId, species) => {
+            byId[species.id] = species
+            return byId
+          },
+          {} as { [id: number]: PokemonSpecies }
+        )
+
+        state.pokemonById = state.allPokemon.reduce(
+          (byId, pokemon) => {
+            byId[pokemon.id] = pokemon
+            return byId
+          },
+          {} as { [id: number]: Pokemon }
+        )
+
         state.loaded = true
       }
     )
 
     builder.addCase(
-      setPokemonShownByPokedex.pending,
+      setPokemonSpeciesShownByPokedex.pending,
       (state) => {
         state.loaded = false
         state.shown = []
@@ -57,8 +77,8 @@ const pokemonSlice = createSlice({
     )
 
     builder.addCase(
-      setPokemonShownByPokedex.fulfilled,
-      (state, action: PayloadAction<Array<PokemonSpecies>>) => {
+      setPokemonSpeciesShownByPokedex.fulfilled,
+      (state, action: PayloadAction<PokemonSpecies[]>) => {
         state.shown = action.payload
         state.loaded = true
       }
@@ -68,6 +88,6 @@ const pokemonSlice = createSlice({
 
 const { reducer } = pokemonSlice
 
-export { loadPokemonList, setPokemonShownByPokedex }
+export { loadAllPokemon, setPokemonSpeciesShownByPokedex }
 
 export default reducer;
