@@ -13,20 +13,22 @@ declare interface Pokedex {
   code: string,
   name: string,
 
-  pokemonEntries: Array<PokedexEntry>,
+  pokemonEntries: PokedexEntry[],
 }
 
 declare interface Pokemon {
   id: number,
   code: string,
-  typeIds: Array<number>
+  name: string,
+  typeIds: number[],
+  speciesId: number,
 }
 
 declare interface PokemonSpecies {
   id: number,
   code: string,
   name: string,
-  pokemon: Array<Pokemon>,
+  pokemonIds: number[],
 }
 
 declare interface Name {
@@ -37,11 +39,11 @@ declare interface Name {
 declare interface Type {
   id: number,
   code: string,
-  names: Array<Name>,
-  damageRelationships?: Array<DamageRelationShip>
+  name: string,
+  damageRelationships?: DamageRelationShip[]
 }
 
 declare interface DamageRelationShip {
   factor: number,
-  type: Type
+  typeId: number,
 }
