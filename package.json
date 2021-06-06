@@ -1,6 +1,7 @@
 {
   "name": "rdex",
   "version": "1.4.1",
+  "license": "Apache-2.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
