@@ -18,6 +18,7 @@
     "react-dom": "^17.0.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
+    "spinners-react": "^1.0.4",
     "vanilla-lazyload": "^17.4.0"
   },
   "devDependencies": {
