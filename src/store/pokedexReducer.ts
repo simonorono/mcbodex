@@ -23,11 +23,13 @@ interface PokedexState {
   all: Pokedex[],
   loaded: boolean,
   current?: Pokedex,
+  byCode: { [code: string]: Pokedex }
 }
 
 const initialState: PokedexState = {
   all: [],
   loaded: false,
+  byCode: {}
 }
 
 const performInitialLoad = createAsyncThunk(
@@ -65,8 +67,13 @@ const pokedexSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(
       performInitialLoad.fulfilled,
-      (state, action: PayloadAction<Array<Pokedex>>) => {
+      (state, action: PayloadAction<Pokedex[]>) => {
         state.all = action.payload
+
+        action.payload.forEach((pokedex: Pokedex) => {
+          state.byCode[pokedex.code] = pokedex
+        })
+
         state.loaded = true
       }
     )
