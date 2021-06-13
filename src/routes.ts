@@ -19,6 +19,10 @@ export default [
     component: TypePage
   },
   {
+    path: '/pokedex/:code',
+    component: Pokedex
+  },
+  {
     path: '*',
     component: NotFound
   }
