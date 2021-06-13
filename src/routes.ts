@@ -1,6 +1,6 @@
-import About from './components/About'
+import About from './pages/About'
 import Index from './pages/Index'
-import NotFound from './components/NotFound'
+import NotFound from './pages/NotFound'
 import Pokedex from './pages/Pokedex'
 import Type from './pages/Type'
 
