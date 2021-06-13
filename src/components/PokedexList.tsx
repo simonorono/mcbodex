@@ -12,14 +12,14 @@ export default function PokedexList() {
 
       {pokedex.loaded && (
         <ul className="space-y-3">
-          {pokedex.all.map(pokedex => (
-            <li key={pokedex.code}>
+          {pokedex.allGames.map(game => (
+            <li key={game.code}>
               <Link
-                to={`/pokedex/${pokedex.code}`}
-                title={pokedex.name}
+                to={`/pokedex/${game.code}`}
+                title={game.name}
                 className="underline"
               >
-                {pokedex.name} Pokédex
+                {game.name}
               </Link>
             </li>
           ))}

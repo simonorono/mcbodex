@@ -20,6 +20,12 @@ interface Document {
   lazyLoadInstance: any
 }
 
+declare interface Game {
+  code: string,
+  name: string,
+  pokedexCodes: string[]
+}
+
 declare interface PokedexEntry {
   pokedexNumber: number,
   pokemonSpeciesId: number,
