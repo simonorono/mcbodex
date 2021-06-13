@@ -24,7 +24,8 @@ const store = configureStore({
     pokedex: pokedexReducer,
     pokemon: pokemonReducer,
     types: typeReducer
-  }
+  },
+  devTools: ! import.meta.env.PROD
 })
 
 export type RootState = ReturnType<typeof store.getState>
