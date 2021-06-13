@@ -17,7 +17,7 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import PokedexSelect from './PokedexSelect'
-import NavbarMenu from './NavbarMenu'
+import SideOver from './SideOver'
 
 import desktopLogo from '/media/RDex.png'
 import mobileLogo from '/media/RD.png'
@@ -53,7 +53,7 @@ export default function Navbar() {
           {isIndex && <PokedexSelect />}
 
           <div className="ml-2 flex items-center">
-            <NavbarMenu/>
+            <SideOver />
           </div>
         </div>
       </div>
