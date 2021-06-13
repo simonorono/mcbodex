@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import Template from './Template'
 import PokemonList from '../components/PokemonList'
+import Loader from '../components/Loader'
 
 export default function Pokedex() {
   const { code } = useParams<{ code: string }>()
@@ -45,7 +46,7 @@ export default function Pokedex() {
       )}
 
       {!pokedexLoaded && (
-        <p>Loading...</p>
+        <Loader />
       )}
 
       {pokedexLoaded && pokedex && (

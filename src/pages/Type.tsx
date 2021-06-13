@@ -4,6 +4,7 @@ import Template from './Template'
 import TypeBadge from '../components/TypeBadge'
 import { useAppSelector } from '../store/hooks'
 import PokemonList from '../components/PokemonList'
+import Loader from '../components/Loader'
 
 export default function Type() {
   const { code } = useParams<{ code: string }>()
@@ -14,7 +15,7 @@ export default function Type() {
 
   const type = types.byCode[code]
 
-  console.log(code, type)
+  const fullyLoaded = pokemon.loaded && types.loaded
 
   const pokemonList = pokemon.loaded && types.loaded && type && pokemon.allPokemon.filter(
     pkm => pkm.typeIds.includes(type.id || -1)
@@ -30,15 +31,15 @@ export default function Type() {
 
   return (
     <>
-      {types.loaded && !type && (
+      {fullyLoaded && !type && (
         <p>Not found.</p>
       )}
 
-      {!types.loaded && (
-        <p>Loading...</p>
+      {!fullyLoaded && (
+        <Loader />
       )}
 
-      {types.loaded && type && (
+      {fullyLoaded && type && (
         <Template
           h1={h1}
         >

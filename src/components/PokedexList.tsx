@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
+import Loader from './Loader'
 
 export default function PokedexList() {
   const pokedex = useAppSelector(state => state.pokedex)
@@ -23,6 +24,10 @@ export default function PokedexList() {
             </li>
           ))}
         </ul>
+      )}
+
+      {! pokedex.loaded && (
+        <Loader />
       )}
     </div>
   )
