@@ -20,14 +20,11 @@ import {
   Route,
   Switch, withRouter
 } from 'react-router-dom'
-import About from './components/About'
-import BackToTopButton from './components/BackToTopButton'
-import Index from './components/Index'
-import Navbar from './components/Navbar'
-import NotFound from './components/NotFound'
-import TypePage from './components/TypePage'
+import routes from './routes'
 import { performInitialLoad } from './store'
 import { useAppDispatch } from './store/hooks'
+import Navbar from './components/Navbar'
+import BackToTopButton from './components/BackToTopButton'
 
 function scrollToTopInner(props: any) {
   const { history } = props
@@ -58,10 +55,9 @@ function App() {
 
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 w-full">
             <Switch>
-              <Route exact path="/" component={Index} />
-              <Route path="/about" component={About} />
-              <Route path="/type/:id" component={TypePage} />
-              <Route path="*" component={NotFound} />
+              {routes.map((route, i) => (
+                <Route key={i} {...route} />
+              ))}
             </Switch>
           </div>
         </div>
