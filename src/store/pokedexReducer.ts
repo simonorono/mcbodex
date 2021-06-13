@@ -22,7 +22,6 @@ import { getPokedexList } from '../api'
 interface PokedexState {
   all: Pokedex[],
   loaded: boolean,
-  current?: Pokedex,
   byCode: { [code: string]: Pokedex }
 }
 
@@ -41,18 +40,7 @@ const performInitialLoad = createAsyncThunk(
 
     await dispatch(loadAllPokemon())
 
-    await dispatch(setCurrentPokedex(pokedexList[0]))
-
     return pokedexList
-  }
-)
-
-const setCurrentPokedex = createAsyncThunk(
-  'pokedex/set-current-pokedex',
-  async (pokedex: Pokedex, { dispatch }) => {
-    dispatch(actions.setCurrent(pokedex))
-
-    await dispatch(setPokemonSpeciesShownByPokedex(pokedex))
   }
 )
 
@@ -60,9 +48,6 @@ const pokedexSlice = createSlice({
   name: 'pokedex',
   initialState,
   reducers: {
-    setCurrent: (state, action: PayloadAction<Pokedex>) => {
-      state.current = action.payload
-    }
   },
   extraReducers: (builder) => {
     builder.addCase(
@@ -80,8 +65,8 @@ const pokedexSlice = createSlice({
   }
 })
 
-const { actions, reducer } = pokedexSlice
+const { reducer } = pokedexSlice
 
-export { performInitialLoad, setCurrentPokedex }
+export { performInitialLoad }
 
 export default reducer
