@@ -15,24 +15,19 @@
  */
 
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import PokedexSelect from './PokedexSelect'
+import { Link } from 'react-router-dom'
 import SideOver from './SideOver'
 
 import desktopLogo from '/media/RDex.png'
 import mobileLogo from '/media/RD.png'
 
 export default function Navbar() {
-  const location = useLocation()
-
-  const isIndex = location.pathname === "/"
-
   return (
     <div className="mx-0 w-full px-2 sm:px-6 lg:px-8 border-b mb-5 bg-blueGray-700">
       <div className="flex justify-between h-16">
         <div className="flex">
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" title="Pokémon List">
+            <Link to="/" title="Home">
               <img
                 width={72} height={40}
                 className="hidden mobile:block h-10 w-auto"
@@ -50,8 +45,6 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center justify-between">
-          {isIndex && <PokedexSelect />}
-
           <div className="ml-2 flex items-center">
             <SideOver />
           </div>
