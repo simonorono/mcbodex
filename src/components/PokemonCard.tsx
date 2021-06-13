@@ -30,8 +30,6 @@ interface Props {
 export default function PokemonCard({ pokemon, number, species }: Props) {
   const typesById = useAppSelector(state => state.types.byId)
 
-  const pokemonSpeciesById = useAppSelector(state => state.pokemon.speciesById)
-
   return (
     <div className="w-full flex items-center justify-between p-2 space-x-6 border border-gray-300 rounded-xl">
       <LazyImage
@@ -46,17 +44,21 @@ export default function PokemonCard({ pokemon, number, species }: Props) {
         </div>
 
         <div className="flex space-x-1">
-          {pokemon.typeIds.map(typeId => (
-            <Link to={`/type/${typeId}`} key={typeId}>
-              <TypeBadge
-                type={typesById[typeId]}
-                className={[
-                  'inline-block text-sm font-medium w-[70px]',
-                  'hover:underline',
-                ].join(' ')}
-              />
-            </Link>
-          ))}
+          {pokemon.typeIds.map(typeId => {
+            const type = typesById[typeId]
+
+            return (
+              <Link to={`/type/${type.code}`} key={typeId}>
+                <TypeBadge
+                  type={type}
+                  className={[
+                    'inline-block text-sm font-medium w-[70px]',
+                    'hover:underline',
+                  ].join(' ')}
+                />
+              </Link>
+            )
+          })}
         </div>
       </div>
     </div>

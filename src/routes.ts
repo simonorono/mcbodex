@@ -2,7 +2,7 @@ import About from './components/About'
 import Index from './components/Index'
 import NotFound from './components/NotFound'
 import Pokedex from './pages/Pokedex'
-import TypePage from './components/TypePage'
+import Type from './pages/Type'
 
 export default [
   {
@@ -15,8 +15,8 @@ export default [
     component: About,
   },
   {
-    path: '/type/:id',
-    component: TypePage
+    path: '/type/:code',
+    component: Type
   },
   {
     path: '/pokedex/:code',
