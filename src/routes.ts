@@ -1,5 +1,5 @@
 import About from './components/About'
-import Index from './components/Index'
+import Index from './pages/Index'
 import NotFound from './components/NotFound'
 import Pokedex from './pages/Pokedex'
 import Type from './pages/Type'
