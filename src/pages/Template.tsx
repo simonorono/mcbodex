@@ -10,7 +10,7 @@ export default function Template(props: Props) {
 
   return (
     <div className='flex flex-col'>
-      <h1 className='mb-10 text-3xl font-bold'>
+      <h1 className='mb-10 text-4xl font-bold'>
         {h1}
       </h1>
 
