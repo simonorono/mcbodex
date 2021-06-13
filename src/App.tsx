@@ -18,33 +18,55 @@ import React, { useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch, withRouter
 } from 'react-router-dom'
 import About from './components/About'
 import BackToTopButton from './components/BackToTopButton'
 import Index from './components/Index'
+import Navbar from './components/Navbar'
 import NotFound from './components/NotFound'
 import TypePage from './components/TypePage'
-import RDex from './RDex'
 import { performInitialLoad } from './store'
 import { useAppDispatch } from './store/hooks'
+
+function scrollToTopInner(props: any) {
+  const { history } = props
+
+  useEffect(() => {
+    const unlisten = history.listen(() => window.scrollTo(0, 0))
+
+    return () => unlisten()
+  })
+
+  return null
+}
+
+const ScrollToTop = withRouter(scrollToTopInner)
 
 function App() {
   const dispatch = useAppDispatch()
 
-  useEffect(() => { dispatch(performInitialLoad()) }, [])
+  useEffect(() => {
+    dispatch(performInitialLoad())
+  }, [])
 
   return (
     <>
       <Router>
-        <RDex>
-          <Switch>
-            <Route exact path="/" component={Index} />
-            <Route path="/about" component={About} />
-            <Route path="/type/:id" component={TypePage} />
-            <Route path="*" component={NotFound} />
-          </Switch>
-        </RDex>
+        <div className="min-h-screen bg-white">
+          <Navbar />
+
+          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <Switch>
+              <Route exact path="/" component={Index} />
+              <Route path="/about" component={About} />
+              <Route path="/type/:id" component={TypePage} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </div>
+        </div>
+
+        <ScrollToTop />
       </Router>
 
       <BackToTopButton />
