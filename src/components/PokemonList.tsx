@@ -16,39 +16,43 @@
 
 import React, { useEffect, useState } from 'react'
 import { useAppSelector } from '../store/hooks';
-import { scrollToTop } from '../utils';
 import PokemonCard from './PokemonCard'
 
 interface Props {
-  pokemonList: Array<Pokemon>
+  pokemonList: Pokemon[]
 }
 
-const PER_PAGE = 30;
+const CHUNK_SIZE = 30;
 
 export default function PokemonList(props: Props) {
-  const [page, setPage] = useState(1)
+  const { pokemonList } = props
+
+  const [chunks, setChunks] = useState(1)
 
   const pokemonSpeciesById = useAppSelector(state => state.pokemon.speciesById)
 
-  // If the pokemon list changes, reset pagination and scroll to top.
+  // The following effect is used so that rendering the Pokémon list doesn't
+  // block the browser. Because of it, we render the list in chunks of
+  // CHUNK_SIZE Pokémon.
   useEffect(() => {
-    scrollToTop()
-    setPage(1)
-  }, [props.pokemonList])
-
-  useEffect(() => {
-    if (page * PER_PAGE > props.pokemonList.length) {
+    // Already showing all Pokémon in the list? Do nothing.
+    if (chunks * CHUNK_SIZE > pokemonList.length) {
       return
     }
 
-    setTimeout(() => {
-      setPage(page => page + 1)
-    }, 1)
-  }, [page])
+    // Increase displayed chunks ASAP
+    const timeoutId = setTimeout(
+      () => setChunks(chunks => chunks + 1),
+      0
+    )
+
+    // Clean up to avoid memory leaks
+    return () => clearTimeout(timeoutId)
+  }, [chunks])
 
   return (
     <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {props.pokemonList.slice(0, page * PER_PAGE).map((pokemon: Pokemon, index) => (
+      {pokemonList.slice(0, chunks * CHUNK_SIZE).map((pokemon: Pokemon, index) => (
         <li
           key={pokemon.id}
           className="col-span-1"
