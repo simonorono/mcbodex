@@ -151,7 +151,7 @@ async function loadTypes() {
       typeId: dr.target.id,
       factor: dr.factor / 100
     }))
-  }))
+  })).filter(type => !['shadow', 'unknown'].includes(type.code))
 
   fs.writeFileSync('./data/raw/types.json', JSON.stringify(types), { flag: 'w+' })
 }
