@@ -53,10 +53,10 @@ function App() {
   return (
     <>
       <Router>
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white flex flex-col w-full">
           <Navbar />
 
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 w-full">
             <Switch>
               <Route exact path="/" component={Index} />
               <Route path="/about" component={About} />
