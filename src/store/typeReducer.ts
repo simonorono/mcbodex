@@ -20,12 +20,14 @@ import { getAllTypes } from '../api'
 interface TypeState {
   all: Type[],
   byId: { [id: number]: Type },
+  byCode: { [code: string]: Type },
   loaded: boolean,
 }
 
 const initialState: TypeState = {
   all: [],
   byId: {},
+  byCode: {},
   loaded: false,
 }
 
@@ -42,16 +44,13 @@ const typeSlice = createSlice({
     builder.addCase(
       loadTypeList.fulfilled,
       (state, action: PayloadAction<Type[]>) => {
-        const byId = action.payload.reduce(
-          (byId, type) => {
-            byId[type.id] = type
-            return byId
-          },
-          {} as { [id: number]: Type }
-        )
-
         state.all = action.payload
-        state.byId = byId
+
+        action.payload.forEach((type: Type) => {
+          state.byId[type.id] = type
+          state.byCode[type.code] = type
+        })
+
         state.loaded = true
       }
     )
