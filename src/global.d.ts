@@ -23,7 +23,7 @@ interface Document {
 declare interface Game {
   code: string,
   name: string,
-  pokedexCodes: string[]
+  pokedex: string[]
 }
 
 declare interface PokedexEntry {
