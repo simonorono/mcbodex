@@ -2,10 +2,15 @@ import React from 'react'
 import Template from './Template'
 import PokedexList from '../components/PokedexList'
 import TypeList from '../components/TypeList'
+import { Helmet } from 'react-helmet'
 
 export default function Index() {
   return (
     <>
+      <Helmet>
+        <title>RDex — rdex.mcbodev.com</title>
+      </Helmet>
+
       <Template h1='RDex'>
         <p>RDex is a Pokédex navigator and general Pokémon database.</p>
 

@@ -5,6 +5,7 @@ import TypeBadge from '../components/TypeBadge'
 import { useAppSelector } from '../store/hooks'
 import PokemonList from '../components/PokemonList'
 import Loader from '../components/Loader'
+import { Helmet } from 'react-helmet'
 
 export default function Type() {
   const { code } = useParams<{ code: string }>()
@@ -31,6 +32,10 @@ export default function Type() {
 
   return (
     <>
+      <Helmet>
+        <title>{type && `${type.name} Type Pokémon — `}RDex — rdex.mcbodev.com</title>
+      </Helmet>
+
       {fullyLoaded && !type && (
         <p>Not found.</p>
       )}

@@ -15,11 +15,17 @@
  */
 
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 export default function NotFound() {
   return (
-    <div>
-      <p>Page not found</p>
-    </div>
+    <>
+      <Helmet>
+        <title>Not Found — RDex — rdex.mcbodev.com</title>
+      </Helmet>
+      <div>
+        <p>Page not found</p>
+      </div>
+    </>
   )
 }

@@ -15,6 +15,8 @@
  */
 
 import React from 'react'
+import { Helmet } from 'react-helmet'
+import Template from './Template'
 import { version } from '../../package.json'
 
 const A = (props: { [key: string]: any }) => {
@@ -43,42 +45,48 @@ export default function About() {
 
   return (
     <>
-      <h1 className="text-5xl font-bold mb-10">RDex <span className="text-sm font-normal">({version})</span></h1>
+      <Helmet>
+        <title>About — RDex — rdex.mcbodev.com</title>
+      </Helmet>
 
-      <Subtitle>What is this?</Subtitle>
+      <Template
+        h1={<>RDex <span className="text-sm font-normal">({version})</span></>}
+      >
+        <Subtitle>What is this?</Subtitle>
 
-      <P>
-        RDex is a Pokédex viewer. It was created with the purpose of improving my React and Redux skills.
-      </P>
+        <P>
+          RDex is a Pokédex viewer. It was created with the purpose of improving my React and Redux skills.
+        </P>
 
-      <Subtitle>Who am I?</Subtitle>
+        <Subtitle>Who am I?</Subtitle>
 
-      <P>
-        I am <A href="https://mcbodev.com">Simón Oroño</A>. Computer scientist, software developer and Pokémon fan.
-      </P>
+        <P>
+          I am <A href="https://mcbodev.com">Simón Oroño</A>. Computer scientist, software developer and Pokémon fan.
+        </P>
 
-      <Subtitle>How was it built?</Subtitle>
+        <Subtitle>How was it built?</Subtitle>
 
-      <p>
+        <p>
           RDex is a SPA built thanks to:
-      </p>
+        </p>
 
-      <ul className="list-disc ml-6 mt-2 mb-10">
-            <li><A href="https://pokeapi.co/">PokeAPI</A></li>
-            <li><A href="https://vitejs.dev/">Vite</A></li>
-            <li><A href="https://reactjs.org/">React</A></li>
-            <li><A href="https://redux.js.org/">Redux</A></li>
-            <li><A href="https://www.typescriptlang.org/">TypeScript</A></li>
-            <li><A href="https://www.tailwindcss.com/">TailwindCSS</A></li>
-            <li><A href="https://tailwindui.com/">TailwindUI</A></li>
-            <li><A href="https://localforage.github.io/localForage/">localForage</A></li>
+        <ul className="list-disc ml-6 mt-2 mb-10">
+          <li><A href="https://pokeapi.co/">PokeAPI</A></li>
+          <li><A href="https://vitejs.dev/">Vite</A></li>
+          <li><A href="https://reactjs.org/">React</A></li>
+          <li><A href="https://redux.js.org/">Redux</A></li>
+          <li><A href="https://www.typescriptlang.org/">TypeScript</A></li>
+          <li><A href="https://www.tailwindcss.com/">TailwindCSS</A></li>
+          <li><A href="https://tailwindui.com/">TailwindUI</A></li>
+          <li><A href="https://localforage.github.io/localForage/">localForage</A></li>
         </ul>
 
-      <Subtitle>Legal information</Subtitle>
+        <Subtitle>Legal information</Subtitle>
 
-      <P>
-        Pokémon images & names © 1995-{year} Nintendo/Game Freak
-      </P>
+        <P>
+          Pokémon images & names © 1995-{year} Nintendo/Game Freak
+        </P>
+      </Template>
     </>
   )
 }
