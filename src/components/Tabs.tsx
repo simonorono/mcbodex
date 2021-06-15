@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 
 interface Tab {
   value: string,
@@ -14,6 +14,10 @@ export default function Tabs(props: Props) {
   const { tabs } = props
 
   const [selected, setSelected] = useState(tabs[0].value)
+
+  useEffect(() => {
+    setSelected(tabs[0].value)
+  }, [tabs])
 
   return (
     <>
