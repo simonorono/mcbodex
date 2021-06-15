@@ -1,8 +1,8 @@
 import React from 'react'
+import { Helmet } from 'react-helmet-async'
 import Template from './Template'
 import PokedexList from '../components/PokedexList'
 import TypeList from '../components/TypeList'
-import { Helmet } from 'react-helmet'
 
 export default function Index() {
   return (

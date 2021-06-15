@@ -20,6 +20,7 @@ import {
   Route,
   Switch, withRouter
 } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
 import routes from './routes'
 import { performInitialLoad } from './store'
 import { useAppDispatch } from './store/hooks'
@@ -48,7 +49,7 @@ function App() {
   }, [])
 
   return (
-    <>
+    <HelmetProvider>
       <Router>
         <div className="min-h-screen bg-white flex flex-col w-full">
           <Navbar />
@@ -66,7 +67,7 @@ function App() {
       </Router>
 
       <BackToTopButton />
-    </>
+    </HelmetProvider>
   )
 }
 

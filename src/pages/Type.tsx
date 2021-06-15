@@ -1,11 +1,11 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import Template from './Template'
 import TypeBadge from '../components/TypeBadge'
 import { useAppSelector } from '../store/hooks'
 import PokemonList from '../components/PokemonList'
 import Loader from '../components/Loader'
-import { Helmet } from 'react-helmet'
 
 export default function Type() {
   const { code } = useParams<{ code: string }>()

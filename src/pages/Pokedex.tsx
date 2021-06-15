@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { useAppSelector } from '../store/hooks'
 import Template from './Template'
 import PokemonList from '../components/PokemonList'
 import Loader from '../components/Loader'
 import Tabs from '../components/Tabs'
-import { Helmet } from 'react-helmet'
 
 export default function Pokedex() {
   const { code } = useParams<{ code: string }>()
