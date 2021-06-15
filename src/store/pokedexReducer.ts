@@ -15,7 +15,7 @@
  */
 
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { loadAllPokemon, setPokemonSpeciesShownByPokedex } from './pokemonReducer'
+import { loadAllPokemon } from './pokemonReducer'
 import { loadTypeList } from './typeReducer'
 import { getAllGames, getPokedexList } from '../api'
 
