@@ -63,7 +63,7 @@ export default function Tabs(props: Props) {
 
       <div className='pt-8'>
         {tabs.map(tab => (
-          <div className={tab.value !== selected ? 'hidden' : ''}>
+          <div key={tab.value} className={tab.value !== selected ? 'hidden' : ''}>
             {tab.component}
           </div>
         ))}
