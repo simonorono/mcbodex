@@ -17,6 +17,9 @@ export default function Template(props: Props) {
       <main className='flex-grow'>
         {children}
       </main>
+
+      {/* Turn this into a footer */}
+      <div className="pb-20" />
     </div>
   )
 }
