@@ -6,7 +6,7 @@ RDex is a Pokédex viewer. It was created with the purpose of improving my React
 
 ## Who am I?
 
-I am [Simón Oroño](https://github.com/simonorono). Computer scientist, software developer and Pokémon fan.
+I am [Simón Oroño](https://mcbodev.com). Computer scientist, software developer and Pokémon fan.
 
 ## How was it built?
 
