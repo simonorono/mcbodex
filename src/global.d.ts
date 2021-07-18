@@ -65,3 +65,14 @@ declare interface DamageRelationShip {
   factor: number,
   typeId: number,
 }
+
+declare interface ResearchTask {
+  name: string,
+  pokemonIds: number[],
+}
+
+declare interface ResearchTaskGroup {
+  code: string,
+  name: string,
+  researchTasks: ResearchTask[]
+}
