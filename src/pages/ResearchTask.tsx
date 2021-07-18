@@ -36,7 +36,7 @@ export default function ResearchTask() {
 
           <div className="mb-24">
             {researchTaskGroup.researchTasks.map((researchTask, index) => (
-              <>
+              <div key={researchTask.name} className="mb-8">
                 <h2 className="mb-4 text-2xl font-medium">
                   {index + 1}. {researchTask.name}
                 </h2>
@@ -44,9 +44,7 @@ export default function ResearchTask() {
                 <PokemonList
                   pokemonList={researchTask.pokemonIds.map(id => pokemonById[id])}
                 />
-
-                <div className="mb-8" />
-              </>
+              </div>
             ))}
           </div>
         </>
