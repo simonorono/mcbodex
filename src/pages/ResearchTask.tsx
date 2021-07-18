@@ -20,7 +20,7 @@ export default function ResearchTask() {
     <>
       <Helmet>
         <title>
-          {researchTaskGroup && `${researchTaskGroup.name} Research Tasks | `} RDex
+          {`${researchTaskGroup && `${researchTaskGroup.name} Research Tasks | ` || ''}RDex | rdex.mcbodev.com`}
         </title>
       </Helmet>
 

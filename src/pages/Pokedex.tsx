@@ -69,7 +69,9 @@ export default function Pokedex() {
   return (
     <>
       <Helmet>
-        <title>{`${game && `${game.name} Pokédex — `} RDex - rdex.mcbodev.com`}</title>
+        <title>
+          {`${game && `${game.name} Pokédex | ` || ''}RDex | rdex.mcbodev.com`}
+        </title>
       </Helmet>
 
       {allLoaded && !pokedexList && (

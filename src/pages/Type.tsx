@@ -49,7 +49,9 @@ export default function Type() {
   return (
     <>
       <Helmet>
-        <title>{`${type && `${type.name} Type Pokémon — `} RDex - rdex.mcbodev.com`}</title>
+        <title>
+          {`${type && `${type.name} Type Pokémon | ` || ''}RDex | rdex.mcbodev.com`}
+        </title>
       </Helmet>
 
       {fullyLoaded && !type && (
