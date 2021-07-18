@@ -16,6 +16,7 @@
 
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getAllSpecies, getAllPokemon } from '../api'
+import { cleanPokemon, cleanSpecies } from "./specialCases";
 
 interface PokemonState {
   allSpecies: PokemonSpecies[],
@@ -49,8 +50,8 @@ const pokemonSlice = createSlice({
     builder.addCase(
       loadAllPokemon.fulfilled,
       (state, action: PayloadAction<[PokemonSpecies[], Pokemon[]]>) => {
-        state.allSpecies = action.payload[0]
-        state.allPokemon = action.payload[1]
+        state.allSpecies = cleanSpecies(action.payload[0])
+        state.allPokemon = cleanPokemon(action.payload[1])
 
         state.speciesById = state.allSpecies.reduce(
           (byId, species) => {
