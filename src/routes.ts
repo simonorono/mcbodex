@@ -18,6 +18,7 @@ import About from './pages/About'
 import Index from './pages/Index'
 import NotFound from './pages/NotFound'
 import Pokedex from './pages/Pokedex'
+import ResearchTask from "./pages/ResearchTask";
 import Type from './pages/Type'
 
 export default [
@@ -37,6 +38,10 @@ export default [
   {
     path: '/pokedex/:code',
     component: Pokedex
+  },
+  {
+    path: '/research-task/:code',
+    component: ResearchTask
   },
   {
     path: '*',
