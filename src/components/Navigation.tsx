@@ -32,6 +32,8 @@ export default function Navigation(props: Props) {
 
   const types = useAppSelector(state => state.types.all)
 
+  const researchTasks = ['Galar', 'Kanto']
+
   interface LinkProps {
     name: string,
     href: string
@@ -113,6 +115,16 @@ export default function Navigation(props: Props) {
             key={type.code}
             name={type.name}
             href={`/type/${type.code}`}
+          />
+        ))}
+      </SeveralLinks>
+
+      <SeveralLinks name={'Research Tasks'}>
+        {researchTasks.map(researchTask => (
+          <SingleLink
+            key={researchTask.toLowerCase()}
+            name={`${researchTask} Research Tasks`}
+            href={`/research-task/${researchTask.toLowerCase()}`}
           />
         ))}
       </SeveralLinks>
