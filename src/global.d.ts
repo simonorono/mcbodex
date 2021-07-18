@@ -54,11 +54,6 @@ declare interface PokemonSpecies {
   pokemonIds: number[],
 }
 
-declare interface Name {
-  name: string,
-  lang: string
-}
-
 declare interface Type {
   id: number,
   code: string,
