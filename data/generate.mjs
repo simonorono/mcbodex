@@ -121,8 +121,8 @@ async function loadSpecies() {
     id: spcy.id,
     code: spcy.code,
     name: spcy.species_name[0].name,
-    pokemonIds: spcy.pokemons.map(pkm => pkm.id)
-  }))
+    pokemonIds: spcy.pokemons.map(pkm => pkm.id).sort((a, b) => a - b)
+  })).sort((a, b) => a.id - b.id)
 
   fs.writeFileSync('./data/raw/species.json', JSON.stringify(species), { flag: 'w+' })
 }
@@ -135,7 +135,7 @@ async function loadPokemon() {
     code: pkm.code,
     typeIds: pkm.types.map(type => type.type.id),
     speciesId: pkm.species.id
-  }))
+  })).sort((a, b) => a.id - b.id)
 
   fs.writeFileSync('./data/raw/pokemon.json', JSON.stringify(pokemons), { flag: 'w+' })
 }
@@ -151,7 +151,7 @@ async function loadTypes() {
       typeId: dr.target.id,
       factor: dr.factor / 100
     }))
-  })).filter(type => !['shadow', 'unknown'].includes(type.code))
+  })).filter(type => !['shadow', 'unknown'].includes(type.code)).sort((a, b) => a.id - b.id)
 
   fs.writeFileSync('./data/raw/types.json', JSON.stringify(types), { flag: 'w+' })
 }
