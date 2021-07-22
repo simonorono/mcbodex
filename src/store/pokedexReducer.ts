@@ -15,9 +15,7 @@
  */
 
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { loadAllPokemon } from './pokemonReducer'
-import { loadTypeList } from './typeReducer'
-import { getAllGames, getPokedexList } from '../api'
+import { getAllGames, getAllPokedex } from '../api'
 
 interface PokedexState {
   allPokedex: Pokedex[],
@@ -40,18 +38,13 @@ type InitialLoadResult = {
   gameList: Game[],
 }
 
-const performInitialLoad = createAsyncThunk(
+const loadPokedexList = createAsyncThunk(
   'pokedex/perform-initial-load',
-  async (_, { dispatch }) => {
-    const pokedexList = await getPokedexList()
-
-    const gameList = await getAllGames()
-
-    await dispatch(loadTypeList())
-
-    await dispatch(loadAllPokemon())
-
-    return { pokedexList, gameList }
+  async () => {
+    return {
+      pokedexList: await getAllPokedex(),
+      gameList: await getAllGames()
+    }
   }
 )
 
@@ -62,7 +55,7 @@ const pokedexSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(
-      performInitialLoad.fulfilled,
+      loadPokedexList.fulfilled,
       (state, action: PayloadAction<InitialLoadResult>) => {
         state.allPokedex = action.payload.pokedexList
 
@@ -84,6 +77,6 @@ const pokedexSlice = createSlice({
 
 const { reducer } = pokedexSlice
 
-export { performInitialLoad }
+export { loadPokedexList }
 
 export default reducer

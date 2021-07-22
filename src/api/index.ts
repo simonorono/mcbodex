@@ -29,7 +29,7 @@ enum CacheKey {
   GAME_LIST = 'game_list',
 }
 
-export const getPokedexList = async () => cachedApi.get(CacheKey.POKEDEX_LIST, pokedexUrl)
+export const getAllPokedex = async () => cachedApi.get(CacheKey.POKEDEX_LIST, pokedexUrl)
 export const getAllSpecies = async () => cachedApi.get(CacheKey.SPECIES_LIST, speciesUrl)
 export const getAllPokemon = async () => cachedApi.get(CacheKey.POKEMON_LIST, pokemonUrl)
 export const getAllTypes = async () => cachedApi.get(CacheKey.TYPE_LIST, typesUrl)
