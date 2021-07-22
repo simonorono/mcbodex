@@ -46,7 +46,7 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About — RDex — rdex.mcbodev.com</title>
+        <title>About | RDex | rdex.mcbodev.com</title>
       </Helmet>
 
       <Template

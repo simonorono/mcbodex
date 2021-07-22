@@ -21,7 +21,7 @@ export default function NotFound() {
   return (
     <>
       <Helmet>
-        <title>Not Found — RDex — rdex.mcbodev.com</title>
+        <title>Not Found | RDex | rdex.mcbodev.com</title>
       </Helmet>
       <div>
         <p>Page not found</p>

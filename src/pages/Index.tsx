@@ -24,7 +24,7 @@ export default function Index() {
   return (
     <>
       <Helmet>
-        <title>RDex — rdex.mcbodev.com</title>
+        <title>RDex | rdex.mcbodev.com</title>
       </Helmet>
 
       <Template h1='RDex'>
