@@ -23,9 +23,7 @@ interface Props {
   onLinkClicked?: () => void
 }
 
-export default function Navigation(props: Props) {
-  const { onLinkClicked } = props
-
+export default function Navigation({ onLinkClicked }: Props) {
   const location = useLocation()
 
   const games = useAppSelector(state => state.pokedex.allGames)
@@ -39,8 +37,7 @@ export default function Navigation(props: Props) {
     href: string
   }
 
-  function SingleLink(props: LinkProps) {
-    const { name, href } = props
+  function SingleLink({ name, href }: LinkProps) {
     const current = href === location.pathname
 
     return (
@@ -62,9 +59,7 @@ export default function Navigation(props: Props) {
     children?: ReactNode
   }
 
-  function SeveralLinks(props: SeveralLinksProps) {
-    const { name, children } = props
-
+  function SeveralLinks({ name, children }: SeveralLinksProps) {
     return (
       <Disclosure as="div" className="space-y-1">
         {({ open }) => (

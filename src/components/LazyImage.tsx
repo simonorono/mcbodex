@@ -35,9 +35,7 @@ interface Props {
   width: number,
 }
 
-export default function LazyImage(props: Props) {
-  const { alt, src, className, height, width } = props
-
+export default function LazyImage({ alt, src, className, height, width }: Props) {
   useEffect(() => {
     document.lazyLoadInstance.update()
   }, [])

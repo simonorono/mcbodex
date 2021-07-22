@@ -21,9 +21,7 @@ interface Props {
   className?: string
 }
 
-export default function Loader(props: Props) {
-  const { className } = props
-
+export default function Loader({ className }: Props) {
   return (
     <div className={`flex justify-center align-middle ${className}`}>
       <ClipLoader size={70} color="#334155" />
