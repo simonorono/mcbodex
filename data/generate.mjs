@@ -99,7 +99,7 @@ async function loadPokedex() {
 
   const pokedex = pokedexResponse.data.data.pokedex.map(pkdx => ({
     code: pkdx.code,
-    name: pkdx.name[0].name,
+    name: pkdx.name[0].name.replace(/original|updated/i, '').trim(),
     pokemonEntries: pkdx.pokemon.map(entry => ({
       pokedexNumber: entry.pokedex_number,
       pokemonSpeciesId: entry.pokemon_species_id,
