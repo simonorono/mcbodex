@@ -34,9 +34,18 @@ export default function Type() {
 
   const fullyLoaded = pokemon.loaded && types.loaded
 
-  const pokemonList = pokemon.loaded && types.loaded && type && pokemon.allPokemon.filter(
-    pkm => pkm.typeIds.includes(type.id || -1)
-  ) || []
+  const pokemonList = pokemon.loaded &&
+    types.loaded &&
+    type &&
+    pokemon.allSpecies.map( // Get all species with at least one Pokémon of the type
+      spcy => {
+        const pkms = spcy.pokemonIds
+          .map(id => pokemon.pokemonById[id])
+          .filter(pkm => pkm.typeIds.includes(type.id))
+
+        return pkms.length > 0 ? pkms[0] : null
+      }
+    ).filter(pkm => pkm) as Pokemon[] || []
 
   const h1 = (
     <>
