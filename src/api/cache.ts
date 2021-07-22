@@ -35,19 +35,19 @@ namespace cache {
   }
 
   /**
-   * Number of seconds in 24 hours. Used to invalidate cache.
+   * Number of seconds in 7 days. Used to invalidate cache.
    *
    * There is not really a good reason to use this value for invalidation,
    * just thought that it was a good and sensible default.
    */
-  const SECONDS_IN_DAY = 60 * 60 * 24
+  const SECONDS_IN_WEEK = 60 * 60 * 24 * 7
 
   function needsInvalidation(date: Date) {
     const now = new Date
 
     const ellapsedSeconds = (now.getTime() - date.getTime()) / 1000
 
-    return ellapsedSeconds > SECONDS_IN_DAY
+    return ellapsedSeconds > SECONDS_IN_WEEK
   }
 
   export async function get(key: string): Promise<any> {
