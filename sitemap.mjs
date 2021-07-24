@@ -27,6 +27,12 @@ const links = [
     priority: 1.0,
     lastmod: now
   },
+  {
+    url: '/search-by-type',
+    changefreq: 'weekly',
+    priority: 0.9,
+    lastmod: now
+  }
 ]
 
 games.forEach(game => {

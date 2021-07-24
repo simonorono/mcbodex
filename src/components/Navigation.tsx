@@ -123,6 +123,9 @@ export default function Navigation({ onLinkClicked }: Props) {
           />
         ))}
       </SeveralLinks>
+
+      <SingleLink name="Search Pokémon By Type" href="/search-by-type" />
+
       <SingleLink name='About' href='/about' />
     </nav>
   )
