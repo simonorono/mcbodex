@@ -1,21 +1,28 @@
 import React, { useState } from 'react'
 import { Helmet } from "react-helmet-async"
 import Template from "./Template"
-import TypeSelector from "../components/TypeSelector"
+import Checkbox from "../components/Checkbox"
 import PokemonList from "../components/PokemonList"
+import TypeSelector from "../components/TypeSelector"
 import { frontPokemonOfSpeciesByPredicate } from "../store/selectors"
 import { title } from "../utils"
 
 export default function SearchByType() {
   const [firstType, setFirstType] = useState(null as Type | null)
   const [secondType, setSecondType] = useState(null as Type | null)
+  const [strict, setIfStrict] = useState(false)
 
   const pokemonList = frontPokemonOfSpeciesByPredicate(pkm => {
     if (! (firstType || secondType)) {
       return false
     }
 
-    const types = [firstType?.id, secondType?.id].filter(Boolean) as number[]
+    const types = [firstType?.id, secondType?.id]
+      .filter(Boolean) as number[]
+
+    if (strict && pkm.typeIds.length !== types.length) {
+      return false
+    }
 
     return types.every(typeId => pkm.typeIds.includes(typeId))
   }) || []
@@ -39,6 +46,16 @@ export default function SearchByType() {
             className="flex-1"
             selected={secondType}
             setSelected={setSecondType}
+          />
+        </div>
+
+        <div className="py-4">
+          <Checkbox
+            helpText="Only show single-typed Pokémons if only one type is selected"
+            id="strict"
+            initialValue={strict}
+            label="Strict"
+            onChange={setIfStrict}
           />
         </div>
 
