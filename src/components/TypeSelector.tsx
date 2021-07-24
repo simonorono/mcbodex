@@ -31,7 +31,7 @@ export default function TypeSelector({ label, className, selected, setSelected }
                 'pl-3 pr-10 py-2 text-left cursor-default sm:text-sm'
               ].join(' ')}>
               <span className="block truncate font-medium">
-                {selected?.name || 'Please select a type'}
+                {selected?.name || 'Please Select'}
               </span>
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <SelectorIcon
@@ -59,12 +59,14 @@ export default function TypeSelector({ label, className, selected, setSelected }
                   "overflow-auto focus:outline-none sm:text-sm"
                 ].join(' ')}
               >
-                {types.all.map((type) => (
+                {[null, ...types.all].map((type) => (
                   <Listbox.Option
-                    key={type.id}
+                    key={type?.id || 0}
                     className={({ active }) =>
                       [
-                        active ? `${typeClasses[type.code].color} ${typeClasses[type.code].background}` : 'text-gray-900',
+                        (type && active) ?
+                          `${typeClasses[type.code].color} ${typeClasses[type.code].background}` :
+                          'text-gray-900',
                         'cursor-default select-none relative py-2 pl-3 pr-9'
                       ].join(' ')
                     }
@@ -76,7 +78,7 @@ export default function TypeSelector({ label, className, selected, setSelected }
                           selected ? 'font-semibold' : 'font-normal',
                           'block truncate'
                         ].join(' ')}>
-                          {type.name}
+                          {type?.name || 'No type'}
                         </span>
 
                         {selected ? (
