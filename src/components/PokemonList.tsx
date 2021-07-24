@@ -48,7 +48,7 @@ export default function PokemonList(props: Props) {
 
     // Clean up to avoid memory leaks
     return () => clearTimeout(timeoutId)
-  }, [chunks])
+  }, [chunks, pokemonList])
 
   return (
     <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
