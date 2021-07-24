@@ -19,12 +19,13 @@ import { Helmet } from 'react-helmet-async'
 import Template from './Template'
 import PokedexList from '../components/PokedexList'
 import TypeList from '../components/TypeList'
+import { title } from "../utils"
 
 export default function Index() {
   return (
     <>
       <Helmet>
-        <title>RDex | rdex.mcbodev.com</title>
+        <title>{title()}</title>
       </Helmet>
 
       <Template h1='RDex'>

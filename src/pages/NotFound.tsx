@@ -16,12 +16,13 @@
 
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
+import { title } from "../utils"
 
 export default function NotFound() {
   return (
     <>
       <Helmet>
-        <title>Not Found | RDex | rdex.mcbodev.com</title>
+        <title>{title('Not Found')}</title>
       </Helmet>
       <div>
         <p>Page not found</p>

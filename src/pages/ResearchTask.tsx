@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet-async"
 import { useParams } from "react-router-dom"
 import { useAppSelector } from "../store/hooks"
 import researchTasksRaw from '../../data/handcrafted/research_tasks.json'
-import PokemonList from "../components/PokemonList";
+import PokemonList from "../components/PokemonList"
+import { title } from "../utils"
 
 export default function ResearchTask() {
   const researchTaskGroups = researchTasksRaw as ResearchTaskGroup[]
@@ -19,9 +20,7 @@ export default function ResearchTask() {
   return (
     <>
       <Helmet>
-        <title>
-          {`${researchTaskGroup && `${researchTaskGroup.name} Research Tasks | ` || ''}RDex | rdex.mcbodev.com`}
-        </title>
+        <title>{title(researchTaskGroup && `${researchTaskGroup.name} Research Tasks`)}</title>
       </Helmet>
 
       {fullyLoaded && !researchTaskGroup && (

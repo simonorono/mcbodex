@@ -22,6 +22,7 @@ import Template from './Template'
 import PokemonList from '../components/PokemonList'
 import Loader from '../components/Loader'
 import Tabs from '../components/Tabs'
+import { title } from "../utils"
 
 export default function Pokedex() {
   const { code } = useParams<{ code: string }>()
@@ -69,9 +70,7 @@ export default function Pokedex() {
   return (
     <>
       <Helmet>
-        <title>
-          {`${game && `${game.name} Pokédex | ` || ''}RDex | rdex.mcbodev.com`}
-        </title>
+        <title>{title(game && `${game.name} Pokédex`)}</title>
       </Helmet>
 
       {allLoaded && !pokedexList && (

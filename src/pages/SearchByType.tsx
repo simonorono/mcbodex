@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { Helmet } from "react-helmet-async"
 import Template from "./Template"
-import TypeSelector from "../components/TypeSelector";
-import PokemonList from "../components/PokemonList";
-import { frontPokemonOfSpeciesByPredicate } from "../store/selectors";
+import TypeSelector from "../components/TypeSelector"
+import PokemonList from "../components/PokemonList"
+import { frontPokemonOfSpeciesByPredicate } from "../store/selectors"
+import { title } from "../utils"
 
 export default function SearchByType() {
   const [firstType, setFirstType] = useState(null as Type | null)
@@ -22,9 +23,7 @@ export default function SearchByType() {
   return (
     <>
       <Helmet>
-        <title>
-          Search Pokémon By Type | RDex | rdex.mcbodev.com
-        </title>
+        <title>{title('Search Pokémon By Type')}</title>
       </Helmet>
 
       <Template h1="Search Pokémon By Type">

@@ -17,6 +17,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import Template from './Template'
+import { title } from "../utils"
 import { version } from '../../package.json'
 
 const A = (props: { [key: string]: any }) => {
@@ -46,7 +47,7 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About | RDex | rdex.mcbodev.com</title>
+        <title>{title('About')}</title>
       </Helmet>
 
       <Template

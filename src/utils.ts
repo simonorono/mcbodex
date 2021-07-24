@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import { homepage } from '../package.json'
+
 export function scrollToTop() {
   window.scrollTo({
     top: 0,
@@ -25,6 +27,10 @@ export const ImageURL = {
   frontSpriteForPokemonId(id: number) {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
   }
+}
+
+export function title(caption?: string) {
+  return `${caption && `${caption} | ` || ''}RDex | ${homepage}`
 }
 
 interface TypeClasses {
