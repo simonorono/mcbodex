@@ -2,35 +2,22 @@ import React, { useState } from 'react'
 import { Helmet } from "react-helmet-async"
 import Template from "./Template"
 import TypeSelector from "../components/TypeSelector";
-import { useAppSelector } from "../store/hooks";
 import PokemonList from "../components/PokemonList";
+import { frontPokemonOfSpeciesByPredicate } from "../store/selectors";
 
 export default function SearchByType() {
   const [firstType, setFirstType] = useState(null as Type | null)
   const [secondType, setSecondType] = useState(null as Type | null)
 
-  const pokemon = useAppSelector(state => state.pokemon)
-  const types = useAppSelector(state => state.types)
+  const pokemonList = frontPokemonOfSpeciesByPredicate(pkm => {
+    if (! (firstType || secondType)) {
+      return false
+    }
 
-  const pokemonList = pokemon.loaded && // Pokémon state initial load done
-    types.loaded &&                     // Type state initial load done
-    (firstType || secondType) &&        // At least one type selected
-    pokemon.allSpecies.map(             // Get all species with at least one Pokémon of the types
-      spcy => {
-        let pkms = spcy.pokemonIds
-          .map(id => pokemon.pokemonById[id])
+    const types = [firstType?.id, secondType?.id].filter(Boolean) as number[]
 
-        if (firstType) {
-          pkms = pkms.filter(pkm => pkm.typeIds.includes(firstType.id))
-        }
-
-        if (secondType) {
-          pkms = pkms.filter(pkm => pkm.typeIds.includes(secondType.id))
-        }
-
-        return pkms.length > 0 ? pkms[0] : null
-      }
-    ).filter(pkm => pkm) as Pokemon[] || []
+    return types.every(typeId => pkm.typeIds.includes(typeId))
+  }) || []
 
   return (
     <>
