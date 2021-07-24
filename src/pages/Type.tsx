@@ -19,41 +19,23 @@ import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Template from './Template'
 import TypeBadge from '../components/TypeBadge'
-import { useAppSelector } from '../store/hooks'
 import PokemonList from '../components/PokemonList'
 import Loader from '../components/Loader'
+import { useAppSelector } from '../store/hooks'
+import { frontPokemonOfSpeciesByPredicate, pokemonAndTypesLoaded } from "../store/selectors"
 
 export default function Type() {
   const { code } = useParams<{ code: string }>()
 
-  const pokemon = useAppSelector(state => state.pokemon)
+  const type = useAppSelector(state => state.types.byCode[code])
 
-  const types = useAppSelector(state => state.types)
+  const pokemonList = frontPokemonOfSpeciesByPredicate(pkm => {
+    if (!type) {
+      return false
+    }
 
-  const type = types.byCode[code]
-
-  const fullyLoaded = pokemon.loaded && types.loaded
-
-  const pokemonList = pokemon.loaded &&
-    types.loaded &&
-    type &&
-    pokemon.allSpecies.map( // Get all species with at least one Pokémon of the type
-      spcy => {
-        const pkms = spcy.pokemonIds
-          .map(id => pokemon.pokemonById[id])
-          .filter(pkm => pkm.typeIds.includes(type.id))
-
-        return pkms.length > 0 ? pkms[0] : null
-      }
-    ).filter(pkm => pkm) as Pokemon[] || []
-
-  const h1 = (
-    <>
-      {types.loaded && type && (
-        <><TypeBadge type={type} className='px-4' /> Pokémon</>
-      )}
-    </>
-  )
+    return pkm.typeIds.includes(type.id)
+  })
 
   return (
     <>
@@ -63,21 +45,27 @@ export default function Type() {
         </title>
       </Helmet>
 
-      {fullyLoaded && !type && (
+      {pokemonAndTypesLoaded() && !type && (
         <p>Not found.</p>
       )}
 
-      {!fullyLoaded && (
+      {!pokemonAndTypesLoaded() && (
         <Loader />
       )}
 
-      {fullyLoaded && type && (
-        <Template
-          h1={h1}
-        >
+      <Template
+        h1={(
+          <>
+            {pokemonAndTypesLoaded() && type && (
+              <><TypeBadge type={type} className='px-4' /> Pokémon</>
+            )}
+          </>
+        )}
+      >
+        {pokemonAndTypesLoaded() && (
           <PokemonList pokemonList={pokemonList} />
-        </Template>
-      )}
+        )}
+      </Template>
     </>
   )
 }
