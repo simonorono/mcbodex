@@ -29,8 +29,6 @@ export default function PokemonList(props: Props) {
 
   const [chunks, setChunks] = useState(1)
 
-  const pokemonSpeciesById = useAppSelector(state => state.pokemon.speciesById)
-
   // The following effect is used so that rendering the Pokémon list doesn't
   // block the browser. Because of it, we render the list in chunks of
   // CHUNK_SIZE Pokémon.
@@ -60,7 +58,6 @@ export default function PokemonList(props: Props) {
           <PokemonCard
             number={index + 1}
             pokemon={pokemon}
-            species={pokemonSpeciesById[pokemon.speciesId]}
           />
         </li>
       ))}
