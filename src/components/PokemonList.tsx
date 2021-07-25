@@ -15,18 +15,16 @@
  */
 
 import React, { useEffect, useState } from 'react'
-import { useAppSelector } from '../store/hooks';
 import PokemonCard from './PokemonCard'
 
 interface Props {
-  pokemonList: Pokemon[]
+  pokemonList: Pokemon[],
+  numberCallback?: (pokemon: Pokemon) => number,
 }
 
 const CHUNK_SIZE = 30;
 
-export default function PokemonList(props: Props) {
-  const { pokemonList } = props
-
+export default function PokemonList({ pokemonList, numberCallback }: Props) {
   const [chunks, setChunks] = useState(1)
 
   // The following effect is used so that rendering the Pokémon list doesn't
@@ -56,7 +54,7 @@ export default function PokemonList(props: Props) {
           className="col-span-1"
         >
           <PokemonCard
-            number={index + 1}
+            number={numberCallback ? numberCallback(pokemon) : index + 1}
             pokemon={pokemon}
           />
         </li>
