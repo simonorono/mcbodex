@@ -22,6 +22,7 @@ interface PokemonState {
   allSpecies: PokemonSpecies[],
   allPokemon: Pokemon[],
   speciesById: { [id: number]: PokemonSpecies },
+  speciesByCode: { [code: string]: PokemonSpecies },
   pokemonById: { [id: number]: Pokemon },
   loaded: boolean,
 }
@@ -30,6 +31,7 @@ const initialState: PokemonState = {
   allSpecies: [],
   allPokemon: [],
   speciesById: {},
+  speciesByCode: {},
   pokemonById: {},
   loaded: false,
 }
@@ -80,6 +82,14 @@ const pokemonSlice = createSlice({
             return byId
           },
           {} as { [id: number]: PokemonSpecies }
+        )
+
+        state.speciesByCode = state.allSpecies.reduce(
+          (byCode, species) => {
+            byCode[species.code] = species
+            return byCode
+          },
+          {} as { [code: string]: PokemonSpecies }
         )
 
         state.allPokemon.forEach(pkm => {
