@@ -51,6 +51,9 @@ const speciesQuery = `
       species_name: pokemon_v2_pokemonspeciesnames(where: {pokemon_v2_language: {name: {_eq: "en"}}}) {
         name
       }
+      national_dex_number: pokemon_v2_pokemondexnumbers(where: {pokemon_v2_pokedex: {name: {_eq: "national"}}}) {
+        number: pokedex_number
+      }
     }
   }
 `
@@ -100,15 +103,12 @@ async function loadPokedex() {
   const pokedex = pokedexResponse.data.data.pokedex.map(pkdx => ({
     code: pkdx.code,
     name: pkdx.name[0].name.replace(/original|updated/i, '').trim(),
-    pokemonEntries: pkdx.pokemon.map(entry => ({
-      pokedexNumber: entry.pokedex_number,
-      pokemonSpeciesId: entry.pokemon_species_id,
-    })),
+    entries: pkdx.pokemon.map(entry => [entry.pokedex_number, entry.pokemon_species_id]),
     region: pkdx.region?.name,
   }))
 
   pokedex.forEach(pokedex => {
-    pokedex.pokemonEntries.sort((pe1, pe2) => pe1.pokedexNumber - pe2.pokedexNumber)
+    pokedex.entries.sort((pe1, pe2) => pe1.number - pe2.number)
   })
 
   fs.writeFileSync('./data/raw/pokedex.json', JSON.stringify(pokedex), { flag: 'w+' })
@@ -121,6 +121,7 @@ async function loadSpecies() {
     id: spcy.id,
     code: spcy.code,
     name: spcy.species_name[0].name,
+    number: spcy.national_dex_number[0].number, // National Pokédex Number
     pokemonIds: spcy.pokemons.map(pkm => pkm.id).sort((a, b) => a - b)
   })).sort((a, b) => a.id - b.id)
 
