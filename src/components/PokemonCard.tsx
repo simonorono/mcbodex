@@ -23,11 +23,13 @@ import TypeBadge from './TypeBadge'
 
 interface Props {
   pokemon: Pokemon,
-  number: number
+  number: number,
 }
 
 export default function PokemonCard({ pokemon, number }: Props) {
   const typesById = useAppSelector(state => state.types.byId)
+
+  const species = useAppSelector(state => state.pokemon.speciesById[pokemon.speciesId])
 
   return (
     <div className="w-full flex items-center justify-between p-2 space-x-6 border border-gray-300 rounded-xl">
@@ -38,8 +40,11 @@ export default function PokemonCard({ pokemon, number }: Props) {
         alt={`front sprite for ${pokemon.name}`}
       />
       <div className="flex-1 truncate">
-        <div className="flex items-center space-x-3 mb-2">
-          <h3 className="text-gray-900 text-sm font-medium truncate">{number}. {pokemon.name}</h3>
+        <div className="flex flex-col mb-2">
+          <h3 className="text-gray-900 text-sm font-medium truncate">{number}. {species.name}</h3>
+          {(species.name !== pokemon.name) && (
+            <h4 className="text-gray-700 text-sm truncate">{pokemon.name}</h4>
+          )}
         </div>
 
         <div className="flex space-x-1">
