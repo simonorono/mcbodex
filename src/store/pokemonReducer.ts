@@ -34,6 +34,27 @@ const initialState: PokemonState = {
   loaded: false,
 }
 
+function getPokemonName(species: PokemonSpecies, pokemon: Pokemon): string {
+  const SUFFIX_MAP: { [code: string]: string[] } = {
+    'alola': ['Alolan'],
+    'galar': ['Galarian'],
+    'mega': ['Mega'],
+    'gmax': ['Gigantamax'],
+    'mega-x': ['Mega', 'X'],
+    'mega-y': ['Mega', 'Y']
+  }
+
+  const suffix = pokemon.code.split('-').slice(1).join('-')
+
+  const variant = SUFFIX_MAP[suffix]
+
+  if (variant) {
+    return `${variant[0]} ${species.name}${variant[1] ? ` ${variant[1]}` : ''}`
+  }
+
+  return species.name
+}
+
 const loadAllPokemon = createAsyncThunk(
   'pokemon/load-pokemon-list',
   async () => [
@@ -60,6 +81,12 @@ const pokemonSlice = createSlice({
           },
           {} as { [id: number]: PokemonSpecies }
         )
+
+        state.allPokemon.forEach(pkm => {
+          const species = state.speciesById[pkm.speciesId]
+
+          pkm.name = getPokemonName(species, pkm)
+        })
 
         state.pokemonById = state.allPokemon.reduce(
           (byId, pokemon) => {
