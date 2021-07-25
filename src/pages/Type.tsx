@@ -30,6 +30,8 @@ export default function Type() {
 
   const type = useAppSelector(state => state.types.byCode[code])
 
+  const speciesById = useAppSelector(state => state.pokemon.speciesById)
+
   const pokemonList = frontPokemonOfSpeciesByPredicate(pkm => {
     if (!type) {
       return false
@@ -62,7 +64,10 @@ export default function Type() {
         )}
       >
         {pokemonAndTypesLoaded() && (
-          <PokemonList pokemonList={pokemonList} />
+          <PokemonList
+            numberCallback={pokemon => speciesById[pokemon.speciesId].nationalPokedexNumber}
+            pokemonList={pokemonList}
+          />
         )}
       </Template>
     </>
