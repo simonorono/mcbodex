@@ -43,7 +43,8 @@ function getPokemonName(species: PokemonSpecies, pokemon: Pokemon): string {
     'mega': ['Mega'],
     'gmax': ['Gigantamax'],
     'mega-x': ['Mega', 'X'],
-    'mega-y': ['Mega', 'Y']
+    'mega-y': ['Mega', 'Y'],
+    'primal': ['Primal'],
   }
 
   const suffix = pokemon.code.split('-').slice(1).join('-')
