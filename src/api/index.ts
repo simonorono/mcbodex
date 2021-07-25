@@ -29,8 +29,30 @@ enum CacheKey {
   GAME_LIST = 'game_list',
 }
 
-export const getAllPokedex = async () => cachedApi.get(CacheKey.POKEDEX_LIST, pokedexUrl)
-export const getAllSpecies = async () => cachedApi.get(CacheKey.SPECIES_LIST, speciesUrl)
+function transformPokedex(obj: any): Pokedex {
+  return {
+    code: obj.code,
+    name: obj.name,
+    region: obj.region,
+    pokemonEntries: obj.entries.map((entry: number[]) => ({
+      pokedexNumber: entry[0],
+      pokemonSpeciesId: entry[1]
+    }))
+  }
+}
+
+function transformSpecies(obj: any): PokemonSpecies {
+  return {
+    id: obj.id,
+    code: obj.code,
+    name: obj.name,
+    nationalPokedexNumber: obj.number,
+    pokemonIds: obj.pokemonIds,
+  }
+}
+
+export const getAllPokedex = async () => cachedApi.get(CacheKey.POKEDEX_LIST, pokedexUrl, transformPokedex)
+export const getAllSpecies = async () => cachedApi.get(CacheKey.SPECIES_LIST, speciesUrl, transformSpecies)
 export const getAllPokemon = async () => cachedApi.get(CacheKey.POKEMON_LIST, pokemonUrl)
 export const getAllTypes = async () => cachedApi.get(CacheKey.TYPE_LIST, typesUrl)
 export const getAllGames = async () => cachedApi.get(CacheKey.GAME_LIST, gamesUrl)
