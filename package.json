@@ -10,22 +10,22 @@
     "launch": "node sitemap.mjs && tsc && vite build && PORT=9000 serve dist"
   },
   "dependencies": {
-    "@headlessui/react": "^1.1.1",
-    "@heroicons/react": "^1.0.1",
+    "@headlessui/react": "^1.4.0",
+    "@heroicons/react": "^1.0.0",
     "@reduxjs/toolkit": "^1.6.0",
     "@tailwindcss/forms": "^0.3.3",
     "localforage": "^1.9.0",
     "pokedex-promise-v2": "^3.3.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
-    "react-helmet-async": "^1.0.9",
-    "react-redux": "^7.2.4",
+    "react-helmet-async": "^1.0.0",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-spinners": "^0.11.0",
     "vanilla-lazyload": "^17.4.0"
   },
   "devDependencies": {
-    "@types/node": "^15.12.2",
+    "@types/node": "^16.4.8",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",
     "@types/react-router-dom": "^5.1.7",
