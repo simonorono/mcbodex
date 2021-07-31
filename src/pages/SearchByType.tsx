@@ -4,6 +4,7 @@ import Template from "./Template"
 import Checkbox from "../components/Checkbox"
 import PokemonList from "../components/PokemonList"
 import TypeSelector from "../components/TypeSelector"
+import { useAppSelector } from "../store/hooks"
 import { frontPokemonOfSpeciesByPredicate } from "../store/selectors"
 import { title } from "../utils"
 
@@ -11,6 +12,8 @@ export default function SearchByType() {
   const [firstType, setFirstType] = useState(null as Type | null)
   const [secondType, setSecondType] = useState(null as Type | null)
   const [strict, setIfStrict] = useState(false)
+
+  const speciesById = useAppSelector(state => state.pokemon.speciesById)
 
   const pokemonList = frontPokemonOfSpeciesByPredicate(pkm => {
     if (! (firstType || secondType)) {
@@ -60,7 +63,10 @@ export default function SearchByType() {
         </div>
 
         <div className="mt-8">
-          <PokemonList pokemonList={pokemonList} />
+          <PokemonList
+            numberCallback={pokemon => speciesById[pokemon.speciesId].nationalPokedexNumber}
+            pokemonList={pokemonList}
+          />
         </div>
       </Template>
     </>
