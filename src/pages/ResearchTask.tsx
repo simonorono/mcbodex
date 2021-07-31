@@ -17,6 +17,8 @@ export default function ResearchTask() {
 
   const pokemonById = useAppSelector(state => state.pokemon.pokemonById)
 
+  const speciesById = useAppSelector(state => state.pokemon.speciesById)
+
   return (
     <>
       <Helmet>
@@ -41,7 +43,11 @@ export default function ResearchTask() {
                 </h2>
 
                 <PokemonList
-                  pokemonList={researchTask.pokemonIds.map(id => pokemonById[id])}
+                  numberCallback={pokemon => speciesById[pokemon.speciesId].nationalPokedexNumber}
+                  pokemonList={(
+                    researchTask.pokemonIds.map(id => pokemonById[id])
+                      .sort((pkm1, pkm2) => pkm1.speciesId - pkm2.speciesId)
+                  )}
                 />
               </div>
             ))}
