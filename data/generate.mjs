@@ -14,12 +14,8 @@
  * limitations under the License.
  */
 
-import axios from 'axios'
 import fs from 'fs'
-
-const gqlClient = axios.create({
-  baseURL: 'https://beta.pokeapi.co/graphql/v1beta',
-});
+import http from 'http'
 
 const pokedexQuery = `
   query allMainPokedex {
@@ -94,16 +90,50 @@ const typesQuery = `
 `
 
 async function executeQuery(query) {
-  return await gqlClient.post('/', { query })
+  return new Promise((resolve, reject) => {
+    const data = JSON.stringify({ query })
+
+    const options = {
+      hostname: 'localhost',
+      method: 'POST',
+      path: '/v1/graphql',
+      port: 8080,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Content-Length': data.length,
+      },
+    }
+
+    const req = http.request(options, result => {
+      result.setEncoding('utf8')
+
+      let body = ''
+
+      result.on('data', data => {
+        body += data
+      })
+
+      result.on('end', () => resolve(JSON.parse(body)))
+    })
+
+    req.on('error', error => {
+      reject(error)
+    })
+
+    req.write(data)
+    req.end()
+  })
 }
 
 async function loadPokedex() {
   const pokedexResponse = await executeQuery(pokedexQuery)
 
-  const pokedex = pokedexResponse.data.data.pokedex.map(pkdx => ({
+  const pokedex = pokedexResponse.data.pokedex.map(pkdx => ({
     code: pkdx.code,
     name: pkdx.name[0].name.replace(/original|updated/i, '').trim(),
-    entries: pkdx.pokemon.map(entry => [entry.pokedex_number, entry.pokemon_species_id]),
+    entries: pkdx.pokemon.map(entry => [entry.pokedex_number, entry.pokemon_species_id])
+      .sort((e1, e2) => e1[0] - e2[0]),
     region: pkdx.region?.name,
   }))
 
@@ -117,7 +147,7 @@ async function loadPokedex() {
 async function loadSpecies() {
   const speciesResponse = await executeQuery(speciesQuery)
 
-  const species = speciesResponse.data.data.species.map(spcy => ({
+  const species = speciesResponse.data.species.map(spcy => ({
     id: spcy.id,
     code: spcy.code,
     name: spcy.species_name[0].name,
@@ -131,7 +161,7 @@ async function loadSpecies() {
 async function loadPokemon() {
   const pokemonResponse = await executeQuery(pokemonQuery)
 
-  const pokemons = pokemonResponse.data.data.pokemon.map(pkm => ({
+  const pokemons = pokemonResponse.data.pokemon.map(pkm => ({
     id: pkm.id,
     code: pkm.code,
     typeIds: pkm.types.map(type => type.type.id),
@@ -144,7 +174,7 @@ async function loadPokemon() {
 async function loadTypes() {
   const typeResponse = await executeQuery(typesQuery)
 
-  const types = typeResponse.data.data.types.map(type => ({
+  const types = typeResponse.data.types.map(type => ({
     id: type.id,
     code: type.code,
     name: type.name[0].name,
