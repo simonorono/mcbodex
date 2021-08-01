@@ -45,9 +45,9 @@ namespace cache {
   function needsInvalidation(date: Date) {
     const now = new Date
 
-    const ellapsedSeconds = (now.getTime() - date.getTime()) / 1000
+    const elapsedSeconds = (now.getTime() - date.getTime()) / 1000
 
-    return ellapsedSeconds > SECONDS_IN_WEEK
+    return elapsedSeconds > SECONDS_IN_WEEK
   }
 
   export async function get(key: string): Promise<any> {
