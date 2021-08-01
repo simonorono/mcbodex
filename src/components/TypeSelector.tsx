@@ -1,8 +1,23 @@
+/**
+ * Copyright 2021 Simón Oroño
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import React, { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
-import { useAppSelector } from "../store/hooks"
-import { typeClasses } from "../utils"
+import { types } from "../utils"
 
 interface Props {
   label: string,
@@ -12,9 +27,7 @@ interface Props {
 }
 
 export default function TypeSelector({ label, className, selected, setSelected }: Props) {
-  const types = useAppSelector(state => state.types)
-
-  const classes = typeClasses[selected?.code || '']
+  const classes = types.classesForType(selected)
 
   return (
     <Listbox value={selected} onChange={setSelected}>
@@ -65,7 +78,7 @@ export default function TypeSelector({ label, className, selected, setSelected }
                     className={({ active }) =>
                       [
                         (type && active) ?
-                          `${typeClasses[type.code].color} ${typeClasses[type.code].background}` :
+                          `${types.classesForType(type).color} ${types.classesForType(type).background}` :
                           'text-gray-900',
                         'cursor-default select-none relative py-2 pl-3 pr-9'
                       ].join(' ')

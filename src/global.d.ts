@@ -59,7 +59,7 @@ declare interface Type {
   id: number,
   code: string,
   name: string,
-  damageRelationships?: DamageRelationShip[]
+  damageRelationships: DamageRelationShip[]
 }
 
 declare interface DamageRelationShip {

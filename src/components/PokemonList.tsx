@@ -22,7 +22,7 @@ interface Props {
   numberCallback?: (pokemon: Pokemon) => number,
 }
 
-const CHUNK_SIZE = 30;
+const CHUNK_SIZE = 30
 
 export default function PokemonList({ pokemonList, numberCallback }: Props) {
   const [chunks, setChunks] = useState(1)

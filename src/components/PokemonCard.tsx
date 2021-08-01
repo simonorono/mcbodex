@@ -15,11 +15,10 @@
  */
 
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
-import { ImageURL } from '../utils'
 import LazyImage from './LazyImage'
 import TypeBadge from './TypeBadge'
+import { images, types } from '../utils'
 
 interface Props {
   pokemon: Pokemon,
@@ -27,8 +26,6 @@ interface Props {
 }
 
 export default function PokemonCard({ pokemon, number }: Props) {
-  const typesById = useAppSelector(state => state.types.byId)
-
   const species = useAppSelector(state => state.pokemon.speciesById[pokemon.speciesId])
 
   return (
@@ -36,7 +33,7 @@ export default function PokemonCard({ pokemon, number }: Props) {
       <LazyImage
         width={80} height={80}
         className="w-20 h-20 bg-gray-300 rounded-full flex-shrink-0"
-        src={ImageURL.frontSpriteForPokemonId(pokemon.id)}
+        src={images.frontSpriteForPokemonId(pokemon.id)}
         alt={`front sprite for ${pokemon.name}`}
       />
       <div className="flex-1 truncate">
@@ -49,18 +46,12 @@ export default function PokemonCard({ pokemon, number }: Props) {
 
         <div className="flex space-x-1">
           {pokemon.typeIds.map(typeId => {
-            const type = typesById[typeId]
-
             return (
-              <Link to={`/type/${type.code}`} key={typeId}>
-                <TypeBadge
-                  type={type}
-                  className={[
-                    'inline-block text-sm font-medium w-[70px]',
-                    'hover:underline',
-                  ].join(' ')}
-                />
-              </Link>
+              <TypeBadge
+                key={typeId}
+                type={types.byId[typeId]}
+                className="inline-block text-sm font-medium w-[70px]"
+              />
             )
           })}
         </div>

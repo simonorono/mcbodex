@@ -1,12 +1,8 @@
 import { useAppSelector } from "./hooks"
 
-export function pokemonAndTypesLoaded(): boolean {
-  return useAppSelector(state => state.pokemon.loaded && state.types.loaded)
-}
-
 export function frontPokemonOfSpeciesByPredicate(predicate: (species: Pokemon) => boolean): Pokemon[] {
   return useAppSelector(state => {
-    if (!(state.pokemon.loaded && state.types.loaded)) {
+    if (!state.pokemon.loaded) {
       return []
     }
 

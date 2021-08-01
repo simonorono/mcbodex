@@ -14,29 +14,19 @@
  * limitations under the License.
  */
 
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { types } from "../utils/index"
+import images from './images'
+import types from './types'
+import { homepage } from "../../package.json"
 
-interface Props {
-  type: Type,
-  className?: string,
+export function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
 }
 
-export default function TypeBadge(props: Props) {
-  const { type, className } = props
-
-  const classes = types.classesForType(type)
-
-  return (
-    <Link
-      to={`/type/${type.code}`}
-      className={[
-        'py-0.5 rounded-full border text-center hover:underline',
-        classes.border, classes.background, classes.color, className
-      ].join(' ')}
-    >
-      {type.name}
-    </Link>
-  )
+export function title(caption?: string) {
+  return `${caption && `${caption} | ` || ''}RDex | ${homepage}`
 }
+
+export { images, types }

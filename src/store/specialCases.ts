@@ -11,7 +11,7 @@ const totemPokemonIds = [
   10150,
   10153,
   10154,
-];
+]
 
 function removeTotemPokemon(species: PokemonSpecies): PokemonSpecies {
   species.pokemonIds = species.pokemonIds.filter(id => !totemPokemonIds.includes(id))

@@ -18,6 +18,7 @@ import React, { ReactNode } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import { Disclosure } from '@headlessui/react'
 import { useAppSelector } from '../store/hooks'
+import { types } from '../utils'
 
 interface Props {
   onLinkClicked?: () => void
@@ -27,8 +28,6 @@ export default function Navigation({ onLinkClicked }: Props) {
   const location = useLocation()
 
   const games = useAppSelector(state => state.pokedex.allGames)
-
-  const types = useAppSelector(state => state.types.all)
 
   const researchTasks = ['Galar', 'Kanto']
 
@@ -105,7 +104,7 @@ export default function Navigation({ onLinkClicked }: Props) {
       </SeveralLinks>
 
       <SeveralLinks name={'Types'}>
-        {types && types.map(type => (
+        {types && types.all.map(type => (
           <SingleLink
             key={type.code}
             name={type.name}

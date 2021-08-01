@@ -22,7 +22,7 @@ import {
 } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import routes from './routes'
-import { loadPokedexList, loadTypeList, loadAllPokemon } from './store'
+import { loadPokedexList, loadAllPokemon } from './store'
 import { useAppDispatch } from './store/hooks'
 import Navbar from './components/Navbar'
 import BackToTopButton from './components/BackToTopButton'
@@ -47,7 +47,6 @@ function App() {
   useEffect(() => {
     dispatch(loadPokedexList())
     dispatch(loadAllPokemon())
-    dispatch(loadTypeList())
   }, [])
 
   return (

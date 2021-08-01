@@ -135,14 +135,23 @@ const typeClasses: TypeClassesMap = {
     border: 'border-rose-300',
     background: 'bg-rose-200',
     color: 'text-black'
+  },
+
+  neutral: {
+    border: 'border-gray-200',
+    background: 'bg-white',
+    color: 'text-black'
   }
 }
 
 class Types {
+  all: Type[]
   byId: ById
   byCode: ByCode
 
   constructor() {
+    this.all = ALL_TYPES
+
     this.byId = ALL_TYPES.reduce(
       (byId, type: Type) => {
         byId[type.id] = type
@@ -160,7 +169,11 @@ class Types {
     )
   }
 
-  classesForType(type: Type): TypeClasses {
+  classesForType(type: Type|null): TypeClasses {
+    if (!type) {
+      return typeClasses['neutral']
+    }
+
     return typeClasses[type.code]
   }
 

@@ -16,7 +16,7 @@
 
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getAllSpecies, getAllPokemon } from '../api'
-import { cleanPokemon, cleanSpecies } from "./specialCases";
+import { cleanPokemon, cleanSpecies } from "./specialCases"
 
 interface PokemonState {
   allSpecies: PokemonSpecies[],
@@ -117,4 +117,4 @@ const { reducer } = pokemonSlice
 
 export { loadAllPokemon }
 
-export default reducer;
+export default reducer
