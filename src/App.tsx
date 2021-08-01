@@ -31,9 +31,9 @@ function scrollToTopInner(props: any) {
   const { history } = props
 
   useEffect(() => {
-    const unlisten = history.listen(() => window.scrollTo(0, 0))
+    const cleanup = history.listen(() => window.scrollTo(0, 0))
 
-    return () => unlisten()
+    return () => cleanup()
   })
 
   return null
