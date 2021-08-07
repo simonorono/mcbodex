@@ -34,22 +34,22 @@ export default [
   },
   {
     path: '/type/:code',
-    component: Type
+    component: Type,
   },
   {
     path: '/pokedex/:code',
-    component: Pokedex
+    component: Pokedex,
   },
   {
     path: '/research-task/:code',
-    component: ResearchTask
+    component: ResearchTask,
   },
   {
     path: '/search-by-type',
-    component: SearchByType
+    component: SearchByType,
   },
   {
     path: '*',
-    component: NotFound
+    component: NotFound,
   }
 ]
