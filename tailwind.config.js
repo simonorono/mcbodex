@@ -31,10 +31,6 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans]
       }
     },
-    screens: {
-      'mobile': { 'max': '640px' },
-      ...defaultTheme.screens
-    }
   },
   variants: {
     extend: {},

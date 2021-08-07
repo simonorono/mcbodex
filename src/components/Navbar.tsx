@@ -29,13 +29,13 @@ export default function Navbar() {
           <Link to="/" title="Home">
             <img
               width={72} height={40}
-              className="hidden mobile:block h-10 w-auto"
+              className="sm:hidden h-10 w-auto"
               src={mobileLogo}
               alt="RDex logo"
             />
             <img
               width={128} height={40}
-              className="block mobile:hidden h-10 w-auto"
+              className="hidden sm:block h-10 w-auto"
               src={desktopLogo}
               alt="RDex logo"
             />
