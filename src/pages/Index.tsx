@@ -14,33 +14,31 @@
  * limitations under the License.
  */
 
-import React from 'react'
-import { Helmet } from 'react-helmet-async'
-import Template from './Template'
+import React, { useEffect } from 'react'
 import PokedexList from '../components/PokedexList'
 import TypeList from '../components/TypeList'
 import { title } from "../utils"
 
 export default function Index() {
+  useEffect(() => {
+    document.title = title()
+  }, [])
+
   return (
     <>
-      <Helmet>
-        <title>{title()}</title>
-      </Helmet>
+      <h1 className="page-title">RDex</h1>
 
-      <Template h1='RDex'>
-        <p>RDex is a Pokédex navigator and general Pokémon database.</p>
+      <p>RDex is a Pokédex navigator and general Pokémon database.</p>
 
-        <div className="pt-8 space-x-0 space-y-4 md:space-y-0 md:space-x-4 grid grid-cols-1 md:grid-cols-2">
-          <div>
-            <PokedexList />
-          </div>
-
-          <div>
-            <TypeList />
-          </div>
+      <div className="pt-8 space-x-0 space-y-4 md:space-y-0 md:space-x-4 grid grid-cols-1 md:grid-cols-2">
+        <div>
+          <PokedexList />
         </div>
-      </Template>
+
+        <div>
+          <TypeList />
+        </div>
+      </div>
     </>
   )
 }

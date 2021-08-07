@@ -14,19 +14,17 @@
  * limitations under the License.
  */
 
-import React from 'react'
-import { Helmet } from 'react-helmet-async'
-import { title } from "../utils"
+import React, { useEffect } from 'react'
+import { title } from '../utils'
 
 export default function NotFound() {
+  useEffect(() => {
+    document.title = title('Not Found')
+  }, [])
+
   return (
-    <>
-      <Helmet>
-        <title>{title('Not Found')}</title>
-      </Helmet>
-      <div>
-        <p>Page not found</p>
-      </div>
-    </>
+    <div>
+      <p>Page not found</p>
+    </div>
   )
 }

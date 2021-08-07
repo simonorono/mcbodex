@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-import React, { ReactElement } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
-import Template from './Template'
+import React, { ReactElement, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import TypeBadge from '../components/TypeBadge'
 import PokemonList from '../components/PokemonList'
 import Loader from '../components/Loader'
@@ -56,6 +54,10 @@ function typeEffectiveness(type: Type): ReactElement {
 }
 
 export default function Type() {
+  useEffect(() => {
+    document.title = title(type && `${type.name} Type`)
+  })
+
   const { code } = useParams<{ code: string }>()
 
   const type = types.byCode[code]
@@ -73,10 +75,6 @@ export default function Type() {
 
   return (
     <>
-      <Helmet>
-        <title>{title(type && `${type.name} Type`)}</title>
-      </Helmet>
-
       {pokemonLoaded && !type && (
         <p>Not found.</p>
       )}
@@ -85,24 +83,22 @@ export default function Type() {
         <Loader />
       )}
 
-      <Template
-        h1={`${type.name} Type`}
-      >
-        {pokemonLoaded && type && (
-          <>
-            {typeEffectiveness(type)}
+      {pokemonLoaded && type && (
+        <>
+          <h1 className="page-title">{`${type.name} Type`}</h1>
 
-            <h2 className="text-2xl font-medium mb-2">
-              Pokémon with {type.name} type
-            </h2>
+          {typeEffectiveness(type)}
 
-            <PokemonList
-              numberCallback={pokemon => speciesById[pokemon.speciesId].nationalPokedexNumber}
-              pokemonList={pokemonList}
-            />
-          </>
-        )}
-      </Template>
+          <h2 className="text-2xl font-medium mb-2">
+            Pokémon with {type.name} type
+          </h2>
+
+          <PokemonList
+            numberCallback={pokemon => speciesById[pokemon.speciesId].nationalPokedexNumber}
+            pokemonList={pokemonList}
+          />
+        </>
+      )}
     </>
   )
 }

@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
 import { useAppSelector } from '../store/hooks'
-import Template from './Template'
 import PokemonList from '../components/PokemonList'
 import Loader from '../components/Loader'
 import Tabs from '../components/Tabs'
-import { title } from "../utils"
+import { title } from '../utils'
 
 export default function Pokedex() {
+  useEffect(() => {
+    document.title = title(game && `${game.name} Pokédex`)
+  }, [])
+
   const { code } = useParams<{ code: string }>()
 
   const pokedexLoaded = useAppSelector(state => state.pokedex.loaded)
@@ -69,10 +71,6 @@ export default function Pokedex() {
 
   return (
     <>
-      <Helmet>
-        <title>{title(game && `${game.name} Pokédex`)}</title>
-      </Helmet>
-
       {allLoaded && !pokedexList && (
         <p>Not found</p>
       )}
@@ -82,9 +80,11 @@ export default function Pokedex() {
       )}
 
       {allLoaded && pokedexList && (
-        <Template h1={`${game.name} Pokédex`}>
+        <>
+          <h1 className="page-title">{`${game.name} Pokédex`}</h1>
+
           <Tabs tabs={tabs} />
-        </Template>
+        </>
       )}
     </>
   )

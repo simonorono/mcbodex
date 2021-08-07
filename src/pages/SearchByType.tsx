@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 
-import React, { useState } from 'react'
-import { Helmet } from "react-helmet-async"
-import Template from "./Template"
+import React, { useEffect, useState } from 'react'
 import Checkbox from "../components/Checkbox"
 import PokemonList from "../components/PokemonList"
 import TypeSelector from "../components/TypeSelector"
 import { useAppSelector } from "../store/hooks"
 import { frontPokemonOfSpeciesByPredicate } from "../store/selectors"
-import { title } from "../utils"
+import { title } from '../utils'
 
 export default function SearchByType() {
+  useEffect(() => {
+    document.title = title('Search Pokémon By Type')
+  })
+
   const [firstType, setFirstType] = useState(null as Type | null)
   const [secondType, setSecondType] = useState(null as Type | null)
   const [strict, setIfStrict] = useState(false)
@@ -32,7 +34,7 @@ export default function SearchByType() {
   const speciesById = useAppSelector(state => state.pokemon.speciesById)
 
   const pokemonList = frontPokemonOfSpeciesByPredicate(pkm => {
-    if (! (firstType || secondType)) {
+    if (!(firstType || secondType)) {
       return false
     }
 
@@ -48,43 +50,39 @@ export default function SearchByType() {
 
   return (
     <>
-      <Helmet>
-        <title>{title('Search Pokémon By Type')}</title>
-      </Helmet>
+      <h1 className="page-title">Search Pokémon By Type</h1>
 
-      <Template h1="Search Pokémon By Type">
-        <div className="flex flex-col sm:flex-row space-y-3 sm:space-x-3 sm:space-y-0">
-          <TypeSelector
-            label="First type"
-            className="flex-1"
-            selected={firstType}
-            setSelected={setFirstType}
-          />
-          <TypeSelector
-            label="Second type"
-            className="flex-1"
-            selected={secondType}
-            setSelected={setSecondType}
-          />
-        </div>
+      <div className="flex flex-col sm:flex-row space-y-3 sm:space-x-3 sm:space-y-0">
+        <TypeSelector
+          label="First type"
+          className="flex-1"
+          selected={firstType}
+          setSelected={setFirstType}
+        />
+        <TypeSelector
+          label="Second type"
+          className="flex-1"
+          selected={secondType}
+          setSelected={setSecondType}
+        />
+      </div>
 
-        <div className="py-4">
-          <Checkbox
-            helpText="Show single-typed Pokémon if only one type is selected"
-            id="strict"
-            initialValue={strict}
-            label="Strict"
-            onChange={setIfStrict}
-          />
-        </div>
+      <div className="py-4">
+        <Checkbox
+          helpText="Show single-typed Pokémon if only one type is selected"
+          id="strict"
+          initialValue={strict}
+          label="Strict"
+          onChange={setIfStrict}
+        />
+      </div>
 
-        <div className="mt-8">
-          <PokemonList
-            numberCallback={pokemon => speciesById[pokemon.speciesId].nationalPokedexNumber}
-            pokemonList={pokemonList}
-          />
-        </div>
-      </Template>
+      <div className="mt-8">
+        <PokemonList
+          numberCallback={pokemon => speciesById[pokemon.speciesId].nationalPokedexNumber}
+          pokemonList={pokemonList}
+        />
+      </div>
     </>
   )
 }

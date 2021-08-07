@@ -14,15 +14,18 @@
  * limitations under the License.
  */
 
-import React from 'react'
-import { Helmet } from "react-helmet-async"
+import React, { useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import { useAppSelector } from "../store/hooks"
 import researchTasksRaw from '../../data/handcrafted/research_tasks.json'
 import PokemonList from "../components/PokemonList"
-import { title } from "../utils"
+import { title } from '../utils'
 
 export default function ResearchTask() {
+  useEffect(() => {
+    document.title = title(researchTaskGroup && `${researchTaskGroup.name} Research Tasks`)
+  })
+
   const researchTaskGroups = researchTasksRaw as ResearchTaskGroup[]
 
   const { code } = useParams<{ code: string }>()
@@ -37,10 +40,6 @@ export default function ResearchTask() {
 
   return (
     <>
-      <Helmet>
-        <title>{title(researchTaskGroup && `${researchTaskGroup.name} Research Tasks`)}</title>
-      </Helmet>
-
       {pokemonLoaded && !researchTaskGroup && (
         <p>Not found</p>
       )}

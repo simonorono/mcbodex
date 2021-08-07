@@ -15,14 +15,9 @@
  */
 
 import React, { useEffect } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch, withRouter
-} from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async'
+import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom'
 import routes from './routes'
-import { loadPokedexList, loadAllPokemon } from './store'
+import { loadAllPokemon, loadPokedexList } from './store'
 import { useAppDispatch } from './store/hooks'
 import Navbar from './components/Navbar'
 import BackToTopButton from './components/BackToTopButton'
@@ -50,25 +45,25 @@ function App() {
   }, [])
 
   return (
-    <HelmetProvider>
-      <Router>
-        <div className="min-h-screen bg-white flex flex-col w-full">
+    <Router>
+      <div className="min-h-screen bg-white flex flex-col w-full">
+        <header>
           <Navbar />
+        </header>
 
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 w-full">
-            <Switch>
-              {routes.map((route, i) => (
-                <Route key={i} {...route} />
-              ))}
-            </Switch>
-          </div>
-        </div>
+        <main className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 w-full">
+          <Switch>
+            {routes.map((route, i) => (
+              <Route key={i} {...route} />
+            ))}
+          </Switch>
+        </main>
+      </div>
 
-        <ScrollToTop />
-      </Router>
+      <ScrollToTop />
 
       <BackToTopButton />
-    </HelmetProvider>
+    </Router>
   )
 }
 
