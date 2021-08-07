@@ -25,27 +25,25 @@ export default function Navbar() {
   return (
     <div className="mx-0 w-full px-2 sm:px-6 lg:px-8 border-b mb-5 bg-blueGray-700">
       <div className="flex justify-between h-16">
-        <div className="flex">
-          <div className="flex-shrink-0 flex items-center">
-            <Link to="/" title="Home">
-              <img
-                width={72} height={40}
-                className="hidden mobile:block h-10 w-auto"
-                src={mobileLogo}
-                alt="RDex logo"
-              />
-              <img
-                width={128} height={40}
-                className="block mobile:hidden h-10 w-auto"
-                src={desktopLogo}
-                alt="RDex logo"
-              />
-            </Link>
-          </div>
+        <div className="flex items-center">
+          <Link to="/" title="Home">
+            <img
+              width={72} height={40}
+              className="hidden mobile:block h-10 w-auto"
+              src={mobileLogo}
+              alt="RDex logo"
+            />
+            <img
+              width={128} height={40}
+              className="block mobile:hidden h-10 w-auto"
+              src={desktopLogo}
+              alt="RDex logo"
+            />
+          </Link>
         </div>
 
         <div className="flex items-center justify-between">
-          <div className="ml-2 flex items-center">
+          <div className="flex items-center">
             <SideOver />
           </div>
         </div>
