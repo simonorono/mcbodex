@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Loader from './Loader'
 import PokemonCard from './PokemonCard'
 
 interface Props {
@@ -6,43 +7,37 @@ interface Props {
   numberCallback?: (pokemon: Pokemon) => number,
 }
 
-const CHUNK_SIZE = 30
-
 export default function PokemonList({ pokemonList, numberCallback }: Props) {
-  const [chunks, setChunks] = useState(1)
+  const [loaded, setLoaded] = useState(false)
 
-  // The following effect is used so that rendering the Pokémon list doesn't
-  // block the browser. Because of it, we render the list in chunks of
-  // CHUNK_SIZE Pokémon.
-  useEffect(() => {
-    // Already showing all Pokémon in the list? Do nothing.
-    if (chunks * CHUNK_SIZE > pokemonList.length) {
-      return
-    }
-
-    // Increase displayed chunks ASAP
-    const timeoutId = setTimeout(
-      () => setChunks(chunks => chunks + 1),
-      0
-    )
-
-    // Clean up to avoid memory leaks
-    return () => clearTimeout(timeoutId)
-  }, [chunks, pokemonList])
+  useEffect(() => setLoaded(true), [])
 
   return (
-    <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {pokemonList.slice(0, chunks * CHUNK_SIZE).map((pokemon: Pokemon, index) => (
-        <li
-          key={pokemon.id}
-          className="col-span-1"
+    <>
+      {!loaded && (
+        <Loader />
+      )}
+
+      {loaded && (
+        <ul
+          className={[
+            "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
+            loaded ? '' : 'hidden'
+          ].join(' ')}
         >
-          <PokemonCard
-            number={numberCallback ? numberCallback(pokemon) : index + 1}
-            pokemon={pokemon}
-          />
-        </li>
-      ))}
-    </ul>
+          {pokemonList.map((pokemon: Pokemon, index) => (
+            <li
+              key={pokemon.id}
+              className="col-span-1"
+            >
+              <PokemonCard
+                number={numberCallback ? numberCallback(pokemon) : index + 1}
+                pokemon={pokemon}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
   )
 }
