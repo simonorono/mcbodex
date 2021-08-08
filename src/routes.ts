@@ -1,10 +1,13 @@
-import About from './pages/About'
+import React from "react"
+
 import Index from './pages/Index'
+import About from './pages/About'
 import NotFound from './pages/NotFound'
-import Pokedex from './pages/Pokedex'
-import ResearchTask from "./pages/ResearchTask"
-import SearchByType from "./pages/SearchByType"
-import Type from './pages/Type'
+
+const Pokedex = React.lazy(() => import('./pages/Pokedex'))
+const ResearchTask = React.lazy(() => import("./pages/ResearchTask"))
+const SearchByType = React.lazy(() => import("./pages/SearchByType"))
+const Type = React.lazy(() => import('./pages/Type'))
 
 export default [
   {

@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Suspense } from 'react'
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom'
+
+import BackToTopButton from './components/BackToTopButton'
+import Navbar from './components/Navbar'
+
 import routes from './routes'
 import { loadAllPokemon, loadPokedexList } from './store'
 import { useAppDispatch } from './store/hooks'
-import Navbar from './components/Navbar'
-import BackToTopButton from './components/BackToTopButton'
+import Loader from "./components/Loader"
 
 function scrollToTopInner(props: any) {
   const { history } = props
 
-  useEffect(() => {
-    const cleanup = history.listen(() => window.scrollTo(0, 0))
-
-    return () => cleanup()
-  })
+  useEffect(() => history.listen(() => window.scrollTo(0, 0)))
 
   return null
 }
@@ -36,11 +35,13 @@ function App() {
         </header>
 
         <main className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 w-full">
-          <Switch>
-            {routes.map((route, i) => (
-              <Route key={i} {...route} />
-            ))}
-          </Switch>
+          <Suspense fallback={<Loader />}>
+            <Switch>
+              {routes.map((route, i) => (
+                <Route key={i} {...route} />
+              ))}
+            </Switch>
+          </Suspense>
         </main>
 
         <footer>
