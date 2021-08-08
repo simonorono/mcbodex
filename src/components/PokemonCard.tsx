@@ -13,14 +13,14 @@ export default function PokemonCard({ pokemon, number }: Props) {
   const species = useAppSelector(state => state.pokemon.speciesById[pokemon.speciesId])
 
   return (
-    <div className="w-full flex items-center justify-between p-2 space-x-6 border border-gray-300 rounded-xl">
+    <div className="w-full flex items-center p-2 border border-gray-300 rounded-xl">
       <LazyImage
         width={80} height={80}
         className="w-20 h-20 bg-gray-300 rounded-full flex-shrink-0"
         src={images.frontSpriteForPokemonId(pokemon.id)}
         alt={`front sprite for ${pokemon.name}`}
       />
-      <div className="flex-1 truncate">
+      <div className="ml-6 flex-grow truncate">
         <div className="flex flex-col mb-2">
           <h3 className="text-gray-900 text-sm font-medium truncate">{number}. {species.name}</h3>
           {(species.name !== pokemon.name) && (
