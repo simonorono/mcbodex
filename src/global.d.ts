@@ -1,5 +1,3 @@
-declare module 'pokedex-promise-v2'
-
 interface Document {
   lazyLoadInstance: any
 }
