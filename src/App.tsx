@@ -42,6 +42,10 @@ function App() {
             ))}
           </Switch>
         </main>
+
+        <footer>
+          <div className="h-20" />
+        </footer>
       </div>
 
       <ScrollToTop />
