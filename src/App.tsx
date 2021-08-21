@@ -2,12 +2,13 @@ import React, { useEffect, Suspense } from 'react'
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom'
 
 import BackToTopButton from './components/BackToTopButton'
+import Loader from "./components/Loader"
 import Navbar from './components/Navbar'
 
 import routes from './routes'
 import { loadAllPokemon, loadPokedexList } from './store'
-import { useAppDispatch } from './store/hooks'
-import Loader from "./components/Loader"
+import { useAppDispatch, useAppSelector } from './store/hooks'
+import { classNames } from "./utils"
 
 function scrollToTopInner(props: any) {
   const { history } = props
@@ -22,6 +23,8 @@ const ScrollToTop = withRouter(scrollToTopInner)
 function App() {
   const dispatch = useAppDispatch()
 
+  const darkMode = useAppSelector(state => state.siteSettings.darkMode)
+
   useEffect(() => {
     dispatch(loadPokedexList())
     dispatch(loadAllPokemon())
@@ -29,7 +32,10 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-white flex flex-col w-full">
+      <div className={classNames(
+        `min-h-screen bg-white flex flex-col w-full`,
+        darkMode ? 'dark' : '',
+      )}>
         <header>
           <Navbar />
         </header>
