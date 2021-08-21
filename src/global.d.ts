@@ -59,3 +59,9 @@ declare interface ResearchTaskGroup {
   name: string,
   researchTasks: ResearchTask[]
 }
+
+declare interface Stat {
+  id: number,
+  code: string,
+  name: string
+}
