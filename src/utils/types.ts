@@ -177,4 +177,4 @@ class Types {
   }
 }
 
-export default (new Types())
+export default (new Types)
