@@ -43,14 +43,14 @@ export default function Example() {
                 leaveTo="translate-x-full"
               >
                 <div className="w-screen max-w-sm">
-                  <div className="h-full flex flex-col py-6 bg-blueGray-700 shadow-xl overflow-y-scroll">
+                  <div className="h-full flex flex-col py-6 bg-primary-800 shadow-xl overflow-y-scroll">
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
                         <Dialog.Title className="text-lg font-medium text-white">RDex navigation</Dialog.Title>
                         <div className="ml-3 h-7 flex items-center">
                           <button
                             className={[
-                              "bg-blueGray-700 rounded-md text-gray-400 hover:text-white",
+                              "bg-primary-700 rounded-md text-gray-200 hover:text-white",
                               "focus:outline-none "
                             ].join(' ')}
                             onClick={() => setOpen(false)}

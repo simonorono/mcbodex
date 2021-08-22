@@ -27,7 +27,7 @@ export default function Navigation({ onLinkClicked }: Props) {
       <Link
         to={href}
         className={[
-          current ? 'bg-blueGray-600 text-white' : 'text-white hover:bg-gray-50 hover:text-gray-900',
+          current ? 'bg-primary-600 text-white' : 'text-white hover:bg-gray-50 hover:text-gray-900',
           'flex items-center px-3 py-2 text-sm font-medium rounded-md'
         ].join(' ')}
         onClick={onLinkClicked}

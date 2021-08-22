@@ -18,7 +18,7 @@ export default function Checkbox({ helpText, id, initialValue, label, onChange }
           type="checkbox"
           checked={initialValue}
           onChange={ev => onChange(ev.currentTarget.checked)}
-          className="focus:ring-blueGray-700 h-4 w-4 text-blueGray-600 border-gray-300 rounded"
+          className="focus:ring-primary-700 h-4 w-4 text-primary-600 border-gray-300 rounded"
         />
       </div>
       <div className="ml-3 text-sm">

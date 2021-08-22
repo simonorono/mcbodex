@@ -1,6 +1,9 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
+// Silence warning about lightBlue being removed.
+delete colors.lightBlue;
+
 module.exports = {
   mode: 'jit',
   darkMode: 'class',
@@ -9,7 +12,10 @@ module.exports = {
   ],
   purge: ['./index.html', './src/**/*.tsx', './src/**/*.ts'],
   theme: {
-    colors,
+    colors: {
+      primary: colors.emerald,
+      ...colors,
+    },
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans]

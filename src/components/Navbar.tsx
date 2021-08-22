@@ -7,7 +7,7 @@ import mobileLogo from '/media/RD.png'
 
 export default function Navbar() {
   return (
-    <div className="mx-0 w-full px-2 sm:px-6 lg:px-8 border-b mb-5 bg-blueGray-700">
+    <div className="mx-0 w-full px-2 sm:px-6 lg:px-8 border-b mb-5 bg-primary-900">
       <div className="flex justify-between h-16">
         <div className="flex items-center">
           <Link to="/" title="Home">
