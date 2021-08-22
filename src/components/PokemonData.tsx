@@ -30,7 +30,7 @@ export default function PokemonData({ pokemon }: Props) {
   return (
     <>
       {pokemon && pokemonData && (
-        <div className="flex flex-col items-center md:flex-row md:items-start max-w-5xl mx-auto">
+        <div className="flex flex-col items-center md:flex-row md:items-start max-w-4xl mx-auto">
           <div
             className="border bg-gray-50 min-w-[90%] sm:min-w-[450px]"
             style={imageContainerStyle}
