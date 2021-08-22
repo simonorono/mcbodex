@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import LazyImage from './LazyImage'
 import TypeBadge from './TypeBadge'
@@ -22,7 +23,11 @@ export default function PokemonCard({ pokemon, number }: Props) {
       />
       <div className="ml-6 flex-grow truncate">
         <div className="flex flex-col mb-2">
-          <h3 className="text-gray-900 text-sm font-medium truncate">{number}. {species.name}</h3>
+          <Link to={`/species/${species.id}`} className="hover:underline self-start">
+            <h3 className="text-gray-900 text-sm font-medium truncate">
+              {number}. {species.name}
+            </h3>
+          </Link>
           {(species.name !== pokemon.name) && (
             <h4 className="text-gray-700 text-sm truncate">{pokemon.name}</h4>
           )}

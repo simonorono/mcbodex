@@ -75,3 +75,20 @@ declare interface Stat {
   code: string,
   name: string
 }
+
+declare interface AbilityRelationship {
+  id: number,
+  hidden: boolean,
+}
+
+declare interface StatRelationship {
+  id: number,
+  base: number,
+  effort: number
+}
+
+declare interface PokemonData {
+  id: number,
+  abilities: AbilityRelationship[],
+  stats: StatRelationship[],
+}

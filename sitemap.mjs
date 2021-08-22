@@ -9,6 +9,7 @@ function readJson(file) {
 }
 
 const games = readJson('./data/handcrafted/games.json')
+const pokemon = readJson('./data/raw/species.json')
 const researchTaskGroups = readJson('./data/handcrafted/research_tasks.json')
 const types = readJson('./data/raw/types.json')
 
@@ -44,18 +45,36 @@ games.forEach(game => {
   })
 })
 
-types.forEach(type => {
+pokemon.forEach(species => {
   links.push({
-    url: `/type/${type.code}`,
+    url: `/species/${species.id}`,
     changefreq: 'weekly',
     priority: 0.9,
-    lastmod: now
+    lastmod: now,
+  })
+})
+
+pokemon.forEach(species => {
+  links.push({
+    url: `/species/${species.code}`,
+    changefreq: 'weekly',
+    priority: 0.9,
+    lastmod: now,
   })
 })
 
 researchTaskGroups.forEach(researchTaskGroup => {
   links.push({
     url: `/research-task/${researchTaskGroup.code}`,
+    changefreq: 'weekly',
+    priority: 0.9,
+    lastmod: now
+  })
+})
+
+types.forEach(type => {
+  links.push({
+    url: `/type/${type.code}`,
     changefreq: 'weekly',
     priority: 0.9,
     lastmod: now
