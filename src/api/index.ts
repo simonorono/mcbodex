@@ -1,14 +1,18 @@
 import cachedApi from './cachedApi'
-import pokedexUrl from '../../data/raw/pokedex.json?url'
-import speciesUrl from '../../data/raw/species.json?url'
-import pokemonUrl from '../../data/raw/pokemon.json?url'
+
 import gamesUrl from '../../data/handcrafted/games.json?url'
 
+import abilitiesUrl from '../../data/raw/abilities.json?url'
+import pokedexUrl from '../../data/raw/pokedex.json?url'
+import pokemonUrl from '../../data/raw/pokemon.json?url'
+import speciesUrl from '../../data/raw/species.json?url'
+
 enum CacheKey {
-  POKEDEX_LIST = 'pokedex_list',
-  SPECIES_LIST = 'species_list',
-  POKEMON_LIST = 'pokemon_list',
+  ABILITIES_LIST = 'abilities_list',
   GAME_LIST = 'game_list',
+  POKEDEX_LIST = 'pokedex_list',
+  POKEMON_LIST = 'pokemon_list',
+  SPECIES_LIST = 'species_list',
 }
 
 function transformPokedex(obj: any): Pokedex {
@@ -33,7 +37,8 @@ function transformSpecies(obj: any): PokemonSpecies {
   }
 }
 
-export const getAllPokedex = async () => cachedApi.get(CacheKey.POKEDEX_LIST, pokedexUrl, transformPokedex)
-export const getAllSpecies = async () => cachedApi.get(CacheKey.SPECIES_LIST, speciesUrl, transformSpecies)
-export const getAllPokemon = async () => cachedApi.get(CacheKey.POKEMON_LIST, pokemonUrl)
+export const getAllAbilities = async () => cachedApi.get(CacheKey.ABILITIES_LIST, abilitiesUrl)
 export const getAllGames = async () => cachedApi.get(CacheKey.GAME_LIST, gamesUrl)
+export const getAllPokedex = async () => cachedApi.get(CacheKey.POKEDEX_LIST, pokedexUrl, transformPokedex)
+export const getAllPokemon = async () => cachedApi.get(CacheKey.POKEMON_LIST, pokemonUrl)
+export const getAllSpecies = async () => cachedApi.get(CacheKey.SPECIES_LIST, speciesUrl, transformSpecies)

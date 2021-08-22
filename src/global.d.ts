@@ -60,6 +60,16 @@ declare interface ResearchTaskGroup {
   researchTasks: ResearchTask[]
 }
 
+declare interface Ability {
+  id: number,
+  code: string,
+  name: string,
+  flavorText: string,
+  effect: string,
+  shortEffect: string,
+  pokemonIds: number[],
+}
+
 declare interface Stat {
   id: number,
   code: string,

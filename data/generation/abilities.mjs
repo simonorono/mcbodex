@@ -36,11 +36,11 @@ export default async function load() {
 
     if (obj.effect.length > 0) {
       result.effect = obj.effect[0].effect
-      result.short_effect = obj.effect[0].short_effect
+      result.shortEffect = obj.effect[0].short_effect
     }
 
     if (obj.flavor_text.length > 0) {
-      result.flavor_text = obj.flavor_text[0].flavor_text
+      result.flavorText = obj.flavor_text[0].flavor_text
     }
 
     return result
