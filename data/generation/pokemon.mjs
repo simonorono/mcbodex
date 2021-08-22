@@ -54,6 +54,13 @@ function getPokemonDataQuery(id) {
           effort
           stat_id
         }
+        species: pokemon_v2_pokemonspecy {
+          gender_rate
+          capture_rate
+          base_happiness
+          is_legendary
+          is_mythical
+        }
       }
     }
   `
@@ -97,7 +104,11 @@ async function loadPokemonData(pkm) {
 
   const pokemon = {
     id: obj.id,
-    code: obj.name,
+    genderRate: obj.species.gender_rate,
+    captureRate: obj.species.capture_rate,
+    baseHappiness: obj.species.base_happiness,
+    legendary: obj.species.is_legendary,
+    mythical: obj.species.is_mythical,
 
     abilities: obj.abilities.map(ability => ({
       hidden: ability.is_hidden,

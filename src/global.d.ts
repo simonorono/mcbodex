@@ -89,6 +89,11 @@ declare interface StatRelationship {
 
 declare interface PokemonData {
   id: number,
+  genderRate: number,
+  captureRate: number,
+  baseHappiness: number,
+  legendary: boolean,
+  mythical: boolean,
   abilities: AbilityRelationship[],
   stats: StatRelationship[],
 }

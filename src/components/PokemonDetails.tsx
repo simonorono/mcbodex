@@ -3,6 +3,9 @@ import { useAppSelector } from "../store/hooks"
 import TypeBadge from "./TypeBadge"
 import { types } from "../utils"
 import Loader from "./Loader"
+import stats from "../utils/stats"
+
+const GENDER_UNIT = 100 / 8
 
 interface Props {
   pokemon: Pokemon,
@@ -14,12 +17,27 @@ interface DatumProps {
   children: ReactNode
 }
 
+interface GenderRateProps {
+  femaleRate: number // in eights
+}
+
 function Datum({ label, children }: DatumProps) {
   return (
     <div className="flex flex-col justify-between border-b pb-2">
-      <dd className="block font-medium mb-2">{label}</dd>
+      <dd className="block font-medium mb-1">{label}</dd>
       <dt className="block self-end">{children}</dt>
     </div>
+  )
+}
+
+function GenderRate({ femaleRate }: GenderRateProps) {
+  const maleRate = 8 - femaleRate
+
+  const female = <span className="text-pink-600">{GENDER_UNIT * femaleRate}% female</span>
+  const male = <span className="text-blue-600">{GENDER_UNIT * maleRate}% male</span>
+
+  return (
+    <p>{female}, {male}</p>
   )
 }
 
@@ -31,6 +49,11 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
   const abilities = pokemonData.abilities.filter(_ => !_.hidden).map(_ => abilityById[_.id])
   const hiddenAbilities = pokemonData.abilities.filter(_ => _.hidden).map(_ => abilityById[_.id])
 
+  const captureRate = stats.captureRate(
+    pokemonData.captureRate,
+    stats.getStat('hp', pokemonData)
+  ).toFixed(1)
+
   return (
     <>
       {!allLoaded && (
@@ -38,7 +61,7 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
       )}
 
       {allLoaded && (
-        <dl className="w-full px-10 space-y-3">
+        <dl className="w-full px-10 space-y-1">
           <Datum label="National Dex #">
             {species.nationalPokedexNumber}
           </Datum>
@@ -64,6 +87,23 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
             {hiddenAbilities.map(ability => (
               <p key={ability.id}>{ability.name} (hidden)</p>
             ))}
+          </Datum>
+
+          <Datum label="Gender Rate">
+            {pokemonData.genderRate >= 0 && (
+              <GenderRate femaleRate={pokemonData.genderRate} />
+            )}
+            {pokemonData.genderRate < 0 && (
+              <p>Genderless</p>
+            )}
+          </Datum>
+
+          <Datum label="Base happiness">
+            <p>{pokemonData.baseHappiness}</p>
+          </Datum>
+
+          <Datum label="Catch Rate">
+            <p>{pokemonData.captureRate} ({captureRate}%)</p>
           </Datum>
         </dl>
       )}
