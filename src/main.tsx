@@ -5,7 +5,8 @@ import { Provider } from 'react-redux'
 import App from './App'
 import store from './store'
 
-import './index.css'
+import './css/index.css'
+import './css/aspect-ratio.css'
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js', { scope: './' }).catch(console.log)
