@@ -14,7 +14,7 @@ if (!document.lazyLoadInstance) {
 interface Props {
   alt: string,
   src: string,
-  className: string,
+  className?: string,
   height: number,
   width: number,
 }
@@ -30,7 +30,7 @@ export default function LazyImage({ alt, src, className, height, width }: Props)
       height={height}
       data-src={src}
       alt={alt}
-      className={`opacity-0 transition-opacity ${className}`}
+      className={`opacity-0 transition-opacity ${className || ''}`}
     />
   )
 }
