@@ -81,7 +81,7 @@ export default function TypeSelector({ label, className, selected, setSelected }
                         {selected ? (
                           <span
                             className={[
-                              active ? 'text-white' : 'text-indigo-600',
+                              active ? `${types.classesForType(type).color}` : 'text-prime-600',
                               'absolute inset-y-0 right-0 flex items-center pr-4'
                             ].join(' ')}
                           >
