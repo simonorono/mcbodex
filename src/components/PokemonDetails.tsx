@@ -24,7 +24,7 @@ interface GenderRateProps {
 function Datum({ label, children }: DatumProps) {
   return (
     <div className="flex flex-col justify-between border-b pb-2">
-      <dd className="block font-medium mb-1">{label}</dd>
+      <dd className="block font-medium">{label}</dd>
       <dt className="block self-end">{children}</dt>
     </div>
   )
@@ -46,8 +46,14 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
   const abilityById = useAppSelector(state => state.abilities.byId)
   const species = useAppSelector(state => state.pokemon.speciesById[pokemon.speciesId])
 
-  const abilities = pokemonData.abilities.filter(_ => !_.hidden).map(_ => abilityById[_.id])
-  const hiddenAbilities = pokemonData.abilities.filter(_ => _.hidden).map(_ => abilityById[_.id])
+  let abilities: Ability[] = []
+  let hiddenAbilities: Ability[] = []
+
+  pokemonData.abilities.forEach(abilityRel => {
+    (abilityRel.hidden ? hiddenAbilities : abilities).push(
+      abilityById[abilityRel.id]
+    )
+  })
 
   const captureRate = stats.captureRate(
     pokemonData.captureRate,
@@ -61,7 +67,7 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
       )}
 
       {allLoaded && (
-        <dl className="w-full px-10 space-y-1">
+        <dl className="w-full px-2 sm:px-10 space-y-1">
           <Datum label="National Dex #">
             {species.nationalPokedexNumber}
           </Datum>
