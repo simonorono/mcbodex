@@ -53,10 +53,9 @@ export default function SearchByType() {
 
       <div className="py-4">
         <Checkbox
-          helpText="Show single-typed Pokémon if only one type is selected"
           id="strict"
           initialValue={strict}
-          label="Strict"
+          label="Show single-typed Pokémon if only one type is selected"
           onChange={setIfStrict}
         />
       </div>
