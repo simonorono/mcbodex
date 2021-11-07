@@ -25,7 +25,7 @@ declare interface Pokemon {
   id: number,
   code: string,
   name: string,
-  typeIds: number[],
+  types: TypePokemonRelationship[],
   speciesId: number,
 }
 
@@ -42,6 +42,11 @@ declare interface Type {
   code: string,
   name: string,
   damageRelationships: DamageRelationShip[]
+}
+
+declare interface TypePokemonRelationship {
+  slot: number,
+  typeId: number,
 }
 
 declare interface DamageRelationShip {

@@ -26,6 +26,7 @@ const pokemonQuery = `
       id
       code: name
       types: pokemon_v2_pokemontypes {
+        slot
         type: pokemon_v2_type {
           id
         }
@@ -86,8 +87,8 @@ async function loadPokemon() {
   const pokemons = pokemonResponse.data.pokemon.map(pkm => ({
     id: pkm.id,
     code: pkm.code,
-    typeIds: pkm.types.map(type => type.type.id),
-    speciesId: pkm.species.id
+    types: pkm.types.map(type => ([type.slot, type.type.id])),
+    speciesId: pkm.species.id,
   })).sort((a, b) => a.id - b.id)
 
   fs.writeFileSync('./data/raw/pokemon.json', JSON.stringify(pokemons), { flag: 'w+' })

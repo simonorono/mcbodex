@@ -1,9 +1,8 @@
 import React, { ReactNode } from 'react'
-import { useAppSelector } from "../store/hooks"
-import TypeBadge from "./TypeBadge"
-import { types } from "../utils"
-import Loader from "./Loader"
-import stats from "../utils/stats"
+import { useAppSelector } from '../store/hooks'
+import Loader from './Loader'
+import PokemonTypes from './PokemonTypes'
+import stats from '../utils/stats'
 
 const GENDER_UNIT = 100 / 8
 
@@ -74,15 +73,7 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
 
           <Datum label="Type">
             <div className="flex space-x-1">
-              {pokemon.typeIds.map(typeId => {
-                return (
-                  <TypeBadge
-                    key={typeId}
-                    type={types.byId[typeId]}
-                    className="inline-block text-sm font-medium w-[70px]"
-                  />
-                )
-              })}
+              <PokemonTypes typesRels={pokemon.types} />
             </div>
           </Datum>
 

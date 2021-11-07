@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Checkbox from "../components/Checkbox"
-import PokemonList from "../components/PokemonList"
-import TypeSelector from "../components/TypeSelector"
-import { useAppSelector } from "../store/hooks"
-import { frontPokemonOfSpeciesByPredicate } from "../store/selectors"
+import Checkbox from '../components/Checkbox'
+import PokemonList from '../components/PokemonList'
+import TypeSelector from '../components/TypeSelector'
+import { useAppSelector } from '../store/hooks'
+import { frontPokemonOfSpeciesByPredicate } from '../store/selectors'
 import { title } from '../utils'
 
 export default function SearchByType() {
@@ -22,14 +22,16 @@ export default function SearchByType() {
       return false
     }
 
+    const pokemonTypesIds = pkm.types.map(_ => _.typeId)
+
     const types = [firstType?.id, secondType?.id]
       .filter(Boolean) as number[]
 
-    if (strict && pkm.typeIds.length !== types.length) {
+    if (strict && pokemonTypesIds.length !== types.length) {
       return false
     }
 
-    return types.every(typeId => pkm.typeIds.includes(typeId))
+    return types.every(typeId => pokemonTypesIds.includes(typeId))
   }) || []
 
   return (

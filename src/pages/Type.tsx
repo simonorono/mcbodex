@@ -1,11 +1,11 @@
 import React, { ReactElement, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { frontPokemonOfSpeciesByPredicate } from '../store/selectors'
 import TypeBadge from '../components/TypeBadge'
 import PokemonList from '../components/PokemonList'
 import Loader from '../components/Loader'
 import { useAppSelector } from '../store/hooks'
-import { frontPokemonOfSpeciesByPredicate } from "../store/selectors"
-import { title, types } from "../utils"
+import { title, types } from '../utils'
 
 function typeEffectiveness(type: Type): ReactElement {
   const data = {
@@ -54,7 +54,7 @@ export default function Type() {
       return false
     }
 
-    return pkm.typeIds.includes(type.id)
+    return pkm.types.map(_ => _.typeId).includes(type.id)
   })
 
   return (

@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import LazyImage from './LazyImage'
-import TypeBadge from './TypeBadge'
-import { images, types } from '../utils'
+import PokemonTypes from './PokemonTypes'
+import { images } from '../utils'
 
 interface Props {
   pokemon: Pokemon,
@@ -34,15 +34,7 @@ export default function PokemonCard({ pokemon, number }: Props) {
         </div>
 
         <div className="flex space-x-1">
-          {pokemon.typeIds.map(typeId => {
-            return (
-              <TypeBadge
-                key={typeId}
-                type={types.byId[typeId]}
-                className="inline-block text-sm font-medium w-[70px]"
-              />
-            )
-          })}
+          <PokemonTypes typesRels={pokemon.types} />
         </div>
       </div>
     </div>
