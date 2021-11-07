@@ -4,7 +4,7 @@ import { types } from '../utils'
 
 export default function TypeList() {
   return (
-    <div className="p-10 border rounded-md">
+    <div className="p-10 border border-gray-300 rounded-md">
       <h2 className="text-2xl">Pokémon types</h2>
 
       <div

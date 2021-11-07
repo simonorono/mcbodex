@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import rng from 'seedrandom'
 import { getAllPokemon, getAllSpecies } from '../api'
 import { cleanPokemon, cleanSpecies } from "./specialCases"
 
@@ -9,6 +10,7 @@ interface PokemonState {
   speciesByCode: { [code: string]: PokemonSpecies },
   pokemonById: { [id: number]: Pokemon },
   loaded: boolean,
+  pokemonOfTheDay?: Pokemon,
 }
 
 const initialState: PokemonState = {
@@ -65,6 +67,17 @@ const pokemonSlice = createSlice({
       (state, action: PayloadAction<[PokemonSpecies[], Pokemon[]]>) => {
         state.allSpecies = cleanSpecies(action.payload[0])
         state.allPokemon = cleanPokemon(action.payload[1])
+
+        // Seed the random number generation with the current date. This is
+        // done to ensure the same random number is generated across all
+        // browsers.
+        let randomNumber = rng((new Date()).toISOString().substring(0, 10)).int32()
+
+        if (randomNumber < 0) {
+          randomNumber = randomNumber * -1
+        }
+
+        state.pokemonOfTheDay = state.allPokemon[randomNumber % state.allSpecies.length]
 
         state.speciesById = state.allSpecies.reduce(
           (byId, species) => {
