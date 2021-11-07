@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { useLocation, Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Disclosure } from '@headlessui/react'
 import { useAppSelector } from '../store/hooks'
 import { types } from '../utils'

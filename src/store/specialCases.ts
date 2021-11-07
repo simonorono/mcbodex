@@ -22,7 +22,7 @@ function removeTotemPokemon(species: PokemonSpecies): PokemonSpecies {
 export function cleanSpecies(species: PokemonSpecies[]): PokemonSpecies[] {
   let newSpecies: PokemonSpecies[] = []
 
-  for(let i = 0; i < species.length; i++) {
+  for (let i = 0; i < species.length; i++) {
     let specy = species[i]
 
     specy = removeTotemPokemon(specy)

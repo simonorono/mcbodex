@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { getAllSpecies, getAllPokemon } from '../api'
+import { getAllPokemon, getAllSpecies } from '../api'
 import { cleanPokemon, cleanSpecies } from "./specialCases"
 
 interface PokemonState {

@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom'
 
 import BackToTopButton from './components/BackToTopButton'
