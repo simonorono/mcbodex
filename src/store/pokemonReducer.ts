@@ -22,20 +22,25 @@ const initialState: PokemonState = {
 
 function getPokemonName(species: PokemonSpecies, pokemon: Pokemon): string {
   const SUFFIX_MAP: { [code: string]: string[] } = {
-    'alola': ['Alolan'],
-    'galar': ['Galarian'],
-    'mega': ['Mega'],
-    'gmax': ['Gigantamax'],
-    'mega-x': ['Mega', 'X'],
-    'mega-y': ['Mega', 'Y'],
-    'primal': ['Primal'],
+    '-alola': ['Alolan'],
+    '-eternamax': ['Eternamax'],
+    '-galar': ['Galarian'],
+    '-gmax': ['Gigantamax'],
+    '-mega': ['Mega'],
+    '-mega-x': ['Mega', 'X'],
+    '-mega-y': ['Mega', 'Y'],
+    '-primal': ['Primal'],
   }
 
-  const suffix = pokemon.code.split('-').slice(1).join('-')
+  let variant: string[] = []
 
-  const variant = SUFFIX_MAP[suffix]
+  Object.entries(SUFFIX_MAP).forEach((key) => {
+    if (pokemon.code.endsWith(key[0])) {
+      variant = key[1]
+    }
+  })
 
-  if (variant) {
+  if (variant.length > 0) {
     return `${variant[0]} ${species.name}${variant[1] ? ` ${variant[1]}` : ''}`
   }
 
