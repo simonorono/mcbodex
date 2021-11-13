@@ -38,7 +38,7 @@ export default function PokemonData({ pokemon }: Props) {
             <LazyImage
               width={MAX_IMAGE_DIMENSION}
               height={MAX_IMAGE_DIMENSION}
-              src={images.artworkForPokemon(pokemon.id)}
+              src={images.dataPageImage(pokemon.id)}
               alt={`artwork for ${pokemon.name}`}
               className="w-full h-full sm:min-w-[450px]"
             />
