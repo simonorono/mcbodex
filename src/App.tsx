@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from 'react'
-import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import BackToTopButton from './components/BackToTopButton'
 import Loader from "./components/Loader"
@@ -9,16 +9,6 @@ import routes from './routes'
 import { loadAllPokemon, loadPokedexList } from './store'
 import { useAppDispatch, useAppSelector } from './store/hooks'
 import { classNames } from "./utils"
-
-function scrollToTopInner(props: any) {
-  const { history } = props
-
-  useEffect(() => history.listen(() => window.scrollTo(0, 0)))
-
-  return null
-}
-
-const ScrollToTop = withRouter(scrollToTopInner)
 
 function App() {
   const dispatch = useAppDispatch()
@@ -42,11 +32,15 @@ function App() {
 
         <main className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 w-full">
           <Suspense fallback={<Loader />}>
-            <Switch>
-              {routes.map((route, i) => (
-                <Route key={i} {...route} />
-              ))}
-            </Switch>
+            <Routes>
+              {routes.map((route, i) => {
+                const Component = route.component
+
+                return (
+                  <Route key={i} path={route.path} element={<Component />} />
+                )
+              })}
+            </Routes>
           </Suspense>
         </main>
 
@@ -54,8 +48,6 @@ function App() {
           <div className="h-20" />
         </footer>
       </div>
-
-      <ScrollToTop />
 
       <BackToTopButton />
     </Router>
