@@ -23,7 +23,7 @@ export default function Species() {
   const speciesByCode = useAppSelector(state => state.pokemon.speciesByCode)
   const pokemonById = useAppSelector(state => state.pokemon.pokemonById)
 
-  const { id } = useParams<{ id: string }>()
+  const { id } = useParams() as { id: string }
 
   const species = speciesById[Number(id)] || speciesByCode[id]
   const pokemon = species && species.pokemonIds.map(_ => pokemonById[_]) || []

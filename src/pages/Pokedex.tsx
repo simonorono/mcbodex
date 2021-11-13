@@ -11,7 +11,7 @@ export default function Pokedex() {
     document.title = title(game && `${game.name} Pokédex`)
   }, [])
 
-  const { code } = useParams<{ code: string }>()
+  const { code } = useParams() as { code: string }
 
   const pokedexLoaded = useAppSelector(state => state.pokedex.loaded)
   const pokedexByCode = useAppSelector(state => state.pokedex.pokedexByCode)

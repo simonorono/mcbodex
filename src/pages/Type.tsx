@@ -42,7 +42,7 @@ export default function Type() {
     document.title = title(type && `${type.name} Type`)
   })
 
-  const { code } = useParams<{ code: string }>()
+  const { code } = useParams() as { code: string }
 
   const type = types.byCode[code]
 

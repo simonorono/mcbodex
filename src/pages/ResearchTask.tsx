@@ -12,7 +12,7 @@ export default function ResearchTask() {
 
   const researchTaskGroups = researchTasksRaw as ResearchTaskGroup[]
 
-  const { code } = useParams<{ code: string }>()
+  const { code } = useParams() as { code: string }
 
   const researchTaskGroup = researchTaskGroups.find(_ => _.code === code)
 
