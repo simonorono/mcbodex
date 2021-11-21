@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { version } from '../../package.json'
 import { title } from "../utils"
 
 const A = (props: { [key: string]: any }) => {
@@ -30,7 +29,7 @@ export default function About() {
 
   return (
     <>
-      <h1 className="page-title">{<>RDex <span className="text-sm font-normal">({version})</span></>}</h1>
+      <h1 className="page-title">RDex</h1>
       <Subtitle>What is this?</Subtitle>
 
       <P>
