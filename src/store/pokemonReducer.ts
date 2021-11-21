@@ -3,6 +3,40 @@ import rng from 'seedrandom'
 import { getAllPokemon, getAllSpecies } from '../api'
 import { cleanPokemon, cleanSpecies } from "./specialCases"
 
+const SUFFIX_MAP: { [code: string]: string[] } = {
+  '-alola': ['Alolan'],
+  '-eternamax': ['Eternamax'],
+  '-galar': ['Galarian'],
+  '-gmax': ['Gigantamax'],
+  '-mega': ['Mega'],
+  '-mega-x': ['Mega', 'X'],
+  '-mega-y': ['Mega', 'Y'],
+  '-primal': ['Primal'],
+}
+
+const NAME_EXCEPTIONS: { [code: string]: string } = {
+  // Zacian & Zamazenta
+  '-hero': 'Hero of Many Battles',
+  'zacian-crowned': 'Crowned Sword',
+  'zamazenta-crowned': 'Crowned Shield',
+
+  // Shaymin
+  '-land': 'Land Forme',
+  '-sky': 'Sky Forme',
+
+  // Tornadus, Thundurus & Landorus
+  '-incarnate': 'Incarnate Forme',
+  '-therian': 'Therian Forme',
+  '-ordinary': 'Ordinary Form',
+  '-resolute': 'Resolute Form',
+
+  // Deoxys
+  '-normal': 'Normal Forme',
+  '-attack': 'Attack Forme',
+  '-defense': 'Defense Forme',
+  '-speed': 'Speed! Forme',
+}
+
 interface PokemonState {
   allSpecies: PokemonSpecies[],
   allPokemon: Pokemon[],
@@ -23,24 +57,20 @@ const initialState: PokemonState = {
 }
 
 function getPokemonName(species: PokemonSpecies, pokemon: Pokemon): string {
-  const SUFFIX_MAP: { [code: string]: string[] } = {
-    '-alola': ['Alolan'],
-    '-eternamax': ['Eternamax'],
-    '-galar': ['Galarian'],
-    '-gmax': ['Gigantamax'],
-    '-mega': ['Mega'],
-    '-mega-x': ['Mega', 'X'],
-    '-mega-y': ['Mega', 'Y'],
-    '-primal': ['Primal'],
+  for (const key in NAME_EXCEPTIONS) {
+    if (pokemon.code.endsWith(key)) {
+      return NAME_EXCEPTIONS[key]
+    }
   }
 
   let variant: string[] = []
 
-  Object.entries(SUFFIX_MAP).forEach((key) => {
-    if (pokemon.code.endsWith(key[0])) {
-      variant = key[1]
+  for (const key in SUFFIX_MAP) {
+    if (pokemon.code.endsWith(key)) {
+      variant = SUFFIX_MAP[key]
+      break
     }
-  })
+  }
 
   if (variant.length > 0) {
     return `${variant[0]} ${species.name}${variant[1] ? ` ${variant[1]}` : ''}`
