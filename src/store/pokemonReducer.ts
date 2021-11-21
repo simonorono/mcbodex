@@ -98,10 +98,12 @@ const pokemonSlice = createSlice({
         state.allSpecies = cleanSpecies(action.payload[0])
         state.allPokemon = cleanPokemon(action.payload[1])
 
+        const now = new Date;
+
         // Seed the random number generation with the current date. This is
         // done to ensure the same random number is generated across all
         // browsers.
-        let randomNumber = rng((new Date()).toISOString().substring(0, 10)).int32()
+        let randomNumber = rng(`${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`).int32()
 
         if (randomNumber < 0) {
           randomNumber = randomNumber * -1
