@@ -26,7 +26,7 @@ const typeClasses: TypeClassesMap = {
   },
 
   flying: {
-    border: 'border-violet-300',
+    border: 'border-violet-400',
     background: 'bg-violet-200',
     color: 'text-black'
   },
