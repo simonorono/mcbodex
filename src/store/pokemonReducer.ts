@@ -35,6 +35,11 @@ const NAME_EXCEPTIONS: { [code: string]: string } = {
   '-attack': 'Attack Forme',
   '-defense': 'Defense Forme',
   '-speed': 'Speed! Forme',
+
+  // Zygarde
+  'zygarde': '50% Forme',
+  'zygarde-10': '10% Forme',
+  'zygarde-complete': 'Complete Forme'
 }
 
 interface PokemonState {

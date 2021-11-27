@@ -8,7 +8,11 @@ const speciesQuery = `
       code: name
       order
       pokemons: pokemon_v2_pokemons {
-        id
+        id,
+        code: name,
+        species: pokemon_v2_pokemonspecy {
+          id
+        }
       }
       species_name: pokemon_v2_pokemonspeciesnames(where: {pokemon_v2_language: {name: {_eq: "en"}}}) {
         name
@@ -67,6 +71,21 @@ function getPokemonDataQuery(id) {
   `
 }
 
+function filterPokemon(pokemon) {
+  return pokemon.filter(pkm => {
+    switch (pkm.species.id) {
+      case 25: // pikachu
+        return ['pikachu', 'pikachu-gmax'].includes(pkm.code)
+
+      case 718: // zygarde
+        return ['zygarde', 'zygarde-10', 'zygarde-complete'].includes(pkm.code)
+
+      default:
+        return true
+    }
+  })
+}
+
 async function loadSpecies() {
   const speciesResponse = await executeQuery(speciesQuery)
 
@@ -75,7 +94,7 @@ async function loadSpecies() {
     code: spcy.code,
     name: spcy.species_name[0].name,
     number: spcy.national_dex_number[0].number, // National Pokédex Number
-    pokemonIds: spcy.pokemons.map(pkm => pkm.id).sort((a, b) => a - b)
+    pokemonIds: filterPokemon(spcy.pokemons).map(pkm => pkm.id).sort((a, b) => a - b)
   })).sort((a, b) => a.id - b.id)
 
   fs.writeFileSync('./data/raw/species.json', JSON.stringify(species), { flag: 'w+' })
@@ -84,7 +103,7 @@ async function loadSpecies() {
 async function loadPokemon() {
   const pokemonResponse = await executeQuery(pokemonQuery)
 
-  const pokemons = pokemonResponse.data.pokemon.map(pkm => ({
+  const pokemons = filterPokemon(pokemonResponse.data.pokemon).map(pkm => ({
     id: pkm.id,
     code: pkm.code,
     types: pkm.types.map(type => ([type.slot, type.type.id])),
