@@ -9,7 +9,7 @@ export default function Example() {
   const onLinkClicked = () => setOpen(false)
 
   return (
-    <>
+    <div>
       <button
         onClick={() => setOpen(true)}
         className='h-full rounded-full flex items-center text-white focus:outline-none'
@@ -74,6 +74,6 @@ export default function Example() {
           </div>
         </Dialog>
       </Transition.Root>
-    </>
+    </div>
   )
 }

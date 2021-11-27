@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import { ShortcutProvider } from 'react-keybind'
 
 import App from './App'
-import store from './store'
 
+import store from './store'
 import './css/index.css'
 import './css/aspect-ratio.css'
 
@@ -15,7 +16,9 @@ if ('serviceWorker' in navigator) {
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <ShortcutProvider>
+        <App />
+      </ShortcutProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('app')

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import SideOver from './SideOver'
+import SearchButton from './SearchButton'
 
 import desktopLogo from '/media/RDex.png'
 import mobileLogo from '/media/RD.png'
@@ -27,7 +28,8 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex items-center space-x-4">
+            <SearchButton />
             <SideOver />
           </div>
         </div>
