@@ -16,11 +16,6 @@ module.exports = {
       primary: colors.emerald,
       ...colors,
     },
-    extend: {
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
-      }
-    },
   },
   variants: {
     extend: {},
