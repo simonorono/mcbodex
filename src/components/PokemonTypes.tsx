@@ -13,7 +13,7 @@ export default function PokemonTypes({ typesRels }: PokemonTypesProps) {
         <TypeBadge
           key={typeRel.slot}
           type={types.byId[typeRel.typeId]}
-          className="inline-block text-sm font-medium w-[70px]"
+          className="inline-block text-sm font-medium w-[5em]"
         />
       ))}
     </>

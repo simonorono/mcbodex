@@ -31,7 +31,7 @@ export default function TypeDamageBadge({ effect, type, className }: Props) {
       <span className={`inline-block w-[80px] h-full text-center px-2 border-r ${typeClasses.border}`}>
         {type.name}
       </span>
-      <span className="inline-block h-full text-center bg-white text-black w-[32px]">
+      <span className="inline-block h-full text-center bg-white text-black w-[2rem]">
         ×{effectText(effect)}
       </span>
     </div>
