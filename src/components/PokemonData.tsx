@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { images } from "../utils"
 import PokemonDetails from "./PokemonDetails"
+import PokemonTypeDefenses from "./PokemonTypeDefenses"
 import LazyImage from "./LazyImage"
 
 const MAX_IMAGE_DIMENSION = 450
@@ -19,7 +20,7 @@ interface Props {
 }
 
 export default function PokemonData({ pokemon }: Props) {
-  const [pokemonData, setPokemonData] = useState(null as PokemonData|null)
+  const [pokemonData, setPokemonData] = useState(null as PokemonData | null)
 
   const dataFile = pokemons[key(String(pokemon.id))]
 
@@ -30,22 +31,33 @@ export default function PokemonData({ pokemon }: Props) {
   return (
     <>
       {pokemon && pokemonData && (
-        <div className="flex flex-col items-center md:flex-row md:items-start max-w-4xl mx-auto">
-          <div
-            className="border bg-gray-50 min-w-[90%] sm:min-w-[450px]"
-            style={imageContainerStyle}
-          >
-            <LazyImage
-              width={MAX_IMAGE_DIMENSION}
-              height={MAX_IMAGE_DIMENSION}
-              src={images.dataPageImage(pokemon.id)}
-              alt={`artwork for ${pokemon.name}`}
-              className="w-full h-full sm:min-w-[450px]"
-            />
+        <div className="max-w-4xl mx-auto space-y-4">
+          <div className="flex flex-col items-center md:flex-row md:items-start">
+            <div
+              className="border bg-gray-50 min-w-[90%] sm:min-w-[450px]"
+              style={imageContainerStyle}
+            >
+              <LazyImage
+                width={MAX_IMAGE_DIMENSION}
+                height={MAX_IMAGE_DIMENSION}
+                src={images.dataPageImage(pokemon.id)}
+                alt={`artwork for ${pokemon.name}`}
+                className="w-full h-full sm:min-w-[450px]"
+              />
+            </div>
+
+            <div className="flex-grow flex flex-col justify-center w-full mt-10 md:mt-0 px-2 sm:px-10">
+              <PokemonDetails pokemon={pokemon} pokemonData={pokemonData} />
+            </div>
           </div>
 
-          <div className="flex-grow flex justify-center w-full mt-10 md:mt-0">
-            <PokemonDetails pokemon={pokemon} pokemonData={pokemonData} />
+          <div className="flex flex-col md:flex-row md:space-x-10">
+            <div className="flex-1" />
+
+            <PokemonTypeDefenses
+              className="flex-1"
+              pokemon={pokemon}
+            />
           </div>
         </div>
       )}
