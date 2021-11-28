@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import rng from 'seedrandom'
 import { getAllPokemon, getAllSpecies } from '../api'
-import { cleanPokemon, cleanSpecies } from "./specialCases"
 
 const SUFFIX_MAP: { [code: string]: string[] } = {
   '-alola': ['Alolan'],
@@ -100,8 +99,8 @@ const pokemonSlice = createSlice({
     builder.addCase(
       loadAllPokemon.fulfilled,
       (state, action: PayloadAction<[PokemonSpecies[], Pokemon[]]>) => {
-        state.allSpecies = cleanSpecies(action.payload[0])
-        state.allPokemon = cleanPokemon(action.payload[1])
+        state.allSpecies = action.payload[0]
+        state.allPokemon = action.payload[1]
 
         const now = new Date;
 

@@ -73,6 +73,10 @@ function getPokemonDataQuery(id) {
 
 function filterPokemon(pokemon) {
   return pokemon.filter(pkm => {
+    if (pkm.code.includes('totem')) {
+      return false
+    }
+
     switch (pkm.species.id) {
       case 25: // pikachu
         return ['pikachu', 'pikachu-gmax'].includes(pkm.code)
