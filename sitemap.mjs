@@ -31,7 +31,7 @@ const links = [
   {
     url: '/search-by-type',
     changefreq: 'weekly',
-    priority: 0.9,
+    priority: 1.0,
     lastmod: now
   }
 ]
@@ -40,17 +40,8 @@ games.forEach(game => {
   links.push({
     url: `/pokedex/${game.code}`,
     changefreq: 'weekly',
-    priority: 0.9,
+    priority: 1.0,
     lastmod: now
-  })
-})
-
-pokemon.forEach(species => {
-  links.push({
-    url: `/species/${species.id}`,
-    changefreq: 'weekly',
-    priority: 0.9,
-    lastmod: now,
   })
 })
 
@@ -58,7 +49,7 @@ pokemon.forEach(species => {
   links.push({
     url: `/species/${species.code}`,
     changefreq: 'weekly',
-    priority: 0.9,
+    priority: 1.0,
     lastmod: now,
   })
 })
@@ -67,7 +58,7 @@ researchTaskGroups.forEach(researchTaskGroup => {
   links.push({
     url: `/research-task/${researchTaskGroup.code}`,
     changefreq: 'weekly',
-    priority: 0.9,
+    priority: 1.0,
     lastmod: now
   })
 })
@@ -76,7 +67,7 @@ types.forEach(type => {
   links.push({
     url: `/type/${type.code}`,
     changefreq: 'weekly',
-    priority: 0.9,
+    priority: 1.0,
     lastmod: now
   })
 })
