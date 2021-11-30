@@ -14,8 +14,8 @@ export default function PokemonCard({ pokemon, number }: Props) {
   const species = useAppSelector(state => state.pokemon.speciesById[pokemon.speciesId])
 
   return (
-    <Link to={`/species/${species.code}`} className="hover:underline">
-      <div className="w-full flex items-center p-2 border border-gray-300 rounded-xl">
+    <Link to={`/species/${species.code}`}>
+      <div className="w-full flex items-center p-2 border border-gray-300 rounded-xl group">
         <LazyImage
           width={80} height={80}
           className="w-20 h-20 bg-gray-300 rounded-full flex-shrink-0"
@@ -24,7 +24,7 @@ export default function PokemonCard({ pokemon, number }: Props) {
         />
         <div className="ml-6 flex-grow truncate">
           <div className="flex flex-col mb-2">
-            <h3 className="text-gray-900 text-sm font-medium truncate">
+            <h3 className="text-gray-900 text-sm font-medium truncate group-hover:underline">
               {number}. {species.name}
             </h3>
             {(species.name !== pokemon.name) && (
