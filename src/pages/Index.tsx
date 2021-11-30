@@ -16,14 +16,14 @@ export default function Index() {
       <p>RDex is a Pokédex navigator and general Pokémon database.</p>
 
       <div className="pt-8 space-x-0 space-y-4 md:space-y-0 md:space-x-4 grid grid-cols-1 md:grid-cols-2">
-        <div className="space-y-4">
-          <PokemonOfTheDay />
-
-          <TypeList />
-        </div>
-
         <div>
           <PokedexList />
+        </div>
+
+        <div className="space-y-4">
+          <TypeList />
+
+          <PokemonOfTheDay />
         </div>
       </div>
     </>
