@@ -14,8 +14,8 @@ type TypeClassesMap = { [key: string]: TypeClasses }
 
 const typeClasses: TypeClassesMap = {
   normal: {
-    border: 'border-warmGray-400',
-    background: 'bg-warmGray-200',
+    border: 'border-stone-400',
+    background: 'bg-stone-200',
     color: 'text-black'
   },
 
@@ -62,8 +62,8 @@ const typeClasses: TypeClassesMap = {
   },
 
   steel: {
-    border: 'border-blueGray-400',
-    background: 'bg-blueGray-300',
+    border: 'border-slate-400',
+    background: 'bg-slate-300',
     color: 'text-black'
   },
 
@@ -111,7 +111,7 @@ const typeClasses: TypeClassesMap = {
 
   dark: {
     border: 'border-black',
-    background: 'bg-warmGray-700',
+    background: 'bg-stone-700',
     color: 'text-white'
   },
 

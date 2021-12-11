@@ -22,7 +22,7 @@ export default function PokemonCard({ pokemon, number }: Props) {
           src={images.frontSpriteForPokemonId(pokemon.id)}
           alt={`front sprite for ${pokemon.name}`}
         />
-        <div className="ml-6 flex-grow truncate">
+        <div className="ml-6 grow truncate">
           <div className="flex flex-col mb-2">
             <h3 className="text-gray-900 text-sm font-medium truncate group-hover:underline">
               {number}. {species.name}

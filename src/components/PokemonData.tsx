@@ -46,7 +46,7 @@ export default function PokemonData({ pokemon }: Props) {
               />
             </div>
 
-            <div className="flex-grow flex flex-col justify-center w-full mt-10 md:mt-0 px-2 sm:px-10">
+            <div className="grow flex flex-col justify-center w-full mt-10 md:mt-0 px-2 sm:px-10">
               <PokemonDetails pokemon={pokemon} pokemonData={pokemonData} />
             </div>
           </div>
