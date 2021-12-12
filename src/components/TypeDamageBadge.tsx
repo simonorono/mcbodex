@@ -28,10 +28,10 @@ export default function TypeDamageBadge({ effect, type, className }: Props) {
       "inline-block overflow-hidden border rounded-full", 
       className || '', ...Object.values(typeClasses)
     )}>
-      <span className={`inline-block w-[80px] h-full text-center px-2 border-r ${typeClasses.border}`}>
+      <span className={`inline-block w-[5rem] h-full text-center px-2 border-r py-1 ${typeClasses.border}`}>
         {type.name}
       </span>
-      <span className="inline-block h-full text-center bg-white text-black w-[2rem]">
+      <span className="inline-block h-full text-center bg-white text-black w-[2rem] py-1">
         ×{effectText(effect)}
       </span>
     </div>
