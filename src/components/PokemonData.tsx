@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { images } from "../utils"
 import LazyImage from "./LazyImage"
+import BaseStats from './pokemon_data/BaseStats'
 import PokemonDetails from "./pokemon_data/PokemonDetails"
 import PokemonTypeDefenses from "./pokemon_data/PokemonTypeDefenses"
 
@@ -31,7 +32,7 @@ export default function PokemonData({ pokemon }: Props) {
   return (
     <>
       {pokemon && pokemonData && (
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-4xl mx-auto space-y-6">
           <div className="flex flex-col items-center md:flex-row md:items-start">
             <div
               className="border bg-gray-50 min-w-[90%] sm:min-w-[450px]"
@@ -51,12 +52,15 @@ export default function PokemonData({ pokemon }: Props) {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row md:space-x-10">
-            <div className="flex-1" />
-
+          <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
             <PokemonTypeDefenses
               className="flex-1"
               pokemon={pokemon}
+            />
+
+            <BaseStats
+              className="flex-1"
+              pokemonData={pokemonData}
             />
           </div>
         </div>
