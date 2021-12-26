@@ -33,7 +33,7 @@ export default function AbilityModal({ ability, isOpen, setIsOpen }: AbilityModa
             </button>
           </div>
 
-          <div className="sm:flex sm:items-start space-y-2 space-x-4 sm:space-y-0">
+          <div className="sm:flex sm:items-start space-y-2 sm:space-x-4 sm:space-y-0">
             <div className={classNames(
               "h-12 w-12 mx-auto rounded-full bg-primary-100",
               "flex justify-center items-center shrink-0"
