@@ -3,7 +3,7 @@ import { useAppSelector } from '../../store/hooks'
 import Loader from '../Loader'
 import PokemonTypes from '../PokemonTypes'
 import Abilities from './Abilities'
-import stats from '../../utils/stats'
+import { stats } from '../../utils'
 
 const GENDER_UNIT = 100 / 8
 

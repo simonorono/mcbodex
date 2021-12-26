@@ -1,4 +1,5 @@
 import images from './images'
+import stats from './stats'
 import types from './types'
 import { homepage } from "../../package.json"
 
@@ -17,4 +18,4 @@ export function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export { images, types }
+export { images, stats, types }

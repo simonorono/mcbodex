@@ -30,14 +30,26 @@ class Stats {
     )
   }
 
+  private static baseMath(base: number, level: number, iv:number, ev: number) {
+    return Math.floor((((2 * base + iv + (ev / 4)) * level) / 100))
+  }
+
+  private static hp(base: number, level: number, iv: number, ev: number): number {
+    const baseMath = Stats.baseMath(base, level, iv, ev)
+
+    return baseMath + level + 10
+  }
+
+  private static stat(base: number, level: number, iv: number, ev: number, nature: number): number {
+    const baseMath = Stats.baseMath(base, level, iv, ev)
+
+    return Math.floor((baseMath + 5) * nature)
+  }
+
   getStat(code: string, data: PokemonData): number {
     const stat = this.byCode[code]
 
     return data.stats.filter(statRel => statRel.id === stat.id)[0].base
-  }
-
-  private static hp(base: number, level: number, iv: number, ev: number): number {
-    return (((2 * base + iv + (ev / 4)) * level) / 100) + level + 10
   }
 
   /**
@@ -58,6 +70,22 @@ class Stats {
    */
   maxHp(base: number): number {
     return Stats.hp(base, 100, 31, 252)
+  }
+
+  /**
+   * Calculates the minimum of any non-HP stat at level 100 with
+   * IV and EV both equal to 0 and a hindering nature.
+   */
+  minStat(base: number): number {
+    return Stats.stat(base, 100, 0, 0, 0.9)
+  }
+
+  /**
+   * Calculates the minimum of any non-HP stat at level 100 with
+   * IV equal to 31, EV equal 252 and a beneficial nature.
+   */
+  maxStat(base: number): number {
+    return Stats.stat(base, 100, 31, 252, 1.1)
   }
 
   /**
