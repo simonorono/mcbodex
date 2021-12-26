@@ -11,6 +11,8 @@ const SUFFIX_MAP: { [code: string]: string[] } = {
   '-mega-x': ['Mega', 'X'],
   '-mega-y': ['Mega', 'Y'],
   '-primal': ['Primal'],
+  '-ice-rider': ['Ice Ryder'],
+  '-shadow-rider': ['Shadow Ryder']
 }
 
 const NAME_EXCEPTIONS: { [code: string]: string } = {
@@ -38,7 +40,13 @@ const NAME_EXCEPTIONS: { [code: string]: string } = {
   // Zygarde
   'zygarde': '50% Forme',
   'zygarde-10': '10% Forme',
-  'zygarde-complete': 'Complete Forme'
+  'zygarde-complete': 'Complete Forme',
+
+  // Urshifu
+  'urshifu-single-strike' : 'Single Strike Style',
+  'urshifu-single-strike-gmax' : 'Gigantamax Urshifu (Single Strike Style)',
+  'urshifu-rapid-strike' : 'Rapid Strike Style',
+  'urshifu-rapid-strike-gmax' : 'Gigantamax Urshifu (Rapid Strike Style)',
 }
 
 interface PokemonState {
