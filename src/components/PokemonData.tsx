@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { images } from "../utils"
-import PokemonDetails from "./PokemonDetails"
-import PokemonTypeDefenses from "./PokemonTypeDefenses"
 import LazyImage from "./LazyImage"
+import PokemonDetails from "./pokemon_data/PokemonDetails"
+import PokemonTypeDefenses from "./pokemon_data/PokemonTypeDefenses"
 
 const MAX_IMAGE_DIMENSION = 450
 

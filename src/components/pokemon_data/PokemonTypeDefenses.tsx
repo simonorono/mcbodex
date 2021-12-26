@@ -1,6 +1,6 @@
 import React from 'react'
-import types from '../utils/types'
-import TypeDamageBadge from './TypeDamageBadge'
+import types from '../../utils/types'
+import TypeDamageBadge from '../TypeDamageBadge'
 
 interface Props {
   pokemon: Pokemon,

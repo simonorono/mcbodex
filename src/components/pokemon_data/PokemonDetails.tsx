@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react'
-import { useAppSelector } from '../store/hooks'
-import Loader from './Loader'
-import PokemonTypes from './PokemonTypes'
-import Abilities from './pokemon_details/Abilities'
-import stats from '../utils/stats'
+import { useAppSelector } from '../../store/hooks'
+import Loader from '../Loader'
+import PokemonTypes from '../PokemonTypes'
+import Abilities from './Abilities'
+import stats from '../../utils/stats'
 
 const GENDER_UNIT = 100 / 8
 
