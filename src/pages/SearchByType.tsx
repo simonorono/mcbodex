@@ -64,7 +64,7 @@ export default function SearchByType() {
 
       <div className="mt-8">
         <PokemonList
-          numberCallback={pokemon => speciesById[pokemon.speciesId].nationalPokedexNumber}
+          numberCallback={pokemon => pokemon.speciesId}
           pokemonList={pokemonList}
         />
       </div>

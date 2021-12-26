@@ -78,7 +78,7 @@ export default function Type() {
           </h2>
 
           <PokemonList
-            numberCallback={pokemon => speciesById[pokemon.speciesId].nationalPokedexNumber}
+            numberCallback={pokemon => pokemon.speciesId}
             pokemonList={pokemonList}
           />
         </>

@@ -33,7 +33,6 @@ declare interface PokemonSpecies {
   id: number,
   code: string,
   name: string,
-  nationalPokedexNumber: number,
   pokemonIds: number[],
 }
 

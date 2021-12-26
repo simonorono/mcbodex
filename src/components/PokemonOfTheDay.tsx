@@ -15,7 +15,7 @@ export default function PokemonOfTheDay() {
 
           <PokemonCard
             pokemon={pokemonOfTheDay}
-            number={speciesById[pokemonOfTheDay.speciesId].nationalPokedexNumber}
+            number={pokemonOfTheDay.speciesId}
           />
         </div>
       )}

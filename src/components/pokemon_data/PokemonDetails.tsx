@@ -59,7 +59,7 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
       {allLoaded && (
         <dl className="w-full space-y-1">
           <Datum label="National Dex #">
-            {species.nationalPokedexNumber}
+            {species.id}
           </Datum>
 
           <Datum label="Type">

@@ -17,9 +17,6 @@ const speciesQuery = `
       species_name: pokemon_v2_pokemonspeciesnames(where: {pokemon_v2_language: {name: {_eq: "en"}}}) {
         name
       }
-      national_dex_number: pokemon_v2_pokemondexnumbers(where: {pokemon_v2_pokedex: {name: {_eq: "national"}}}) {
-        number: pokedex_number
-      }
     }
   }
 `
@@ -97,7 +94,6 @@ async function loadSpecies() {
     id: spcy.id,
     code: spcy.code,
     name: spcy.species_name[0].name,
-    number: spcy.national_dex_number[0].number, // National Pokédex Number
     pokemonIds: filterPokemon(spcy.pokemons).map(pkm => pkm.id).sort((a, b) => a - b)
   })).sort((a, b) => a.id - b.id)
 

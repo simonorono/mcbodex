@@ -49,7 +49,6 @@ function transformSpecies(obj: any): PokemonSpecies {
     id: obj.id,
     code: obj.code,
     name: obj.name,
-    nationalPokedexNumber: obj.number,
     pokemonIds: obj.pokemonIds,
   }
 }

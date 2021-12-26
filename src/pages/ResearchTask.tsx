@@ -42,7 +42,7 @@ export default function ResearchTask() {
                 </h2>
 
                 <PokemonList
-                  numberCallback={pokemon => speciesById[pokemon.speciesId].nationalPokedexNumber}
+                  numberCallback={pokemon => pokemon.speciesId}
                   pokemonList={(
                     researchTask.pokemonIds.map(id => pokemonById[id])
                       .sort((pkm1, pkm2) => pkm1.speciesId - pkm2.speciesId)
