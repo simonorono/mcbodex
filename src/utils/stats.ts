@@ -1,4 +1,4 @@
-import stats from '../../data/raw/stats.json'
+import stats from '../../data/handcrafted/stats.json'
 
 const ALL_STATS: Stat[] = stats
 
