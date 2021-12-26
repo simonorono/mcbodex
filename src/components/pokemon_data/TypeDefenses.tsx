@@ -7,7 +7,7 @@ interface Props {
   className?: string
 }
 
-export default function PokemonTypeDefenses({ className, pokemon }: Props) {
+export default function TypeDefenses({ className, pokemon }: Props) {
   const pokemonTypes = pokemon.types.map(relationship => relationship.typeId)
 
   let effect = {} as { [id: number]: number }

@@ -3,7 +3,7 @@ import { images } from "../utils"
 import LazyImage from "./LazyImage"
 import BaseStats from './pokemon_data/BaseStats'
 import PokemonDetails from "./pokemon_data/PokemonDetails"
-import PokemonTypeDefenses from "./pokemon_data/PokemonTypeDefenses"
+import TypeDefenses from "./pokemon_data/TypeDefenses"
 
 const MAX_IMAGE_DIMENSION = 450
 
@@ -53,7 +53,7 @@ export default function PokemonData({ pokemon }: Props) {
           </div>
 
           <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
-            <PokemonTypeDefenses
+            <TypeDefenses
               className="flex-1"
               pokemon={pokemon}
             />
