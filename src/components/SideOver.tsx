@@ -22,10 +22,10 @@ export default function Example() {
         <Dialog as="div" static className="fixed inset-0 overflow-hidden" open={open} onClose={setOpen}>
           <div className="absolute inset-0 overflow-hidden">
             <Transition.Child
-              enter="ease-in-out duration-500"
+              enter="transition-opacity duration-200"
               enterFrom="opacity-0"
               enterTo="opacity-100"
-              leave="ease-in-out duration-500"
+              leave="transition-opacity duration-200"
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
@@ -35,10 +35,10 @@ export default function Example() {
             <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
               <Transition.Child
                 as={Fragment}
-                enter="transform transition ease-in-out duration-500 sm:duration-700"
+                enter="transition-transform ease-linear duration-300"
                 enterFrom="translate-x-full"
                 enterTo="translate-x-0"
-                leave="transform transition ease-in-out duration-500 sm:duration-700"
+                leave="transition-transform ease-linear duration-300"
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
