@@ -6,6 +6,7 @@ import Loader from "../components/Loader"
 import PokemonData from "../components/PokemonData"
 import Tabs from "../components/Tabs"
 import { title } from "../utils"
+import PokemonLinks from '../components/PokemonLinks'
 
 export default function Species() {
   useEffect(() => {
@@ -47,6 +48,8 @@ export default function Species() {
       {loaded && species && (
         <>
           <h1 className="page-title">{species.name}</h1>
+
+          <PokemonLinks species={species}/>
 
           <Tabs tabs={tabs} />
         </>
