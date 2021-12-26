@@ -46,7 +46,13 @@ export default function AbilityModal({ ability, isOpen, setIsOpen }: AbilityModa
                 {ability.name}
               </Dialog.Title>
 
-              <p className="text-sm">{ability.effect}</p>
+              <p className="text-sm">{ability.flavorText}</p>
+
+              <hr/>
+
+              <p className="text-sm">
+                {ability.effect || '(Detailed effect text not yet available).'}
+              </p>
             </div>
           </div>
         </div>
