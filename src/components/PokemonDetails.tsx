@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react'
 import { useAppSelector } from '../store/hooks'
 import Loader from './Loader'
 import PokemonTypes from './PokemonTypes'
+import Abilities from './pokemon_details/Abilities'
 import stats from '../utils/stats'
 
 const GENDER_UNIT = 100 / 8
@@ -42,17 +43,7 @@ function GenderRate({ femaleRate }: GenderRateProps) {
 
 export default function PokemonDetails({ pokemon, pokemonData }: Props) {
   const allLoaded = useAppSelector(state => state.pokemon.loaded && state.abilities.loaded)
-  const abilityById = useAppSelector(state => state.abilities.byId)
   const species = useAppSelector(state => state.pokemon.speciesById[pokemon.speciesId])
-
-  let abilities: Ability[] = []
-  let hiddenAbilities: Ability[] = []
-
-  pokemonData.abilities.forEach(abilityRel => {
-    (abilityRel.hidden ? hiddenAbilities : abilities).push(
-      abilityById[abilityRel.id]
-    )
-  })
 
   const captureRate = stats.captureRate(
     pokemonData.captureRate,
@@ -61,7 +52,7 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
 
   return (
     <>
-      {!allLoaded && (
+      {! allLoaded && (
         <Loader />
       )}
 
@@ -78,12 +69,7 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
           </Datum>
 
           <Datum label="Abilities">
-            {abilities.map(ability => (
-              <p key={ability.id}>{ability.name}</p>
-            ))}
-            {hiddenAbilities.map(ability => (
-              <p key={ability.id}>{ability.name} (hidden)</p>
-            ))}
+            <Abilities abilitiesRel={pokemonData.abilities} />
           </Datum>
 
           <Datum label="Gender Rate">
