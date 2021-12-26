@@ -27,6 +27,7 @@ export default function PokemonTypeDefenses({ className, pokemon }: Props) {
       <div className="flex flex-wrap justify-center mt-2 space-x-2 space-y-2">
         {types.all.map((type, idx) => (
           <TypeDamageBadge
+            key={type.id}
             className={idx === 0 ? 'mt-2 ml-2' : ''}
             type={type}
             effect={effect[type.id]}
