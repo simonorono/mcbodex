@@ -22,7 +22,7 @@ export default function TypeDefenses({ className, pokemon }: Props) {
 
   return (
     <div className={className}>
-      <h2 className="text-2xl text-left font-bold">Type effectiveness on {pokemon.name}</h2>
+      <h2 className="text-2xl text-left font-bold">Type effectiveness</h2>
 
       <div className="flex justify-center md:justify-start">
         <div className="grid grid-cols-3 justify-center mt-2 gap-2">
