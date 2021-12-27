@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { images } from "../utils"
 import LazyImage from "./LazyImage"
+import Loader from './Loader'
 import BaseStats from './pokemon_data/BaseStats'
 import PokemonDetails from "./pokemon_data/PokemonDetails"
 import TypeDefenses from "./pokemon_data/TypeDefenses"
@@ -21,16 +22,24 @@ interface Props {
 }
 
 export default function PokemonData({ pokemon }: Props) {
+  const [isLoading, setIsLoading] = useState(true)
   const [pokemonData, setPokemonData] = useState(null as PokemonData | null)
 
   const dataFile = pokemons[key(String(pokemon.id))]
 
   if (dataFile) {
-    dataFile().then(data => setPokemonData(data as PokemonData))
+    dataFile().then(data => {
+      setPokemonData(data as PokemonData)
+      setIsLoading(false)
+    })
   }
 
   return (
     <>
+      {isLoading && (
+        <Loader />
+      )}
+
       {pokemon && pokemonData && (
         <div className="max-w-4xl mx-auto space-y-6">
           <div className="flex flex-col items-center md:flex-row md:items-start">
