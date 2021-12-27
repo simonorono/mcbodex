@@ -16,6 +16,11 @@ const SUFFIX_MAP: { [code: string]: string[] } = {
 }
 
 const NAME_EXCEPTIONS: { [code: string]: string } = {
+  // Castform
+  'castform-sunny': 'Sunny Form',
+  'castform-rainy': 'Rainy Form',
+  'castform-snowy': 'Snowy Form',
+
   // Zacian & Zamazenta
   '-hero': 'Hero of Many Battles',
   'zacian-crowned': 'Crowned Sword',
