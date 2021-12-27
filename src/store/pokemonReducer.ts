@@ -21,6 +21,10 @@ const NAME_EXCEPTIONS: { [code: string]: string } = {
   'castform-rainy': 'Rainy Form',
   'castform-snowy': 'Snowy Form',
 
+  // Indeedee
+  'indeedee-male': 'Male',
+  'indeedee-female': 'Female',
+
   // Zacian & Zamazenta
   '-hero': 'Hero of Many Battles',
   'zacian-crowned': 'Crowned Sword',
