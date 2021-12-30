@@ -13,9 +13,12 @@ export default {
 
   dataPageImage(id: number) {
     const specialCases = {
+      // Castform forms
       10013: this.homeImageForPokemon(10013),
       10014: this.homeImageForPokemon(10014),
       10015: this.homeImageForPokemon(10015),
+
+      // Eternamax Eternatus
       10217: this.homeImageForPokemon(10217),
     } as { [key: number]: string }
 
