@@ -56,11 +56,14 @@ export default function SearchModal({ close, open }: SearchModalProperties) {
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      <Dialog as="div" static className="fixed inset-0 overflow-hidden" onClose={close}>
-        <div className="absolute inset-0 overflow-hidden">
-          <Dialog.Overlay className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+      <Dialog
+        onClose={close}
+        className="fixed inset-0 z-10 flex justify-center"
+      >
+        <Dialog.Overlay className="fixed inset-0 bg-black opacity-60" />
 
-          <div className="w-[85%] sm:w-96 mx-auto rounded mt-[10%] sm:mt-[5%] overflow-hidden relative z-10">
+        <div className="relative overflow-hidden">
+          <div className="relative sm:w-96 rounded overflow-hidden top-[5%] sm:top-[10%]">
             <div>
               <input
                 ref={input}
