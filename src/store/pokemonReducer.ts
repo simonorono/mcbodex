@@ -74,7 +74,11 @@ const NAME_EXCEPTIONS: { [code: string]: string } = {
   'necrozma-dawn': 'Dawn Wings',
 
   // Mimikyu
-  'mimikyu-busted': 'Busted Form'
+  'mimikyu-busted': 'Busted Form',
+
+  // Eiscue
+  'eiscue-ice': 'Ice Face',
+  'eiscue-noice': 'Noice Face',
 }
 
 interface PokemonState {
