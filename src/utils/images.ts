@@ -18,6 +18,9 @@ export default {
       10014: this.homeImageForPokemon(10014),
       10015: this.homeImageForPokemon(10015),
 
+      // Mimikyu
+      10143: this.homeImageForPokemon(10143),
+
       // Magearna
       10147: this.homeImageForPokemon(10147),
 
