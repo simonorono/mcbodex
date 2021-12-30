@@ -18,6 +18,9 @@ export default {
       10014: this.homeImageForPokemon(10014),
       10015: this.homeImageForPokemon(10015),
 
+      // Magearna
+      10147: this.homeImageForPokemon(10147),
+
       // Eternamax Eternatus
       10217: this.homeImageForPokemon(10217),
     } as { [key: number]: string }

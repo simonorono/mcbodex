@@ -8,11 +8,23 @@ const SUFFIX_MAP: { [code: string]: string[] } = {
   '-galar': ['Galarian'],
   '-gmax': ['Gigantamax'],
   '-mega': ['Mega'],
+
+  // Charizard & Mewtwo
   '-mega-x': ['Mega', 'X'],
   '-mega-y': ['Mega', 'Y'],
+
+  // Groudon & Kyogre
   '-primal': ['Primal'],
+
+  // Calyrex
   '-ice-rider': ['Ice Ryder'],
-  '-shadow-rider': ['Shadow Ryder']
+  '-shadow-rider': ['Shadow Ryder'],
+
+  // Necrozma
+  '-ultra': ['Ultra'],
+
+  // Magearna
+  '-original': ['Original Color'],
 }
 
 const NAME_EXCEPTIONS: { [code: string]: string } = {
@@ -56,6 +68,10 @@ const NAME_EXCEPTIONS: { [code: string]: string } = {
   'urshifu-single-strike-gmax' : 'Gigantamax Urshifu (Single Strike Style)',
   'urshifu-rapid-strike' : 'Rapid Strike Style',
   'urshifu-rapid-strike-gmax' : 'Gigantamax Urshifu (Rapid Strike Style)',
+
+  // Necrozma
+  'necrozma-dusk': 'Dusk Mane',
+  'necrozma-dawn': 'Dawn Wings',
 }
 
 interface PokemonState {
