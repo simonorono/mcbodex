@@ -29,7 +29,7 @@ export default function Example() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+              <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-60" />
             </Transition.Child>
 
             <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
