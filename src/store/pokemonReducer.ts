@@ -79,6 +79,10 @@ const NAME_EXCEPTIONS: { [code: string]: string } = {
   // Eiscue
   'eiscue-ice': 'Ice Face',
   'eiscue-noice': 'Noice Face',
+
+  // Hoopa
+  'hoopa': 'Hoopa Confined',
+  'hoopa-unbound': 'Hoopa Unbound',
 }
 
 interface PokemonState {
