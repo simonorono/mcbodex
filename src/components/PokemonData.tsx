@@ -34,6 +34,10 @@ export default function PokemonData({ pokemon }: Props) {
     })
   }
 
+  const onImageLoad = ({ currentTarget }: React.SyntheticEvent) => {
+    currentTarget.classList.remove('opacity-0')
+  }
+
   return (
     <>
       {isLoading && (
@@ -47,12 +51,13 @@ export default function PokemonData({ pokemon }: Props) {
               className="border bg-gray-50 min-w-[90%] sm:min-w-[450px]"
               style={imageContainerStyle}
             >
-              <LazyImage
+              <img
                 width={MAX_IMAGE_DIMENSION}
                 height={MAX_IMAGE_DIMENSION}
                 src={images.dataPageImage(pokemon.id)}
                 alt={`artwork for ${pokemon.name}`}
-                className="w-full h-full sm:min-w-[450px]"
+                className="w-full h-full sm:min-w-[450px] opacity-0 transition-opacity"
+                onLoad={onImageLoad}
               />
             </div>
 
