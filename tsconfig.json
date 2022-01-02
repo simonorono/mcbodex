@@ -15,6 +15,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
+    "useDefineForClassFields": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react"
