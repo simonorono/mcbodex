@@ -4,10 +4,7 @@ import { Provider } from 'react-redux'
 import { ShortcutProvider } from 'react-keybind'
 
 import App from './App'
-
 import store from './store'
-import './css/index.css'
-import './css/aspect-ratio.css'
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js', { scope: './' }).catch(console.log)
