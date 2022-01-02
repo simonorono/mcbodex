@@ -24,10 +24,13 @@ export default function LazyImage({ alt, src, className, height, width }: Props)
     document.lazyLoadInstance.update()
   }, [])
 
+  const BLANK_SVG = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width}' height='${height}'%3E%3C/svg%3E`
+
   return (
     <img
       width={width}
       height={height}
+      src={BLANK_SVG}
       data-src={src}
       alt={alt}
       className={`opacity-0 transition-opacity ${className || ''}`}
