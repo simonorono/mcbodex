@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { images } from "../utils"
-import LazyImage from "./LazyImage"
 import Loader from './Loader'
 import BaseStats from './pokemon_data/BaseStats'
 import PokemonDetails from "./pokemon_data/PokemonDetails"
