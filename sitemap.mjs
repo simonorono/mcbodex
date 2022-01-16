@@ -54,6 +54,15 @@ pokemon.forEach(species => {
   })
 })
 
+pokemon.forEach(species => {
+  links.push({
+    url: `/species/${species.id}`,
+    changefreq: 'weekly',
+    priority: 1.0,
+    lastmod: now,
+  })
+})
+
 researchTaskGroups.forEach(researchTaskGroup => {
   links.push({
     url: `/research-task/${researchTaskGroup.code}`,

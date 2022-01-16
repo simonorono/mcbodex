@@ -5,12 +5,13 @@ import { useAppDispatch, useAppSelector } from '../store/hooks'
 import Loader from "../components/Loader"
 import PokemonData from "../components/PokemonData"
 import Tabs from "../components/Tabs"
-import { title } from "../utils"
+import { setCanonical, title } from "../utils"
 import PokemonLinks from '../components/PokemonLinks'
 
 export default function Species() {
   useEffect(() => {
     document.title = title(species && `${species.name}`)
+    setCanonical(species && `/species/${species.code}`)
   })
 
   const dispatch = useAppDispatch()

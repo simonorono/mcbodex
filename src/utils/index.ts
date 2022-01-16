@@ -18,4 +18,24 @@ export function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
+export function setCanonical(path?: string) {
+  const currentCanonical = document.querySelector('link[rel=canonical]')
+
+  if (currentCanonical) {
+    currentCanonical.remove()
+  }
+
+  if (!path) {
+    return
+  }
+
+  const newCanonical = document.createElement('link')
+
+  newCanonical.setAttribute('rel', 'canonical')
+
+  newCanonical.setAttribute('href', `${location.protocol}//${location.host}${path}`)
+
+  document.head.appendChild(newCanonical)
+}
+
 export { images, stats, types }
