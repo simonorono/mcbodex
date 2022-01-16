@@ -39,7 +39,7 @@ export default function About() {
       <Subtitle>Who am I?</Subtitle>
 
       <P>
-        I am <A href="https://mcbodev.com">Simón Oroño</A>. Computer scientist, software developer and Pokémon fan.
+        I am <A href="https://simonorono.com">Simón Oroño</A>. Computer scientist, software developer and Pokémon fan.
       </P>
 
       <Subtitle>How was it built?</Subtitle>
