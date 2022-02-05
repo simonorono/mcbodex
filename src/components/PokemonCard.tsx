@@ -27,7 +27,7 @@ export default function PokemonCard({ pokemon, number }: Props) {
       <div className="ml-6 grow truncate">
         <Link
           to={`/species/${species.code}`}
-          className="mb-2 inline-flex flex-col items-start"
+          className="mb-2 inline-flex flex-col items-start hover:underline"
         >
           <h3 className="inline truncate text-sm font-medium text-gray-900">
             {number}. {species.name}
