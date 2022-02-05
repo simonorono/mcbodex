@@ -16,30 +16,31 @@ export default function PokemonCard({ pokemon, number }: Props) {
   )
 
   return (
-    <Link to={`/species/${species.code}`}>
-      <div className="group flex w-full items-center rounded-xl border border-gray-300 p-2">
-        <LazyImage
-          width={80}
-          height={80}
-          className="h-20 w-20 flex-shrink-0 rounded-full bg-gray-300"
-          src={images.frontSpriteForPokemonId(pokemon.id)}
-          alt={`front sprite for ${pokemon.name}`}
-        />
-        <div className="ml-6 grow truncate">
-          <div className="mb-2 flex flex-col">
-            <h3 className="truncate text-sm font-medium text-gray-900 group-hover:underline">
-              {number}. {species.name}
-            </h3>
-            {species.name !== pokemon.name && (
-              <h4 className="truncate text-sm text-gray-700">{pokemon.name}</h4>
-            )}
-          </div>
+    <div className="flex w-full items-center rounded-xl border border-gray-300 p-2">
+      <LazyImage
+        width={80}
+        height={80}
+        className="h-20 w-20 flex-shrink-0 rounded-full bg-gray-300 "
+        src={images.frontSpriteForPokemonId(pokemon.id)}
+        alt={`front sprite for ${pokemon.name}`}
+      />
+      <div className="ml-6 grow truncate">
+        <Link
+          to={`/species/${species.code}`}
+          className="mb-2 inline-flex flex-col items-start"
+        >
+          <h3 className="inline truncate text-sm font-medium text-gray-900">
+            {number}. {species.name}
+          </h3>
+          {species.name !== pokemon.name && (
+            <h4 className="truncate text-sm text-gray-700">{pokemon.name}</h4>
+          )}
+        </Link>
 
-          <div className="flex space-x-1">
-            <PokemonTypes typesRels={pokemon.types} />
-          </div>
+        <div className="flex space-x-1">
+          <PokemonTypes typesRels={pokemon.types} />
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
