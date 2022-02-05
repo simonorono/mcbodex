@@ -59,15 +59,15 @@ const NAME_EXCEPTIONS: { [code: string]: string } = {
   '-speed': 'Speed! Forme',
 
   // Zygarde
-  'zygarde': '50% Forme',
+  zygarde: '50% Forme',
   'zygarde-10': '10% Forme',
   'zygarde-complete': 'Complete Forme',
 
   // Urshifu
-  'urshifu-single-strike' : 'Single Strike Style',
-  'urshifu-single-strike-gmax' : 'Gigantamax Urshifu (Single Strike Style)',
-  'urshifu-rapid-strike' : 'Rapid Strike Style',
-  'urshifu-rapid-strike-gmax' : 'Gigantamax Urshifu (Rapid Strike Style)',
+  'urshifu-single-strike': 'Single Strike Style',
+  'urshifu-single-strike-gmax': 'Gigantamax Urshifu (Single Strike Style)',
+  'urshifu-rapid-strike': 'Rapid Strike Style',
+  'urshifu-rapid-strike-gmax': 'Gigantamax Urshifu (Rapid Strike Style)',
 
   // Necrozma
   'necrozma-dusk': 'Dusk Mane',
@@ -81,18 +81,18 @@ const NAME_EXCEPTIONS: { [code: string]: string } = {
   'eiscue-noice': 'Noice Face',
 
   // Hoopa
-  'hoopa': 'Hoopa Confined',
+  hoopa: 'Hoopa Confined',
   'hoopa-unbound': 'Hoopa Unbound',
 }
 
 interface PokemonState {
-  allSpecies: PokemonSpecies[],
-  allPokemon: Pokemon[],
-  speciesById: { [id: number]: PokemonSpecies },
-  speciesByCode: { [code: string]: PokemonSpecies },
-  pokemonById: { [id: number]: Pokemon },
-  loaded: boolean,
-  pokemonOfTheDay?: Pokemon,
+  allSpecies: PokemonSpecies[]
+  allPokemon: Pokemon[]
+  speciesById: { [id: number]: PokemonSpecies }
+  speciesByCode: { [code: string]: PokemonSpecies }
+  pokemonById: { [id: number]: Pokemon }
+  loaded: boolean
+  pokemonOfTheDay?: Pokemon
 }
 
 const initialState: PokemonState = {
@@ -129,51 +129,49 @@ function getPokemonName(species: PokemonSpecies, pokemon: Pokemon): string {
 
 const loadAllPokemon = createAsyncThunk(
   'pokemon/load-pokemon-list',
-  async () => [
-    await getAllSpecies(),
-    await getAllPokemon(),
-  ] as [PokemonSpecies[], Pokemon[]]
+  async () =>
+    [await getAllSpecies(), await getAllPokemon()] as [
+      PokemonSpecies[],
+      Pokemon[]
+    ]
 )
 
 const pokemonSlice = createSlice({
   name: 'pokemon',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder.addCase(
       loadAllPokemon.fulfilled,
       (state, action: PayloadAction<[PokemonSpecies[], Pokemon[]]>) => {
         state.allSpecies = action.payload[0]
         state.allPokemon = action.payload[1]
 
-        const now = new Date;
+        const now = new Date()
 
         // Seed the random number generation with the current date. This is
         // done to ensure the same random number is generated across all
         // browsers.
-        let randomNumber = rng(`${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`).int32()
+        let randomNumber = rng(
+          `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`
+        ).int32()
 
         if (randomNumber < 0) {
           randomNumber = randomNumber * -1
         }
 
-        state.pokemonOfTheDay = state.allPokemon[randomNumber % state.allSpecies.length]
+        state.pokemonOfTheDay =
+          state.allPokemon[randomNumber % state.allSpecies.length]
 
-        state.speciesById = state.allSpecies.reduce(
-          (byId, species) => {
-            byId[species.id] = species
-            return byId
-          },
-          {} as { [id: number]: PokemonSpecies }
-        )
+        state.speciesById = state.allSpecies.reduce((byId, species) => {
+          byId[species.id] = species
+          return byId
+        }, {} as { [id: number]: PokemonSpecies })
 
-        state.speciesByCode = state.allSpecies.reduce(
-          (byCode, species) => {
-            byCode[species.code] = species
-            return byCode
-          },
-          {} as { [code: string]: PokemonSpecies }
-        )
+        state.speciesByCode = state.allSpecies.reduce((byCode, species) => {
+          byCode[species.code] = species
+          return byCode
+        }, {} as { [code: string]: PokemonSpecies })
 
         state.allPokemon.forEach(pkm => {
           const species = state.speciesById[pkm.speciesId]
@@ -181,18 +179,15 @@ const pokemonSlice = createSlice({
           pkm.name = getPokemonName(species, pkm)
         })
 
-        state.pokemonById = state.allPokemon.reduce(
-          (byId, pokemon) => {
-            byId[pokemon.id] = pokemon
-            return byId
-          },
-          {} as { [id: number]: Pokemon }
-        )
+        state.pokemonById = state.allPokemon.reduce((byId, pokemon) => {
+          byId[pokemon.id] = pokemon
+          return byId
+        }, {} as { [id: number]: Pokemon })
 
         state.loaded = true
       }
     )
-  }
+  },
 })
 
 const { reducer } = pokemonSlice

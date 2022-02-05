@@ -5,7 +5,7 @@ Google Lighthouse.
 See: https://css-tricks.com/aspect-ratio-boxes/#using-custom-properties
  */
 
-[style*="--aspect-ratio"] {
+[style*='--aspect-ratio'] {
   & > :first-child {
     width: 100%;
   }
@@ -14,11 +14,11 @@ See: https://css-tricks.com/aspect-ratio-boxes/#using-custom-properties
     height: auto;
   }
 
-  @supports (--custom:property) {
+  @supports (--custom: property) {
     position: relative;
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       padding-bottom: calc(100% / (var(--aspect-ratio)));
     }

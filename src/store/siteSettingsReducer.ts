@@ -3,11 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 const DARK_MODE = 'siteSettings.darkMode'
 
 interface SiteSettingsState {
-  darkMode: boolean,
+  darkMode: boolean
 }
 
 const initialState: SiteSettingsState = {
-  darkMode: !!JSON.parse(localStorage.getItem(DARK_MODE) || 'null')
+  darkMode: !!JSON.parse(localStorage.getItem(DARK_MODE) || 'null'),
 }
 
 const siteSettingsSlice = createSlice({
@@ -17,7 +17,7 @@ const siteSettingsSlice = createSlice({
     toggleDarkMode(state) {
       state.darkMode = !state.darkMode
       localStorage.setItem(DARK_MODE, JSON.stringify(state.darkMode))
-    }
+    },
   },
 })
 

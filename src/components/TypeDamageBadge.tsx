@@ -3,8 +3,8 @@ import { classNames } from '../utils'
 import types from '../utils/types'
 
 interface Props {
-  effect: number,
-  type: Type,
+  effect: number
+  type: Type
   className?: string
 }
 
@@ -24,14 +24,19 @@ export default function TypeDamageBadge({ effect, type, className }: Props) {
   }
 
   return (
-    <div className={classNames(
-      "inline-block overflow-hidden border rounded-full whitespace-nowrap min-w-[7rem]",
-      className || '', ...Object.values(typeClasses)
-    )}>
-      <span className={`inline-block min-w-[5rem] h-full text-center px-2 border-r py-1 ${typeClasses.border}`}>
+    <div
+      className={classNames(
+        'inline-block min-w-[7rem] overflow-hidden whitespace-nowrap rounded-full border',
+        className || '',
+        ...Object.values(typeClasses)
+      )}
+    >
+      <span
+        className={`inline-block h-full min-w-[5rem] border-r px-2 py-1 text-center ${typeClasses.border}`}
+      >
         {type.name}
       </span>
-      <span className="inline-block h-full text-center bg-white text-black min-w-[2rem] py-1">
+      <span className="inline-block h-full min-w-[2rem] bg-white py-1 text-center text-black">
         ×{effectText(effect)}
       </span>
     </div>

@@ -12,14 +12,20 @@ if (!document.lazyLoadInstance) {
 }
 
 interface Props {
-  alt: string,
-  src: string,
-  className?: string,
-  height: number,
-  width: number,
+  alt: string
+  src: string
+  className?: string
+  height: number
+  width: number
 }
 
-export default function LazyImage({ alt, src, className, height, width }: Props) {
+export default function LazyImage({
+  alt,
+  src,
+  className,
+  height,
+  width,
+}: Props) {
   useEffect(() => {
     document.lazyLoadInstance.update()
   }, [])

@@ -1,13 +1,13 @@
 import React, { ReactNode, useEffect, useState } from 'react'
 
 interface Tab {
-  value: string,
-  label: string,
+  value: string
+  label: string
   component: ReactNode
 }
 
 interface Props {
-  tabs: Tab[],
+  tabs: Tab[]
 }
 
 export default function Tabs(props: Props) {
@@ -30,15 +30,17 @@ export default function Tabs(props: Props) {
             id="tabs"
             name="tabs"
             className={[
-              "block w-full pl-3 pr-10 py-2 text-base border-gray-300",
-              "focus:outline-none focus:ring-primary-500 focus:border-primary-500",
-              "sm:text-sm rounded-md"
+              'block w-full border-gray-300 py-2 pl-3 pr-10 text-base',
+              'focus:border-primary-500 focus:outline-none focus:ring-primary-500',
+              'rounded-md sm:text-sm',
             ].join(' ')}
             value={selected}
             onChange={event => setSelected(event.target.value)}
           >
             {tabs.map(({ value, label }) => (
-              <option key={value} value={value}>{label}</option>
+              <option key={value} value={value}>
+                {label}
+              </option>
             ))}
           </select>
         </div>
@@ -51,8 +53,8 @@ export default function Tabs(props: Props) {
                   className={[
                     value === selected
                       ? 'border-black text-black'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                    'whitespace-nowrap py-4 px-1 border-b-4 font-medium text-sm cursor-pointer'
+                      : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
+                    'cursor-pointer whitespace-nowrap border-b-4 py-4 px-1 text-sm font-medium',
                   ].join(' ')}
                   onClick={() => setSelected(value)}
                   aria-current={value === selected ? 'page' : undefined}
@@ -65,9 +67,12 @@ export default function Tabs(props: Props) {
         </div>
       </div>
 
-      <div className='pt-4'>
+      <div className="pt-4">
         {tabs.map(tab => (
-          <div key={tab.value} className={tab.value !== selected ? 'hidden' : ''}>
+          <div
+            key={tab.value}
+            className={tab.value !== selected ? 'hidden' : ''}
+          >
             {tab.component}
           </div>
         ))}

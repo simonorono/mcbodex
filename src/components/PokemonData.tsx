@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { images } from "../utils"
+import { images } from '../utils'
 import Loader from './Loader'
 import BaseStats from './pokemon_data/BaseStats'
-import PokemonDetails from "./pokemon_data/PokemonDetails"
-import TypeDefenses from "./pokemon_data/TypeDefenses"
+import PokemonDetails from './pokemon_data/PokemonDetails'
+import TypeDefenses from './pokemon_data/TypeDefenses'
 
 const MAX_IMAGE_DIMENSION = 450
 
@@ -12,12 +12,12 @@ const pokemons = import.meta.glob('../../data/raw/pokemon/*.json')
 const key = (id: string) => `../../data/raw/pokemon/${id}.json`
 
 const imageContainerStyle = {
-  '--aspect-ratio': '450/450'
+  '--aspect-ratio': '450/450',
 } as React.CSSProperties
 
 interface Props {
-  pokemon: Pokemon,
-  pokemonData?: any,
+  pokemon: Pokemon
+  pokemonData?: any
 }
 
 export default function PokemonData({ pokemon }: Props) {
@@ -39,15 +39,13 @@ export default function PokemonData({ pokemon }: Props) {
 
   return (
     <>
-      {isLoading && (
-        <Loader />
-      )}
+      {isLoading && <Loader />}
 
       {pokemon && pokemonData && (
-        <div className="max-w-4xl mx-auto space-y-6">
+        <div className="mx-auto max-w-4xl space-y-6">
           <div className="flex flex-col items-center md:flex-row md:items-start">
             <div
-              className="border bg-gray-50 min-w-[90%] sm:min-w-[450px]"
+              className="min-w-[90%] border bg-gray-50 sm:min-w-[450px]"
               style={imageContainerStyle}
             >
               <img
@@ -55,26 +53,20 @@ export default function PokemonData({ pokemon }: Props) {
                 height={MAX_IMAGE_DIMENSION}
                 src={images.dataPageImage(pokemon.id)}
                 alt={`artwork for ${pokemon.name}`}
-                className="w-full h-full sm:min-w-[450px] opacity-0 transition-opacity"
+                className="h-full w-full opacity-0 transition-opacity sm:min-w-[450px]"
                 onLoad={onImageLoad}
               />
             </div>
 
-            <div className="grow flex flex-col justify-center w-full mt-10 md:mt-0 px-2 sm:px-10">
+            <div className="mt-10 flex w-full grow flex-col justify-center px-2 sm:px-10 md:mt-0">
               <PokemonDetails pokemon={pokemon} pokemonData={pokemonData} />
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
-            <TypeDefenses
-              className="flex-1"
-              pokemon={pokemon}
-            />
+          <div className="flex flex-col space-y-6 md:flex-row md:space-y-0 md:space-x-6">
+            <TypeDefenses className="flex-1" pokemon={pokemon} />
 
-            <BaseStats
-              className="flex-1"
-              pokemonData={pokemonData}
-            />
+            <BaseStats className="flex-1" pokemonData={pokemonData} />
           </div>
         </div>
       )}

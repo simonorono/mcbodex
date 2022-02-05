@@ -20,48 +20,56 @@ export default function Pokedex() {
 
   const allLoaded = pokedexLoaded && pokemonStore.loaded && game
 
-  const pokedexList = game && game.pokedex.map(code => pokedexByCode[code]) || []
+  const pokedexList =
+    (game && game.pokedex.map(code => pokedexByCode[code])) || []
 
   const getPokemonListForPokedex = (pokedex: Pokedex) => {
-    return (allLoaded && pokedex.pokemonEntries.map((entry: PokedexEntry): Pokemon => {
-      const species = pokemonStore.speciesById[entry.pokemonSpeciesId]
+    return (
+      (allLoaded &&
+        pokedex.pokemonEntries.map((entry: PokedexEntry): Pokemon => {
+          const species = pokemonStore.speciesById[entry.pokemonSpeciesId]
 
-      const pokemon = species.pokemonIds.map(id => pokemonStore.pokemonById[id])
+          const pokemon = species.pokemonIds.map(
+            id => pokemonStore.pokemonById[id]
+          )
 
-      const selectedByRegion = pokemon.find(pkm => {
-        if (!pkm.code.includes('-')) {
-          return null
-        }
+          const selectedByRegion = pokemon.find(pkm => {
+            if (!pkm.code.includes('-')) {
+              return null
+            }
 
-        // Regional variants are named with a dash, i.e. raichu-alolan
-        const parts = pkm.code.split('-')
+            // Regional variants are named with a dash, i.e. raichu-alolan
+            const parts = pkm.code.split('-')
 
-        if (parts[1] === pokedex.region) {
-          return pkm
-        }
+            if (parts[1] === pokedex.region) {
+              return pkm
+            }
 
-        return null
-      })
+            return null
+          })
 
-      return selectedByRegion || pokemon[0]
-    }) || [])
+          return selectedByRegion || pokemon[0]
+        })) ||
+      []
+    )
   }
 
-  const tabs = allLoaded && pokedexList.map((pokedex: Pokedex) => ({
-    value: pokedex.code,
-    label: pokedex.name,
-    component: (<PokemonList pokemonList={getPokemonListForPokedex(pokedex)} />)
-  })) || []
+  const tabs =
+    (allLoaded &&
+      pokedexList.map((pokedex: Pokedex) => ({
+        value: pokedex.code,
+        label: pokedex.name,
+        component: (
+          <PokemonList pokemonList={getPokemonListForPokedex(pokedex)} />
+        ),
+      }))) ||
+    []
 
   return (
     <>
-      {allLoaded && !pokedexList && (
-        <p>Not found</p>
-      )}
+      {allLoaded && !pokedexList && <p>Not found</p>}
 
-      {!allLoaded && (
-        <Loader />
-      )}
+      {!allLoaded && <Loader />}
 
       {allLoaded && pokedexList && (
         <>

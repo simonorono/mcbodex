@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getAllGames, getAllPokedex } from '../api'
 
 interface PokedexState {
-  allPokedex: Pokedex[],
-  allGames: Game[],
-  loaded: boolean,
-  pokedexByCode: { [code: string]: Pokedex },
-  gameByCode: { [code: string]: Game },
+  allPokedex: Pokedex[]
+  allGames: Game[]
+  loaded: boolean
+  pokedexByCode: { [code: string]: Pokedex }
+  gameByCode: { [code: string]: Game }
 }
 
 const initialState: PokedexState = {
@@ -18,8 +18,8 @@ const initialState: PokedexState = {
 }
 
 type InitialLoadResult = {
-  pokedexList: Pokedex[],
-  gameList: Game[],
+  pokedexList: Pokedex[]
+  gameList: Game[]
 }
 
 const loadPokedexList = createAsyncThunk(
@@ -27,7 +27,7 @@ const loadPokedexList = createAsyncThunk(
   async () => {
     return {
       pokedexList: await getAllPokedex(),
-      gameList: await getAllGames()
+      gameList: await getAllGames(),
     }
   }
 )
@@ -35,9 +35,8 @@ const loadPokedexList = createAsyncThunk(
 const pokedexSlice = createSlice({
   name: 'pokedex',
   initialState,
-  reducers: {
-  },
-  extraReducers: (builder) => {
+  reducers: {},
+  extraReducers: builder => {
     builder.addCase(
       loadPokedexList.fulfilled,
       (state, action: PayloadAction<InitialLoadResult>) => {
@@ -56,7 +55,7 @@ const pokedexSlice = createSlice({
         state.loaded = true
       }
     )
-  }
+  },
 })
 
 const { reducer } = pokedexSlice

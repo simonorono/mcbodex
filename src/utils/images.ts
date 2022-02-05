@@ -29,5 +29,5 @@ export default {
     } as { [key: number]: string }
 
     return specialCases[id] ?? this.artworkForPokemon(id)
-  }
+  },
 }

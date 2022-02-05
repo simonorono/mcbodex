@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import { Dialog, Transition } from '@headlessui/react'
 
 interface SearchModalProperties {
-  close: () => void,
-  open: boolean,
+  close: () => void
+  open: boolean
 }
 
 export default function SearchModal({ close, open }: SearchModalProperties) {
@@ -32,9 +32,11 @@ export default function SearchModal({ close, open }: SearchModalProperties) {
     setTimeoutId(
       setTimeout(() => {
         setResults(
-          species.filter(
-            spcy => spcy.name.toLowerCase().includes(value.toLowerCase())
-          ).slice(0, 10)
+          species
+            .filter(spcy =>
+              spcy.name.toLowerCase().includes(value.toLowerCase())
+            )
+            .slice(0, 10)
         )
       })
     )
@@ -63,32 +65,33 @@ export default function SearchModal({ close, open }: SearchModalProperties) {
         <Dialog.Overlay className="fixed inset-0 bg-black opacity-60" />
 
         <div className="relative overflow-hidden">
-          <div className="relative sm:w-96 rounded overflow-hidden top-[5%] sm:top-[10%]">
+          <div className="relative top-[5%] overflow-hidden rounded sm:top-[10%] sm:w-96">
             <div>
               <input
                 ref={input}
                 placeholder="Enter at least 3 characters"
-                className="w-full text-lg py-2 px-2 border-b border-gray-400 focus:outline-none"
+                className="w-full border-b border-gray-400 py-2 px-2 text-lg focus:outline-none"
                 onClick={ev => ev.stopPropagation()}
                 value={query}
                 onChange={ev => updateQuery(ev.target.value)}
               />
 
-              {results && results.map(specy => (
-                <Link
-                  key={specy.id}
-                  to={`/species/${specy.code}`}
-                  className={[
-                    "p-4 bg-white flex justify-between",
-                    "border-b border-gray-200",
-                    "hover:bg-primary-700 hover:text-white"
-                  ].join(' ')}
-                  onClick={onResultClicked}
-                >
-                  <span className="font-medium">{specy.name}</span>
-                  <span className="text-md font-light">Pokémon</span>
-                </Link>
-              ))}
+              {results &&
+                results.map(specy => (
+                  <Link
+                    key={specy.id}
+                    to={`/species/${specy.code}`}
+                    className={[
+                      'flex justify-between bg-white p-4',
+                      'border-b border-gray-200',
+                      'hover:bg-primary-700 hover:text-white',
+                    ].join(' ')}
+                    onClick={onResultClicked}
+                  >
+                    <span className="font-medium">{specy.name}</span>
+                    <span className="text-md font-light">Pokémon</span>
+                  </Link>
+                ))}
             </div>
           </div>
         </div>

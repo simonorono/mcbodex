@@ -3,7 +3,7 @@ import TypeBadge from './TypeBadge'
 import { types } from '../utils'
 
 interface PokemonTypesProps {
-  typesRels: TypePokemonRelationship[],
+  typesRels: TypePokemonRelationship[]
 }
 
 export default function PokemonTypes({ typesRels }: PokemonTypesProps) {
@@ -13,7 +13,7 @@ export default function PokemonTypes({ typesRels }: PokemonTypesProps) {
         <TypeBadge
           key={typeRel.slot}
           type={types.byId[typeRel.typeId]}
-          className="inline-block text-sm font-medium w-[5em]"
+          className="inline-block w-[5em] text-sm font-medium"
         />
       ))}
     </>

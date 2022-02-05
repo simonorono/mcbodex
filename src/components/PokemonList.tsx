@@ -3,8 +3,8 @@ import Loader from './Loader'
 import PokemonCard from './PokemonCard'
 
 interface Props {
-  pokemonList: Pokemon[],
-  numberCallback?: (pokemon: Pokemon) => number,
+  pokemonList: Pokemon[]
+  numberCallback?: (pokemon: Pokemon) => number
 }
 
 export default function PokemonList({ pokemonList, numberCallback }: Props) {
@@ -14,22 +14,17 @@ export default function PokemonList({ pokemonList, numberCallback }: Props) {
 
   return (
     <>
-      {!loaded && (
-        <Loader />
-      )}
+      {!loaded && <Loader />}
 
       {loaded && (
         <ul
           className={[
-            "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3",
-            loaded ? '' : 'hidden'
+            'grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3',
+            loaded ? '' : 'hidden',
           ].join(' ')}
         >
           {pokemonList.map((pokemon: Pokemon, index) => (
-            <li
-              key={pokemon.id}
-              className="col-span-1"
-            >
+            <li key={pokemon.id} className="col-span-1">
               <PokemonCard
                 number={numberCallback ? numberCallback(pokemon) : index + 1}
                 pokemon={pokemon}

@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { getAllAbilities } from "../api"
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { getAllAbilities } from '../api'
 
 interface AbilitiesState {
   all: Ability[]
@@ -22,7 +22,7 @@ const abilitiesSlice = createSlice({
   name: 'abilities',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder.addCase(
       loadAllAbilities.fulfilled,
       (state, action: PayloadAction<Ability[]>) => {
@@ -35,7 +35,7 @@ const abilitiesSlice = createSlice({
         state.loaded = true
       }
     )
-  }
+  },
 })
 
 const { reducer } = abilitiesSlice

@@ -12,14 +12,20 @@ export default function Example() {
     <div>
       <button
         onClick={() => setOpen(true)}
-        className='h-full rounded-full flex items-center text-white focus:outline-none'
+        className="flex h-full items-center rounded-full text-white focus:outline-none"
       >
         <span className="sr-only">Open options</span>
         <DotsVerticalIcon className="h-8 w-8" aria-hidden="true" />
       </button>
 
       <Transition.Root show={open}>
-        <Dialog as="div" static className="fixed inset-0 overflow-hidden" open={open} onClose={setOpen}>
+        <Dialog
+          as="div"
+          static
+          className="fixed inset-0 overflow-hidden"
+          open={open}
+          onClose={setOpen}
+        >
           <div className="absolute inset-0 overflow-hidden">
             <Transition.Child
               enter="transition-opacity duration-200"
@@ -32,7 +38,7 @@ export default function Example() {
               <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-60" />
             </Transition.Child>
 
-            <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+            <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
               <Transition.Child
                 as={Fragment}
                 enter="transition-transform ease-linear duration-300"
@@ -43,15 +49,17 @@ export default function Example() {
                 leaveTo="translate-x-full"
               >
                 <div className="w-screen max-w-sm">
-                  <div className="h-full flex flex-col py-6 bg-primary-800 shadow-xl overflow-y-scroll">
+                  <div className="flex h-full flex-col overflow-y-scroll bg-primary-800 py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium text-white">RDex navigation</Dialog.Title>
-                        <div className="ml-3 h-7 flex items-center">
+                        <Dialog.Title className="text-lg font-medium text-white">
+                          RDex navigation
+                        </Dialog.Title>
+                        <div className="ml-3 flex h-7 items-center">
                           <button
                             className={[
-                              "bg-primary-700 rounded-md text-gray-200 hover:text-white",
-                              "focus:outline-none "
+                              'rounded-md bg-primary-700 text-gray-200 hover:text-white',
+                              'focus:outline-none ',
                             ].join(' ')}
                             onClick={() => setOpen(false)}
                           >
@@ -62,7 +70,7 @@ export default function Example() {
                       </div>
                     </div>
 
-                    <hr className='my-4' />
+                    <hr className="my-4" />
 
                     <div className="relative flex-1 px-4 sm:px-6">
                       <Navigation onLinkClicked={onLinkClicked} />

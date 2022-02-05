@@ -7,7 +7,7 @@ import { name } from '../../package.json'
 const DATA_VERSION = 6
 
 localforage.config({
-  name: `${name}@DATA-${DATA_VERSION}`
+  name: `${name}@DATA-${DATA_VERSION}`,
 })
 
 /**
@@ -19,7 +19,7 @@ namespace cache {
    * invalidate it.
    */
   interface CachedValue {
-    value: any,
+    value: any
     created: Date
   }
 
@@ -32,7 +32,7 @@ namespace cache {
   const SECONDS_IN_WEEK = 60 * 60 * 24 * 7
 
   function needsInvalidation(date: Date) {
-    const now = new Date
+    const now = new Date()
 
     const elapsedSeconds = (now.getTime() - date.getTime()) / 1000
 
@@ -44,7 +44,7 @@ namespace cache {
       return null
     }
 
-    let cachedValue = await localforage.getItem(key) as CachedValue
+    let cachedValue = (await localforage.getItem(key)) as CachedValue
 
     if (!cachedValue) {
       return null
@@ -64,13 +64,10 @@ namespace cache {
       return
     }
 
-    await localforage.setItem(
-      key,
-      {
-        value,
-        created: new Date().getTime()
-      }
-    )
+    await localforage.setItem(key, {
+      value,
+      created: new Date().getTime(),
+    })
   }
 }
 

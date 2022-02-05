@@ -11,24 +11,20 @@ function typeEffectiveness(type: Type): ReactElement {
   const data = {
     'Supper Effective Against': types.superEffectiveAgainst(type),
     'Not Very Effective Against': types.notVeryEffectiveAgainst(type),
-    'No Effect Against': types.noEffectAgainst(type)
+    'No Effect Against': types.noEffectAgainst(type),
   }
 
   return (
-    <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 mb-10">
+    <div className="mb-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {Object.entries(data)
         .filter(([_, types]) => types.length > 0) // Don't show sections without any types
         .map(([caption, types]) => (
           <div key={caption} className="border border-gray-200 p-6">
-            <h2 className="text-2xl font-medium mb-2">{caption}</h2>
+            <h2 className="mb-2 text-2xl font-medium">{caption}</h2>
 
             <div className="flex flex-wrap gap-2">
               {types.map(type => (
-                <TypeBadge
-                  key={type.id}
-                  type={type}
-                  className="px-2"
-                />
+                <TypeBadge key={type.id} type={type} className="px-2" />
               ))}
             </div>
           </div>
@@ -59,13 +55,9 @@ export default function Type() {
 
   return (
     <>
-      {pokemonLoaded && !type && (
-        <p>Not found.</p>
-      )}
+      {pokemonLoaded && !type && <p>Not found.</p>}
 
-      {!pokemonLoaded && (
-        <Loader />
-      )}
+      {!pokemonLoaded && <Loader />}
 
       {pokemonLoaded && type && (
         <>
@@ -73,7 +65,7 @@ export default function Type() {
 
           {typeEffectiveness(type)}
 
-          <h2 className="text-2xl font-medium mb-2">
+          <h2 className="mb-2 text-2xl font-medium">
             Pokémon with {type.name} type
           </h2>
 

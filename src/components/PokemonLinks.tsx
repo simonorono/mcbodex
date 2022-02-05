@@ -14,7 +14,7 @@ export default function PokemonLinks({ species }: PokemonLinksProps) {
   const next: PokemonSpecies | null = speciesById[species.id + 1] ?? null
 
   return (
-    <div className="flex justify-between flex-wrap text-primary-900 mb-2 min-h-[1em]">
+    <div className="mb-2 flex min-h-[1em] flex-wrap justify-between text-primary-900">
       {prev && (
         <Link to={`/species/${prev.code}`} className="">
           <ArrowSmLeftIcon className="inline h-4 w-4" />
@@ -23,7 +23,7 @@ export default function PokemonLinks({ species }: PokemonLinksProps) {
       )}
 
       {/* Same as &nbsp;. Ensures that, when on the first species, the link to the next appears to the right. */}
-      <span>{String.fromCodePoint(0x000A0)}</span>
+      <span>{String.fromCodePoint(0x000a0)}</span>
 
       {next && (
         <Link to={`/species/${next.code}`} className="">

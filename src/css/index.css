@@ -9,32 +9,32 @@
 
   table.stats-table {
     tr {
-      @apply text-sm border-b border-neutral-300;
+      @apply border-b border-neutral-300 text-sm;
 
       td {
         @apply py-2;
 
-        [data-stat-level="1"] {
+        [data-stat-level='1'] {
           @apply bg-red-600;
         }
 
-        [data-stat-level="2"] {
+        [data-stat-level='2'] {
           @apply bg-orange-500;
         }
 
-        [data-stat-level="3"] {
+        [data-stat-level='3'] {
           @apply bg-yellow-300;
         }
 
-        [data-stat-level="4"] {
+        [data-stat-level='4'] {
           @apply bg-lime-400;
         }
 
-        [data-stat-level="5"] {
+        [data-stat-level='5'] {
           @apply bg-green-500;
         }
 
-        [data-stat-level="6"] {
+        [data-stat-level='6'] {
           @apply bg-sky-500;
         }
       }
@@ -47,7 +47,7 @@
     height: 80px;
 
     &:after {
-      content: " ";
+      content: ' ';
       display: block;
       width: 64px;
       height: 64px;

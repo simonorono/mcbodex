@@ -13,34 +13,39 @@ class Stats {
   constructor() {
     this.all = ALL_STATS
 
-    this.byId = ALL_STATS.reduce(
-      (byId, stat) => {
-        byId[stat.id] = stat
-        return byId
-      },
-      {} as ById
-    )
+    this.byId = ALL_STATS.reduce((byId, stat) => {
+      byId[stat.id] = stat
+      return byId
+    }, {} as ById)
 
-    this.byCode = ALL_STATS.reduce(
-      (byCode, stat) => {
-        byCode[stat.code] = stat
-        return byCode
-      },
-      {} as ByCode
-    )
+    this.byCode = ALL_STATS.reduce((byCode, stat) => {
+      byCode[stat.code] = stat
+      return byCode
+    }, {} as ByCode)
   }
 
-  private static baseMath(base: number, level: number, iv:number, ev: number) {
-    return Math.floor((((2 * base + iv + (ev / 4)) * level) / 100))
+  private static baseMath(base: number, level: number, iv: number, ev: number) {
+    return Math.floor(((2 * base + iv + ev / 4) * level) / 100)
   }
 
-  private static hp(base: number, level: number, iv: number, ev: number): number {
+  private static hp(
+    base: number,
+    level: number,
+    iv: number,
+    ev: number
+  ): number {
     const baseMath = Stats.baseMath(base, level, iv, ev)
 
     return baseMath + level + 10
   }
 
-  private static stat(base: number, level: number, iv: number, ev: number, nature: number): number {
+  private static stat(
+    base: number,
+    level: number,
+    iv: number,
+    ev: number,
+    nature: number
+  ): number {
     const baseMath = Stats.baseMath(base, level, iv, ev)
 
     return Math.floor((baseMath + 5) * nature)
@@ -108,4 +113,4 @@ class Stats {
   }
 }
 
-export default (new Stats)
+export default new Stats()

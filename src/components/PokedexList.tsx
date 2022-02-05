@@ -7,7 +7,7 @@ export default function PokedexList() {
   const pokedex = useAppSelector(state => state.pokedex)
 
   return (
-    <div className="rounded-md bg-gray-200 p-10 space-y-4">
+    <div className="space-y-4 rounded-md bg-gray-200 p-10">
       <h2 className="text-2xl">List of Pokédex</h2>
 
       {pokedex.loaded && (
@@ -26,9 +26,7 @@ export default function PokedexList() {
         </ul>
       )}
 
-      {! pokedex.loaded && (
-        <Loader />
-      )}
+      {!pokedex.loaded && <Loader />}
     </div>
   )
 }

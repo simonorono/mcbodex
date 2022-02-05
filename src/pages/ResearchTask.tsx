@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
-import { useParams } from "react-router-dom"
-import { useAppSelector } from "../store/hooks"
+import { useParams } from 'react-router-dom'
+import { useAppSelector } from '../store/hooks'
 import researchTasksRaw from '../../data/handcrafted/research_tasks.json'
-import PokemonList from "../components/PokemonList"
+import PokemonList from '../components/PokemonList'
 import { title } from '../utils'
 
 export default function ResearchTask() {
   useEffect(() => {
-    document.title = title(researchTaskGroup && `${researchTaskGroup.name} Research Tasks`)
+    document.title = title(
+      researchTaskGroup && `${researchTaskGroup.name} Research Tasks`
+    )
   })
 
   const researchTaskGroups = researchTasksRaw as ResearchTaskGroup[]
@@ -24,9 +26,7 @@ export default function ResearchTask() {
 
   return (
     <>
-      {pokemonLoaded && !researchTaskGroup && (
-        <p>Not found</p>
-      )}
+      {pokemonLoaded && !researchTaskGroup && <p>Not found</p>}
 
       {pokemonLoaded && researchTaskGroup && (
         <>
@@ -43,10 +43,9 @@ export default function ResearchTask() {
 
                 <PokemonList
                   numberCallback={pokemon => pokemon.speciesId}
-                  pokemonList={(
-                    researchTask.pokemonIds.map(id => pokemonById[id])
-                      .sort((pkm1, pkm2) => pkm1.speciesId - pkm2.speciesId)
-                  )}
+                  pokemonList={researchTask.pokemonIds
+                    .map(id => pokemonById[id])
+                    .sort((pkm1, pkm2) => pkm1.speciesId - pkm2.speciesId)}
                 />
               </div>
             ))}

@@ -22,8 +22,8 @@ function transformPokedex(obj: any): Pokedex {
     region: obj.region,
     pokemonEntries: obj.entries.map((entry: number[]) => ({
       pokedexNumber: entry[0],
-      pokemonSpeciesId: entry[1]
-    }))
+      pokemonSpeciesId: entry[1],
+    })),
   }
 }
 
@@ -40,7 +40,7 @@ function transformPokemon(obj: any): Pokemon {
     code: obj.code,
     name: '',
     speciesId: obj.speciesId,
-    types
+    types,
   }
 }
 
@@ -53,8 +53,13 @@ function transformSpecies(obj: any): PokemonSpecies {
   }
 }
 
-export const getAllAbilities = async () => cachedApi.get(CacheKey.ABILITIES_LIST, abilitiesUrl)
-export const getAllGames = async () => cachedApi.get(CacheKey.GAME_LIST, gamesUrl)
-export const getAllPokedex = async () => cachedApi.get(CacheKey.POKEDEX_LIST, pokedexUrl, transformPokedex)
-export const getAllPokemon = async () => cachedApi.get(CacheKey.POKEMON_LIST, pokemonUrl, transformPokemon)
-export const getAllSpecies = async () => cachedApi.get(CacheKey.SPECIES_LIST, speciesUrl, transformSpecies)
+export const getAllAbilities = async () =>
+  cachedApi.get(CacheKey.ABILITIES_LIST, abilitiesUrl)
+export const getAllGames = async () =>
+  cachedApi.get(CacheKey.GAME_LIST, gamesUrl)
+export const getAllPokedex = async () =>
+  cachedApi.get(CacheKey.POKEDEX_LIST, pokedexUrl, transformPokedex)
+export const getAllPokemon = async () =>
+  cachedApi.get(CacheKey.POKEMON_LIST, pokemonUrl, transformPokemon)
+export const getAllSpecies = async () =>
+  cachedApi.get(CacheKey.SPECIES_LIST, speciesUrl, transformSpecies)

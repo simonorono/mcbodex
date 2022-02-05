@@ -5,8 +5,6 @@ import PokemonCard from './PokemonCard'
 export default function PokemonOfTheDay() {
   const pokemonOfTheDay = useAppSelector(state => state.pokemon.pokemonOfTheDay)
 
-  const speciesById = useAppSelector(state => state.pokemon.speciesById)
-
   return (
     <>
       {pokemonOfTheDay && (

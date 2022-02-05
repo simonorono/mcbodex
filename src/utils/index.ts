@@ -1,7 +1,7 @@
 import images from './images'
 import stats from './stats'
 import types from './types'
-import { homepage } from "../../package.json"
+import { homepage } from '../../package.json'
 
 export function scrollToTop() {
   window.scrollTo({
@@ -11,7 +11,7 @@ export function scrollToTop() {
 }
 
 export function title(caption?: string) {
-  return `${caption && `${caption} | ` || ''}RDex | ${homepage}`
+  return `${(caption && `${caption} | `) || ''}RDex | ${homepage}`
 }
 
 export function classNames(...classes: string[]) {
@@ -33,7 +33,10 @@ export function setCanonical(path?: string) {
 
   newCanonical.setAttribute('rel', 'canonical')
 
-  newCanonical.setAttribute('href', `${location.protocol}//${location.host}${path}`)
+  newCanonical.setAttribute(
+    'href',
+    `${location.protocol}//${location.host}${path}`
+  )
 
   document.head.appendChild(newCanonical)
 }

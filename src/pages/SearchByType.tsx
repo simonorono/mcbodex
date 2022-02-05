@@ -17,28 +17,28 @@ export default function SearchByType() {
 
   const speciesById = useAppSelector(state => state.pokemon.speciesById)
 
-  const pokemonList = frontPokemonOfSpeciesByPredicate(pkm => {
-    if (!(firstType || secondType)) {
-      return false
-    }
+  const pokemonList =
+    frontPokemonOfSpeciesByPredicate(pkm => {
+      if (!(firstType || secondType)) {
+        return false
+      }
 
-    const pokemonTypesIds = pkm.types.map(_ => _.typeId)
+      const pokemonTypesIds = pkm.types.map(_ => _.typeId)
 
-    const types = [firstType?.id, secondType?.id]
-      .filter(Boolean) as number[]
+      const types = [firstType?.id, secondType?.id].filter(Boolean) as number[]
 
-    if (strict && pokemonTypesIds.length !== types.length) {
-      return false
-    }
+      if (strict && pokemonTypesIds.length !== types.length) {
+        return false
+      }
 
-    return types.every(typeId => pokemonTypesIds.includes(typeId))
-  }) || []
+      return types.every(typeId => pokemonTypesIds.includes(typeId))
+    }) || []
 
   return (
     <>
       <h1 className="page-title">Search Pokémon By Type</h1>
 
-      <div className="flex flex-col sm:flex-row space-y-3 sm:space-x-3 sm:space-y-0">
+      <div className="flex flex-col space-y-3 sm:flex-row sm:space-x-3 sm:space-y-0">
         <TypeSelector
           label="First type"
           className="flex-1"
