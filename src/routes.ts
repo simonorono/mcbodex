@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 import Index from './pages/Index'
 import About from './pages/About'
@@ -6,15 +6,15 @@ import NotFound from './pages/NotFound'
 
 const Pokedex = React.lazy(() => import('./pages/Pokedex'))
 const Species = React.lazy(() => import('./pages/Species'))
-const ResearchTask = React.lazy(() => import("./pages/ResearchTask"))
-const SearchByType = React.lazy(() => import("./pages/SearchByType"))
+const ResearchTask = React.lazy(() => import('./pages/ResearchTask'))
+const SearchByType = React.lazy(() => import('./pages/SearchByType'))
 const Type = React.lazy(() => import('./pages/Type'))
 
 export default [
   {
     path: '/',
     component: Index,
-    exact: true
+    exact: true,
   },
   {
     path: '/about',
@@ -30,7 +30,7 @@ export default [
   },
   {
     path: '/species/:id',
-    component: Species
+    component: Species,
   },
   {
     path: '/research-task/:code',
@@ -43,5 +43,5 @@ export default [
   {
     path: '*',
     component: NotFound,
-  }
+  },
 ]

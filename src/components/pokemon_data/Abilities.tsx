@@ -8,7 +8,7 @@ interface AbilitiesProps {
 }
 
 interface AbilityProps {
-  ability: Ability,
+  ability: Ability
   hidden: boolean
 }
 
@@ -26,8 +26,8 @@ function Ability({ ability, hidden }: AbilityProps) {
       <div className="text-right">
         <p
           className={classNames(
-            "inline-block cursor-pointer leading-4",
-            "underline decoration-primary-500/75 decoration-2"
+            'inline-block cursor-pointer leading-4',
+            'underline decoration-primary-500/75 decoration-2'
           )}
           onClick={() => setIsModalOpened(true)}
         >
@@ -44,25 +44,19 @@ export default function Abilities({ abilitiesRel }: AbilitiesProps) {
   const abilities: Ability[] = []
   const hiddenAbilities: Ability[] = []
 
-  abilitiesRel.forEach(_ => (_.hidden ? hiddenAbilities : abilities).push(abilityById[_.id]))
+  abilitiesRel.forEach(_ =>
+    (_.hidden ? hiddenAbilities : abilities).push(abilityById[_.id])
+  )
 
   return (
     <>
       <div className="flex flex-col space-y-4 sm:space-y-1">
         {abilities.map(ability => (
-          <Ability
-            key={ability.id}
-            ability={ability}
-            hidden={false}
-          />
+          <Ability key={ability.id} ability={ability} hidden={false} />
         ))}
 
         {hiddenAbilities.map(ability => (
-          <Ability
-            key={ability.id}
-            ability={ability}
-            hidden={true}
-          />
+          <Ability key={ability.id} ability={ability} hidden={true} />
         ))}
       </div>
     </>

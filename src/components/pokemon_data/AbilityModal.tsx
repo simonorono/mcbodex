@@ -4,13 +4,15 @@ import { InformationCircleIcon } from '@heroicons/react/outline'
 import { classNames } from '../../utils'
 import { XIcon } from '@heroicons/react/solid'
 
-interface AbilityModalOpen {
-  ability: Ability,
-  isOpen: boolean,
+interface AbilityModalProps {
+  ability: Ability
+  isOpen: boolean
   setIsOpen: (open: boolean) => void
 }
 
-export default function AbilityModal({ ability, isOpen, setIsOpen }: AbilityModalOpen) {
+export default function AbilityModal(props: AbilityModalProps) {
+  const { ability, isOpen, setIsOpen } = props
+
   return (
     <Transition
       show={isOpen}
@@ -29,11 +31,11 @@ export default function AbilityModal({ ability, isOpen, setIsOpen }: AbilityModa
         <Dialog.Overlay className="fixed inset-0 bg-black opacity-60" />
 
         <div className="relative">
-          <div className="bg-white mx-2 p-4 sm:p-6 rounded-lg max-w-lg">
+          <div className="mx-2 max-w-lg rounded-lg bg-white p-4 sm:p-6">
             <div className="absolute top-0 right-0 pt-4 pr-4">
               <button
                 type="button"
-                className="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:outline-none"
+                className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none"
                 onClick={() => setIsOpen(false)}
               >
                 <span className="sr-only">Close</span>
@@ -41,11 +43,13 @@ export default function AbilityModal({ ability, isOpen, setIsOpen }: AbilityModa
               </button>
             </div>
 
-            <div className="sm:flex sm:items-start space-y-2 sm:space-x-4 sm:space-y-0">
-              <div className={classNames(
-                "h-12 w-12 mx-auto rounded-full bg-primary-100",
-                "flex justify-center items-center shrink-0"
-              )}>
+            <div className="space-y-2 sm:flex sm:items-start sm:space-x-4 sm:space-y-0">
+              <div
+                className={classNames(
+                  'mx-auto h-12 w-12 rounded-full bg-primary-100',
+                  'flex shrink-0 items-center justify-center'
+                )}
+              >
                 <InformationCircleIcon className="h-7 w-7 text-primary-600" />
               </div>
 
@@ -59,7 +63,8 @@ export default function AbilityModal({ ability, isOpen, setIsOpen }: AbilityModa
                 <hr />
 
                 <p className="text-sm">
-                  {ability.effect || '(Detailed effect text not yet available).'}
+                  {ability.effect ||
+                    '(Detailed effect text not yet available).'}
                 </p>
               </div>
             </div>
