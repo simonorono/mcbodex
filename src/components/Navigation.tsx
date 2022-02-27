@@ -8,17 +8,22 @@ interface Props {
   onLinkClicked?: () => void
 }
 
+interface LinkProps {
+  name: string
+  href: string
+}
+
+interface SeveralLinksProps {
+  name: string
+  children?: ReactNode
+}
+
 export default function Navigation({ onLinkClicked }: Props) {
   const location = useLocation()
 
   const games = useAppSelector(state => state.pokedex.allGames)
 
   const researchTasks = ['Galar', 'Kanto']
-
-  interface LinkProps {
-    name: string
-    href: string
-  }
 
   function SingleLink({ name, href }: LinkProps) {
     const current = href === location.pathname
@@ -37,11 +42,6 @@ export default function Navigation({ onLinkClicked }: Props) {
         <span className="truncate">{name}</span>
       </Link>
     )
-  }
-
-  interface SeveralLinksProps {
-    name: string
-    children?: ReactNode
   }
 
   function SeveralLinks({ name, children }: SeveralLinksProps) {

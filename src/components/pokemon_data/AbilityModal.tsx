@@ -4,13 +4,13 @@ import { InformationCircleIcon } from '@heroicons/react/outline'
 import { classNames } from '../../utils'
 import { XIcon } from '@heroicons/react/solid'
 
-interface AbilityModalProps {
+interface Props {
   ability: Ability
   isOpen: boolean
   setIsOpen: (open: boolean) => void
 }
 
-export default function AbilityModal(props: AbilityModalProps) {
+export default function AbilityModal(props: Props) {
   const { ability, isOpen, setIsOpen } = props
 
   return (

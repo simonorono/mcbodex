@@ -3,7 +3,7 @@ import { useAppSelector } from '../../store/hooks'
 import AbilityModal from './AbilityModal'
 import { classNames } from '../../utils'
 
-interface AbilitiesProps {
+interface Props {
   abilitiesRel: AbilityRelationship[]
 }
 
@@ -38,7 +38,7 @@ function Ability({ ability, hidden }: AbilityProps) {
   )
 }
 
-export default function Abilities({ abilitiesRel }: AbilitiesProps) {
+export default function Abilities({ abilitiesRel }: Props) {
   const abilityById = useAppSelector(state => state.abilities.byId)
 
   const abilities: Ability[] = []

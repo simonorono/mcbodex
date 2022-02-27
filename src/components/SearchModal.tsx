@@ -3,12 +3,12 @@ import { useAppSelector } from '../store/hooks'
 import { Link } from 'react-router-dom'
 import { Dialog, Transition } from '@headlessui/react'
 
-interface SearchModalProperties {
+interface Props {
   close: () => void
   open: boolean
 }
 
-export default function SearchModal({ close, open }: SearchModalProperties) {
+export default function SearchModal({ close, open }: Props) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([] as PokemonSpecies[])
   const [timeoutId, setTimeoutId] = useState(0)

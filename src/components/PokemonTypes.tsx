@@ -2,11 +2,11 @@ import React from 'react'
 import TypeBadge from './TypeBadge'
 import { types } from '../utils'
 
-interface PokemonTypesProps {
+interface Props {
   typesRels: TypePokemonRelationship[]
 }
 
-export default function PokemonTypes({ typesRels }: PokemonTypesProps) {
+export default function PokemonTypes({ typesRels }: Props) {
   return (
     <>
       {typesRels.map(typeRel => (

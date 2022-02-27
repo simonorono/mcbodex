@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import { ArrowSmLeftIcon, ArrowSmRightIcon } from '@heroicons/react/solid'
 import { useAppSelector } from '../store/hooks'
 
-interface PokemonLinksProps {
+interface Props {
   species: PokemonSpecies
 }
 
-export default function PokemonLinks({ species }: PokemonLinksProps) {
+export default function PokemonLinks({ species }: Props) {
   const speciesById = useAppSelector(state => state.pokemon.speciesById)
 
   const prev: PokemonSpecies | null = speciesById[species.id - 1] ?? null

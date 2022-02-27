@@ -1,14 +1,14 @@
 import React from 'react'
 import { stats } from '../../utils'
 
-interface BaseStatsProps {
+interface Props {
   className?: string
   pokemonData: PokemonData
 }
 
 const DATA_LEVEL_DIVISOR = 30
 
-export default function BaseStats({ className, pokemonData }: BaseStatsProps) {
+export default function BaseStats({ className, pokemonData }: Props) {
   let sum = 0
 
   for (let base of pokemonData.stats.map(_ => _.base)) {

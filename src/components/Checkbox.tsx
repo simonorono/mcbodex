@@ -8,13 +8,9 @@ interface Props {
   onChange: (value: boolean) => void
 }
 
-export default function Checkbox({
-  helpText,
-  id,
-  initialValue,
-  label,
-  onChange,
-}: Props) {
+export default function Checkbox(props: Props) {
+  const { helpText, id, initialValue, label, onChange } = props
+
   return (
     <div className="relative flex items-start">
       <div className="flex h-5 items-center">
