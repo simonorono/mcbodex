@@ -15,8 +15,6 @@ export default function SearchByType() {
   const [secondType, setSecondType] = useState(null as Type | null)
   const [strict, setIfStrict] = useState(false)
 
-  const speciesById = useAppSelector(state => state.pokemon.speciesById)
-
   const pokemonList =
     frontPokemonOfSpeciesByPredicate(pkm => {
       if (!(firstType || secondType)) {

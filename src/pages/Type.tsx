@@ -43,7 +43,6 @@ export default function Type() {
   const type = types.byCode[code]
 
   const pokemonLoaded = useAppSelector(state => state.pokemon.loaded)
-  const speciesById = useAppSelector(state => state.pokemon.speciesById)
 
   const pokemonList = frontPokemonOfSpeciesByPredicate(pkm => {
     if (!type) {

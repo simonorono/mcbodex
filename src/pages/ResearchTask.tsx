@@ -22,8 +22,6 @@ export default function ResearchTask() {
 
   const pokemonById = useAppSelector(state => state.pokemon.pokemonById)
 
-  const speciesById = useAppSelector(state => state.pokemon.speciesById)
-
   return (
     <>
       {pokemonLoaded && !researchTaskGroup && <p>Not found</p>}
