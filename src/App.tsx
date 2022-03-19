@@ -6,7 +6,7 @@ import Loader from './components/Loader'
 import Navbar from './components/Navbar'
 
 import routes from './routes'
-import { loadAllPokemon, loadPokedexList } from './store'
+import { loadAllAbilities, loadAllPokemon, loadPokedexList } from './store'
 import { useAppDispatch, useAppSelector } from './store/hooks'
 import { classNames } from './utils'
 
@@ -16,6 +16,7 @@ function App() {
   const darkMode = useAppSelector(state => state.siteSettings.darkMode)
 
   useEffect(() => {
+    dispatch(loadAllAbilities())
     dispatch(loadPokedexList())
     dispatch(loadAllPokemon())
   }, [])

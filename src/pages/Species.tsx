@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { loadAllAbilities } from '../store'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
+import { useAppSelector } from '../store/hooks'
 import Loader from '../components/Loader'
 import PokemonData from '../components/PokemonData'
 import Tabs from '../components/Tabs'
@@ -13,12 +12,6 @@ export default function Species() {
     document.title = title(species && `${species.name}`)
     setCanonical(species && `/species/${species.code}`)
   })
-
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    dispatch(loadAllAbilities())
-  }, [])
 
   const loaded = useAppSelector(
     state => state.abilities.loaded && state.pokemon.loaded
