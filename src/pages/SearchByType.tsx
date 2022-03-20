@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Checkbox from '../components/Checkbox'
 import PokemonList from '../components/PokemonList'
 import TypeSelector from '../components/TypeSelector'
-import { useAppSelector } from '../store/hooks'
 import { frontPokemonOfSpeciesByPredicate } from '../store/selectors'
 import { title } from '../utils'
 
