@@ -17,13 +17,10 @@ enum CacheKey {
 
 function transformPokedex(obj: any): Pokedex {
   return {
+    id: obj.id,
     code: obj.code,
     name: obj.name,
-    region: obj.region,
-    pokemonEntries: obj.entries.map((entry: number[]) => ({
-      pokedexNumber: entry[0],
-      pokemonSpeciesId: entry[1],
-    })),
+    region: obj.region || undefined,
   }
 }
 
