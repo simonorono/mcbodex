@@ -1,89 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import rng from 'seedrandom'
 import { getAllPokemon, getAllSpecies } from '../api'
+import { names, suffix } from '../../data/handcrafted/names.json'
 
-const SUFFIX_MAP: { [code: string]: string[] } = {
-  '-alola': ['Alolan'],
-  '-eternamax': ['Eternamax'],
-  '-galar': ['Galarian'],
-  '-gmax': ['Gigantamax'],
-  '-mega': ['Mega'],
-
-  // Charizard & Mewtwo
-  '-mega-x': ['Mega', 'X'],
-  '-mega-y': ['Mega', 'Y'],
-
-  // Groudon & Kyogre
-  '-primal': ['Primal'],
-
-  // Calyrex
-  '-ice-rider': ['Ice Ryder'],
-  '-shadow-rider': ['Shadow Ryder'],
-
-  // Necrozma
-  '-ultra': ['Ultra'],
-
-  // Magearna
-  '-original': ['Original Color'],
-}
-
-const NAME_EXCEPTIONS: { [code: string]: string } = {
-  // Castform
-  'castform-sunny': 'Sunny Form',
-  'castform-rainy': 'Rainy Form',
-  'castform-snowy': 'Snowy Form',
-
-  // Indeedee
-  'indeedee-male': 'Male',
-  'indeedee-female': 'Female',
-
-  // Zacian & Zamazenta
-  '-hero': 'Hero of Many Battles',
-  'zacian-crowned': 'Crowned Sword',
-  'zamazenta-crowned': 'Crowned Shield',
-
-  // Shaymin
-  '-land': 'Land Forme',
-  '-sky': 'Sky Forme',
-
-  // Tornadus, Thundurus & Landorus
-  '-incarnate': 'Incarnate Forme',
-  '-therian': 'Therian Forme',
-  '-ordinary': 'Ordinary Form',
-  '-resolute': 'Resolute Form',
-
-  // Deoxys
-  '-normal': 'Normal Forme',
-  '-attack': 'Attack Forme',
-  '-defense': 'Defense Forme',
-  '-speed': 'Speed! Forme',
-
-  // Zygarde
-  zygarde: '50% Forme',
-  'zygarde-10': '10% Forme',
-  'zygarde-complete': 'Complete Forme',
-
-  // Urshifu
-  'urshifu-single-strike': 'Single Strike Style',
-  'urshifu-single-strike-gmax': 'Gigantamax Urshifu (Single Strike Style)',
-  'urshifu-rapid-strike': 'Rapid Strike Style',
-  'urshifu-rapid-strike-gmax': 'Gigantamax Urshifu (Rapid Strike Style)',
-
-  // Necrozma
-  'necrozma-dusk': 'Dusk Mane',
-  'necrozma-dawn': 'Dawn Wings',
-
-  // Mimikyu
-  'mimikyu-busted': 'Busted Form',
-
-  // Eiscue
-  'eiscue-ice': 'Ice Face',
-  'eiscue-noice': 'Noice Face',
-
-  // Hoopa
-  hoopa: 'Hoopa Confined',
-  'hoopa-unbound': 'Hoopa Unbound',
-}
+const SUFFIX_MAP: { [code: string]: string[] } = suffix
+const NAME_EXCEPTIONS: { [code: string]: string } = names
 
 interface PokemonState {
   allSpecies: PokemonSpecies[]
