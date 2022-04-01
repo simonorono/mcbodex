@@ -15,12 +15,16 @@ const root = createRoot(
   document.getElementById('app')
 )
 
+/**
+ * TODO: bring back strict mode after headlessui achieves full compatibility
+ *       with react 18.
+ *
+ *       See: https://github.com/tailwindlabs/headlessui/issues/681
+ */
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ShortcutProvider>
-        <App />
-      </ShortcutProvider>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <ShortcutProvider>
+      <App />
+    </ShortcutProvider>
+  </Provider>
 )
