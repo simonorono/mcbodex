@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { ShortcutProvider } from 'react-keybind'
 
@@ -10,13 +10,17 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js', { scope: './' }).catch(console.log)
 }
 
-ReactDOM.render(
+const root = createRoot(
+  // @ts-ignore
+  document.getElementById('app')
+)
+
+root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ShortcutProvider>
         <App />
       </ShortcutProvider>
     </Provider>
-  </React.StrictMode>,
-  document.getElementById('app')
+  </React.StrictMode>
 )
