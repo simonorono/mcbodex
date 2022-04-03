@@ -24,18 +24,12 @@ export default function TypeDefenses({ className, pokemon }: Props) {
 
   return (
     <div className={className}>
-      <h2 className="text-left text-2xl font-bold">Type effectiveness</h2>
+      <h2 className="mb-6 text-left text-2xl font-bold">Type effectiveness</h2>
 
-      <div className="flex justify-center md:justify-start">
-        <div className="mt-2 grid grid-cols-3 justify-center gap-2">
-          {types.all.map(type => (
-            <TypeDamageBadge
-              key={type.id}
-              type={type}
-              effect={effect[type.id]}
-            />
-          ))}
-        </div>
+      <div className="mt-2 grid grid-cols-3 justify-center gap-2 sm:grid-cols-4 md:grid-cols-3">
+        {types.all.map(type => (
+          <TypeDamageBadge key={type.id} type={type} effect={effect[type.id]} />
+        ))}
       </div>
     </div>
   )

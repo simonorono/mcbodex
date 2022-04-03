@@ -17,7 +17,7 @@ export default function BaseStats({ className, pokemonData }: Props) {
 
   return (
     <div className={className}>
-      <h2 className="mb-2 text-left text-2xl font-bold">Base stats</h2>
+      <h2 className="mb-2 mb-6 text-left text-2xl font-bold">Base stats</h2>
 
       <table className="stats-table">
         <thead>

@@ -63,10 +63,10 @@ export default function PokemonData({ pokemon }: Props) {
             </div>
           </div>
 
-          <div className="flex flex-col space-y-6 md:flex-row md:space-y-0 md:space-x-6">
-            <TypeDefenses className="flex-1" pokemon={pokemon} />
-
+          <div className="flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-6">
             <BaseStats className="flex-1" pokemonData={pokemonData} />
+
+            <TypeDefenses className="flex-1" pokemon={pokemon} />
           </div>
         </div>
       )}
