@@ -10,10 +10,13 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js', { scope: './' }).catch(console.log)
 }
 
-const root = createRoot(
-  // @ts-ignore
-  document.getElementById('app')
-)
+const appRoot = document.getElementById('app')
+
+if (appRoot === null) {
+  throw new Error("could not find root element")
+}
+
+const root = createRoot(appRoot)
 
 /**
  * TODO: bring back strict mode after headlessui achieves full compatibility
