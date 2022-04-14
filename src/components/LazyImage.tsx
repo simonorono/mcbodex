@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import LazyLoad from 'vanilla-lazyload'
 
 if (!document.lazyLoadInstance) {
@@ -17,29 +17,47 @@ interface Props {
   className?: string
   height: number
   width: number
+  overwriteClasses?: boolean
+  onError?: () => void
 }
 
-export default function LazyImage({
-  alt,
-  src,
-  className,
-  height,
-  width,
-}: Props) {
+export default function LazyImage(props: Props) {
+  const imgRef = useRef(null)
+
+  const { alt, src, className, height, width, overwriteClasses, onError } =
+    props
+
+  const [firstRender, setIfFirstRender] = useState(true)
+
   useEffect(() => {
-    document.lazyLoadInstance.update()
-  }, [])
+    if (firstRender) {
+      document.lazyLoadInstance.update()
+      setIfFirstRender(false)
+      return
+    }
+
+    if (imgRef.current !== null) {
+      LazyLoad.resetStatus(imgRef.current)
+      document.lazyLoadInstance.update()
+    }
+  }, [src])
 
   const BLANK_SVG = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width}' height='${height}'%3E%3C/svg%3E`
 
+  const classes = overwriteClasses
+    ? className || ''
+    : `opacity-0 transition-opacity ${className || ''}`
+
   return (
     <img
+      ref={imgRef}
       width={width}
       height={height}
       src={BLANK_SVG}
       data-src={src}
       alt={alt}
-      className={`opacity-0 transition-opacity ${className || ''}`}
+      className={classes}
+      onError={() => onError && onError()}
     />
   )
 }
