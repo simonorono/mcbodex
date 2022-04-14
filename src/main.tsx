@@ -13,21 +13,17 @@ if ('serviceWorker' in navigator) {
 const appRoot = document.getElementById('app')
 
 if (appRoot === null) {
-  throw new Error("could not find root element")
+  throw new Error('could not find root element')
 }
 
 const root = createRoot(appRoot)
 
-/**
- * TODO: bring back strict mode after headlessui achieves full compatibility
- *       with react 18.
- *
- *       See: https://github.com/tailwindlabs/headlessui/issues/681
- */
 root.render(
-  <Provider store={store}>
-    <ShortcutProvider>
-      <App />
-    </ShortcutProvider>
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <ShortcutProvider>
+        <App />
+      </ShortcutProvider>
+    </Provider>
+  </React.StrictMode>
 )
