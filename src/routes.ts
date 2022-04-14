@@ -5,10 +5,11 @@ import About from './pages/About'
 import NotFound from './pages/NotFound'
 
 const Pokedex = React.lazy(() => import('./pages/Pokedex'))
-const Species = React.lazy(() => import('./pages/Species'))
 const ResearchTask = React.lazy(() => import('./pages/ResearchTask'))
 const SearchByType = React.lazy(() => import('./pages/SearchByType'))
+const Species = React.lazy(() => import('./pages/Species'))
 const Type = React.lazy(() => import('./pages/Type'))
+const WhosThatPokemon = React.lazy(() => import('./pages/WhosThatPokemon'))
 
 export default [
   {
@@ -39,6 +40,10 @@ export default [
   {
     path: '/search-by-type',
     component: SearchByType,
+  },
+  {
+    path: '/whos-that-pokemon',
+    component: WhosThatPokemon,
   },
   {
     path: '*',
