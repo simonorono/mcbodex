@@ -40,7 +40,15 @@ export default function WhosThatPokemon() {
     while (newOptions.length < NUMBER_OF_OPTIONS) {
       const newPokemon = allPokemon[getRandomIndex()]
 
-      if (newOptions.map(pkm => pkm.id).includes(newPokemon.id)) {
+      const includesPokemon = newOptions
+        .map(pkm => pkm.id)
+        .includes(newPokemon.id)
+
+      const includesPokemonFromSameSpecies = newOptions
+        .map(pkm => pkm.speciesId)
+        .includes(newPokemon.speciesId)
+
+      if (includesPokemon || includesPokemonFromSameSpecies) {
         continue
       }
 
