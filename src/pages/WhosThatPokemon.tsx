@@ -5,7 +5,7 @@ import { shuffle } from '../utils/array'
 import Images from '../utils/images'
 
 const NUMBER_OF_OPTIONS = 8
-const MAX_CACHED_SECRETS = 30
+const MAX_CACHED_SECRETS = 200
 
 export default function WhosThatPokemon() {
   const pokemonLoaded = useAppSelector(state => state.pokemon.loaded)
