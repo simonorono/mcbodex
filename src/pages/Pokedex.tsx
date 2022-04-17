@@ -22,11 +22,10 @@ export default function Pokedex() {
   const { code } = useParams() as { code: string }
 
   const game = useAppSelector(state => state.pokedex.gameByCode[code])
-  const pokedexLoaded = useAppSelector(state => state.pokedex.loaded)
   const pokedexByCode = useAppSelector(state => state.pokedex.pokedexByCode)
   const pokemonLoaded = useAppSelector(state => state.pokemon.loaded)
 
-  const allLoaded = pokedexLoaded && pokemonLoaded && game
+  const allLoaded = pokemonLoaded && game
 
   const pokedexList =
     (game && game.pokedex.map(code => pokedexByCode[code])) || []

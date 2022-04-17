@@ -6,7 +6,7 @@ import Loader from './components/Loader'
 import Navbar from './components/Navbar'
 
 import routes from './routes'
-import { loadAllAbilities, loadAllPokemon, loadPokedexList } from './store'
+import { loadAllAbilities, loadAllPokemon } from './store'
 import { useAppDispatch, useAppSelector } from './store/hooks'
 import { classNames } from './utils'
 
@@ -17,7 +17,6 @@ function App() {
 
   useEffect(() => {
     dispatch(loadAllAbilities())
-    dispatch(loadPokedexList())
     dispatch(loadAllPokemon())
   }, [])
 
