@@ -128,6 +128,8 @@ const typeClasses: TypeClassesMap = {
   },
 }
 
+type EffectivenessMap = { [id: number]: number }
+
 class Types {
   all: Type[]
   byId: ById
@@ -153,6 +155,34 @@ class Types {
     }
 
     return typeClasses[type.code]
+  }
+
+  attackEffectiveness(type: Type): EffectivenessMap {
+    const result = {} as EffectivenessMap
+
+    this.all.forEach(type => (result[type.id] = 1))
+
+    type.damageRelationships.forEach(rel => {
+      result[rel.typeId] *= rel.factor
+    })
+
+    return result
+  }
+
+  defenseEffectiveness(types: Type[]): EffectivenessMap {
+    const result = {} as EffectivenessMap
+
+    this.all.forEach(type => (result[type.id] = 1))
+
+    this.all.forEach(type => {
+      type.damageRelationships
+        .filter(rel => types.map(_ => _.id).includes(rel.typeId))
+        .forEach(rel => {
+          result[type.id] *= rel.factor
+        })
+    })
+
+    return result
   }
 }
 

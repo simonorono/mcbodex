@@ -8,19 +8,9 @@ interface Props {
 }
 
 export default function TypeDefenses({ className, pokemon }: Props) {
-  const pokemonTypes = pokemon.types.map(relationship => relationship.typeId)
+  const pokemonTypes = pokemon.types.map(rel => types.byId[rel.typeId])
 
-  let effect = {} as { [id: number]: number }
-
-  types.all.forEach(type => (effect[type.id] = 1))
-
-  types.all.forEach(type => {
-    type.damageRelationships
-      .filter(rel => pokemonTypes.includes(rel.typeId))
-      .forEach(rel => {
-        effect[type.id] *= rel.factor
-      })
-  })
+  let effect = types.defenseEffectiveness(pokemonTypes)
 
   return (
     <div className={className}>
