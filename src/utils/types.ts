@@ -154,24 +154,6 @@ class Types {
 
     return typeClasses[type.code]
   }
-
-  superEffectiveAgainst(type: Type): Type[] {
-    return type.damageRelationships
-      .filter(rel => rel.factor > 1)
-      .map(rel => this.byId[rel.typeId])
-  }
-
-  notVeryEffectiveAgainst(type: Type): Type[] {
-    return type.damageRelationships
-      .filter(rel => rel.factor < 1 && rel.factor > 0)
-      .map(rel => this.byId[rel.typeId])
-  }
-
-  noEffectAgainst(type: Type): Type[] {
-    return type.damageRelationships
-      .filter(rel => rel.factor === 0)
-      .map(rel => this.byId[rel.typeId])
-  }
 }
 
 export default new Types()
