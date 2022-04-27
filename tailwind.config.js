@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 delete colors.lightBlue
 delete colors.warmGray
@@ -16,6 +17,11 @@ module.exports = {
     colors: {
       primary: colors.emerald,
       ...colors,
+    },
+    extend: {
+      fontFamily: {
+        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
+      },
     },
   },
 }
