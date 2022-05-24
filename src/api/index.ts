@@ -1,10 +1,12 @@
 import cachedApi from './cachedApi'
 import abilitiesUrl from '../../data/raw/abilities.json?url'
+import movesUrl from '../../data/raw/moves.json?url'
 import pokemonUrl from '../../data/raw/pokemon.json?url'
 import speciesUrl from '../../data/raw/species.json?url'
 
 enum CacheKey {
   ABILITIES_LIST = 'abilities_list',
+  MOVES_LIST = 'moves_list',
   POKEMON_LIST = 'pokemon_list',
   SPECIES_LIST = 'species_list',
 }
@@ -37,6 +39,8 @@ function transformSpecies(obj: any): PokemonSpecies {
 
 export const getAllAbilities = async () =>
   cachedApi.get(CacheKey.ABILITIES_LIST, abilitiesUrl)
+export const getAllMoves = async () =>
+  cachedApi.get(CacheKey.MOVES_LIST, movesUrl)
 export const getAllPokemon = async () =>
   cachedApi.get(CacheKey.POKEMON_LIST, pokemonUrl, transformPokemon)
 export const getAllSpecies = async () =>
