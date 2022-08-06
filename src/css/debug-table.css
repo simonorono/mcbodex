@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .debug-table {
+    table, tr, th, td {
+      @apply border border-black;
+    }
+
+    td {
+      @apply px-2;
+    }
+  }
+}
