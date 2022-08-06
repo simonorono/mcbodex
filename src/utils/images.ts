@@ -24,6 +24,9 @@ export default {
       // Magearna
       10147: this.homeImageForPokemon(10147),
 
+      // Darmanitan Galarian Zen Mode
+      10178: this.homeImageForPokemon(10178),
+
       // Eternamax Eternatus
       10217: this.homeImageForPokemon(10217),
     } as { [key: number]: string }

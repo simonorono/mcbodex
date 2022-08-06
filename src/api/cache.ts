@@ -4,7 +4,7 @@ import { name } from '../../package.json'
 /**
  * Bump this number every time the data gets updated to invalidate the cache.
  */
-const DATA_VERSION = 12
+const DATA_VERSION = 13
 
 localforage.config({
   name: `${name}@DATA-${DATA_VERSION}`,
