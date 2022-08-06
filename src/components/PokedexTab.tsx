@@ -11,12 +11,14 @@ interface Props {
   pokedex: Pokedex
 }
 
+type Entries = { [key: string]: PokedexEntry[] }
+
 export default function PokedexTab({ pokedex }: Props) {
   const [loaded, setIfLoaded] = useState(false)
   const [entries, setEntries] = useState([] as PokedexEntry[])
 
   pokedexFiles[key(pokedex)]().then(entries => {
-    setEntries(entries.default as PokedexEntry[])
+    setEntries((entries as Entries).default as PokedexEntry[])
     setIfLoaded(true)
   })
 
