@@ -11,12 +11,12 @@ function SearchButton({ shortcut }: IWithShortcut) {
   useEffect(() => {
     shortcut?.registerShortcut?.(
       toggleModal,
-      ['ctrl+f', 'cmd+f'],
+      ['ctrl+k', 'cmd+k'],
       'Search',
       'Search Pokémon'
     )
 
-    return () => shortcut?.unregisterShortcut?.(['ctrl-f', 'cmd-f'])
+    return () => shortcut?.unregisterShortcut?.(['ctrl-k', 'cmd-k'])
   }, [])
 
   return (
