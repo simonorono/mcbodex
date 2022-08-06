@@ -8,7 +8,7 @@
       @apply border border-black;
     }
 
-    td {
+    th, td {
       @apply px-2;
     }
   }

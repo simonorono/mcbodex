@@ -33,8 +33,9 @@ export default function DebugRepeated() {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Species</th>
+            <th>Species ID</th>
+            <th>Species Name</th>
+            <th>Pokémon ID</th>
             <th>Pokémon Name</th>
             <th>Pokémon Code</th>
           </tr>
@@ -45,8 +46,9 @@ export default function DebugRepeated() {
             .flatMap(c =>
               c.pokemon.map(pkm => (
                 <tr key={pkm.id}>
-                  <td>{pkm.id}</td>
+                  <td>{c.species.id}</td>
                   <td>{c.species.name}</td>
+                  <td>{pkm.id}</td>
                   <td>{pkm.name}</td>
                   <td>{pkm.code}</td>
                 </tr>

@@ -12,22 +12,28 @@ export default function DebugPokemon() {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Species Id</th>
             <th>Species Name</th>
+            <th>Pokémon ID</th>
             <th>Pokémon Name</th>
             <th>Pokémon Code</th>
           </tr>
         </thead>
 
         <tbody>
-          {pokemon.map((pokemon: Pokemon) => (
-            <tr key={pokemon.id}>
-              <td>{pokemon.id}</td>
-              <td>{speciesById[pokemon.speciesId].name}</td>
-              <td>{pokemon.name}</td>
-              <td>{pokemon.code}</td>
-            </tr>
-          ))}
+          {pokemon.map((pokemon: Pokemon) => {
+            const species = speciesById[pokemon.speciesId]
+
+            return (
+              <tr key={pokemon.id}>
+                <td>{species.id}</td>
+                <td>{species.name}</td>
+                <td>{pokemon.id}</td>
+                <td>{pokemon.name}</td>
+                <td>{pokemon.code}</td>
+              </tr>
+            )
+          })}
         </tbody>
       </table>
     </div>
