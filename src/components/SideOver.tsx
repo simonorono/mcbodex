@@ -3,10 +3,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import { DotsVerticalIcon, XIcon } from '@heroicons/react/outline'
 import Navigation from './Navigation'
 
-export default function Example() {
+export default function SideOver() {
   const [open, setOpen] = useState(false)
-
-  const onLinkClicked = () => setOpen(false)
 
   return (
     <div>
@@ -24,7 +22,7 @@ export default function Example() {
           static
           className="fixed inset-0 overflow-hidden"
           open={open}
-          onClose={setOpen}
+          onClose={() => setOpen(false)}
         >
           <div className="absolute inset-0 overflow-hidden">
             <Transition.Child
@@ -73,7 +71,7 @@ export default function Example() {
                     <hr className="my-4" />
 
                     <div className="relative flex-1 px-4 sm:px-6">
-                      <Navigation onLinkClicked={onLinkClicked} />
+                      <Navigation onLinkClicked={() => setOpen(false)} />
                     </div>
                   </div>
                 </div>
