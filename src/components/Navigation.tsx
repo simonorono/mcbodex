@@ -46,7 +46,7 @@ export default function Navigation({ onLinkClicked }: Props) {
 
   function SeveralLinks({ name, children }: SeveralLinksProps) {
     return (
-      <Disclosure as="div" className="space-y-1">
+      <Disclosure>
         {({ open }) => (
           <>
             <Disclosure.Button
