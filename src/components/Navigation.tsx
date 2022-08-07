@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Disclosure } from '@headlessui/react'
+import { ChevronRightIcon } from '@heroicons/react/solid'
 import { useAppSelector } from '../store/hooks'
 import { types } from '../utils'
 
@@ -55,19 +56,15 @@ export default function Navigation({ onLinkClicked }: Props) {
                 'rounded-md font-medium text-white focus:outline-none',
               ].join(' ')}
             >
-              <svg
+              <ChevronRightIcon
                 className={[
                   open ? 'rotate-90 text-gray-400' : 'text-gray-300',
-                  'mr-2 h-5 w-5 flex-shrink-0 transform transition-colors duration-150 ease-in-out group-hover:text-gray-400',
+                  'mr-2 h-5 w-5 flex-shrink-0 transform transition-all duration-150 ease-in-out group-hover:text-white',
                 ].join(' ')}
-                viewBox="0 0 20 20"
-                aria-hidden="true"
-              >
-                <path d="M6 6L14 10L6 14V6Z" fill="currentColor" />
-              </svg>
+              />
               {name}
             </Disclosure.Button>
-            <Disclosure.Panel>{children}</Disclosure.Panel>
+            <Disclosure.Panel className="ml-4">{children}</Disclosure.Panel>
           </>
         )}
       </Disclosure>
