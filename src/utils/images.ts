@@ -8,7 +8,7 @@ export default {
   },
 
   frontSpriteForPokemonId(id: number) {
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+    return `https://raw.githubusercontent.com/simonorono/sprites/hisuian-sprites/sprites/pokemon/${id}.png`
   },
 
   dataPageImage(id: number) {
