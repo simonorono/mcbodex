@@ -10,10 +10,10 @@
     "format": "prettier -w src"
   },
   "dependencies": {
-    "@fontsource/inter": "^4.5.11",
+    "@fontsource/inter": "^4.5.12",
     "@headlessui/react": "1.6.6",
     "@heroicons/react": "^1.0.6",
-    "@reduxjs/toolkit": "^1.8.3",
+    "@reduxjs/toolkit": "^1.8.5",
     "localforage": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -26,19 +26,19 @@
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.2",
     "@types/node": "^17.0.36",
-    "@types/react": "^18.0.15",
+    "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/react-router-dom": "^5.3.3",
     "@types/seedrandom": "^3.0.2",
-    "@vitejs/plugin-react": "^2.0.0",
+    "@vitejs/plugin-react": "^2.0.1",
     "autoprefixer": "^10.4.8",
     "https-localhost": "^4.7.1",
-    "postcss": "^8.4.14",
+    "postcss": "^8.4.16",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "sitemap": "^7.1.1",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.7.4",
-    "vite": "^3.0.4"
+    "vite": "^3.0.9"
   }
 }
