@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import rawGames from '../../data/handcrafted/games.json'
-import rawPokedex from '../../data/raw/pokedex.json'
+import rawGames from 'rdex-data/handcrafted/games.json'
+import rawPokedex from 'rdex-data/raw/pokedex.json'
 
 interface PokedexState {
   allPokedex: Pokedex[]

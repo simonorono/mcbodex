@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
-import researchTasksRaw from '../../data/handcrafted/research_tasks.json'
+import researchTasksRaw from 'rdex-data/handcrafted/research_tasks.json'
 import PokemonList from '../components/PokemonList'
 import { title } from '../utils'
 

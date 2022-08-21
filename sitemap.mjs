@@ -8,10 +8,10 @@ function readJson(file) {
   )
 }
 
-const games = readJson('./data/handcrafted/games.json')
-const pokemon = readJson('./data/raw/species.json')
-const researchTaskGroups = readJson('./data/handcrafted/research_tasks.json')
-const types = readJson('./data/raw/types.json')
+const games = readJson('./node_modules/rdex-data/handcrafted/games.json')
+const pokemon = readJson('./node_modules/rdex-data/raw/species.json')
+const researchTaskGroups = readJson('./node_modules/rdex-data/handcrafted/research_tasks.json')
+const types = readJson('./node_modules/rdex-data/raw/types.json')
 
 const now = new Date;
 

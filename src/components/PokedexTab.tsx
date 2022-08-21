@@ -3,9 +3,9 @@ import Loader from './Loader'
 import PokemonList from './PokemonList'
 import { getPokemonListForPokedex } from '../store/selectors'
 
-const pokedexFiles = import.meta.glob('../../data/raw/pokedex/*.json')
+const pokedexFiles = import.meta.glob('../../node_modules/rdex-data/raw/pokedex/*.json')
 
-const key = (pokedex: Pokedex) => `../../data/raw/pokedex/${pokedex.id}.json`
+const key = (pokedex: Pokedex) => `../../node_modules/rdex-data/raw/pokedex/${pokedex.id}.json`
 
 interface Props {
   pokedex: Pokedex

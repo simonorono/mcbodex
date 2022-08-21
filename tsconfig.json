@@ -20,5 +20,5 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "include": ["./src", "./data/types.d.ts"],
+  "include": ["./src", "./node_modules/rdex-data/types.d.ts"],
 }

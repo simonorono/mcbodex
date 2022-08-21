@@ -1,4 +1,4 @@
-import types from '../../data/raw/types.json'
+import types from 'rdex-data/raw/types.json'
 
 const ALL_TYPES: Type[] = types
 

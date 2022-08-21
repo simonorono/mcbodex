@@ -1,8 +1,8 @@
 import cachedApi from './cachedApi'
-import abilitiesUrl from '../../data/raw/abilities.json?url'
-import movesUrl from '../../data/raw/moves.json?url'
-import pokemonUrl from '../../data/raw/pokemon.json?url'
-import speciesUrl from '../../data/raw/species.json?url'
+import abilitiesUrl from 'rdex-data/raw/abilities.json?url'
+import movesUrl from 'rdex-data/raw/moves.json?url'
+import pokemonUrl from 'rdex-data/raw/pokemon.json?url'
+import speciesUrl from 'rdex-data/raw/species.json?url'
 
 enum CacheKey {
   ABILITIES_LIST = 'abilities_list',

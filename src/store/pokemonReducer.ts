@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import rng from 'seedrandom'
 import { getAllPokemon, getAllSpecies } from '../api'
-import { names, suffix } from '../../data/handcrafted/names.json'
+import { names, suffix } from 'rdex-data/handcrafted/names.json'
 
 const SUFFIX_MAP: { [code: string]: string[] } = suffix
 const NAME_EXCEPTIONS: { [code: string]: string } = names
