@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ArrowUpIcon } from '@heroicons/react/solid'
+import { ArrowUpIcon } from '@heroicons/react/24/solid'
 import { scrollToTop } from '../utils'
 
 export default function BackToTopButton() {

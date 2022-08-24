@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IWithShortcut, withShortcut } from 'react-keybind'
-import { SearchIcon } from '@heroicons/react/outline'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import SearchModal from './SearchModal'
 
 function SearchButton({ shortcut }: IWithShortcut) {
@@ -26,7 +26,7 @@ function SearchButton({ shortcut }: IWithShortcut) {
         className="flex h-full items-center rounded-full text-white focus:outline-none"
       >
         <span className="sr-only">Open search</span>
-        <SearchIcon className="h-8 w-8" aria-hidden="true" />
+        <MagnifyingGlassIcon className="h-8 w-8" aria-hidden="true" />
       </button>
 
       <SearchModal open={open} close={() => setIfOpen(false)} />

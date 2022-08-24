@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Disclosure } from '@headlessui/react'
-import { ChevronRightIcon } from '@heroicons/react/solid'
+import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import { useAppSelector } from '../store/hooks'
 import { types } from '../utils'
 

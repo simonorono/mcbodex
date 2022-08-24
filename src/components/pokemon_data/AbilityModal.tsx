@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { InformationCircleIcon } from '@heroicons/react/outline'
+import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import { classNames } from '../../utils'
-import { XIcon } from '@heroicons/react/solid'
+import { XMarkIcon } from '@heroicons/react/24/solid'
 
 interface Props {
   ability: Ability
@@ -39,7 +39,7 @@ export default function AbilityModal(props: Props) {
                 onClick={() => setIsOpen(false)}
               >
                 <span className="sr-only">Close</span>
-                <XIcon className="h-6 w-6" aria-hidden="true" />
+                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
               </button>
             </div>
 

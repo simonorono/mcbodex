@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Combobox, Dialog, Transition } from '@headlessui/react'
-import { EmojiSadIcon, SearchIcon, ClockIcon } from '@heroicons/react/outline'
+import { ClockIcon, FaceFrownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { useAppSelector } from '../store/hooks'
 
 interface Props {
@@ -44,7 +44,7 @@ function searchMessage(
 }
 
 const NOT_FOUND_MESSAGE = searchMessage(
-  <EmojiSadIcon {...SEARCH_MESSAGE_ICON_ATTRIBUTES} />,
+  <FaceFrownIcon {...SEARCH_MESSAGE_ICON_ATTRIBUTES} />,
   'No results found',
   "We couldn't find anything with that term. Please try again."
 )
@@ -144,7 +144,7 @@ export default function SearchModal({ close, open }: Props) {
             value={null}
           >
             <div className="relative">
-              <SearchIcon
+              <MagnifyingGlassIcon
                 className="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400"
                 aria-hidden="true"
               />

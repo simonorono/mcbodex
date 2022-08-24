@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
-import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
+import { CheckIcon, ChevronDoubleDownIcon } from '@heroicons/react/24/solid'
 import { types } from '../utils'
 
 interface Props {
@@ -39,7 +39,7 @@ export default function TypeSelector({
                 {selected?.name || 'Please Select'}
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                <SelectorIcon
+                <ChevronDoubleDownIcon
                   className={[
                     selected ? classes.color : 'text-gray-400',
                     'h-5 w-5',

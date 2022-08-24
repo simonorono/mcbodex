@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { DotsVerticalIcon, XIcon } from '@heroicons/react/outline'
+import { EllipsisVerticalIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Navigation from './Navigation'
 
 export default function SideOver() {
@@ -13,7 +13,7 @@ export default function SideOver() {
         className="flex h-full items-center rounded-full text-white focus:outline-none"
       >
         <span className="sr-only">Open options</span>
-        <DotsVerticalIcon className="h-8 w-8" aria-hidden="true" />
+        <EllipsisVerticalIcon className="h-8 w-8" aria-hidden="true" />
       </button>
 
       <Transition.Root show={open}>
@@ -62,7 +62,7 @@ export default function SideOver() {
                             onClick={() => setOpen(false)}
                           >
                             <span className="sr-only">Close panel</span>
-                            <XIcon className="h-6 w-6" aria-hidden="true" />
+                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                           </button>
                         </div>
                       </div>

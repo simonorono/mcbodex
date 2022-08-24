@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowSmLeftIcon, ArrowSmRightIcon } from '@heroicons/react/solid'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import { useAppSelector } from '../store/hooks'
 
 interface Props {
@@ -17,7 +17,7 @@ export default function PokemonLinks({ species }: Props) {
     <div className="mb-2 flex min-h-[1em] flex-wrap justify-between text-primary-900">
       {prev && (
         <Link to={`/species/${prev.code}`} className="">
-          <ArrowSmLeftIcon className="inline h-4 w-4" />
+          <ChevronLeftIcon className="inline h-4 w-4" />
           {`#${String(prev.id).padStart(3, '0')} ${prev.name}`}
         </Link>
       )}
@@ -28,7 +28,7 @@ export default function PokemonLinks({ species }: Props) {
       {next && (
         <Link to={`/species/${next.code}`} className="">
           {`#${String(next.id).padStart(3, '0')} ${next.name}`}
-          <ArrowSmRightIcon className="inline h-4 w-4" />
+          <ChevronRightIcon className="inline h-4 w-4" />
         </Link>
       )}
     </div>
