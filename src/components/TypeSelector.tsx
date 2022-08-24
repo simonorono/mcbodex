@@ -44,7 +44,9 @@ export default function TypeSelector({
                     open ? 'rotate-180' : false,
                     selected ? classes.color : 'text-gray-400',
                     'h-5 w-5 transition-transform duration-300',
-                  ].filter(Boolean).join(' ')}
+                  ]
+                    .filter(Boolean)
+                    .join(' ')}
                   aria-hidden="true"
                 />
               </span>

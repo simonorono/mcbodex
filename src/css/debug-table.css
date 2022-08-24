@@ -4,11 +4,15 @@
 
 @layer components {
   .debug-table {
-    table, tr, th, td {
+    table,
+    tr,
+    th,
+    td {
       @apply border border-black;
     }
 
-    th, td {
+    th,
+    td {
       @apply px-2;
     }
   }

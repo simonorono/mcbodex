@@ -7,9 +7,12 @@ import TypeDefenses from './pokemon_data/TypeDefenses'
 
 const MAX_IMAGE_DIMENSION = 450
 
-const pokemons = import.meta.glob('../../node_modules/rdex-data/raw/pokemon/*.json')
+const pokemons = import.meta.glob(
+  '../../node_modules/rdex-data/raw/pokemon/*.json'
+)
 
-const key = (id: string) => `../../node_modules/rdex-data/raw/pokemon/${id}.json`
+const key = (id: string) =>
+  `../../node_modules/rdex-data/raw/pokemon/${id}.json`
 
 const imageContainerStyle = {
   '--aspect-ratio': '450/450',
