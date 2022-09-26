@@ -10,36 +10,28 @@ interface Props {
 interface AbilityProps {
   ability: Ability
   hidden: boolean
+  onClick: () => void
 }
 
-function Ability({ ability, hidden }: AbilityProps) {
-  const [isModalOpened, setIsModalOpened] = useState(false)
-
+function Ability({ ability, hidden, onClick }: AbilityProps) {
   return (
-    <>
-      <AbilityModal
-        ability={ability}
-        isOpen={isModalOpened}
-        setIsOpen={setIsModalOpened}
-      />
-
-      <div className="text-right">
-        <p
-          className={classNames(
-            'inline-block cursor-pointer leading-4',
-            'underline decoration-primary-500/75 decoration-2'
-          )}
-          onClick={() => setIsModalOpened(true)}
-        >
-          {`${ability.name}${hidden ? ' (hidden)' : ''}`}
-        </p>
-      </div>
-    </>
+    <div className="text-right">
+      <p
+        className={classNames(
+          'inline-block cursor-pointer leading-4',
+          'underline decoration-primary-500/75 decoration-2'
+        )}
+        onClick={onClick}
+      >
+        {`${ability.name}${hidden ? ' (hidden)' : ''}`}
+      </p>
+    </div>
   )
 }
 
 export default function Abilities({ abilitiesRel }: Props) {
   const abilityById = useAppSelector(state => state.abilities.byId)
+  const [abilityInModal, setAbilityInModal] = useState(null as Ability | null)
 
   const abilities: Ability[] = []
   const hiddenAbilities: Ability[] = []
@@ -50,13 +42,28 @@ export default function Abilities({ abilitiesRel }: Props) {
 
   return (
     <>
+      <AbilityModal
+        ability={abilityInModal}
+        close={() => setAbilityInModal(null)}
+      />
+
       <div className="flex flex-col space-y-4 sm:space-y-1">
         {abilities.map(ability => (
-          <Ability key={ability.id} ability={ability} hidden={false} />
+          <Ability
+            key={ability.id}
+            ability={ability}
+            hidden={false}
+            onClick={() => setAbilityInModal(ability)}
+          />
         ))}
 
         {hiddenAbilities.map(ability => (
-          <Ability key={ability.id} ability={ability} hidden={true} />
+          <Ability
+            key={ability.id}
+            ability={ability}
+            hidden={true}
+            onClick={() => setAbilityInModal(ability)}
+          />
         ))}
       </div>
     </>

@@ -5,17 +5,16 @@ import { classNames } from '../../utils'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 
 interface Props {
-  ability: Ability
-  isOpen: boolean
-  setIsOpen: (open: boolean) => void
+  ability: Ability | null
+  close: () => void
 }
 
 export default function AbilityModal(props: Props) {
-  const { ability, isOpen, setIsOpen } = props
+  const { ability, close } = props
 
   return (
     <Transition
-      show={isOpen}
+      show={!!ability}
       as={Fragment}
       enter="transition-opacity duration-200"
       enterFrom="opacity-0"
@@ -25,7 +24,7 @@ export default function AbilityModal(props: Props) {
       leaveTo="opacity-0"
     >
       <Dialog
-        onClose={() => setIsOpen(false)}
+        onClose={() => close()}
         className="fixed inset-0 z-10 flex items-center justify-center"
       >
         <Dialog.Overlay className="fixed inset-0 bg-black opacity-60" />
@@ -36,7 +35,7 @@ export default function AbilityModal(props: Props) {
               <button
                 type="button"
                 className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none"
-                onClick={() => setIsOpen(false)}
+                onClick={() => close()}
               >
                 <span className="sr-only">Close</span>
                 <XMarkIcon className="h-6 w-6" aria-hidden="true" />
@@ -53,20 +52,22 @@ export default function AbilityModal(props: Props) {
                 <InformationCircleIcon className="h-7 w-7 text-primary-600" />
               </div>
 
-              <div className="space-y-2 text-center sm:text-left">
-                <Dialog.Title className="text-lg font-medium">
-                  {ability.name}
-                </Dialog.Title>
+              {ability && (
+                <div className="space-y-2 text-center sm:text-left">
+                  <Dialog.Title className="text-lg font-medium">
+                    {ability.name}
+                  </Dialog.Title>
 
-                <p className="text-sm">{ability.flavorText}</p>
+                  <p className="text-sm">{ability.flavorText}</p>
 
-                <hr />
+                  <hr />
 
-                <p className="text-sm">
-                  {ability.effect ||
-                    '(Detailed effect text not yet available).'}
-                </p>
-              </div>
+                  <p className="text-sm">
+                    {ability.effect ||
+                      '(Detailed effect text not yet available).'}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
