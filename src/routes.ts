@@ -11,6 +11,7 @@ const Species = React.lazy(() => import('./pages/Species'))
 const Type = React.lazy(() => import('./pages/Type'))
 const WhosThatPokemon = React.lazy(() => import('./pages/WhosThatPokemon'))
 
+import DebugIndex from './pages/debug/DebugIndex'
 import DebugPokemon from './pages/debug/DebugPokemon'
 import DebugRepeated from './pages/debug/DebugRepeated'
 
@@ -57,6 +58,10 @@ let routes = [
 if (import.meta.env.MODE === 'development') {
   routes = [
     ...routes,
+    {
+      path: '/debug',
+      component: DebugIndex,
+    },
     {
       path: '/debug/pokemon',
       component: DebugPokemon,

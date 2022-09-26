@@ -111,6 +111,10 @@ export default function Navigation({ onLinkClicked }: Props) {
       <SingleLink name={"Who's that Pokémon?"} href="/whos-that-pokemon" />
 
       <SingleLink name="About" href="/about" />
+
+      {import.meta.env.MODE === 'development' && (
+        <SingleLink name="Debug" href="/debug" />
+      )}
     </nav>
   )
 }
