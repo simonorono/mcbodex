@@ -26,6 +26,8 @@ export default function PokemonList({ pokemonList, numberCallback }: Props) {
 
   useEffect(() => setLoaded(true), [])
 
+  useEffect(() => setCurrentPage(1), [pokemonList])
+
   return (
     <>
       {!loaded && <Loader />}
