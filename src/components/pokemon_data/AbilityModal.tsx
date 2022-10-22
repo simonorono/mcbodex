@@ -7,14 +7,15 @@ import { XMarkIcon } from '@heroicons/react/24/solid'
 interface Props {
   ability: Ability | null
   close: () => void
+  open: boolean
 }
 
 export default function AbilityModal(props: Props) {
-  const { ability, close } = props
+  const { ability, close, open } = props
 
   return (
     <Transition
-      show={!!ability}
+      show={open}
       as={Fragment}
       enter="transition-opacity duration-200"
       enterFrom="opacity-0"

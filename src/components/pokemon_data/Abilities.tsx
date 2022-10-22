@@ -31,7 +31,14 @@ function Ability({ ability, hidden, onClick }: AbilityProps) {
 
 export default function Abilities({ abilitiesRel }: Props) {
   const abilityById = useAppSelector(state => state.abilities.byId)
+
+  const [isModalOpen, setIfModalIsOpen] = useState(false)
   const [abilityInModal, setAbilityInModal] = useState(null as Ability | null)
+
+  const setupAndOpenModal = (ability: Ability) => {
+    setAbilityInModal(ability)
+    setIfModalIsOpen(true)
+  }
 
   const abilities: Ability[] = []
   const hiddenAbilities: Ability[] = []
@@ -43,8 +50,9 @@ export default function Abilities({ abilitiesRel }: Props) {
   return (
     <>
       <AbilityModal
+        open={isModalOpen}
         ability={abilityInModal}
-        close={() => setAbilityInModal(null)}
+        close={() => setIfModalIsOpen(false)}
       />
 
       <div className="flex flex-col space-y-4 sm:space-y-1">
@@ -53,7 +61,7 @@ export default function Abilities({ abilitiesRel }: Props) {
             key={ability.id}
             ability={ability}
             hidden={false}
-            onClick={() => setAbilityInModal(ability)}
+            onClick={() => setupAndOpenModal(ability)}
           />
         ))}
 
@@ -62,7 +70,7 @@ export default function Abilities({ abilitiesRel }: Props) {
             key={ability.id}
             ability={ability}
             hidden={true}
-            onClick={() => setAbilityInModal(ability)}
+            onClick={() => setupAndOpenModal(ability)}
           />
         ))}
       </div>
