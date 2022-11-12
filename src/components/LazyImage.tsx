@@ -18,14 +18,23 @@ interface Props {
   height: number
   width: number
   overwriteClasses?: boolean
-  onError?: () => void
+  onError?: (event: React.SyntheticEvent) => void
+  onLoad?: (event: React.SyntheticEvent) => void
 }
 
 export default function LazyImage(props: Props) {
   const imgRef = useRef(null)
 
-  const { alt, src, className, height, width, overwriteClasses, onError } =
-    props
+  const {
+    alt,
+    src,
+    className,
+    height,
+    width,
+    overwriteClasses,
+    onError,
+    onLoad,
+  } = props
 
   const [firstRender, setIfFirstRender] = useState(true)
 
@@ -57,7 +66,8 @@ export default function LazyImage(props: Props) {
       data-src={src}
       alt={alt}
       className={classes}
-      onError={() => onError && onError()}
+      onLoad={event => onLoad && onLoad(event)}
+      onError={event => onError && onError(event)}
     />
   )
 }
