@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { images } from '../utils'
 import Loader from './Loader'
 import BaseStats from './pokemon_data/BaseStats'
+import LazyImage from './LazyImage'
 import PokemonDetails from './pokemon_data/PokemonDetails'
 import TypeDefenses from './pokemon_data/TypeDefenses'
 
@@ -67,7 +68,7 @@ export default function PokemonData({ pokemon }: Props) {
               style={imageContainerStyle}
             >
               <div ref={imgContainerRef} style={imageContainerStyle}>
-                <img
+                <LazyImage
                   width={MAX_IMAGE_DIMENSION}
                   height={MAX_IMAGE_DIMENSION}
                   src={images.dataPageImage(pokemon.id)}
