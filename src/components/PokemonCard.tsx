@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import LazyImage from './LazyImage'
 import PokemonTypes from './PokemonTypes'
@@ -11,12 +11,17 @@ interface Props {
 }
 
 export default function PokemonCard({ pokemon, number }: Props) {
+  const navigate = useNavigate()
+
   const species = useAppSelector(
     state => state.pokemon.speciesById[pokemon.speciesId]
   )
 
   return (
-    <div className="flex w-full items-center rounded-xl border border-gray-300 p-2">
+    <div
+      className="flex w-full cursor-pointer items-center rounded-xl border border-gray-300 p-2"
+      onClick={() => navigate(`/species/${species.code}`)}
+    >
       <LazyImage
         width={80}
         height={80}
