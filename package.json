@@ -32,6 +32,7 @@
     "@types/react-dom": "^18.0.8",
     "@types/react-router-dom": "^5.3.3",
     "@types/seedrandom": "^3.0.2",
+    "@vitejs/plugin-legacy": "^2.3.1",
     "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.13",
     "https-localhost": "^4.7.1",
