@@ -45,7 +45,7 @@ export default function PokemonCard({ pokemon, number }: Props) {
         </div>
 
         <div className="mx-1 flex flex-col justify-center space-y-1 text-center">
-          <p className="mr-2 text-sm font-medium">#{number}</p>
+          <p className="text-sm font-medium">#{number}</p>
           <PokemonTypes typesRels={pokemon.types} />
         </div>
       </div>
