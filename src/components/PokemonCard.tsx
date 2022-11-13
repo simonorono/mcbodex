@@ -22,6 +22,30 @@ export default function PokemonCard({ pokemon, number }: Props) {
       className="flex w-full cursor-pointer rounded-xl border border-gray-300"
       onClick={() => navigate(`/species/${species.code}`)}
     >
+      <div className="ml-4 flex grow">
+        <div className="my-2 flex grow flex-col justify-center">
+          <Link
+            to={`/species/${species.code}`}
+            className="mb-1 inline-flex flex-col items-start hover:underline"
+          >
+            <h3 className="inline space-x-2 text-base font-medium text-gray-900">
+              <span>#{number}.</span>
+              <span>{species.name}</span>
+            </h3>
+            {species.name !== pokemon.name && (
+              <h4 className="text-md text-gray-700">{pokemon.name}</h4>
+            )}
+          </Link>
+          <div className="flex justify-between space-x-2">
+            <PokemonTypes
+              extraBadgeClasses="block grow"
+              typesRels={pokemon.types}
+            />
+          </div>
+        </div>
+
+        <div className="mx-1 flex flex-col justify-center space-y-1"></div>
+      </div>
       <LazyImage
         width={80}
         height={80}
@@ -29,26 +53,6 @@ export default function PokemonCard({ pokemon, number }: Props) {
         src={images.frontSpriteForPokemonId(pokemon.id)}
         alt={`front sprite for ${pokemon.name}`}
       />
-      <div className="ml-4 flex grow">
-        <div className="my-2 flex grow flex-col justify-center">
-          <Link
-            to={`/species/${species.code}`}
-            className="mb-1 inline-flex flex-col items-start hover:underline"
-          >
-            <h3 className="inline text-base font-medium text-gray-900">
-              {species.name}
-            </h3>
-            {species.name !== pokemon.name && (
-              <h4 className="text-md text-gray-700">{pokemon.name}</h4>
-            )}
-          </Link>
-        </div>
-
-        <div className="mx-1 flex flex-col justify-center space-y-1 text-center">
-          <p className="text-sm font-medium">#{number}</p>
-          <PokemonTypes typesRels={pokemon.types} />
-        </div>
-      </div>
     </div>
   )
 }
