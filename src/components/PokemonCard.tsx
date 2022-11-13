@@ -19,30 +19,33 @@ export default function PokemonCard({ pokemon, number }: Props) {
 
   return (
     <div
-      className="flex w-full cursor-pointer items-center rounded-xl border border-gray-300 p-2"
+      className="flex w-full cursor-pointer rounded-xl border border-gray-300"
       onClick={() => navigate(`/species/${species.code}`)}
     >
       <LazyImage
         width={80}
         height={80}
-        className="h-20 w-20 flex-shrink-0 rounded-full bg-gray-300 "
+        className="m-2 h-20 w-20 flex-shrink-0 rounded-full bg-gray-300"
         src={images.frontSpriteForPokemonId(pokemon.id)}
         alt={`front sprite for ${pokemon.name}`}
       />
-      <div className="ml-6 grow truncate">
-        <Link
-          to={`/species/${species.code}`}
-          className="mb-2 inline-flex flex-col items-start hover:underline"
-        >
-          <h3 className="inline truncate text-sm font-medium text-gray-900">
-            {number}. {species.name}
-          </h3>
-          {species.name !== pokemon.name && (
-            <h4 className="truncate text-sm text-gray-700">{pokemon.name}</h4>
-          )}
-        </Link>
+      <div className="ml-4 flex grow">
+        <div className="my-2 flex grow flex-col justify-center">
+          <Link
+            to={`/species/${species.code}`}
+            className="mb-1 inline-flex flex-col items-start hover:underline"
+          >
+            <h3 className="inline text-base font-medium text-gray-900">
+              {species.name}
+            </h3>
+            {species.name !== pokemon.name && (
+              <h4 className="text-md text-gray-700">{pokemon.name}</h4>
+            )}
+          </Link>
+        </div>
 
-        <div className="flex space-x-1">
+        <div className="mx-1 flex flex-col justify-center space-y-1 text-center">
+          <p className="mr-2 text-sm font-medium">#{number}</p>
           <PokemonTypes typesRels={pokemon.types} />
         </div>
       </div>
