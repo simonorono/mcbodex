@@ -8,7 +8,7 @@ export default function PokemonOfTheDay() {
   return (
     <>
       {pokemonOfTheDay && (
-        <div className="space-y-3">
+        <div className="space-y-3 md:max-w-sm">
           <h2 className="text-2xl">Pokémon of the Day</h2>
 
           <PokemonCard
