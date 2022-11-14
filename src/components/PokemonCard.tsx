@@ -33,6 +33,7 @@ export default function PokemonCard({ pokemon, number }: Props) {
           <Link
             to={link}
             className="mb-1 inline-flex flex-col items-start hover:underline"
+            onClick={event => event.stopPropagation()} // prevents triggering of root's onClick
           >
             <h3 className="inline space-x-2 text-base font-medium text-gray-900">
               <span>#{number}.</span>
