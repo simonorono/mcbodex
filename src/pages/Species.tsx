@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import Loader from '../components/Loader'
 import PokemonData from '../components/PokemonData'
+import PokemonLinks from '../components/PokemonLinks'
 import Tabs from '../components/Tabs'
 import { setCanonical, title } from '../utils'
-import PokemonLinks from '../components/PokemonLinks'
 
 export default function Species() {
   useEffect(() => {
@@ -25,10 +25,13 @@ export default function Species() {
   const species = speciesById[Number(id)] || speciesByCode[id]
   const pokemon = (species && species.pokemonIds.map(_ => pokemonById[_])) || []
 
+  const location = useLocation()
+
   const tabs = pokemon.map(pokemon => ({
     value: pokemon.code,
     label: pokemon.name,
     component: <PokemonData pokemon={pokemon} />,
+    activeByDefault: pokemon.code === location.hash.replaceAll('#', ''),
   }))
 
   return (

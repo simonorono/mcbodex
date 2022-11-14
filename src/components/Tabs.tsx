@@ -4,6 +4,7 @@ interface Tab {
   value: string
   label: string
   component: ReactNode
+  activeByDefault: boolean
 }
 
 interface Props {
@@ -16,7 +17,7 @@ export default function Tabs(props: Props) {
   const [selected, setSelected] = useState(tabs[0].value)
 
   useEffect(() => {
-    setSelected(tabs[0].value)
+    setSelected(tabs.find(_ => _.activeByDefault)?.value || tabs[0].value)
   }, [tabs])
 
   return (

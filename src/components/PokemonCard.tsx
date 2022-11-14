@@ -17,15 +17,21 @@ export default function PokemonCard({ pokemon, number }: Props) {
     state => state.pokemon.speciesById[pokemon.speciesId]
   )
 
+  let link = `/species/${species.code}`
+
+  if (species.name !== pokemon.name) {
+    link += `#${pokemon.code}`
+  }
+
   return (
     <div
       className="flex w-full cursor-pointer rounded-xl border border-gray-300"
-      onClick={() => navigate(`/species/${species.code}`)}
+      onClick={() => navigate(link)}
     >
       <div className="ml-4 flex grow">
         <div className="my-2 flex grow flex-col justify-center">
           <Link
-            to={`/species/${species.code}`}
+            to={link}
             className="mb-1 inline-flex flex-col items-start hover:underline"
           >
             <h3 className="inline space-x-2 text-base font-medium text-gray-900">
