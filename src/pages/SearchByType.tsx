@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Checkbox from '../components/Checkbox'
 import PokemonList from '../components/PokemonList'
 import TypeSelector from '../components/TypeSelector'
+import TypeDefenses from '../components/pokemon_data/TypeDefenses'
 import { frontPokemonOfSpeciesByPredicate } from '../store/selectors'
 import { title } from '../utils'
 
@@ -10,9 +11,11 @@ export default function SearchByType() {
     document.title = title('Search Pokémon By Type')
   })
 
-  const [firstType, setFirstType] = useState(null as Type | null)
-  const [secondType, setSecondType] = useState(null as Type | null)
+  const [firstType, setFirstType] = useState<Type | null>(null)
+  const [secondType, setSecondType] = useState<Type | null>(null)
   const [strict, setIfStrict] = useState(false)
+
+  const types = [firstType, secondType].filter(Boolean) as Type[]
 
   const pokemonList =
     frontPokemonOfSpeciesByPredicate(pkm => {
@@ -50,16 +53,22 @@ export default function SearchByType() {
         />
       </div>
 
-      <div className="py-4">
-        <Checkbox
-          id="strict"
-          initialValue={strict}
-          label="Show single-typed Pokémon if only one type is selected"
-          onChange={setIfStrict}
-        />
-      </div>
+      {types.length > 0 && (
+        <TypeDefenses className="mt-8 lg:w-[600px]" pokemonTypes={types} />
+      )}
 
       <div className="mt-8">
+        <h2 className="text-left text-2xl font-bold">Pokémon List</h2>
+
+        <div className="py-4">
+          <Checkbox
+            id="strict"
+            initialValue={strict}
+            label="Show single-typed Pokémon if only one type is selected"
+            onChange={setIfStrict}
+          />
+        </div>
+
         <PokemonList
           numberCallback={pokemon => pokemon.speciesId}
           pokemonList={pokemonList}
