@@ -4,6 +4,7 @@ import { Disclosure } from '@headlessui/react'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import { useAppSelector } from '../store/hooks'
 import { types } from '../utils'
+import researchTasksGroupsData from 'rdex-data/handcrafted/research_tasks.json'
 
 interface Props {
   onLinkClicked?: () => void
@@ -24,7 +25,7 @@ export default function Navigation({ onLinkClicked }: Props) {
 
   const games = useAppSelector(state => state.pokedex.allGames)
 
-  const researchTasks = ['Galar', 'Kanto']
+  const researchTasksGroups: ResearchTaskGroup[] = researchTasksGroupsData
 
   function SingleLink({ name, href }: LinkProps) {
     const current = href === location.pathname
@@ -97,11 +98,11 @@ export default function Navigation({ onLinkClicked }: Props) {
       </SeveralLinks>
 
       <SeveralLinks name={'Research Tasks'}>
-        {researchTasks.map(researchTask => (
+        {researchTasksGroupsData.map(researchTaskGroup => (
           <SingleLink
-            key={researchTask.toLowerCase()}
-            name={`${researchTask} Research Tasks`}
-            href={`/research-task/${researchTask.toLowerCase()}`}
+            key={researchTaskGroup.name.toLowerCase()}
+            name={`${researchTaskGroup.name} Research Tasks`}
+            href={`/research-task/${researchTaskGroup.code}`}
           />
         ))}
       </SeveralLinks>
