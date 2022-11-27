@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
-import { images } from '../utils'
 import Loader from './Loader'
 import BaseStats from './pokemon_data/BaseStats'
 import LazyImage from './LazyImage'
 import PokemonDetails from './pokemon_data/PokemonDetails'
 import TypeDefenses from './pokemon_data/TypeDefenses'
+import { images, types } from '../utils'
 
 const MAX_IMAGE_DIMENSION = 450
 
@@ -95,7 +95,10 @@ export default function PokemonData({ pokemon }: Props) {
           <div className="flex flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-6">
             <BaseStats className="flex-1" pokemonData={pokemonData} />
 
-            <TypeDefenses className="flex-1" pokemon={pokemon} />
+            <TypeDefenses
+              className="flex-1"
+              pokemonTypes={pokemon.types.map(_ => types.byId[_.typeId])}
+            />
           </div>
         </div>
       )}

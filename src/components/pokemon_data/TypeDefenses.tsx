@@ -3,14 +3,12 @@ import types from '../../utils/types'
 import TypeDamageBadge from '../TypeDamageBadge'
 
 interface Props {
-  pokemon: Pokemon
   className?: string
+  pokemonTypes: Type[]
 }
 
-export default function TypeDefenses({ className, pokemon }: Props) {
-  const pokemonTypes = pokemon.types.map(rel => types.byId[rel.typeId])
-
-  let effect = types.defenseEffectiveness(pokemonTypes)
+export default function TypeDefenses({ className, pokemonTypes }: Props) {
+  const effect = types.defenseEffectiveness(pokemonTypes)
 
   return (
     <div className={className}>
