@@ -69,10 +69,22 @@ export default function SearchByType() {
           />
         </div>
 
-        <PokemonList
-          numberCallback={pokemon => pokemon.speciesId}
-          pokemonList={pokemonList}
-        />
+        {types.length === 0 && (
+          <p className="text-center">Please select a type</p>
+        )}
+
+        {types.length > 0 && pokemonList.length === 0 && (
+          <p className="text-center">
+            No Pokémon exists with the types selected
+          </p>
+        )}
+
+        {pokemonList.length > 0 && (
+          <PokemonList
+            numberCallback={pokemon => pokemon.speciesId}
+            pokemonList={pokemonList}
+          />
+        )}
       </div>
     </>
   )
