@@ -4,7 +4,7 @@ interface Tab {
   value: string
   label: string
   component: ReactNode
-  activeByDefault: boolean
+  activeByDefault?: boolean
 }
 
 interface Props {
