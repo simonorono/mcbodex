@@ -3,7 +3,7 @@ import Loader from './Loader'
 import BaseStats from './pokemon_data/BaseStats'
 import LazyImage from './LazyImage'
 import PokemonDetails from './pokemon_data/PokemonDetails'
-import TypeDefenses from './pokemon_data/TypeDefenses'
+import TypeDefenses from './TypeDefenses'
 import { images, types } from '../utils'
 
 const MAX_IMAGE_DIMENSION = 450
