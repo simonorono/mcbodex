@@ -35,7 +35,6 @@
     "@vitejs/plugin-legacy": "^3.0.1",
     "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.13",
-    "https-localhost": "^4.7.1",
     "postcss": "^8.4.19",
     "prettier": "^2.8.1",
     "prettier-plugin-tailwindcss": "^0.2.1",
