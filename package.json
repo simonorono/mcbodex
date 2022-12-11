@@ -6,7 +6,6 @@
     "dev": "vite",
     "build": "node sitemap.mjs && tsc && vite build",
     "serve": "vite preview",
-    "launch": "node sitemap.mjs && tsc && vite build && PORT=9000 serve dist",
     "format": "prettier -w src"
   },
   "dependencies": {
