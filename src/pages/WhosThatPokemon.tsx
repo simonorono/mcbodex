@@ -108,7 +108,7 @@ export default function WhosThatPokemon() {
                   ? `picture of ${speciesById[secret.speciesId].name}`
                   : `obscured Pokémon picture`
               }
-              src={Images.homeImageForPokemon(secret.id)}
+              src={Images.artworkForPokemon(secret.id)}
               width={500}
               height={500}
               className={`mx-auto transition-all ${
