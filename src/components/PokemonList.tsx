@@ -8,11 +8,12 @@ interface Props {
   numberCallback?: (pokemon: Pokemon) => number
 }
 
+const INITIAL_PAGE = 1
 const PER_PAGE = 60
 
 export default function PokemonList({ pokemonList, numberCallback }: Props) {
   const [loaded, setLoaded] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(INITIAL_PAGE)
 
   const allPagesLoaded = currentPage * PER_PAGE > pokemonList.length
 
@@ -26,7 +27,7 @@ export default function PokemonList({ pokemonList, numberCallback }: Props) {
 
   useEffect(() => setLoaded(true), [])
 
-  useEffect(() => setCurrentPage(1), [pokemonList])
+  useEffect(() => setCurrentPage(INITIAL_PAGE), [pokemonList])
 
   return (
     <>
