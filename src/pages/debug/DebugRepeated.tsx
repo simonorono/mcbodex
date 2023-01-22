@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useAppSelector } from '../../store/hooks'
 
 import '../../css/debug-table.css'
+import {title} from "../../utils";
 
 interface Count {
   pokemon: Pokemon[]
@@ -9,6 +10,10 @@ interface Count {
 }
 
 export default function DebugRepeated() {
+  useEffect(() => {
+    document.title = title('Debug repeated names')
+  }, [])
+
   const pokemon = useAppSelector(state => state.pokemon.allPokemon)
   const speciesById = useAppSelector(state => state.pokemon.speciesById)
 

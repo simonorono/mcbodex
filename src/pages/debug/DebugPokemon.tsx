@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useAppSelector } from '../../store/hooks'
 
 import '../../css/debug-table.css'
+import {title} from "../../utils";
 
 export default function DebugPokemon() {
+  useEffect(() => {
+    document.title = title('Debug Pokémon')
+  }, [])
+
   const pokemon = useAppSelector(state => state.pokemon.allPokemon)
   const speciesById = useAppSelector(state => state.pokemon.speciesById)
 

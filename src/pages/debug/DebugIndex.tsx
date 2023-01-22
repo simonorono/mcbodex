@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import {title} from "../../utils";
 
 interface DebugLinkProps {
   href: string
@@ -17,6 +18,10 @@ function DebugLink(props: DebugLinkProps) {
 }
 
 export default function DebugIndex() {
+  useEffect(() => {
+    document.title = title('Debug pages')
+  }, [])
+
   return (
     <ul className="list-disc">
       <li>
