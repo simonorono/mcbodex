@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useAppSelector } from '../../store/hooks'
 
 import '../../css/debug-table.css'
-import {title} from "../../utils";
+import { title } from '../../utils'
 
 export default function DebugPokemon() {
   useEffect(() => {

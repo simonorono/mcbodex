@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useAppSelector } from '../../store/hooks'
+import { title } from '../../utils'
 
 import '../../css/debug-table.css'
-import {title} from "../../utils";
 
 interface Count {
   pokemon: Pokemon[]
