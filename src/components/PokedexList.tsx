@@ -14,7 +14,6 @@ export default function PokedexList() {
           <li key={game.code}>
             <Link
               to={`/pokedex/${game.code}`}
-              title={game.name}
               className="underline"
             >
               {game.name}
