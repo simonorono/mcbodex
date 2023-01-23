@@ -49,7 +49,7 @@ export default function Tabs(props: Props) {
           <div className="border-b border-gray-200">
             <nav className="-mb-px flex space-x-8" aria-label="Tabs">
               {tabs.map(({ value, label }) => (
-                <a
+                <button
                   key={value}
                   className={[
                     value === selected
@@ -61,7 +61,7 @@ export default function Tabs(props: Props) {
                   aria-current={value === selected ? 'page' : undefined}
                 >
                   {label}
-                </a>
+                </button>
               ))}
             </nav>
           </div>
