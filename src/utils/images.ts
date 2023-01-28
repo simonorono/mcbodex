@@ -1,14 +1,16 @@
+const POKEAPI_BASE_SPRITE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
+
 export default {
   artworkForPokemon(id: number) {
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
+    return `${POKEAPI_BASE_SPRITE_URL}/other/official-artwork/${id}.png`
   },
 
   homeImageForPokemon(id: number) {
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png`
+    return `${POKEAPI_BASE_SPRITE_URL}/other/home/${id}.png`
   },
 
   frontSpriteForPokemonId(id: number) {
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+    return `${POKEAPI_BASE_SPRITE_URL}/${id}.png`
   },
 
   dataPageImage(id: number) {
