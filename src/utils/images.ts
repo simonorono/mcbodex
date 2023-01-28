@@ -1,6 +1,6 @@
 export default {
   artworkForPokemon(id: number) {
-    return `https://raw.githubusercontent.com/simonorono/sprites/gen9_official_artwork/sprites/pokemon/other/official-artwork/${id}.png`
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
   },
 
   homeImageForPokemon(id: number) {
