@@ -17,7 +17,6 @@ function App() {
 
   useEffect(() => {
     dispatch(loadAllAbilities())
-    dispatch(loadAllMoves())
     dispatch(loadAllPokemon())
   }, [])
 
