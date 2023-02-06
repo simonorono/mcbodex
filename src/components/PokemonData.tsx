@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Loader from './Loader'
 import BaseStats from './pokemon_data/BaseStats'
 import LazyImage from './LazyImage'
@@ -62,7 +62,7 @@ export default function PokemonData({ pokemon }: Props) {
     <>
       {isLoading && <Loader />}
 
-      {pokemon && (!isLoading) && pokemonData && (
+      {pokemon && !isLoading && pokemonData && (
         <div className="mx-auto max-w-4xl space-y-6">
           <div className="flex flex-col items-center md:flex-row md:items-start">
             <div

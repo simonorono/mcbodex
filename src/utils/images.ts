@@ -1,4 +1,5 @@
-const POKEAPI_BASE_SPRITE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
+const POKEAPI_BASE_SPRITE_URL =
+  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
 
 export default {
   artworkForPokemon(id: number) {
