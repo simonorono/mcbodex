@@ -32,7 +32,7 @@ function App() {
           <Navbar />
         </header>
 
-        <main className="mx-auto w-full max-w-7xl px-2 sm:px-6 lg:px-8">
+        <main className="container mx-auto px-2">
           <Suspense fallback={<Loader />}>
             <Routes>
               {routes.map((route, i) => {
