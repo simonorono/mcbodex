@@ -16,7 +16,7 @@ const key = (id: string) =>
   `../../node_modules/rdex-data/raw/pokemon/${id}.json`
 
 const imageContainerStyle = {
-  '--aspect-ratio': '450/450',
+  '--aspect-ratio': `${MAX_IMAGE_DIMENSION}/${MAX_IMAGE_DIMENSION}`,
 } as React.CSSProperties
 
 interface Props {
