@@ -6,7 +6,7 @@ import Loader from './components/Loader'
 import Navbar from './components/Navbar'
 
 import routes from './routes'
-import { loadAllAbilities, loadAllMoves, loadAllPokemon } from './store'
+import { loadAllAbilities, loadAllPokemon } from './store'
 import { useAppDispatch, useAppSelector } from './store/hooks'
 import { classNames } from './utils'
 
