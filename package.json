@@ -11,7 +11,7 @@
   "dependencies": {
     "@fontsource/inter": "^4.5.15",
     "@headlessui/react": "1.7.11",
-    "@heroicons/react": "^2.0.15",
+    "@heroicons/react": "^2.0.16",
     "@reduxjs/toolkit": "^1.9.2",
     "localforage": "^1.10.0",
     "rdex-data": "github:simonorono/rdex-data",
@@ -38,8 +38,8 @@
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.3",
     "sitemap": "^7.1.1",
-    "tailwindcss": "^3.2.6",
+    "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5",
-    "vite": "^4.1.1"
+    "vite": "^4.1.2"
   }
 }
