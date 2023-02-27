@@ -6,6 +6,8 @@ import PokemonDetails from './pokemon_data/PokemonDetails'
 import TypeDefenses from './TypeDefenses'
 import { images, types } from '../utils'
 
+const TIMEOUT_TO_SHOW_LOADER_IN_MS = 500
+
 const MAX_IMAGE_DIMENSION = 450
 
 const pokemons = import.meta.glob(
@@ -28,6 +30,12 @@ export default function PokemonData({ pokemon }: Props) {
   const [isLoading, setIsLoading] = useState(true)
   const [pokemonData, setPokemonData] = useState(null as PokemonData | null)
 
+  /**
+   * Will be `true` if a half a second goes by and the data has not finished
+   * loading.
+   */
+  const [shouldShowLoader, setIfShouldShowLoader] = useState(false)
+
   const imgContainerRef = useRef<HTMLDivElement>(null)
   const imgErrorRef = useRef<HTMLParagraphElement>(null)
 
@@ -40,6 +48,17 @@ export default function PokemonData({ pokemon }: Props) {
         setIsLoading(false)
       })
     }
+
+    // set the timeout for showing the spinning loader
+    const loaderTimeout = setTimeout(() => {
+      if (pokemonData) { // did the data finished loading? do nothing
+        return
+      }
+
+      setIfShouldShowLoader(true)
+    }, TIMEOUT_TO_SHOW_LOADER_IN_MS)
+
+    return () => clearTimeout(loaderTimeout)
   }, [])
 
   const onImageLoad = ({ currentTarget }: React.SyntheticEvent) => {
@@ -60,7 +79,7 @@ export default function PokemonData({ pokemon }: Props) {
 
   return (
     <>
-      {isLoading && <Loader />}
+      {isLoading && shouldShowLoader && <Loader />}
 
       {pokemon && !isLoading && pokemonData && (
         <div className="mx-auto max-w-4xl space-y-6">
