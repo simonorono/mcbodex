@@ -51,7 +51,8 @@ export default function PokemonData({ pokemon }: Props) {
 
     // set the timeout for showing the spinning loader
     const loaderTimeout = setTimeout(() => {
-      if (pokemonData) { // did the data finished loading? do nothing
+      if (pokemonData) {
+        // did the data finished loading? do nothing
         return
       }
 
