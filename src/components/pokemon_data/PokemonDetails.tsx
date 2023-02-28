@@ -51,6 +51,7 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
   const allLoaded = useAppSelector(
     state => state.pokemon.loaded && state.abilities.loaded
   )
+
   const species = useAppSelector(
     state => state.pokemon.speciesById[pokemon.speciesId]
   )
@@ -58,6 +59,11 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
   const captureRate = stats
     .captureRate(pokemonData.captureRate, stats.getStat('hp', pokemonData))
     .toFixed(1)
+
+  const evYield = pokemonData.stats
+    .filter(rel => rel.effort > 0)
+    .map(rel => `${rel.effort} ${stats.byId[rel.id].name}`)
+    .join(', ')
 
   return (
     <>
@@ -92,6 +98,10 @@ export default function PokemonDetails({ pokemon, pokemonData }: Props) {
             <p>
               {pokemonData.captureRate} ({captureRate}%)
             </p>
+          </Datum>
+
+          <Datum label="EV Yield">
+            <p>{evYield}</p>
           </Datum>
         </dl>
       )}
