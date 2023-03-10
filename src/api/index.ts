@@ -25,6 +25,7 @@ function transformPokemon(obj: any): Pokemon {
     name: '',
     speciesId: obj.speciesId,
     types,
+    evYield: obj.evYield,
   }
 }
 
