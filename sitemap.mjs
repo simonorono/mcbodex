@@ -35,6 +35,12 @@ const links = [
     lastmod: now
   },
   {
+    url: '/search-by-ev-yield',
+    changefreq: 'weekly',
+    priority: 1.0,
+    lastmod: now
+  },
+  {
     url: '/whos-that-pokemon',
     changefreq: 'weekly',
     priority: 1.0,

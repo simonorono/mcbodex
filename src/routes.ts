@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound'
 
 const Pokedex = React.lazy(() => import('./pages/Pokedex'))
 const ResearchTask = React.lazy(() => import('./pages/ResearchTask'))
+const SearchByEVYield = React.lazy(() => import('./pages/SearchByEVYield'))
 const SearchByType = React.lazy(() => import('./pages/SearchByType'))
 const Species = React.lazy(() => import('./pages/Species'))
 const Type = React.lazy(() => import('./pages/Type'))
@@ -44,6 +45,10 @@ let routes = [
   {
     path: '/search-by-type',
     component: SearchByType,
+  },
+  {
+    path: '/search-by-ev-yield',
+    component: SearchByEVYield,
   },
   {
     path: '/whos-that-pokemon',
