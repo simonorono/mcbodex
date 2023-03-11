@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
+import { getPokemonListForPokedex } from '../store/selectors'
 import Loader from '../components/Loader'
 import Tabs from '../components/Tabs'
+import PokemonList from '../components/PokemonList'
 import { title } from '../utils'
-import PokedexTab from '../components/PokedexTab'
 
 function pokedexTab(pokedex: Pokedex) {
   return {
     value: pokedex.code,
     label: pokedex.name,
-    component: <PokedexTab pokedex={pokedex} />,
+    component: <PokemonList pokemonList={getPokemonListForPokedex(pokedex)} />,
   }
 }
 

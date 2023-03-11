@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 import rawGames from 'rdex-data/handcrafted/games.json'
 import rawPokedex from 'rdex-data/raw/pokedex.json'
 
@@ -14,6 +14,9 @@ const allPokedex = rawPokedex.map(obj => ({
   code: obj.code,
   name: obj.name,
   region: obj.region || undefined,
+  entries: obj.entries.map(
+    (e: number[]) => ({ number: e[0], species: e[1] } as PokedexEntry)
+  ),
 }))
 
 const initialState: PokedexState = {
