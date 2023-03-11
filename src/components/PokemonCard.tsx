@@ -56,7 +56,7 @@ export default function PokemonCard({ pokemon, number }: Props) {
       <LazyImage
         width={80}
         height={80}
-        className="m-2 h-20 w-20 flex-shrink-0 rounded-full bg-gray-300"
+        className="m-2 h-20 w-20 flex-shrink-0 rounded-xl border border-gray-300 bg-gray-100"
         src={images.frontSpriteForPokemonId(pokemon.id)}
         alt={`front sprite for ${pokemon.name}`}
       />

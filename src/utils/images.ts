@@ -11,7 +11,7 @@ export default {
   },
 
   frontSpriteForPokemonId(id: number) {
-    return `${POKEAPI_BASE_SPRITE_URL}/${id}.png`
+    return `${POKEAPI_BASE_SPRITE_URL}/other/official-artwork/${id}.png`
   },
 
   dataPageImage(id: number) {
