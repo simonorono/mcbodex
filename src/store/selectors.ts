@@ -20,8 +20,12 @@ export function frontPokemonOfSpeciesByPredicate(
   })
 }
 
-export function getPokemonListForPokedex(pokedex: Pokedex): Pokemon[] {
+export function getPokemonListForPokedex(pokedex: Pokedex | null): Pokemon[] {
   return useAppSelector(state => {
+    if (!pokedex) {
+      return []
+    }
+
     return pokedex.entries.map((entry: PokedexEntry): Pokemon => {
       const species = state.pokemon.speciesById[entry.species]
 
