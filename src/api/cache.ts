@@ -10,6 +10,14 @@ localforage.config({
   name: `${name}@DATA-${DATA_VERSION}`,
 })
 
+// Try to clear previous data
+for (let i = DATA_VERSION - 1; i >= 0; i--) {
+  localforage
+    .dropInstance({ name: `${name}@DATA-${i}` })
+    .then(() => {})
+    .catch(() => {})
+}
+
 /**
  * Implementation of a cache to avoid hitting the PokeAPI server too much.
  */
