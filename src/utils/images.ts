@@ -1,6 +1,9 @@
 const POKEAPI_BASE_SPRITE_URL =
   'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
 
+const CUSTOM_BASE_SPRITE_URL =
+  'https://raw.githubusercontent.com/simonorono/sprites/custom_sprites/sprites/pokemon'
+
 export default {
   artworkForPokemon(id: number) {
     return `${POKEAPI_BASE_SPRITE_URL}/other/official-artwork/${id}.png`
@@ -11,7 +14,7 @@ export default {
   },
 
   frontSpriteForPokemonId(id: number) {
-    return `${POKEAPI_BASE_SPRITE_URL}/other/official-artwork/${id}.png`
+    return `${CUSTOM_BASE_SPRITE_URL}/other/official-artwork/thumbnail/${id}.png`
   },
 
   dataPageImage(id: number) {

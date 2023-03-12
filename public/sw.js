@@ -1,9 +1,11 @@
 const imgUrlPrefix = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/'
+const customImgUrlPrefix = 'https://raw.githubusercontent.com/simonorono/sprites/custom_sprites/'
+
 const imageCacheName = 'POKEMON_IMAGE_CACHE_'
-const imageCacheVersion = 1
+const imageCacheVersion = 2
 
 self.addEventListener('fetch', function (event) {
-  if (event.request.url.startsWith(imgUrlPrefix)) {
+  if (event.request.url.startsWith(imgUrlPrefix) || event.request.url.startsWith(customImgUrlPrefix)) {
     event.respondWith(
       caches.match(event.request).then(function (response) {
         if (response) {
