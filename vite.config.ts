@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
-import legacy from '@vitejs/plugin-legacy'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,6 +8,5 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    legacy(),
   ],
 })
