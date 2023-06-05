@@ -55,7 +55,7 @@ export default function Tabs(props: Props) {
                     value === selected
                       ? 'border-black text-black'
                       : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                    'cursor-pointer whitespace-nowrap border-b-4 py-4 px-1 text-sm font-medium',
+                    'cursor-pointer whitespace-nowrap border-b-4 px-1 py-4 text-sm font-medium',
                   ].join(' ')}
                   onClick={() => setSelected(value)}
                   aria-current={value === selected ? 'page' : undefined}

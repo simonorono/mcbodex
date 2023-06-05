@@ -45,7 +45,7 @@ export default function About() {
 
       <p>RDex is a SPA built thanks to:</p>
 
-      <ul className="ml-6 mt-2 mb-10 list-disc">
+      <ul className="mb-10 ml-6 mt-2 list-disc">
         <li>
           <A href="https://pokeapi.co/">PokeAPI</A>
         </li>

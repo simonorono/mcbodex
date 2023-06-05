@@ -32,7 +32,7 @@ export default function AbilityModal(props: Props) {
 
         <div className="relative">
           <div className="mx-2 max-w-lg rounded-lg bg-white p-4 sm:p-6">
-            <div className="absolute top-0 right-0 pt-4 pr-4">
+            <div className="absolute right-0 top-0 pr-4 pt-4">
               <button
                 type="button"
                 className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none"

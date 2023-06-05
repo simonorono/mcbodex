@@ -51,7 +51,7 @@ export default function Type() {
           <h1 className="page-title">{`${type.name} Type`}</h1>
 
           <div className="space-y-10">
-            <div className="flex flex-col space-y-10 sm:flex-row sm:space-y-0 sm:space-x-10 md:space-x-32">
+            <div className="flex flex-col space-y-10 sm:flex-row sm:space-x-10 sm:space-y-0 md:space-x-32">
               <div className="flex-1">
                 <h2 className="mb-2 text-xl font-medium">
                   Attack effectiveness
