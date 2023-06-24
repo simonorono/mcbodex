@@ -3,14 +3,20 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import LazyImage from './LazyImage'
 import PokemonTypes from './PokemonTypes'
-import { images } from '../utils'
+import { classNames, images } from '../utils'
 
 interface Props {
   pokemon: Pokemon
   number: number
+  vertical?: boolean
 }
 
-export default function PokemonCard({ pokemon, number }: Props) {
+const COMMON_IMAGE_CLASSES =
+  'mx-auto flex-shrink-0 rounded-xl border border-gray-300 bg-gray-100'
+
+export default function PokemonCard(props: Props) {
+  const { pokemon, number, vertical } = props
+
   const navigate = useNavigate()
 
   const species = useAppSelector(
@@ -25,14 +31,27 @@ export default function PokemonCard({ pokemon, number }: Props) {
 
   return (
     <div
-      className="flex w-full cursor-pointer rounded-xl border border-gray-300"
+      className={classNames(
+        'flex w-full cursor-pointer rounded-xl border border-gray-300 p-2',
+        vertical ? 'flex-col space-y-2' : 'space-x-2'
+      )}
       onClick={() => navigate(link)}
     >
-      <div className="ml-4 flex grow">
-        <div className="my-2 flex grow flex-col justify-center">
+      {vertical && (
+        <LazyImage
+          width={256}
+          height={256}
+          className={`h-64 w-64 ${COMMON_IMAGE_CLASSES}`}
+          src={images.artworkForPokemon(pokemon.id)}
+          alt={`front sprite for ${pokemon.name}`}
+        />
+      )}
+
+      <div className="flex grow">
+        <div className="flex grow flex-col justify-center space-y-1">
           <Link
             to={link}
-            className="mb-1 inline-flex flex-col items-start hover:underline"
+            className="inline-flex flex-col items-start hover:underline"
             onClick={event => event.stopPropagation()} // prevents triggering of root's onClick
           >
             <h3 className="inline space-x-2 text-base font-medium text-gray-900">
@@ -50,16 +69,17 @@ export default function PokemonCard({ pokemon, number }: Props) {
             />
           </div>
         </div>
-
-        <div className="mx-1 flex flex-col justify-center space-y-1"></div>
       </div>
-      <LazyImage
-        width={80}
-        height={80}
-        className="m-2 h-20 w-20 flex-shrink-0 rounded-xl border border-gray-300 bg-gray-100"
-        src={images.frontSpriteForPokemonId(pokemon.id)}
-        alt={`front sprite for ${pokemon.name}`}
-      />
+
+      {vertical || (
+        <LazyImage
+          width={80}
+          height={80}
+          className={`h-20 w-20 ${COMMON_IMAGE_CLASSES}`}
+          src={images.frontSpriteForPokemonId(pokemon.id)}
+          alt={`front sprite for ${pokemon.name}`}
+        />
+      )}
     </div>
   )
 }
