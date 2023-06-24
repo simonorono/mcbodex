@@ -14,6 +14,7 @@ export default function PokemonOfTheDay() {
           <PokemonCard
             pokemon={pokemonOfTheDay}
             number={pokemonOfTheDay.speciesId}
+            vertical
           />
         </div>
       )}
