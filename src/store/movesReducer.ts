@@ -28,10 +28,13 @@ const movesSlice = createSlice({
       (state, action: PayloadAction<Move[]>) => {
         state.all = action.payload
 
-        state.byId = action.payload.reduce((byId, move) => {
-          byId[move.id] = move
-          return byId
-        }, {} as { [id: number]: Move })
+        state.byId = action.payload.reduce(
+          (byId, move) => {
+            byId[move.id] = move
+            return byId
+          },
+          {} as { [id: number]: Move }
+        )
 
         state.loaded = true
       }

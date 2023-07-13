@@ -53,7 +53,7 @@ const loadAllPokemon = createAsyncThunk(
   async () =>
     [await getAllSpecies(), await getAllPokemon()] as [
       PokemonSpecies[],
-      Pokemon[]
+      Pokemon[],
     ]
 )
 
@@ -84,15 +84,21 @@ const pokemonSlice = createSlice({
         state.pokemonOfTheDay =
           state.allPokemon[randomNumber % state.allSpecies.length]
 
-        state.speciesById = state.allSpecies.reduce((byId, species) => {
-          byId[species.id] = species
-          return byId
-        }, {} as { [id: number]: PokemonSpecies })
+        state.speciesById = state.allSpecies.reduce(
+          (byId, species) => {
+            byId[species.id] = species
+            return byId
+          },
+          {} as { [id: number]: PokemonSpecies }
+        )
 
-        state.speciesByCode = state.allSpecies.reduce((byCode, species) => {
-          byCode[species.code] = species
-          return byCode
-        }, {} as { [code: string]: PokemonSpecies })
+        state.speciesByCode = state.allSpecies.reduce(
+          (byCode, species) => {
+            byCode[species.code] = species
+            return byCode
+          },
+          {} as { [code: string]: PokemonSpecies }
+        )
 
         state.allPokemon.forEach(pkm => {
           const species = state.speciesById[pkm.speciesId]
@@ -100,10 +106,13 @@ const pokemonSlice = createSlice({
           pkm.name = getPokemonName(species, pkm)
         })
 
-        state.pokemonById = state.allPokemon.reduce((byId, pokemon) => {
-          byId[pokemon.id] = pokemon
-          return byId
-        }, {} as { [id: number]: Pokemon })
+        state.pokemonById = state.allPokemon.reduce(
+          (byId, pokemon) => {
+            byId[pokemon.id] = pokemon
+            return byId
+          },
+          {} as { [id: number]: Pokemon }
+        )
 
         state.loaded = true
       }

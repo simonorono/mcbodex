@@ -15,7 +15,7 @@ const allPokedex = rawPokedex.map(obj => ({
   name: obj.name,
   region: obj.region || undefined,
   entries: obj.entries
-    .map((e: number[]) => ({ number: e[0], species: e[1] } as PokedexEntry))
+    .map((e: number[]) => ({ number: e[0], species: e[1] }) as PokedexEntry)
     .sort((p1: PokedexEntry, p2: PokedexEntry) => p1.number - p2.number),
 }))
 
