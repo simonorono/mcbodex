@@ -20,6 +20,8 @@ RDex is a SPA built thanks to:
 * [TailwindCSS](https://www.tailwindcss.com/)
 * [TailwindUI](https://tailwindui.com/)
 * [localForage](https://localforage.github.io/localForage/)
+* [Fontsource](https://fontsource.org/)
+* [Inter typeface](https://rsms.me/inter/)
 
 ## Legal information
 

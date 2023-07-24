@@ -70,6 +70,12 @@ export default function About() {
         <li>
           <A href="https://localforage.github.io/localForage/">localForage</A>
         </li>
+        <li>
+          <A href="https://fontsource.org/">Fontsource</A>
+        </li>
+        <li>
+          <A href="https://rsms.me/inter/">Inter typeface</A>
+        </li>
       </ul>
 
       <Subtitle>Legal information</Subtitle>
