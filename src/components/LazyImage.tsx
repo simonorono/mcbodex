@@ -11,15 +11,7 @@ interface Props {
 }
 
 export default function LazyImage(props: Props) {
-  const {
-    alt,
-    src,
-    className,
-    height,
-    width,
-    onError,
-    onLoad,
-  } = props
+  const { alt, src, className, height, width, onError, onLoad } = props
 
   return (
     <img

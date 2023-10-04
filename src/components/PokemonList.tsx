@@ -20,17 +20,14 @@ export default function PokemonList({ pokemonList, numberCallback }: Props) {
       {loaded && (
         <>
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {pokemonList
-              .map((pokemon: Pokemon, index) => (
-                <li key={pokemon.id} className="col-span-1">
-                  <PokemonCard
-                    number={
-                      numberCallback ? numberCallback(pokemon) : index + 1
-                    }
-                    pokemon={pokemon}
-                  />
-                </li>
-              ))}
+            {pokemonList.map((pokemon: Pokemon, index) => (
+              <li key={pokemon.id} className="col-span-1">
+                <PokemonCard
+                  number={numberCallback ? numberCallback(pokemon) : index + 1}
+                  pokemon={pokemon}
+                />
+              </li>
+            ))}
           </ul>
         </>
       )}
