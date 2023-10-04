@@ -36,6 +36,7 @@ export default function PokemonCard(props: Props) {
         vertical ? 'flex-col space-y-2' : 'space-x-2'
       )}
       onClick={() => navigate(link)}
+      onAuxClick={() => window.open(link, '_newtab')}
     >
       {vertical && (
         <LazyImage
