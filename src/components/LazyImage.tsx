@@ -15,12 +15,12 @@ export default function LazyImage(props: Props) {
 
   return (
     <img
+      loading="lazy"
       width={width}
       height={height}
       src={src}
       alt={alt}
       className={className}
-      loading="lazy"
       referrerPolicy="no-referrer"
       onLoad={event => onLoad && onLoad(event)}
       onError={event => onError && onError(event)}
