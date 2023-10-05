@@ -3,19 +3,17 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../store/hooks'
 import LazyImage from './LazyImage'
 import PokemonTypes from './PokemonTypes'
-import { classNames, images } from '../utils'
+import { images } from '../utils'
 
 interface Props {
   pokemon: Pokemon
   number: number
-  vertical?: boolean
 }
 
-const COMMON_IMAGE_CLASSES =
-  'mx-auto flex-shrink-0 rounded-xl border border-gray-300 bg-gray-100'
+const CARD_IMAGE_SIZE = 80
 
 export default function PokemonCard(props: Props) {
-  const { pokemon, number, vertical } = props
+  const { pokemon, number } = props
 
   const navigate = useNavigate()
 
@@ -31,23 +29,10 @@ export default function PokemonCard(props: Props) {
 
   return (
     <div
-      className={classNames(
-        'flex w-full cursor-pointer rounded-xl border border-gray-300 p-2',
-        vertical ? 'flex-col space-y-2' : 'space-x-2'
-      )}
+      className="flex w-full cursor-pointer space-x-2 rounded-xl border border-gray-300 p-2"
       onClick={() => navigate(link)}
       onAuxClick={() => window.open(link, '_newtab')}
     >
-      {vertical && (
-        <LazyImage
-          width={256}
-          height={256}
-          className={`h-64 w-64 ${COMMON_IMAGE_CLASSES}`}
-          src={images.artworkForPokemon(pokemon.id)}
-          alt={`front sprite for ${pokemon.name}`}
-        />
-      )}
-
       <div className="flex grow">
         <div className="flex grow flex-col justify-center space-y-1">
           <Link
@@ -72,15 +57,14 @@ export default function PokemonCard(props: Props) {
         </div>
       </div>
 
-      {vertical || (
+      <div className="mx-auto h-[--img-height] w-[--img-width] flex-shrink-0 rounded-xl bg-gray-100 outline outline-1 outline-gray-300">
         <LazyImage
-          width={80}
-          height={80}
-          className={`h-20 w-20 ${COMMON_IMAGE_CLASSES}`}
-          src={images.frontSpriteForPokemonId(pokemon.id)}
           alt={`front sprite for ${pokemon.name}`}
+          src={images.artworkForPokemon(pokemon.id)}
+          height={CARD_IMAGE_SIZE}
+          width={CARD_IMAGE_SIZE}
         />
-      )}
+      </div>
     </div>
   )
 }
