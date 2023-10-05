@@ -62,10 +62,6 @@ export default function PokemonData({ pokemon }: Props) {
     return () => clearTimeout(loaderTimeout)
   }, [])
 
-  const onImageLoad = ({ currentTarget }: React.SyntheticEvent) => {
-    currentTarget.classList.remove('opacity-0')
-  }
-
   const onImageError = ({ currentTarget }: React.SyntheticEvent) => {
     currentTarget.classList.add('hidden')
 
@@ -96,7 +92,6 @@ export default function PokemonData({ pokemon }: Props) {
                   src={images.dataPageImage(pokemon.id)}
                   alt={`artwork for ${pokemon.name}`}
                   className="absolute top-0 h-full w-full opacity-0 transition-opacity"
-                  onLoad={onImageLoad}
                   onError={onImageError}
                 />
               </div>

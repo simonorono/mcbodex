@@ -11,7 +11,9 @@ interface Props {
 }
 
 export default function LazyImage(props: Props) {
-  const { alt, src, className, height, width, onError, onLoad } = props
+  const { alt, src, className, height, width, onError } = props
+
+  const classes = `opacity-0 transition-opacity ${className}`
 
   return (
     <img
@@ -20,9 +22,9 @@ export default function LazyImage(props: Props) {
       height={height}
       src={src}
       alt={alt}
-      className={className}
+      className={classes}
       referrerPolicy="no-referrer"
-      onLoad={event => onLoad && onLoad(event)}
+      onLoad={event => event.currentTarget.classList.remove('opacity-0')}
       onError={event => onError && onError(event)}
     />
   )
