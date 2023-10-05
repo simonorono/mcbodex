@@ -174,10 +174,12 @@ class Types {
 
     this.all.forEach(type => (result[type.id] = 1))
 
-    this.all.forEach(type => {
+    this.all.forEach((type: Type) => {
       type.damageRelationships
-        .filter(rel => types.map(_ => _.id).includes(rel.typeId))
-        .forEach(rel => {
+        .filter((rel: DamageRelationShip) =>
+          types.map(_ => _.id).includes(rel.typeId)
+        )
+        .forEach((rel: DamageRelationShip) => {
           result[type.id] *= rel.factor
         })
     })
