@@ -25,8 +25,6 @@ export default function Navigation({ onLinkClicked }: Props) {
 
   const games = useAppSelector(state => state.pokedex.allGames)
 
-  const researchTasksGroups: ResearchTaskGroup[] = researchTasksGroupsData
-
   function SingleLink({ name, href }: LinkProps) {
     const current = href === location.pathname
 
