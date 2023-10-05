@@ -162,7 +162,7 @@ class Types {
 
     this.all.forEach(type => (result[type.id] = 1))
 
-    type.damageRelationships.forEach(rel => {
+    type.damageRelationships.forEach((rel: DamageRelationShip) => {
       result[rel.typeId] *= rel.factor
     })
 
