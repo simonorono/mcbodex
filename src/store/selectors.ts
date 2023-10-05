@@ -20,13 +20,19 @@ export function frontPokemonOfSpeciesByPredicate(
   })
 }
 
+let pokemonListForPokedexCache = {} as { [key: number]: Pokemon[] }
+
 export function getPokemonListForPokedex(pokedex: Pokedex | null): Pokemon[] {
   return useAppSelector(state => {
     if (!pokedex) {
       return []
     }
 
-    return pokedex.entries.map((entry: PokedexEntry): Pokemon => {
+    if (pokedex.id in pokemonListForPokedexCache) {
+      return pokemonListForPokedexCache[pokedex.id]
+    }
+
+    const list = pokedex.entries.map((entry: PokedexEntry): Pokemon => {
       const species = state.pokemon.speciesById[entry.species]
 
       const pokemon = species.pokemonIds.map(
@@ -50,5 +56,9 @@ export function getPokemonListForPokedex(pokedex: Pokedex | null): Pokemon[] {
 
       return selectedByRegion || pokemon[0]
     })
+
+    pokemonListForPokedexCache[pokedex.id] = list
+
+    return list
   })
 }
