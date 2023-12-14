@@ -19,7 +19,13 @@ export default function WhosThatPokemon() {
   const [options, setOptions] = useState([] as Pokemon[])
   const [guess, setGuess] = useState(null as Pokemon | null)
 
-  const getRandomIndex = () => Math.floor(Math.random() * allPokemon.length) | 0
+  const getRandomIndex = () => {
+    const buffer = new Uint16Array(1)
+
+    crypto.getRandomValues(buffer)
+
+    return buffer[0] % (allPokemon.length + 1)
+  }
 
   const setupGame = () => {
     setGuess(null)
