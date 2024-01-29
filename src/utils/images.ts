@@ -1,12 +1,9 @@
 const POKEAPI_BASE_SPRITE_URL =
   'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
 
-const TEMP_BASE_SPRITE_URL =
-  'https://raw.githubusercontent.com/simonorono/sprites/indigo_disk_official_art/sprites/pokemon'
-
 export default {
   artworkForPokemon(id: number) {
-    return `${TEMP_BASE_SPRITE_URL}/other/official-artwork/${id}.png`
+    return `${POKEAPI_BASE_SPRITE_URL}/other/official-artwork/${id}.png`
   },
 
   homeImageForPokemon(id: number) {
