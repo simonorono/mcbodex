@@ -122,10 +122,10 @@ export default function SearchModal({ close, open }: Props) {
       >
         <Transition.Child
           as={Fragment}
-          enter="ease-out duration-300"
+          enter="transition duration-100"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="ease-in duration-200"
+          leave="transition duration-300"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
@@ -134,12 +134,12 @@ export default function SearchModal({ close, open }: Props) {
 
         <Transition.Child
           as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
+          enter="transition duration-200"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
         >
           <Combobox
             as="div"
