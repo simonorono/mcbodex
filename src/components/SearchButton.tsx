@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import SearchModal from './SearchModal'
 
 export default function SearchButton() {
+  // @ts-ignore
   const { registerShortcut, unregisterShortcut } = useShortcut()
 
   const [open, setIfOpen] = useState(false)
