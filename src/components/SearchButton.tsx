@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import { useShortcut } from 'react-keybind'
+import React, { useState } from 'react'
+import { useHotkeys } from 'react-hotkeys-hook'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import SearchModal from './SearchModal'
 
 export default function SearchButton() {
-  // @ts-ignore
-  const { registerShortcut, unregisterShortcut } = useShortcut()
-
   const [open, setIfOpen] = useState(false)
 
-  useEffect(() => {
-    const toggleModal = () => setIfOpen(!open)
-
-    registerShortcut(
-      toggleModal,
-      ['ctrl+k', 'cmd+k'],
-      'Search',
-      'Search Pokémon'
-    )
-
-    return () => unregisterShortcut(['ctrl-k', 'cmd-k'])
-  }, [])
+  useHotkeys(['ctrl+k', 'cmd+k'], () => setIfOpen(!open), {
+    preventDefault: true,
+  })
 
   return (
     <div>

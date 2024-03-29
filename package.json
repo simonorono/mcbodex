@@ -18,7 +18,7 @@
     "rdex-data": "github:simonorono/rdex-data",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-keybind": "^0.10.0",
+    "react-hotkeys-hook": "^4.5.0",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.3",
     "seedrandom": "^3.0.5"
