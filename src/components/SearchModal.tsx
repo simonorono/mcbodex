@@ -47,6 +47,10 @@ function searchMessage(
   )
 }
 
+function highlight(original: string, search: string) {
+  return original.replace(new RegExp(search, 'gi'), `<b>$&</b>`)
+}
+
 const NOT_FOUND_MESSAGE = searchMessage(
   <FaceFrownIcon {...SEARCH_MESSAGE_ICON_ATTRIBUTES} />,
   'No results found',
@@ -180,9 +184,10 @@ export default function SearchModal({ close, open }: Props) {
                               active && 'bg-primary-600 font-medium text-white',
                             ].join(' ')
                           }
-                        >
-                          {result.name}
-                        </Combobox.Option>
+                          dangerouslySetInnerHTML={{
+                            __html: highlight(result.name, query),
+                          }}
+                        />
                       ))}
                     </ul>
                   </li>
