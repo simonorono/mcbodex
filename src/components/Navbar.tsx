@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import SideOver from './SideOver'
 import SearchButton from './SearchButton'
 
-import desktopLogo from '/media/RDex.png'
-import mobileLogo from '/media/RD.png'
+import desktopLogo from '/media/logo.png'
+import mobileLogo from '/media/small.png'
 
 export default function Navbar() {
   return (
