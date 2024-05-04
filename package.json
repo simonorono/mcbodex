@@ -1,6 +1,7 @@
 {
-  "name": "rdex",
-  "homepage": "rdex.mcbodev.com",
+  "name": "mcbodex",
+  "appName": "McboDex",
+  "homepage": "mcbodex.com",
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {

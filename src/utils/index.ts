@@ -1,7 +1,9 @@
 import images from './images'
 import stats from './stats'
 import types from './types'
-import { homepage } from '../../package.json'
+import { appName, homepage } from '../../package.json'
+
+export const APP_NAME: string = appName
 
 export function scrollToTop() {
   window.scrollTo({
@@ -11,7 +13,7 @@ export function scrollToTop() {
 }
 
 export function title(caption?: string) {
-  return `${(caption && `${caption} | `) || ''}RDex | ${homepage}`
+  return `${(caption && `${caption} | `) || ''}${APP_NAME} | ${homepage}`
 }
 
 export function classNames(...classes: string[]) {

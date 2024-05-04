@@ -17,14 +17,14 @@ export default function Navbar() {
               height={40}
               className="h-10 w-auto sm:hidden"
               src={mobileLogo}
-              alt="RDex logo"
+              alt="logo"
             />
             <img
               width={128}
               height={40}
               className="hidden h-10 w-auto sm:block"
               src={desktopLogo}
-              alt="RDex logo"
+              alt="logo"
             />
           </Link>
         </div>

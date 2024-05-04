@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import PokedexList from '../components/PokedexList'
 import PokemonOfTheDay from '../components/PokemonOfTheDay'
 import TypeList from '../components/TypeList'
-import { title } from '../utils'
+import { APP_NAME, title } from '../utils'
 
 export default function Index() {
   useEffect(() => {
@@ -11,9 +11,9 @@ export default function Index() {
 
   return (
     <>
-      <h1 className="page-title">RDex</h1>
+      <h1 className="page-title">{APP_NAME}</h1>
 
-      <p>RDex is a Pokédex navigator and general Pokémon database.</p>
+      <p>{APP_NAME} is a Pokédex navigator and general Pokémon database.</p>
 
       <div className="grid grid-cols-1 space-x-0 space-y-4 pt-8 md:grid-cols-2 md:space-x-4 md:space-y-0">
         <div>

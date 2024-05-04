@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { title } from '../utils'
+import { APP_NAME, title } from '../utils'
 
 const A = (props: { [key: string]: any }) => {
   const { children, ...anchorProps } = props
@@ -26,11 +26,11 @@ export default function About() {
 
   return (
     <>
-      <h1 className="page-title">RDex</h1>
+      <h1 className="page-title">{APP_NAME}</h1>
       <Subtitle>What is this?</Subtitle>
 
       <P>
-        RDex is a Pokédex viewer. It was created with the purpose of improving
+        {APP_NAME} is a Pokédex viewer. It was created with the purpose of improving
         my React and Redux skills.
       </P>
 
@@ -43,7 +43,7 @@ export default function About() {
 
       <Subtitle>How was it built?</Subtitle>
 
-      <p>RDex is a SPA built thanks to:</p>
+      <p>{APP_NAME} is a SPA built thanks to:</p>
 
       <ul className="mb-10 ml-6 mt-2 list-disc">
         <li>

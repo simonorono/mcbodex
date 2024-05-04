@@ -2,6 +2,7 @@ import React, { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { EllipsisVerticalIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Navigation from './Navigation'
+import { APP_NAME } from '../utils'
 
 export default function SideOver() {
   const [open, setOpen] = useState(false)
@@ -51,7 +52,7 @@ export default function SideOver() {
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
                         <Dialog.Title className="text-lg font-medium text-white">
-                          RDex navigation
+                          {APP_NAME} menu
                         </Dialog.Title>
                         <div className="ml-3 flex h-7 items-center">
                           <button
