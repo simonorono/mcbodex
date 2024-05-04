@@ -11,12 +11,8 @@ const A = (props: { [key: string]: any }) => {
   )
 }
 
-const Subtitle = (props: { children: React.ReactChild }) => (
-  <h2 className="mb-10 text-3xl font-bold">{props.children}</h2>
-)
-
-const P = (props: { children: any }) => (
-  <p className="mb-10">{props.children}</p>
+const Subtitle = (props: { children: React.ReactNode }) => (
+  <h2 className="text-3xl font-bold">{props.children}</h2>
 )
 
 export default function About() {
@@ -24,66 +20,85 @@ export default function About() {
     document.title = title('About')
   }, [])
 
+  const year = new Date().getFullYear()
+
   return (
-    <>
+    <div className="space-y-10">
       <h1 className="page-title">{APP_NAME}</h1>
-      <Subtitle>What is this?</Subtitle>
 
-      <P>
-        {APP_NAME} is a Pokédex viewer. It was created with the purpose of improving
-        my React and Redux skills.
-      </P>
+      <div className="space-y-6">
+        <Subtitle>What is this?</Subtitle>
 
-      <Subtitle>Who am I?</Subtitle>
+        <p>
+          {APP_NAME} is a Pokédex viewer. It was created with the purpose of
+          improving my React and Redux skills.
+        </p>
+      </div>
 
-      <P>
-        I am <A href="https://simonorono.com">Simón Oroño</A>. Computer
-        scientist, software developer and Pokémon fan.
-      </P>
+      <div className="space-y-6">
+        <Subtitle>Who am I?</Subtitle>
 
-      <Subtitle>How was it built?</Subtitle>
+        <p>
+          I am <A href="https://simonorono.com">Simón Oroño</A>. Computer
+          scientist, software developer and Pokémon fan.
+        </p>
+      </div>
 
-      <p>{APP_NAME} is a SPA built thanks to:</p>
+      <div className="space-y-6">
+        <Subtitle>How was it built?</Subtitle>
 
-      <ul className="mb-10 ml-6 mt-2 list-disc">
-        <li>
-          <A href="https://pokeapi.co/">PokeAPI</A>
-        </li>
-        <li>
-          <A href="https://vitejs.dev/">Vite</A>
-        </li>
-        <li>
-          <A href="https://reactjs.org/">React</A>
-        </li>
-        <li>
-          <A href="https://redux.js.org/">Redux</A>
-        </li>
-        <li>
-          <A href="https://www.typescriptlang.org/">TypeScript</A>
-        </li>
-        <li>
-          <A href="https://www.tailwindcss.com/">TailwindCSS</A>
-        </li>
-        <li>
-          <A href="https://tailwindui.com/">TailwindUI</A>
-        </li>
-        <li>
-          <A href="https://localforage.github.io/localForage/">localForage</A>
-        </li>
-        <li>
-          <A href="https://fontsource.org/">Fontsource</A>
-        </li>
-        <li>
-          <A href="https://rsms.me/inter/">Inter typeface</A>
-        </li>
-      </ul>
+        <p>Made with ❤️ in the city of Maracaibo, Venezuela.</p>
 
-      <Subtitle>Legal information</Subtitle>
+        <p>{APP_NAME} is possible thanks to the following dependencies:</p>
 
-      <P>
-        Pokémon images & names © 1995-{new Date().getFullYear()} Nintendo/Game
-        Freak
-      </P>
-    </>
+        <ul className="ml-6 mt-2 list-disc">
+          <li>
+            <A href="https://pokeapi.co/">PokeAPI</A>
+          </li>
+          <li>
+            <A href="https://vitejs.dev/">Vite</A>
+          </li>
+          <li>
+            <A href="https://reactjs.org/">React</A>
+          </li>
+          <li>
+            <A href="https://redux.js.org/">Redux</A>
+          </li>
+          <li>
+            <A href="https://www.typescriptlang.org/">TypeScript</A>
+          </li>
+          <li>
+            <A href="https://www.tailwindcss.com/">TailwindCSS</A>
+          </li>
+          <li>
+            <A href="https://tailwindui.com/">TailwindUI</A>
+          </li>
+          <li>
+            <A href="https://localforage.github.io/localForage/">localForage</A>
+          </li>
+          <li>
+            <A href="https://fontsource.org/">Fontsource</A>
+          </li>
+          <li>
+            <A href="https://rsms.me/inter/">Inter typeface</A>
+          </li>
+        </ul>
+      </div>
+
+      <div className="space-y-6">
+        <Subtitle>Legal information</Subtitle>
+
+        <p>
+          Pokémon © 2002-{year} Pokémon. © 1995-{year} Nintendo/Creatures
+          Inc./GAME FREAK inc. TM, ® and Pokémon character names are trademarks
+          of Nintendo.
+        </p>
+
+        <p>
+          No copyright or trademark infringement is intended in using Pokémon
+          content.
+        </p>
+      </div>
+    </div>
   )
 }
