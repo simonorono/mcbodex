@@ -48,7 +48,10 @@ export default function PokemonCard(props: Props) {
               <h4 className="text-md text-gray-700">{pokemon.name}</h4>
             )}
           </Link>
-          <div className="flex justify-between space-x-2">
+          <div
+            className="flex justify-between space-x-2"
+            onClick={ev => ev.stopPropagation()} // needed so we don't end up going to the species page
+          >
             <PokemonTypes
               extraBadgeClasses="block grow"
               typesRels={pokemon.types}
