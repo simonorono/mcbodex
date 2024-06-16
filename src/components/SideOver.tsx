@@ -1,5 +1,10 @@
 import React, { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import {
+  Dialog,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from '@headlessui/react'
 import { EllipsisVerticalIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Navigation from './Navigation'
 import { APP_NAME } from '../utils'
@@ -17,7 +22,7 @@ export default function SideOver() {
         <EllipsisVerticalIcon className="h-8 w-8" aria-hidden="true" />
       </button>
 
-      <Transition.Root show={open}>
+      <Transition show={open}>
         <Dialog
           as="div"
           static
@@ -26,7 +31,7 @@ export default function SideOver() {
           onClose={() => setOpen(false)}
         >
           <div className="absolute inset-0 overflow-hidden">
-            <Transition.Child
+            <TransitionChild
               enter="transition-opacity duration-200"
               enterFrom="opacity-0"
               enterTo="opacity-100"
@@ -34,11 +39,11 @@ export default function SideOver() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-60" />
-            </Transition.Child>
+              <div className="absolute inset-0 bg-black bg-opacity-60" />
+            </TransitionChild>
 
             <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
-              <Transition.Child
+              <TransitionChild
                 as={Fragment}
                 enter="transition-transform ease-linear duration-300"
                 enterFrom="translate-x-full"
@@ -51,9 +56,9 @@ export default function SideOver() {
                   <div className="flex h-full flex-col overflow-y-scroll bg-primary-800 py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium text-white">
+                        <DialogTitle className="text-lg font-medium text-white">
                           {APP_NAME} menu
-                        </Dialog.Title>
+                        </DialogTitle>
                         <div className="ml-3 flex h-7 items-center">
                           <button
                             className={[
@@ -76,11 +81,11 @@ export default function SideOver() {
                     </div>
                   </div>
                 </div>
-              </Transition.Child>
+              </TransitionChild>
             </div>
           </div>
         </Dialog>
-      </Transition.Root>
+      </Transition>
     </div>
   )
 }

@@ -1,5 +1,11 @@
 import React, { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from '@headlessui/react'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import { classNames } from '../../utils'
 import { XMarkIcon } from '@heroicons/react/24/solid'
@@ -19,7 +25,7 @@ export default function AbilityModal(props: Props) {
         onClose={() => close()}
         className="fixed inset-0 z-10 flex items-center justify-center"
       >
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="transition duration-100"
           enterFrom="opacity-0"
@@ -28,10 +34,10 @@ export default function AbilityModal(props: Props) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Dialog.Overlay className="fixed inset-0 bg-black/60" />
-        </Transition.Child>
+          <div className="fixed inset-0 bg-black/60" />
+        </TransitionChild>
 
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="transition duration-200"
           enterFrom="opacity-0"
@@ -40,7 +46,7 @@ export default function AbilityModal(props: Props) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Dialog.Panel>
+          <DialogPanel>
             <div className="relative">
               <div className="mx-2 max-w-lg rounded-lg bg-white p-4 sm:p-6">
                 <div className="absolute right-0 top-0 pr-4 pt-4">
@@ -66,9 +72,9 @@ export default function AbilityModal(props: Props) {
 
                   {ability && (
                     <div className="space-y-2 text-center sm:text-left">
-                      <Dialog.Title className="text-lg font-medium">
+                      <DialogTitle className="text-lg font-medium">
                         {ability.name}
-                      </Dialog.Title>
+                      </DialogTitle>
 
                       <p className="text-sm">{ability.flavorText}</p>
 
@@ -83,8 +89,8 @@ export default function AbilityModal(props: Props) {
                 </div>
               </div>
             </div>
-          </Dialog.Panel>
-        </Transition.Child>
+          </DialogPanel>
+        </TransitionChild>
       </Dialog>
     </Transition>
   )

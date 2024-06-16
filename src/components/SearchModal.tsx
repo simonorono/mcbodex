@@ -1,6 +1,15 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Combobox, Dialog, Transition } from '@headlessui/react'
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxOption,
+  ComboboxOptions,
+  Dialog,
+  DialogPanel,
+  Transition,
+  TransitionChild,
+} from '@headlessui/react'
 import {
   ClockIcon,
   FaceFrownIcon,
@@ -111,20 +120,24 @@ export default function SearchModal({ close, open }: Props) {
     updateQuery('')
   }, [open])
 
-  const onResultClicked = (result: SearchResult) => {
+  const onResultClicked = (result: SearchResult | null) => {
+    if (!result) {
+      return
+    }
+
     close()
     updateQuery('')
     navigate(result.path)
   }
 
   return (
-    <Transition.Root show={open} as={Fragment} afterLeave={() => setQuery('')}>
+    <Transition show={open} as={Fragment} afterLeave={() => setQuery('')}>
       <Dialog
         as="div"
         className="fixed inset-0 z-10 overflow-y-auto p-4 sm:p-6 md:p-20"
         onClose={close}
       >
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="transition duration-100"
           enterFrom="opacity-0"
@@ -133,10 +146,10 @@ export default function SearchModal({ close, open }: Props) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-60" />
-        </Transition.Child>
+          <div className="absolute inset-0 bg-black bg-opacity-60" />
+        </TransitionChild>
 
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="transition duration-200"
           enterFrom="opacity-0"
@@ -145,61 +158,67 @@ export default function SearchModal({ close, open }: Props) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Combobox
-            as="div"
-            className="mx-auto max-w-xl transform overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all"
-            onChange={(result: SearchResult) => onResultClicked(result)}
-            value={null}
-          >
-            <div className="relative">
-              <MagnifyingGlassIcon
-                className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
-              <Combobox.Input
-                className="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
-                placeholder="Write three or more characters..."
-                onChange={event => updateQuery(event.target.value)}
-              />
-            </div>
+          <DialogPanel>
+            <Combobox
+              as="div"
+              className="mx-auto max-w-xl transform overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all"
+              onChange={(result: SearchResult | null) =>
+                onResultClicked(result)
+              }
+              value={null}
+            >
+              <div className="relative">
+                <MagnifyingGlassIcon
+                  className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+                <ComboboxInput
+                  autoFocus
+                  className="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
+                  placeholder="Write three or more characters..."
+                  onChange={event => updateQuery(event.target.value)}
+                />
+              </div>
 
-            {totalResults > 0 && (
-              <Combobox.Options
-                static
-                className="max-h-80 scroll-pb-2 scroll-pt-11 space-y-2 overflow-y-auto pb-2"
-              >
-                {results.species.length > 0 && (
-                  <li>
-                    <h2 className="bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-900">
-                      Pokémon
-                    </h2>
-                    <ul className="mt-2 text-sm text-gray-800">
-                      {results.species.map(result => (
-                        <Combobox.Option
-                          key={result.path}
-                          value={result}
-                          className={({ active }) =>
-                            [
-                              'cursor-default select-none px-4 py-2',
-                              active && 'bg-primary-600 font-medium text-white',
-                            ].join(' ')
-                          }
-                          dangerouslySetInnerHTML={{
-                            __html: highlight(result.name, query),
-                          }}
-                        />
-                      ))}
-                    </ul>
-                  </li>
-                )}
-              </Combobox.Options>
-            )}
+              {totalResults > 0 && (
+                <ComboboxOptions
+                  static
+                  className="max-h-80 scroll-pb-2 scroll-pt-11 space-y-2 overflow-y-auto pb-2"
+                >
+                  {results.species.length > 0 && (
+                    <li>
+                      <h2 className="bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-900">
+                        Pokémon
+                      </h2>
+                      <ul className="mt-2 text-sm text-gray-800">
+                        {results.species.map(result => (
+                          <ComboboxOption
+                            key={result.path}
+                            value={result}
+                            className={({ active }) =>
+                              [
+                                'cursor-default select-none px-4 py-2',
+                                active &&
+                                  'bg-primary-600 font-medium text-white',
+                              ].join(' ')
+                            }
+                            dangerouslySetInnerHTML={{
+                              __html: highlight(result.name, query),
+                            }}
+                          />
+                        ))}
+                      </ul>
+                    </li>
+                  )}
+                </ComboboxOptions>
+              )}
 
-            {notFound && NOT_FOUND_MESSAGE}
-            {searching && LOADING_MESSAGE}
-          </Combobox>
-        </Transition.Child>
+              {notFound && NOT_FOUND_MESSAGE}
+              {searching && LOADING_MESSAGE}
+            </Combobox>
+          </DialogPanel>
+        </TransitionChild>
       </Dialog>
-    </Transition.Root>
+    </Transition>
   )
 }
