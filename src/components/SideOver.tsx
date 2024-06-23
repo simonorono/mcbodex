@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import {
   Dialog,
+  DialogBackdrop,
   DialogTitle,
   Transition,
   TransitionChild,
@@ -39,7 +40,7 @@ export default function SideOver() {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="absolute inset-0 bg-black bg-opacity-60" />
+              <DialogBackdrop className="fixed inset-0 bg-black/60" />
             </TransitionChild>
 
             <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
@@ -63,7 +64,7 @@ export default function SideOver() {
                           <button
                             className={[
                               'rounded-md bg-primary-700 text-gray-200 hover:text-white',
-                              'focus:outline-none ',
+                              'focus:outline-none',
                             ].join(' ')}
                             onClick={() => setOpen(false)}
                           >

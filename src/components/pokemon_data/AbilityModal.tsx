@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import {
   Dialog,
+  DialogBackdrop,
   DialogPanel,
   DialogTitle,
   Transition,
@@ -34,7 +35,7 @@ export default function AbilityModal(props: Props) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/60" />
+          <DialogBackdrop className="fixed inset-0 bg-black/60" />
         </TransitionChild>
 
         <TransitionChild

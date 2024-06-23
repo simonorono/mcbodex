@@ -6,6 +6,7 @@ import {
   ComboboxOption,
   ComboboxOptions,
   Dialog,
+  DialogBackdrop,
   DialogPanel,
   Transition,
   TransitionChild,
@@ -146,7 +147,7 @@ export default function SearchModal({ close, open }: Props) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="absolute inset-0 bg-black bg-opacity-60" />
+          <DialogBackdrop className="fixed inset-0 bg-black/60" />
         </TransitionChild>
 
         <TransitionChild
