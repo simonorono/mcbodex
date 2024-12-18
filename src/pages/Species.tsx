@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router'
 import { useAppSelector } from '../store/hooks'
 import Loader from '../components/Loader'
 import PokemonData from '../components/PokemonData'

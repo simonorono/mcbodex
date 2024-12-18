@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router'
 import { frontPokemonOfSpeciesByPredicate } from '../store/selectors'
 import PokemonList from '../components/PokemonList'
 import Loader from '../components/Loader'
