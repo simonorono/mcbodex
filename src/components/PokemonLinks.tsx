@@ -22,8 +22,8 @@ export default function PokemonLinks({ species }: Props) {
         </Link>
       )}
 
-      {/* Same as &nbsp;. Ensures that, when on the first species, the link to the next appears to the right. */}
-      <span>{String.fromCodePoint(0x000a0)}</span>
+      {/* Ensures that, when on the first species, the link to the next appears to the right. */}
+      {!prev && <span />}
 
       {next && (
         <Link to={`/species/${next.code}`} className="">
