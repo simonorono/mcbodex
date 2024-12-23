@@ -31,7 +31,7 @@ export default function PokemonCard(props: Props) {
     <div
       className="flex w-full cursor-pointer space-x-2 rounded-xl border border-gray-300 p-2"
       onClick={() => navigate(link)}
-      onAuxClick={() => window.open(link, '_newtab')}
+      onAuxClick={() => window.open(link, '_blank')}
     >
       <div className="flex grow">
         <div className="flex grow flex-col justify-center space-y-1">
