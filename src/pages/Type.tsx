@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { frontPokemonOfSpeciesByPredicate } from '../store/selectors'
-import PokemonList from '../components/PokemonList'
+import Layout from './Layout'
 import Loader from '../components/Loader'
+import PokemonList from '../components/PokemonList'
 import TypeDamageBadge from '../components/TypeDamageBadge'
 import { useAppSelector } from '../store/hooks'
 import { title, types } from '../utils'
@@ -47,9 +48,7 @@ export default function Type() {
       {!pokemonLoaded && <Loader />}
 
       {pokemonLoaded && type && (
-        <>
-          <h1 className="page-title">{`${type.name} Type`}</h1>
-
+        <Layout title={`${type.name} Type`}>
           <div className="space-y-10">
             <div className="flex flex-col space-y-10 sm:flex-row sm:space-x-10 sm:space-y-0 md:space-x-32">
               <div className="flex-1">
@@ -80,7 +79,7 @@ export default function Type() {
               />
             </div>
           </div>
-        </>
+        </Layout>
       )}
     </>
   )

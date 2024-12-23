@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { useAppSelector } from '../store/hooks'
+import Layout from './Layout'
 import Loader from '../components/Loader'
 import PokedexTab from '../components/PokedexTab'
 import Tabs from '../components/Tabs'
@@ -37,11 +38,9 @@ export default function Pokedex() {
       {!allLoaded && <Loader />}
 
       {allLoaded && pokedexList && (
-        <>
-          <h1 className="page-title">{`${game.name} Pokédex`}</h1>
-
+        <Layout title={`${game.name} Pokédex`}>
           <Tabs tabs={(allLoaded && pokedexList.map(pokedexTab)) || []} />
-        </>
+        </Layout>
       )}
     </>
   )

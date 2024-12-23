@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import Layout from './Layout'
 import { APP_NAME, title } from '../utils'
 
 const A = (props: { [key: string]: any }) => {
@@ -23,9 +24,7 @@ export default function About() {
   const year = new Date().getFullYear()
 
   return (
-    <div className="space-y-10">
-      <h1 className="page-title">{APP_NAME}</h1>
-
+    <Layout className="space-y-10" title={APP_NAME}>
       <div className="space-y-6">
         <Subtitle>What is this?</Subtitle>
 
@@ -99,6 +98,6 @@ export default function About() {
           content.
         </p>
       </div>
-    </div>
+    </Layout>
   )
 }

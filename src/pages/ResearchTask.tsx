@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { useAppSelector } from '../store/hooks'
 import researchTasksRaw from 'rdex-data/handcrafted/research_tasks.json'
+import Layout from './Layout'
 import PokemonList from '../components/PokemonList'
 import { title } from '../utils'
 
@@ -27,28 +28,24 @@ export default function ResearchTask() {
       {pokemonLoaded && !researchTaskGroup && <p>Not found</p>}
 
       {pokemonLoaded && researchTaskGroup && (
-        <>
-          <h1 className="mb-10 text-4xl font-bold">
-            {researchTaskGroup.name} Research Tasks (Pokémon HOME)
-          </h1>
+        <Layout
+          title={`${researchTaskGroup.name} Research Tasks (Pokémon HOME)`}
+        >
+          {researchTaskGroup.researchTasks.map((researchTask, index) => (
+            <div key={researchTask.name} className="mb-8">
+              <h2 className="mb-4 text-2xl font-medium">
+                {index + 1}. {researchTask.name}
+              </h2>
 
-          <div className="mb-24">
-            {researchTaskGroup.researchTasks.map((researchTask, index) => (
-              <div key={researchTask.name} className="mb-8">
-                <h2 className="mb-4 text-2xl font-medium">
-                  {index + 1}. {researchTask.name}
-                </h2>
-
-                <PokemonList
-                  numberCallback={pokemon => pokemon.speciesId}
-                  pokemonList={researchTask.pokemonIds
-                    .map(id => pokemonById[id])
-                    .sort((pkm1, pkm2) => pkm1.speciesId - pkm2.speciesId)}
-                />
-              </div>
-            ))}
-          </div>
-        </>
+              <PokemonList
+                numberCallback={pokemon => pokemon.speciesId}
+                pokemonList={researchTask.pokemonIds
+                  .map(id => pokemonById[id])
+                  .sort((pkm1, pkm2) => pkm1.speciesId - pkm2.speciesId)}
+              />
+            </div>
+          ))}
+        </Layout>
       )}
     </>
   )

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Checkbox from '../components/Checkbox'
+import Layout from './Layout'
 import PokemonList from '../components/PokemonList'
 import TypeSelector from '../components/TypeSelector'
 import TypeDefenses from '../components/TypeDefenses'
@@ -35,9 +36,7 @@ export default function SearchByType() {
     }) || []
 
   return (
-    <>
-      <h1 className="page-title">Search Pokémon By Type</h1>
-
+    <Layout title="Search Pokémon By Type">
       <div className="flex flex-col space-y-3 sm:flex-row sm:space-x-3 sm:space-y-0">
         <TypeSelector
           label="First type"
@@ -86,6 +85,6 @@ export default function SearchByType() {
           />
         )}
       </div>
-    </>
+    </Layout>
   )
 }

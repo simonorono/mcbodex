@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useLocation, useParams } from 'react-router'
 import { useAppSelector } from '../store/hooks'
+import Layout from './Layout'
 import Loader from '../components/Loader'
 import PokemonData from '../components/PokemonData'
 import PokemonLinks from '../components/PokemonLinks'
@@ -41,13 +42,11 @@ export default function Species() {
       {loaded && !species && <p>Not found</p>}
 
       {loaded && species && (
-        <>
-          <h1 className="page-title">{species.name}</h1>
-
+        <Layout title={species.name}>
           <PokemonLinks species={species} />
 
           <Tabs tabs={tabs} />
-        </>
+        </Layout>
       )}
     </>
   )

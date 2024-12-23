@@ -4,6 +4,7 @@ import {
   frontPokemonOfSpeciesByPredicate,
   getPokemonListForPokedex,
 } from '../store/selectors'
+import Layout from './Layout'
 import PokemonList from '../components/PokemonList'
 import Select from '../components/Select'
 import { stats, title } from '../utils'
@@ -65,35 +66,32 @@ export default function SearchByEVYield() {
   const pokemonList = pokedex ? pokedexPokemonWithYield : allPokemonWithYield
 
   return (
-    <>
-      <h1 className="page-title">Search Pokémon By EV Yield</h1>
-      <div>
-        <div className="flex space-x-3">
-          <Select
-            className="grow"
-            label="Stat to search for"
-            options={statOptions}
-            onChange={opt => setStat(getStatFromSelectOption(opt))}
-            value={selectedStat}
-          />
+    <Layout title="Search Pokémon By EV Yield">
+      <div className="flex space-x-3">
+        <Select
+          className="grow"
+          label="Stat to search for"
+          options={statOptions}
+          onChange={opt => setStat(getStatFromSelectOption(opt))}
+          value={selectedStat}
+        />
 
-          <Select
-            className="grow"
-            label="Search in Pokédex"
-            options={pokedexOptions}
-            onChange={opt =>
-              setPokedex(opt?.value ? pokedexByCode[opt.value] : null)
-            }
-            value={selectedPokedex}
-          />
-        </div>
-
-        <div className="mt-8 space-y-3">
-          <h2 className="text-left text-2xl font-bold">Pokémon List</h2>
-
-          {pokemonList.length > 0 && <PokemonList pokemonList={pokemonList} />}
-        </div>
+        <Select
+          className="grow"
+          label="Search in Pokédex"
+          options={pokedexOptions}
+          onChange={opt =>
+            setPokedex(opt?.value ? pokedexByCode[opt.value] : null)
+          }
+          value={selectedPokedex}
+        />
       </div>
-    </>
+
+      <div className="mt-8 space-y-3">
+        <h2 className="text-left text-2xl font-bold">Pokémon List</h2>
+
+        {pokemonList.length > 0 && <PokemonList pokemonList={pokemonList} />}
+      </div>
+    </Layout>
   )
 }
