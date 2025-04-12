@@ -196,10 +196,10 @@ export default function SearchModal({ close, open }: Props) {
                           <ComboboxOption
                             key={result.path}
                             value={result}
-                            className={({ active }) =>
+                            className={({ focus }) =>
                               [
                                 'cursor-default px-4 py-2 select-none',
-                                active &&
+                                focus &&
                                   'bg-primary-600 font-medium text-white',
                               ].join(' ')
                             }

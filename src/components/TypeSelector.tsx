@@ -1,5 +1,11 @@
 import React, { Fragment } from 'react'
-import { Listbox, Transition } from '@headlessui/react'
+import {
+  Label,
+  Listbox,
+  ListboxOption,
+  ListboxOptions,
+  Transition,
+} from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/solid'
 import { types } from '../utils'
 
@@ -22,9 +28,9 @@ export default function TypeSelector({
     <Listbox value={selected} onChange={setSelected}>
       {({ open }) => (
         <div className={className}>
-          <Listbox.Label className="block text-sm font-medium text-gray-700">
+          <Label className="block text-sm font-medium text-gray-700">
             {label}
-          </Listbox.Label>
+          </Label>
           <div className="relative mt-1">
             <Listbox.Button
               className={[
@@ -58,7 +64,7 @@ export default function TypeSelector({
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options
+              <ListboxOptions
                 static
                 className={[
                   'absolute z-10 mt-1 max-h-60 w-full bg-white shadow-lg',
@@ -67,11 +73,11 @@ export default function TypeSelector({
                 ].join(' ')}
               >
                 {[null, ...types.all].map(type => (
-                  <Listbox.Option
+                  <ListboxOption
                     key={type?.id || 0}
-                    className={({ active }) =>
+                    className={({ focus }) =>
                       [
-                        type && active
+                        type && focus
                           ? `${types.classesForType(type).color} ${
                               types.classesForType(type).background
                             }`
@@ -81,7 +87,7 @@ export default function TypeSelector({
                     }
                     value={type}
                   >
-                    {({ selected, active }) => (
+                    {({ selected, focus }) => (
                       <>
                         <span
                           className={[
@@ -95,7 +101,7 @@ export default function TypeSelector({
                         {selected ? (
                           <span
                             className={[
-                              active
+                              focus
                                 ? `${types.classesForType(type).color}`
                                 : 'text-prime-600',
                               'absolute inset-y-0 right-0 flex items-center pr-4',
@@ -106,9 +112,9 @@ export default function TypeSelector({
                         ) : null}
                       </>
                     )}
-                  </Listbox.Option>
+                  </ListboxOption>
                 ))}
-              </Listbox.Options>
+              </ListboxOptions>
             </Transition>
           </div>
         </div>

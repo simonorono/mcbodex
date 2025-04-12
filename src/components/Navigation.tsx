@@ -1,6 +1,10 @@
 import React, { ReactNode } from 'react'
 import { Link, useLocation } from 'react-router'
-import { Disclosure } from '@headlessui/react'
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from '@headlessui/react'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import { useAppSelector } from '../store/hooks'
 import { types } from '../utils'
@@ -49,7 +53,7 @@ export default function Navigation({ onLinkClicked }: Props) {
       <Disclosure>
         {({ open }) => (
           <>
-            <Disclosure.Button
+            <DisclosureButton
               className={[
                 'group flex w-full items-center py-2 pr-2 text-left text-sm',
                 'rounded-md font-medium text-white focus:outline-hidden',
@@ -62,8 +66,8 @@ export default function Navigation({ onLinkClicked }: Props) {
                 ].join(' ')}
               />
               {name}
-            </Disclosure.Button>
-            <Disclosure.Panel className="ml-4">{children}</Disclosure.Panel>
+            </DisclosureButton>
+            <DisclosurePanel className="ml-4">{children}</DisclosurePanel>
           </>
         )}
       </Disclosure>
