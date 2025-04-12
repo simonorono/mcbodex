@@ -50,7 +50,7 @@ export default function About() {
 
         <p>{APP_NAME} is possible thanks to the following dependencies:</p>
 
-        <ul className="ml-6 mt-2 list-disc">
+        <ul className="mt-2 ml-6 list-disc">
           <li>
             <A href="https://pokeapi.co/">PokeAPI</A>
           </li>

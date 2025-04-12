@@ -1,21 +1,13 @@
-@config '../../tailwind.config.mjs';
+.debug-table {
+  table,
+  tr,
+  th,
+  td {
+    border: 1px solid black;
+  }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-  .debug-table {
-    table,
-    tr,
-    th,
-    td {
-      @apply border border-black;
-    }
-
-    th,
-    td {
-      @apply px-2;
-    }
+  th,
+  td {
+    padding: 0 0.5rem;
   }
 }

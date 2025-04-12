@@ -31,8 +31,8 @@ export default function Tabs(props: Props) {
             id="tabs"
             name="tabs"
             className={[
-              'block w-full border-gray-300 py-2 pl-3 pr-10 text-base',
-              'focus:border-primary-500 focus:outline-none focus:ring-primary-500',
+              'block w-full border-gray-300 py-2 pr-10 pl-3 text-base',
+              'focus:border-primary-500 focus:ring-primary-500 focus:outline-hidden',
               'rounded-md sm:text-sm',
             ].join(' ')}
             value={selected}
@@ -55,7 +55,7 @@ export default function Tabs(props: Props) {
                     value === selected
                       ? 'border-black text-black'
                       : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                    'cursor-pointer whitespace-nowrap border-b-4 px-1 py-4 text-sm font-medium',
+                    'cursor-pointer border-b-4 px-1 py-4 text-sm font-medium whitespace-nowrap',
                   ].join(' ')}
                   onClick={() => setSelected(value)}
                   aria-current={value === selected ? 'page' : undefined}

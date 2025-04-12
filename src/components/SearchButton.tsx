@@ -14,7 +14,7 @@ export default function SearchButton() {
     <div>
       <button
         onClick={() => setIfOpen(true)}
-        className="flex h-full items-center rounded-full text-white focus:outline-none"
+        className="flex h-full items-center rounded-full text-white focus:outline-hidden"
       >
         <span className="sr-only">Open search</span>
         <MagnifyingGlassIcon className="h-8 w-8" aria-hidden="true" />

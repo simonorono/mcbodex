@@ -14,7 +14,7 @@ export default function PokemonLinks({ species }: Props) {
   const next: PokemonSpecies | null = speciesById[species.id + 1] ?? null
 
   return (
-    <div className="mb-2 flex min-h-[1em] flex-wrap justify-between text-primary-900">
+    <div className="text-primary-900 mb-2 flex min-h-[1em] flex-wrap justify-between">
       {prev && (
         <Link to={`/species/${prev.code}`} className="">
           <ChevronLeftIcon className="inline h-4 w-4" />

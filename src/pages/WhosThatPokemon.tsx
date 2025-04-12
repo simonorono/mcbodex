@@ -105,7 +105,7 @@ export default function WhosThatPokemon() {
       {!pokemonLoaded && <Loader />}
 
       {pokemonLoaded && secret && (
-        <div className="flex flex-col justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+        <div className="flex flex-col justify-center space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
           <div>
             <img
               ref={imgRef}

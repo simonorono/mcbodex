@@ -24,7 +24,7 @@ export default function BackToTopButton() {
       type="button"
       className={[
         'inline-flex items-center rounded-full border border-transparent p-3',
-        'fixed bg-primary-700 text-white shadow-sm hover:bg-primary-800',
+        'bg-primary-700 hover:bg-primary-800 fixed text-white shadow-2xs',
         'bottom-6 transition-all duration-500',
         shown ? 'right-6' : '-right-20',
       ].join(' ')}

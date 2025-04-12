@@ -32,7 +32,7 @@ export default function TypeSelector({
                   ? `${classes.background} ${classes.color} ${classes.border}`
                   : 'bg-white',
                 'relative w-full rounded-md border border-gray-300',
-                'cursor-default py-2 pl-3 pr-10 text-left sm:text-sm',
+                'cursor-default py-2 pr-10 pl-3 text-left sm:text-sm',
               ].join(' ')}
             >
               <span className="block truncate font-medium">
@@ -62,8 +62,8 @@ export default function TypeSelector({
                 static
                 className={[
                   'absolute z-10 mt-1 max-h-60 w-full bg-white shadow-lg',
-                  'rounded-md py-1 text-base ring-1 ring-black ring-opacity-5',
-                  'overflow-auto focus:outline-none sm:text-sm',
+                  'ring-opacity-5 rounded-md py-1 text-base ring-1 ring-black',
+                  'overflow-auto focus:outline-hidden sm:text-sm',
                 ].join(' ')}
               >
                 {[null, ...types.all].map(type => (
@@ -76,7 +76,7 @@ export default function TypeSelector({
                               types.classesForType(type).background
                             }`
                           : 'text-gray-900',
-                        'relative cursor-default select-none py-2 pl-3 pr-9',
+                        'relative cursor-default py-2 pr-9 pl-3 select-none',
                       ].join(' ')
                     }
                     value={type}

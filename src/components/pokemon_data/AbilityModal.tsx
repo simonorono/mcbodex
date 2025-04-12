@@ -50,10 +50,10 @@ export default function AbilityModal(props: Props) {
           <DialogPanel>
             <div className="relative">
               <div className="mx-2 max-w-lg rounded-lg bg-white p-4 sm:p-6">
-                <div className="absolute right-0 top-0 pr-4 pt-4">
+                <div className="absolute top-0 right-0 pt-4 pr-4">
                   <button
                     type="button"
-                    className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none"
+                    className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-hidden"
                     onClick={() => close()}
                   >
                     <span className="sr-only">Close</span>
@@ -61,14 +61,14 @@ export default function AbilityModal(props: Props) {
                   </button>
                 </div>
 
-                <div className="space-y-2 sm:flex sm:items-start sm:space-x-4 sm:space-y-0">
+                <div className="space-y-2 sm:flex sm:items-start sm:space-y-0 sm:space-x-4">
                   <div
                     className={classNames(
-                      'mx-auto h-12 w-12 rounded-full bg-primary-100',
+                      'bg-primary-100 mx-auto h-12 w-12 rounded-full',
                       'flex shrink-0 items-center justify-center'
                     )}
                   >
-                    <InformationCircleIcon className="h-7 w-7 text-primary-600" />
+                    <InformationCircleIcon className="text-primary-600 h-7 w-7" />
                   </div>
 
                   {ability && (

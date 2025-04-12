@@ -14,7 +14,7 @@ export default function Index() {
     <Layout title={APP_NAME}>
       <p>{APP_NAME} is a Pokédex navigator and general Pokémon database.</p>
 
-      <div className="grid grid-cols-1 space-x-0 space-y-4 pt-8 md:grid-cols-2 md:space-x-4 md:space-y-0">
+      <div className="grid grid-cols-1 space-y-4 space-x-0 pt-8 md:grid-cols-2 md:space-y-0 md:space-x-4">
         <div>
           <PokedexList />
         </div>

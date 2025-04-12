@@ -20,7 +20,7 @@ export default function Checkbox(props: Props) {
           type="checkbox"
           checked={initialValue}
           onChange={ev => onChange(ev.currentTarget.checked)}
-          className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-700"
+          className="text-primary-600 focus:ring-primary-700 h-4 w-4 rounded-xs border-gray-300"
         />
       </div>
       <div className="ml-3 text-sm">

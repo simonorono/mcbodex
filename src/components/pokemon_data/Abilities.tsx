@@ -19,7 +19,7 @@ function Ability({ ability, hidden, onClick }: AbilityProps) {
       <p
         className={classNames(
           'inline-block cursor-pointer leading-4',
-          'underline decoration-primary-500/75 decoration-2'
+          'decoration-primary-500/75 underline decoration-2'
         )}
         onClick={onClick}
       >

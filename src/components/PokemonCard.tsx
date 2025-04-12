@@ -60,7 +60,7 @@ export default function PokemonCard(props: Props) {
         </div>
       </div>
 
-      <div className="mx-auto h-[--img-height] w-[--img-width] flex-shrink-0 rounded-xl bg-gray-100 outline outline-1 outline-gray-300">
+      <div className="mx-auto h-(--img-height) w-(--img-width) shrink-0 rounded-xl bg-gray-100 outline outline-1 outline-gray-300">
         <LazyImage
           alt={`front sprite for ${pokemon.name}`}
           src={images.frontSpriteForPokemonId(pokemon.id)}

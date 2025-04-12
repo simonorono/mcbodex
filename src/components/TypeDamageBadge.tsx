@@ -26,7 +26,7 @@ export default function TypeDamageBadge({ effect, type, className }: Props) {
   return (
     <div
       className={classNames(
-        'flex overflow-hidden whitespace-nowrap rounded-full border',
+        'flex overflow-hidden rounded-full border whitespace-nowrap',
         className || '',
         ...Object.values(typeClasses)
       )}

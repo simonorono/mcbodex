@@ -17,7 +17,7 @@ export default function SideOver() {
     <div>
       <button
         onClick={() => setOpen(true)}
-        className="flex h-full items-center rounded-full text-white focus:outline-none"
+        className="flex h-full items-center rounded-full text-white focus:outline-hidden"
       >
         <span className="sr-only">Open options</span>
         <EllipsisVerticalIcon className="h-8 w-8" aria-hidden="true" />
@@ -54,7 +54,7 @@ export default function SideOver() {
                 leaveTo="translate-x-full"
               >
                 <div className="w-screen max-w-sm">
-                  <div className="flex h-full flex-col overflow-y-scroll bg-primary-800 py-6 shadow-xl">
+                  <div className="bg-primary-800 flex h-full flex-col overflow-y-scroll py-6 shadow-xl">
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
                         <DialogTitle className="text-lg font-medium text-white">
@@ -63,8 +63,8 @@ export default function SideOver() {
                         <div className="ml-3 flex h-7 items-center">
                           <button
                             className={[
-                              'rounded-md bg-primary-700 text-gray-200 hover:text-white',
-                              'focus:outline-none',
+                              'bg-primary-700 rounded-md text-gray-200 hover:text-white',
+                              'focus:outline-hidden',
                             ].join(' ')}
                             onClick={() => setOpen(false)}
                           >

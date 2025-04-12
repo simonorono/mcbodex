@@ -37,7 +37,7 @@ export default function SearchByType() {
 
   return (
     <Layout title="Search Pokémon By Type">
-      <div className="flex flex-col space-y-3 sm:flex-row sm:space-x-3 sm:space-y-0">
+      <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3">
         <TypeSelector
           label="First type"
           className="flex-1"

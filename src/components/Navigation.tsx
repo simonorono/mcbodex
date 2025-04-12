@@ -52,13 +52,13 @@ export default function Navigation({ onLinkClicked }: Props) {
             <Disclosure.Button
               className={[
                 'group flex w-full items-center py-2 pr-2 text-left text-sm',
-                'rounded-md font-medium text-white focus:outline-none',
+                'rounded-md font-medium text-white focus:outline-hidden',
               ].join(' ')}
             >
               <ChevronRightIcon
                 className={[
                   open ? 'rotate-90 text-gray-400' : 'text-gray-300',
-                  'mr-2 h-5 w-5 flex-shrink-0 transform transition-all duration-150 ease-in-out group-hover:text-white',
+                  'mr-2 h-5 w-5 shrink-0 transform transition-all duration-150 ease-in-out group-hover:text-white',
                 ].join(' ')}
               />
               {name}

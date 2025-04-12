@@ -162,7 +162,7 @@ export default function SearchModal({ close, open }: Props) {
           <DialogPanel>
             <Combobox
               as="div"
-              className="mx-auto max-w-xl transform overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all"
+              className="ring-opacity-5 mx-auto max-w-xl transform overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black transition-all"
               onChange={(result: SearchResult | null) =>
                 onResultClicked(result)
               }
@@ -170,12 +170,12 @@ export default function SearchModal({ close, open }: Props) {
             >
               <div className="relative">
                 <MagnifyingGlassIcon
-                  className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
+                  className="pointer-events-none absolute top-3.5 left-4 h-5 w-5 text-gray-400"
                   aria-hidden="true"
                 />
                 <ComboboxInput
                   autoFocus
-                  className="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
+                  className="h-12 w-full border-0 bg-transparent pr-4 pl-11 text-gray-800 placeholder-gray-400 focus:ring-0 sm:text-sm"
                   placeholder="Write three or more characters..."
                   onChange={event => updateQuery(event.target.value)}
                 />
@@ -184,7 +184,7 @@ export default function SearchModal({ close, open }: Props) {
               {totalResults > 0 && (
                 <ComboboxOptions
                   static
-                  className="max-h-80 scroll-pb-2 scroll-pt-11 space-y-2 overflow-y-auto pb-2"
+                  className="max-h-80 scroll-pt-11 scroll-pb-2 space-y-2 overflow-y-auto pb-2"
                 >
                   {results.species.length > 0 && (
                     <li>
@@ -198,7 +198,7 @@ export default function SearchModal({ close, open }: Props) {
                             value={result}
                             className={({ active }) =>
                               [
-                                'cursor-default select-none px-4 py-2',
+                                'cursor-default px-4 py-2 select-none',
                                 active &&
                                   'bg-primary-600 font-medium text-white',
                               ].join(' ')

@@ -8,7 +8,7 @@ import mobileLogo from '/media/small.png'
 
 export default function Navbar() {
   return (
-    <div className="mx-0 mb-5 w-full border-b bg-primary-900 px-2 sm:px-6 lg:px-8">
+    <div className="bg-primary-900 mx-0 mb-5 w-full border-b px-2 sm:px-6 lg:px-8">
       <div className="flex h-16 justify-between">
         <div className="flex items-center">
           <Link to="/" title="Home">

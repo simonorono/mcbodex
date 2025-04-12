@@ -24,7 +24,7 @@ export default function Select(props: Props) {
           <Listbox.Button
             className={classNames(
               'relative w-full rounded-md border border-gray-300',
-              'cursor-default py-2 pl-3 pr-10 text-left sm:text-sm'
+              'cursor-default py-2 pr-10 pl-3 text-left sm:text-sm'
             )}
           >
             <span className="block truncate font-medium">
@@ -41,13 +41,13 @@ export default function Select(props: Props) {
           <Listbox.Options
             className={classNames(
               'absolute z-10 mt-1 max-h-60 w-full bg-white shadow-lg',
-              'rounded-md py-1 text-base ring-1 ring-black ring-opacity-5',
-              'overflow-auto focus:outline-none sm:text-sm'
+              'ring-opacity-5 rounded-md py-1 text-base ring-1 ring-black',
+              'overflow-auto focus:outline-hidden sm:text-sm'
             )}
           >
             {[null, ...options].map(option => (
               <Listbox.Option
-                className="relative cursor-default select-none py-2 pl-3 pr-9 text-gray-900 hover:bg-gray-100"
+                className="relative cursor-default py-2 pr-9 pl-3 text-gray-900 select-none hover:bg-gray-100"
                 key={option?.value || -1}
                 value={option}
               >
