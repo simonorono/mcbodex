@@ -61,10 +61,10 @@ export default function AbilityModal(props: Props) {
                   </button>
                 </div>
 
-                <div className="space-y-2 sm:flex sm:items-start sm:space-y-0 sm:space-x-4">
+                <div className="flex flex-col items-center justify-center space-y-2 sm:flex-row sm:items-start sm:space-y-0 sm:space-x-4">
                   <div
                     className={classNames(
-                      'bg-primary-100 mx-auto h-12 w-12 rounded-full',
+                      'bg-primary-100 h-12 w-12 rounded-full',
                       'flex shrink-0 items-center justify-center'
                     )}
                   >
