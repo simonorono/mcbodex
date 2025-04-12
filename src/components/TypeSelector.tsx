@@ -68,7 +68,7 @@ export default function TypeSelector({
                 static
                 className={[
                   'absolute z-10 mt-1 max-h-60 w-full bg-white shadow-lg',
-                  'ring-opacity-5 rounded-md py-1 text-base ring-1 ring-black',
+                  'ring-opacity-5 rounded-md py-1 text-base ring-1 ring-slate-300',
                   'overflow-auto focus:outline-hidden sm:text-sm',
                 ].join(' ')}
               >
