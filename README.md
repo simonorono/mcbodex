@@ -1,8 +1,8 @@
-# RDex
+# McboDex
 
 ## What is this?
 
-RDex is a Pokédex viewer. It was created with the purpose of improving my React and Redux skills.
+McboDex is a Pokédex viewer. It was created with the purpose of improving my React and Redux skills.
 
 ## Who am I?
 
@@ -10,7 +10,7 @@ I am [Simón Oroño](https://simonorono.com). Computer scientist, software devel
 
 ## How was it built?
 
-RDex is a SPA built thanks to:
+McboDex is a SPA built thanks to:
 
 * [PokeAPI](https://pokeapi.co/)
 * [Vite](https://vitejs.dev/)
